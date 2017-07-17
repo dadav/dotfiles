@@ -1,8 +1,18 @@
+# Ls
 alias ll="ls -l --color=auto"
 alias l="ll"
+# Editors
 alias vi="vim"
+alias emacs="emacs -nw"
+alias e="emacs"
+# Cd
+alias ..="cd .."
+alias ...="..;.."
+alias ....="...;.."
+
 alias grep="grep --colour"
 alias msdb="sudo mount /dev/sdb1 /mnt"
+
 # Go in Monitoring mode
 alias start_monitor="sudo systemctl stop NetworkManager; \
     sudo ip link set wlp20s0 down; \
@@ -14,21 +24,31 @@ alias stop_monitor="sudo ip link set wlp20s0 down; \
     sudo systemctl start NetworkManager"
 
 
+# Fix the terminal
 alias fix='reset; stty sane; tput rs1; clear; echo -e "\033c"'
-alias cal="cal -w3"
-alias vm="virt-manager --connect qemu:///session"
-alias pyenv="source ~/python/venv/bin/activate"
-alias emacs="emacs -nw"
-alias torpy="torify ssh pi@yedyafq32tmb2fca.onion"
 
+# Misc
+alias cal="cal -w3"
+#alias vm="virt-manager --connect qemu:///session"
+#alias pyenv="source ~/python/venv/bin/activate"
+alias torpy="torify ssh pi@yedyafq32tmb2fca.onion"
+alias clearhist="history -cw"
+
+###################
+##### FUNCS #######
+###################
+
+# Plays rain in the background
 function rain() {
     mpg123 --loop -1 ~/music/rain.mp3 > /dev/null 2>&1 & 
 }
 
+# Shows map
 function showmap() {
     telnet mapscii.me
 }
 
+# Cuts music files! usage: cutmp3 FILE [START] STOP (in secs)
 function cutmp3() {
 
 if [[ $# -eq 2 ]]; then
@@ -38,6 +58,7 @@ else
 fi
 }
 
+# Plays video
 function play() {
     mpv "$@" > /dev/null 2>&1 &
 }
@@ -53,7 +74,6 @@ function getlast() {
 }
 
 # Small Calculator
-
 function c(){
     echo "$*" | bc -l
 }
@@ -77,15 +97,12 @@ function cmdfu() {
 
 # Record screen
 function rec_screen() {
-
-ffmpeg -f x11grab -r 25 -s 1600x900 -i :0.0 out.mpg
-
+    ffmpeg -f x11grab -r 25 -s 1600x900 -i :0.0 out.mpg
 }
 
+# Show wetter
 function wetter() {
-
     curl -s wttr.in/Ostfildern?lang=de
-
 }
 
 # Youtube Downloader
@@ -93,6 +110,7 @@ function y2mp3(){
     youtube-dl -x --audio-format mp3 --audio-quality 9 --add-metadata --metadata-from-title "%(artist)s - %(title)s" $*
 }
 
+# Show pinguin on error; everything is better with tux :)
 function show_err(){
         ret=$?
         echo "return code $ret" | cowsay -f tux | toilet -f term --gay
