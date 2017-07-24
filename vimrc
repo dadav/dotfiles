@@ -391,6 +391,9 @@ nmap <F3> :call ToogleHiddenCharacters()<CR>
 
 " Dont remove indent on python comments (Controlchar mit c-v c-h)
 inoremap # X#
+
+" Backspace deletes the Highlight
+nmap <silent> <BS> :nohlsearch<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Shebangs
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -511,5 +514,5 @@ let g:ycm_server_python_interpreter = "python"
 let g:ycm_server_use_vim_stdout = 0
 let g:ycm_server_keep_logfiles = 0
 
-nmap <silent> <BS> :nohlsearch<CR>
+
 
