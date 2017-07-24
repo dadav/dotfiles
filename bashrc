@@ -25,15 +25,6 @@ shopt -s histappend
 shopt -s checkwinsize 
 #set -o notify
 
-function show_err(){
-        ret=$?
-        echo "return code $ret" | cowsay -f tux | toilet -f term --gay
-        return $ret
-}
-
-trap 'show_err' ERR
-
-
 eval $(dircolors -b $HOME/.dircolors)
 
 
