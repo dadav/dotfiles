@@ -202,7 +202,7 @@ vmap <unique> Dj <Plug>SchleppDupDown
 vmap <unique> Dh <Plug>SchleppDupLeft
 vmap <unique> Dl <Plug>SchleppDupRight
 
-vmap <unique> i <Plug>SchleppToggleReindent
+"vmap <unique> i <Plug>SchleppToggleReindent
 
 vmap <expr> > ShiftAndKeepSelection(">")
 vmap <expr> < ShiftAndKeepSelection("<")
