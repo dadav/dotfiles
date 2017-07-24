@@ -4,13 +4,15 @@
 execute pathogen#infect()
 
 " Backup stuff
-set undodir=$HOME/storage/.VIM_UNDO_FILES
+set undodir=$HOME/.VIM_UNDO_FILES
 if has('persistent_undo')
     set undofile
 endif
 set undolevels=5000
+
 " Show linenumbers
 set number
+
 " Sets how many lines of history VIM has to remember
 set history=500
 
@@ -33,6 +35,7 @@ nmap <leader>w :w!<cr>
 " (useful for handling the permission-denied error)
 "command W w !sudo tee % > /dev/null
 
+set matchpairs+=<:> 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
@@ -186,6 +189,35 @@ vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
 vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 
 
+vmap <C-up>    <Plug>SchleppUp
+vmap <C-down>  <Plug>SchleppDown
+vmap <C-left>  <Plug>SchleppLeft
+vmap <C-right> <Plug>SchleppRight
+
+vmap D       <Plug>SchleppDupLeft
+vmap <C-D> <Plug>SchleppDupLeft
+
+vmap <unique> Dk <Plug>SchleppDupUp
+vmap <unique> Dj <Plug>SchleppDupDown
+vmap <unique> Dh <Plug>SchleppDupLeft
+vmap <unique> Dl <Plug>SchleppDupRight
+
+vmap <unique> i <Plug>SchleppToggleReindent
+
+vmap <expr> > ShiftAndKeepSelection(">")
+vmap <expr> < ShiftAndKeepSelection("<")
+
+function! ShiftAndKeepSelection(cmd)
+    set nosmartindent
+    if mode() =~ '[Vv]'
+        return a:cmd . ":set smartindent\<CR>gv"
+    else
+        return a:cmd . ":set smartindent\<CR>"
+    endif
+endfunction
+
+
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Moving around, tabs, windows and buffers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -326,6 +358,11 @@ map <leader>sp [s
 map <leader>sa zg
 map <leader>s? z=
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Python
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Show docstring
+noremap <Leader>pi :YcmComplete GetDoc<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Misc
@@ -342,13 +379,18 @@ map <leader>x :e ~/buffer.md<cr>
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
 
+" F-Keys
 " Run Script
-map <F1> :call RunScript()<CR>
-":w<CR>:!python3 -i %<CR>
+nmap <F1> :call RunScript()<CR>
 
 "Custom cursor cross
-nmap <silent> ö :call CursorCrossToggle()<CR>
+nmap <F2> :call ToogleCross()<CR>
 
+" Toogle hiding characters
+nmap <F3> :call ToogleHiddenCharacters()<CR>
+
+" Dont remove indent on python comments
+inoremap # X#
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Shebangs
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -359,12 +401,25 @@ autocmd BufNewFile *.py 0put =\"#!/usr/bin/env python3\<nl>\"|$
 " Bash
 autocmd BufNewFile *.sh 0put =\"#!/bin/bash\<nl>\"|$
 
+" Yaml
+autocmd BufNewFile *.yml\|*.yaml 0put =\"\-\-\-\<nl>\"|$
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-function! CursorCrossToggle()
+function! ToogleHiddenCharacters()
+    if &list
+        set listchars=eol:$,tab:⇒·,trail:␣,extends:>,precedes:< 
+        set nolist
+    else
+        set list
+    endif
+endfunction
+
+
+function! ToogleCross()
     if &cursorcolumn
         set nocursorcolumn
         set nocursorline
@@ -452,11 +507,9 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-let g:ycm_server_python_interpreter = "/usr/bin/python2"
+let g:ycm_server_python_interpreter = "python"
 let g:ycm_server_use_vim_stdout = 0
 let g:ycm_server_keep_logfiles = 0
 
 nmap <silent> <BS> :nohlsearch<CR>
 
-
-"au BufNewFile *.py 0r ~/.vim/skels/py.skel 
