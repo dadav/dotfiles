@@ -33,6 +33,8 @@ alias cal="cal -w3"
 #alias pyenv="source ~/python/venv/bin/activate"
 alias torpy="torify ssh pi@yedyafq32tmb2fca.onion"
 alias clearhist="history -cw"
+# Print path
+echo $PATH | tr ":" "\n" | nl
 
 ###################
 ##### FUNCS #######
@@ -110,12 +112,16 @@ function y2mp3(){
     youtube-dl -x --audio-format mp3 --audio-quality 9 --add-metadata --metadata-from-title "%(artist)s - %(title)s" $*
 }
 
+# Beautiful strace
+function bstrace() {
+    strace $* |& vim -c ":set syntax=strace" -
+}
+
 # Show pinguin on error; everything is better with tux :)
 function show_err(){
         ret=$?
         echo "return code $ret" | cowsay -f tux | toilet -f term --gay
         return $ret
 }
-
 
  trap 'show_err' ERR 
