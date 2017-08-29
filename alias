@@ -34,7 +34,7 @@ alias cal="cal -w3"
 alias torpy="torify ssh pi@yedyafq32tmb2fca.onion"
 alias clearhist="history -cw"
 # Print path
-echo $PATH | tr ":" "\n" | nl
+alias ppath="echo $PATH | tr ':' '\n' | nl"
 
 ###################
 ##### FUNCS #######
