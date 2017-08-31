@@ -389,6 +389,9 @@ nmap <F2> :call ToogleCross()<CR>
 " Toogle hiding characters
 nmap <F3> :call ToogleHiddenCharacters()<CR>
 
+" Toogle pastemode
+set pastetoggle=<F4>
+
 " Dont remove indent on python comments (Controlchar mit c-v c-h)
 inoremap # X#
 
