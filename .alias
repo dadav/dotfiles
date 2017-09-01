@@ -1,5 +1,6 @@
 # Hidden Aliases
 [ -f ~/.hidden_alias ] && source ~/.hidden_alias
+
 # Ls
 alias ll="ls -l --color=auto"
 alias l="ll"
@@ -25,6 +26,8 @@ alias stop_monitor="sudo ip link set wlp20s0 down; \
     sudo ip link set wlp20s0 up; \
     sudo systemctl start NetworkManager"
 
+# Track dotfiles
+alias config='/usr/bin/git --git-dir=$HOME/git/dotfiles --work-tree=$HOME'
 
 # Fix the terminal
 alias fix='reset; stty sane; tput rs1; clear; echo -e "\033c"'
@@ -80,7 +83,7 @@ function getlast() {
 }
 
 # Small Calculator
-function c(){
+function ?(){
     echo "$*" | bc -l
 }
 
@@ -128,5 +131,4 @@ function show_err(){
         return $ret
 }
 
-
- trap 'show_err' ERR 
+trap 'show_err' ERR 

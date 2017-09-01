@@ -1,0 +1,27 @@
+activity "%c activity -> %n%f %t" 
+autodetach on 
+altscreen on 
+bell "%c bell -> %n%f %t^G" 
+defflow auto 
+defscrollback 10000 
+defutf8 on 
+msgwait 2     
+# 1 second messages 
+startup_message off 
+
+# disable the startup splash message 
+
+shell bash 
+vbell_msg "[[[ ding ]]]" 
+vbell off 
+nethack on 
+term screen-256color 
+termcapinfo xterm*|Eterm|mlterm|rxvt 'hs:ts=\E]0;:fs=\007:ds=\E]0;screen\007' 
+hardstatus alwayslastline 
+hardstatus string '%{gk}[ %{G}%H %{g}][%= %{wk}%?%-Lw%?%{=b kR}(%{W}%n*%f %t%?(%u)%?%{=b kR})%{= kw}%?%+Lw%?%?%= %{g}][%{Y}%l%{g}]%{=b C}[ %m/%d %c ]%{W}' 
+
+# Binds
+bind - split
+
+# Add scrolling
+termcapinfo xterm* ti@:te@

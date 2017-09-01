@@ -5,6 +5,7 @@ execute pathogen#infect()
 
 " Backup stuff
 set undodir=$HOME/.VIM_UNDO_FILES
+
 if has('persistent_undo')
     set undofile
 endif
@@ -131,6 +132,7 @@ syntax enable
 set background=dark
 let g:solarized_termcolors=256
 colorscheme solarized
+
 " Fix redraw problem (tmux)
 set t_ut=
 
@@ -375,7 +377,6 @@ noremap <Leader>pd :YcmComplete GoToDefinition<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Misc
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 " Remove the Windows ^M - when the encodings gets messed up
 noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 
@@ -398,8 +399,14 @@ nmap <F2> :call ToogleCross()<CR>
 " Toogle hiding characters
 nmap <F3> :call ToogleHiddenCharacters()<CR>
 
-" Dont remove indent on python comments
+" Toogle pastemode
+set pastetoggle=<F4>
+
+" Dont remove indent on python comments (Controlchar mit c-v c-h)
 inoremap # X#
+
+" Backspace deletes the Highlight
+nmap <silent> <BS> :nohlsearch<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Shebangs
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -519,6 +526,3 @@ let g:syntastic_check_on_wq = 0
 let g:ycm_server_python_interpreter = "python"
 let g:ycm_server_use_vim_stdout = 0
 let g:ycm_server_keep_logfiles = 0
-
-nmap <silent> <BS> :nohlsearch<CR>
-
