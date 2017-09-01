@@ -12,14 +12,11 @@ export VISUAL=$EDITOR
 export SYSTEMD_EDITOR=$EDITOR
 
 # Path stuff
-export PATH="$HOME/.local/bin:/home/ddavid/.gem/ruby/2.4.0/bin:/opt/FlameGraph:/opt/perf-tools/bin:$PATH"
-
+export PATH="$HOME/.local/bin:/home/ddavid/.gem/ruby/2.4.0/bin:$PATH"
 # Use colors inside tmux/vim
 export TERM=xterm-256color
-
 # Python Virtualenvs
 export WORKON_HOME=$HOME/python/virtualenvs
-
 # Add autocomplete to virtualenv
 export PYTHONSTARTUP=$HOME/.pythonrc.py
 

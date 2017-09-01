@@ -1,3 +1,6 @@
+# Hidden Aliases
+[ -f ~/.hidden_alias ] && source ~/.hidden_alias
+
 # Ls
 alias ll="ls -l --color=auto"
 alias l="ll"
@@ -33,14 +36,12 @@ alias fix='reset; stty sane; tput rs1; clear; echo -e "\033c"'
 alias cal="cal -w3"
 #alias vm="virt-manager --connect qemu:///session"
 #alias pyenv="source ~/python/venv/bin/activate"
-alias torpy="torify ssh pi@lzmilccyi2xtwa3u.onion"
 alias clearhist="history -cw"
-
-# Print path
-alias ppath="echo $PATH | tr ':' '\n' | nl"
+# Print path 
+alias ppath="echo $PATH | tr ':' '\n' | nl" 
 
 # Beautiful git output
-alias gitlog="git log --oneline --decorate --graph --color --all"
+alias gitlog="git log --oneline --decorate --graph --color --all" 
 
 ###################
 ##### FUNCS #######
