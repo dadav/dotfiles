@@ -4,7 +4,8 @@
 execute pathogen#infect()
 
 " Backup stuff
-set undodir=$HOME/storage/.VIM_UNDO_FILES
+set undodir=$HOME/.VIM_UNDO_FILES
+
 if has('persistent_undo')
     set undofile
 endif
@@ -132,6 +133,9 @@ set background=dark
 let g:solarized_termcolors=256
 colorscheme solarized
 
+" Fix redraw problem (tmux)
+set t_ut=
+
 " Set extra options when running in GUI mode
 "if has("gui_running")
 "    set guioptions-=T
@@ -202,7 +206,7 @@ vmap <unique> Dj <Plug>SchleppDupDown
 vmap <unique> Dh <Plug>SchleppDupLeft
 vmap <unique> Dl <Plug>SchleppDupRight
 
-"vmap <unique> i <Plug>SchleppToggleReindent
+vmap <unique> i <Plug>SchleppToggleReindent
 
 vmap <expr> > ShiftAndKeepSelection(">")
 vmap <expr> < ShiftAndKeepSelection("<")
@@ -364,6 +368,12 @@ map <leader>s? z=
 " Show docstring
 noremap <Leader>pi :YcmComplete GetDoc<CR>
 
+" Show definition
+noremap <Leader>pr :YcmComplete GoToReferences<CR>
+
+" Show definition
+noremap <Leader>pd :YcmComplete GoToDefinition<CR>
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Misc
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -513,6 +523,6 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-let g:ycm_server_python_interpreter = "python2"
+let g:ycm_server_python_interpreter = "python"
 let g:ycm_server_use_vim_stdout = 0
 let g:ycm_server_keep_logfiles = 0

@@ -1,7 +1,4 @@
-#
-# ~/.bashrc
-#
-umask 027
+umask 022
 
 # source all the stuff
 [[ $- != *i* ]] && return
@@ -16,7 +13,7 @@ GIT_PROMPT_ONLY_IN_REPO=1
 [[ -s ~/.bash-git-prompt/gitprompt.sh ]] && source ~/.bash-git-prompt/gitprompt.sh 
 
 # Pythonenvs
-[[ -s /usr/bin/virtualenvwrapper.sh ]] && source /usr/bin/virtualenvwrapper.sh 
+[[ -s $HOME/.local/bin/virtualenvwrapper.sh ]] && source $HOME/.local/bin/virtualenvwrapper.sh 
 
 # bash options 
 #shopt -s nocaseglob 
