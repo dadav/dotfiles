@@ -83,7 +83,7 @@ function getlast() {
 }
 
 # Small Calculator
-function ?(){
+function c(){
     echo "$*" | bc -l
 }
 
