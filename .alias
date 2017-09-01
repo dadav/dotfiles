@@ -36,6 +36,12 @@ alias cal="cal -w3"
 alias torpy="torify ssh pi@lzmilccyi2xtwa3u.onion"
 alias clearhist="history -cw"
 
+# Print path
+alias ppath="echo $PATH | tr ':' '\n' | nl"
+
+# Beautiful git output
+alias gitlog="git log --oneline --decorate --graph --color --all"
+
 ###################
 ##### FUNCS #######
 ###################
@@ -76,7 +82,7 @@ function getlast() {
 }
 
 # Small Calculator
-function c(){
+function ?(){
     echo "$*" | bc -l
 }
 
@@ -112,6 +118,11 @@ function y2mp3(){
     youtube-dl -x --audio-format mp3 --audio-quality 9 --add-metadata --metadata-from-title "%(artist)s - %(title)s" $*
 }
 
+# Beautiful strace
+function bstrace() {
+    strace $* |& vim -c ":set syntax=strace" -
+}
+
 # Show pinguin on error; everything is better with tux :)
 function show_err(){
         ret=$?
@@ -119,5 +130,4 @@ function show_err(){
         return $ret
 }
 
-
- trap 'show_err' ERR 
+trap 'show_err' ERR 

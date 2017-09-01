@@ -14,6 +14,7 @@ export PS1="[\u@\h \w]{\!}\$ "
 
 GIT_PROMPT_ONLY_IN_REPO=1
 [[ -s ~/.bash-git-prompt/gitprompt.sh ]] && source ~/.bash-git-prompt/gitprompt.sh 
+
 # Pythonenvs
 [[ -s /usr/bin/virtualenvwrapper.sh ]] && source /usr/bin/virtualenvwrapper.sh 
 
@@ -27,15 +28,4 @@ shopt -s histappend
 shopt -s checkwinsize 
 #set -o notify
 
-function show_err(){
-        ret=$?
-        echo "return code $ret" | cowsay -f tux | toilet -f term --gay
-        return $ret
-}
-
-trap 'show_err' ERR
-
-
 eval $(dircolors -b $HOME/.dircolors)
-
-
