@@ -1,11 +1,4 @@
-#
-# ~/.bashrc
-#
-<<<<<<< HEAD
 umask 022
-=======
-umask 027
->>>>>>> origin/master
 
 # source all the stuff
 [[ $- != *i* ]] && return
@@ -18,14 +11,9 @@ export PS1="[\u@\h \w]{\!}\$ "
 
 GIT_PROMPT_ONLY_IN_REPO=1
 [[ -s ~/.bash-git-prompt/gitprompt.sh ]] && source ~/.bash-git-prompt/gitprompt.sh 
-<<<<<<< HEAD
-# Pythonenvs
-[[ -s $HOME/.local/bin/virtualenvwrapper.sh ]] && source $HOME/.local/bin/virtualenvwrapper.sh 
-=======
 
 # Pythonenvs
-[[ -s /usr/bin/virtualenvwrapper.sh ]] && source /usr/bin/virtualenvwrapper.sh 
->>>>>>> origin/master
+[[ -s $HOME/.local/bin/virtualenvwrapper.sh ]] && source $HOME/.local/bin/virtualenvwrapper.sh 
 
 # bash options 
 #shopt -s nocaseglob 
@@ -37,19 +25,4 @@ shopt -s histappend
 shopt -s checkwinsize 
 #set -o notify
 
-<<<<<<< HEAD
-function show_err(){
-        ret=$?
-        echo "return code $ret" | cowsay -f tux | toilet -f term --gay
-        return $ret
-}
-
-trap 'show_err' ERR
-
-
 eval $(dircolors -b $HOME/.dircolors)
-
-
-=======
-eval $(dircolors -b $HOME/.dircolors)
->>>>>>> origin/master
