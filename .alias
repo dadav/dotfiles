@@ -14,7 +14,6 @@ alias ...="..;.."
 alias ....="...;.."
 
 alias grep="grep --colour"
-alias msdb="sudo mount /dev/sdb1 /mnt"
 
 # Go in Monitoring mode
 alias start_monitor="sudo systemctl stop NetworkManager; \
