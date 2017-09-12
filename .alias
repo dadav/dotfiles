@@ -14,7 +14,6 @@ alias ...="..;.."
 alias ....="...;.."
 
 alias grep="grep --colour"
-alias msdb="sudo mount /dev/sdb1 /mnt"
 
 # Go in Monitoring mode
 alias start_monitor="sudo systemctl stop NetworkManager; \
@@ -48,7 +47,6 @@ alias wanip='dig +short myip.opendns.com @resolver1.opendns.com'
 ###################
 ##### FUNCS #######
 ###################
-
 
 # Plays rain in the background
 function rain() {
@@ -119,7 +117,7 @@ function wetter() {
 
 # Youtube Downloader
 function y2mp3(){
-    youtube-dl -x --audio-format mp3 --audio-quality 9 --add-metadata --metadata-from-title "%(artist)s - %(title)s" $*
+    youtube-dl -x -i --audio-format mp3 --audio-quality 9 --add-metadata --metadata-from-title "%(artist)s - %(title)s" $*
 }
 
 # Beautiful strace
