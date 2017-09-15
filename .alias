@@ -40,7 +40,9 @@ alias clearhist="history -cw"
 alias ppath="echo $PATH | tr ':' '\n' | nl" 
 
 # Beautiful git output
-alias gitlog="git log --oneline --decorate --graph --color --all" 
+alias gitlog="git log --oneline --decorate --graph --color --all"
+
+alias wanip='dig +short myip.opendns.com @resolver1.opendns.com'
 
 ###################
 ##### FUNCS #######

@@ -158,7 +158,7 @@ bar {
     #output DP-1
 }
 
-bindsym $mod+Shift+s exec ~/bin/dsurfraw.sh
+bindsym $mod+Shift+s exec ~/.local/bin/dsurfraw.sh
 
 # htop
 bindsym $mod+t	exec xfce4-terminal -e htop
@@ -169,7 +169,7 @@ bindsym $mod+Tab workspace back_and_forth
 
 
 # Set wallpaper
-exec_always feh --bg-fill ~/bilder/wallpaper/linux_wp.png 
+exec_always feh --bg-fill ~/bilder/linux-wp.png 
 
 #Deactivate HDMI output
 #exec_always /usr/bin/xrandr --output HDMI-A-0 --off
@@ -184,10 +184,5 @@ exec --no-startup-id compton --backend glx --vsync opengl-swc --paint-on-overlay
 #bindcode 121 exec amixer -q set Master toogle
 bindcode 156 exec firefox
 
-# Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5% #increase sound volume
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -5% #decrease sound volume
-bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle # mute sound
 
-
-bindsym --release Print exec scrot -s 'screenshot_%d-%m-%Y-%T.png' -e 'mv $f ~/bilder/screenshots/'
+bindsym Print exec scrot '%Y-%m-%d-%T.png' -e 'mv $f ~/bilder/Screenshots/'
