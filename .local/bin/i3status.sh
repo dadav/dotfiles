@@ -5,8 +5,11 @@ do
     read line
     meminfo=$(grep ^Dirty /proc/meminfo | tr -s " ")
     meminfo="[{\"name\":\"\",\"markup\":\"none\",\"full_text\":\"$meminfo\"},"
-    if systemctl is-active vpn-tcp.service >/dev/null 2>&1 || systemctl is-active vpn-udp.service >/dev/null 2>&1; then
-        vpn="VPN: active"
+    if systemctl is-active vpn-tcp.service >/dev/null 2>&1; then
+        vpn="VPN: active (TCP)"
+        color="#00ff00"
+    elif systemctl is-active vpn-udp.service >/dev/null 2>&1; then
+        vpn="VPN: active (UDP)"
         color="#00ff00"
     else
         vpn="VPN: inactive"
