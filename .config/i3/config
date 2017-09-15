@@ -182,6 +182,7 @@ exec --no-startup-id compton --backend glx --vsync opengl-swc --paint-on-overlay
 #bindcode 122 exec amixer -q set Master 5%- 
 #bindcode 123 exec amixer -q set Master 5%+ 
 #bindcode 121 exec amixer -q set Master toogle
+bindcode 156 exec firefox
 
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5% #increase sound volume
