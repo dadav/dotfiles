@@ -167,6 +167,11 @@ bindsym $mod+m  exec thunderbird
 # mod tab back and forth between workspaces
 bindsym $mod+Tab workspace back_and_forth
 
+##############################
+##############################
+######### STARTING ###########
+##############################
+##############################
 
 # Set wallpaper
 exec_always feh --bg-fill ~/bilder/wallpaper/linux_wp.png 
@@ -177,7 +182,7 @@ exec_always feh --bg-fill ~/bilder/wallpaper/linux_wp.png
 # Fix tearing
 #exec --no-startup-id compton -CG --backend glx --vsync opengl-swc &
 exec --no-startup-id compton --backend glx --vsync opengl-swc --paint-on-overlay --config /dev/null
-
+exec --no-startup-id redshift
 # Sound
 #bindcode 122 exec amixer -q set Master 5%- 
 #bindcode 123 exec amixer -q set Master 5%+ 
