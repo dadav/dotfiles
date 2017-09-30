@@ -377,6 +377,7 @@ noremap <Leader>pd :YcmComplete GoToDefinition<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Misc
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
 " Remove the Windows ^M - when the encodings gets messed up
 noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 
