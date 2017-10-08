@@ -377,6 +377,7 @@ noremap <Leader>pd :YcmComplete GoToDefinition<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Misc
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
 " Remove the Windows ^M - when the encodings gets messed up
 noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 
@@ -523,6 +524,6 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-let g:ycm_server_python_interpreter = "python2"
+let g:ycm_server_python_interpreter = "python"
 let g:ycm_server_use_vim_stdout = 0
 let g:ycm_server_keep_logfiles = 0

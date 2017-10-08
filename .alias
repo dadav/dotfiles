@@ -43,6 +43,7 @@ alias ppath="echo $PATH | tr ':' '\n' | nl"
 alias gitlog="git log --oneline --decorate --graph --color --all"
 
 alias wanip='dig +short myip.opendns.com @resolver1.opendns.com'
+alias lanip='hostname -i'
 
 # Upgrade all pip packages
 alias pipupdateall="pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs pip install -U"
@@ -139,6 +140,19 @@ function y2mp3(){
 # Beautiful strace
 function bstrace() {
     strace $* |& vim -c ":set syntax=strace" -
+}
+
+# Share files
+function sharefiles() {
+    
+if [[ $# -eq 1 ]]; then
+    port=$1
+else
+    port=8000
+fi
+
+python -m http.server $port
+
 }
 
 # Show pinguin on error; everything is better with tux :)
