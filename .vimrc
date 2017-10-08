@@ -4,7 +4,7 @@
 execute pathogen#infect()
 
 " Backup stuff
-set undodir=$HOME/.VIM_UNDO_FILES
+set undodir=$HOME/storage/.VIM_UNDO_FILES
 
 if has('persistent_undo')
     set undofile

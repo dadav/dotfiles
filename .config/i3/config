@@ -182,7 +182,13 @@ exec_always feh --bg-fill ~/bilder/wallpaper/linux_wp.png
 # Fix tearing
 #exec --no-startup-id compton -CG --backend glx --vsync opengl-swc &
 exec --no-startup-id compton --backend glx --vsync opengl-swc --paint-on-overlay --config /dev/null
+
+# Start redshift
 exec --no-startup-id redshift
+
+# Enable numlock
+exec --no-startup-id numlockx on
+
 # Sound
 #bindcode 122 exec amixer -q set Master 5%- 
 #bindcode 123 exec amixer -q set Master 5%+ 
