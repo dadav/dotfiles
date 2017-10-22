@@ -4,6 +4,7 @@
 # Ls
 alias ll="ls -l --color=auto"
 alias l="ll"
+alias la="ll -A"
 # Editors
 alias vi="vim"
 alias emacs="emacs -nw"
