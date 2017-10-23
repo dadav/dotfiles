@@ -412,6 +412,9 @@ nmap <silent> <BS> :nohlsearch<CR>
 " => Shebangs
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+" Golang
+autocmd BufNewFile *.go 0put =\"package main\<nl>\<nl>import(\<nl>\<TAB>\\"fmt\\"\<nl>)\<nl>\<nl>func main() {\<nl>\<nl>}\"|norm! k
+
 " Python
 autocmd BufNewFile *.py 0put =\"#!/usr/bin/env python3\<nl>\"|$
 
@@ -524,6 +527,7 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-let g:ycm_server_python_interpreter = "python"
+let g:ycm_server_python_interpreter = "python2"
 let g:ycm_server_use_vim_stdout = 0
 let g:ycm_server_keep_logfiles = 0
+
