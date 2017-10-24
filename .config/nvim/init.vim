@@ -43,6 +43,7 @@ Plug 'tpope/vim-commentary'
 Plug 'saltstack/salt-vim'
 Plug 'pearofducks/ansible-vim', { 'do': './UltiSnips/generate.py' }
 Plug 'python-mode/python-mode'
+Plug 'fatih/vim-go'
 
 " Tabmanager - visualizing tabs in vim
 Plug 'kien/tabman.vim'
@@ -243,3 +244,5 @@ let g:ansible_extra_syntaxes = "sh.vim python.vim"
 let g:ansible_attribute_highlight = "ob"
 let g:ansible_extra_keywords_highlight = 1
 
+" Golang
+let g:go_fmt_command = "goimports"

@@ -7,6 +7,7 @@ alias l="ll"
 alias la="ll -A"
 # Editors
 alias vi="vim"
+alias vim="nvim"
 alias emacs="emacs -nw"
 alias e="emacs"
 # Cd
