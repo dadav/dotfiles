@@ -44,6 +44,8 @@ Plug 'saltstack/salt-vim'
 Plug 'pearofducks/ansible-vim', { 'do': './UltiSnips/generate.py' }
 Plug 'python-mode/python-mode'
 Plug 'fatih/vim-go'
+"Plug 'Shougo/deoplete.nvim'
+"Plug 'nsf/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
 
 " Tabmanager - visualizing tabs in vim
 Plug 'kien/tabman.vim'
