@@ -15,11 +15,11 @@ export SYSTEMD_EDITOR=$EDITOR
 export GOPATH="$HOME/go"
 export PATH="$HOME/.local/bin:/home/ddavid/.gem/ruby/2.4.0/bin:$PATH:$GOPATH/bin"
 # Use colors inside tmux/vim
-export TERM=xterm-256color
+#export TERM=xterm-256color
 # Python Virtualenvs
 export WORKON_HOME=$HOME/python/virtualenvs
 # Add autocomplete to virtualenv
 export PYTHONSTARTUP=$HOME/.pythonrc.py
 # Activate numlock on tty
-[[ -z "$TMUX" ]] && setleds -D +num
+#[[ -z "$TMUX" ]] && setleds -D +num
 [[ -s ~/.bashrc ]] && . ~/.bashrc
