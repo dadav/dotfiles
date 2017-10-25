@@ -184,6 +184,8 @@ nnoremap <A-n> :bnext<CR>:redraw<CR>:ls<CR>
 nnoremap <A-p> :bprevious<CR>:redraw<CR>:ls<CR>
 nnoremap <C-n> :bnext<CR>:redraw<CR>
 nnoremap <C-p> :bprevious<CR>:redraw<CR>
+nnoremap <C-s>\- :split<CR>
+nnoremap <C-s>\| :vsplit<CR>
 
 " ### Motion
 " Treat long lines as break lines (useful when moving around in them)
