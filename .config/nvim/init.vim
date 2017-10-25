@@ -169,6 +169,9 @@ autocmd GUIEnter * set visualbell t_vb=
 set incsearch
 set ignorecase
 
+" Cancel selection
+nmap <silent> <BS> :nohlsearch<CR>
+
 " Set the search scan to wrap around the file
 set wrapscan
 " Turn on Highlighting of search results
@@ -177,7 +180,9 @@ set hlsearch
 " ### Shortcuts
 let mapleader = ","
 let g:mapleader = ","
-
+" ### Selection
+vnoremap > >gv
+vnoremap < <gv
 " ### Buffers
 " ALT-n next buffer and list, ALT-p previous buffer
 nnoremap <A-n> :bnext<CR>:redraw<CR>:ls<CR>
