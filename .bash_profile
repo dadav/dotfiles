@@ -21,5 +21,5 @@ export WORKON_HOME=$HOME/python/virtualenvs
 # Add autocomplete to virtualenv
 export PYTHONSTARTUP=$HOME/.pythonrc.py
 # Activate numlock on tty
-[[ -z "$TMUX" ]] && setleds -D +num
+[[ -z "$TMUX" ]] && [[ "$(hostname)" == "darch" ]] && setleds -D +num
 [[ -s ~/.bashrc ]] && . ~/.bashrc
