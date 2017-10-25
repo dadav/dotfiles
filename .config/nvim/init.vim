@@ -2,9 +2,10 @@
 " - For Neovim: ~/.local/share/nvim/plugged
 " - Avoid using standard Vim directory names like 'plugin'
 call plug#begin('~/.vim/plugged')
-"
-" Make sure you use single quotes
-"
+
+" multi-cursor FTW
+Plug 'terryma/vim-multiple-cursors'
+
 " fuzzy file completion, me gusta!
 Plug 'ctrlpvim/ctrlp.vim'
 
@@ -180,15 +181,27 @@ set hlsearch
 " ### Shortcuts
 let mapleader = ","
 let g:mapleader = ","
+
 " ### Selection
 vnoremap > >gv
 vnoremap < <gv
+
 " ### Buffers
+" No redraw durring macros
+set lazyredraw
 " ALT-n next buffer and list, ALT-p previous buffer
 nnoremap <A-n> :bnext<CR>:redraw<CR>:ls<CR>
 nnoremap <A-p> :bprevious<CR>:redraw<CR>:ls<CR>
 nnoremap <C-n> :bnext<CR>:redraw<CR>
 nnoremap <C-p> :bprevious<CR>:redraw<CR>
+
+" Split Screen
+nnoremap <C-s>\- :split<CR>
+nnoremap <C-s>\| :vsplit<CR>
+
+" Resize
+nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
+nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
 
 " ### Motion
 " Treat long lines as break lines (useful when moving around in them)
