@@ -184,8 +184,12 @@ nnoremap <A-n> :bnext<CR>:redraw<CR>:ls<CR>
 nnoremap <A-p> :bprevious<CR>:redraw<CR>:ls<CR>
 nnoremap <C-n> :bnext<CR>:redraw<CR>
 nnoremap <C-p> :bprevious<CR>:redraw<CR>
+" Split Screen
 nnoremap <C-s>\- :split<CR>
 nnoremap <C-s>\| :vsplit<CR>
+" Resize
+nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
+nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
 
 " ### Motion
 " Treat long lines as break lines (useful when moving around in them)
