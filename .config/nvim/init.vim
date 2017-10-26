@@ -184,8 +184,6 @@ set hlsearch
 let mapleader = ","
 let g:mapleader = ","
 
-" ### 
-
 " ### Selection
 vnoremap > >gv
 vnoremap < <gv
@@ -200,8 +198,8 @@ nnoremap <A-p> :bprevious<CR>:redraw<CR>:ls<CR>
 "nnoremap <C-p> :bprevious<CR>:redraw<CR>
 
 " Split Screen
-nnoremap <C-s>\- :split<CR>
-nnoremap <C-s>\| :vsplit<CR>
+nnoremap <Leader>s- :split<CR>
+nnoremap <Leader>s\| :vsplit<CR>
 
 " Resize
 nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
