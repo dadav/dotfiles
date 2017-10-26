@@ -108,10 +108,11 @@ colorscheme jay
 set showmatch
 
 " ### Auto Commands
-"autocmd FileType sh UltiSnipsAddFiletype custom-sh
-"autocmd BufRead,BufNewFile ~/git/layer8/ansible-stuff/*.yml/ syntax=ansible
 au BufNewFile,BufRead *.groovy  setf groovy
 au BufNewFile,BufRead Jenkinsfile  setf groovy
+
+" #### Snippets
+"autocmd FileType sh UltiSnipsAddFiletype custom-sh
 
 " ### Undo
 set undolevels=100
