@@ -111,6 +111,9 @@ autocmd BufRead,BufNewFile *.yml syntax=ansible
 au BufNewFile,BufRead *.groovy  setf groovy
 au BufNewFile,BufRead Jenkinsfile  setf groovy
 
+" #### Snippets
+"autocmd FileType sh UltiSnipsAddFiletype custom-sh
+
 " ### Undo
 set undolevels=100
 
@@ -191,12 +194,12 @@ set lazyredraw
 " ALT-n next buffer and list, ALT-p previous buffer
 nnoremap <A-n> :bnext<CR>:redraw<CR>:ls<CR>
 nnoremap <A-p> :bprevious<CR>:redraw<CR>:ls<CR>
-nnoremap <C-n> :bnext<CR>:redraw<CR>
-nnoremap <C-p> :bprevious<CR>:redraw<CR>
+"nnoremap <C-n> :bnext<CR>:redraw<CR>
+"nnoremap <C-p> :bprevious<CR>:redraw<CR>
 
 " Split Screen
-nnoremap <C-s>\- :split<CR>
-nnoremap <C-s>\| :vsplit<CR>
+nnoremap <Leader>s- :split<CR>
+nnoremap <Leader>s\| :vsplit<CR>
 
 " Resize
 nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
@@ -222,6 +225,18 @@ nnoremap <A-h> <C-w>h
 nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
+
+" ### Plugin Mappings
+
+" #### Tabularize
+nmap <Leader>a= :Tabularize /=<CR>
+vmap <Leader>a= :Tabularize /=<CR>
+nmap <Leader>a: :Tabularize /:\zs<CR>
+vmap <Leader>a: :Tabularize /:\zs<CR>
+
+" #### NERDTree
+nmap <Leader>nt :NERDTreeToggle<CR>
+
 
 " ### Encoding
 " Make sure utf-8 is used
