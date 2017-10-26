@@ -228,11 +228,17 @@ nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
 
-" ### Format stuff
+" ### Plugin Mappings
+
+" #### Tabularize
 nmap <Leader>a= :Tabularize /=<CR>
 vmap <Leader>a= :Tabularize /=<CR>
 nmap <Leader>a: :Tabularize /:\zs<CR>
 vmap <Leader>a: :Tabularize /:\zs<CR>
+
+" #### NERDTree
+nmap <Leader>nt :NERDTreeToggle<CR>
+
 
 " ### Encoding
 " Make sure utf-8 is used
