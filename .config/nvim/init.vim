@@ -192,8 +192,8 @@ set lazyredraw
 " ALT-n next buffer and list, ALT-p previous buffer
 nnoremap <A-n> :bnext<CR>:redraw<CR>:ls<CR>
 nnoremap <A-p> :bprevious<CR>:redraw<CR>:ls<CR>
-nnoremap <C-n> :bnext<CR>:redraw<CR>
-nnoremap <C-p> :bprevious<CR>:redraw<CR>
+"nnoremap <C-n> :bnext<CR>:redraw<CR>
+"nnoremap <C-p> :bprevious<CR>:redraw<CR>
 
 " Split Screen
 nnoremap <C-s>\- :split<CR>
