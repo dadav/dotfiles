@@ -39,7 +39,6 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-commentary'
 
-
 " Languages
 Plug 'saltstack/salt-vim'
 Plug 'pearofducks/ansible-vim', { 'do': './UltiSnips/generate.py' }
@@ -108,7 +107,7 @@ colorscheme jay
 set showmatch
 
 " ### Auto Commands
-"autocmd BufRead,BufNewFile ~/git/layer8/ansible-stuff/*.yml/ syntax=ansible
+autocmd BufRead,BufNewFile *.yml syntax=ansible
 au BufNewFile,BufRead *.groovy  setf groovy
 au BufNewFile,BufRead Jenkinsfile  setf groovy
 
@@ -142,7 +141,7 @@ set backspace=2
 
 " ### History
 " Sets how many lines of history VIM has to remember
-set undodir=$HOME/.VIM_UNDO_FILES
+set undodir=$HOME/storage/.VIM_UNDO_FILES
 set undolevels=5000
 set history=700
 
