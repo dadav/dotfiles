@@ -182,6 +182,8 @@ set hlsearch
 let mapleader = ","
 let g:mapleader = ","
 
+" ### 
+
 " ### Selection
 vnoremap > >gv
 vnoremap < <gv
@@ -223,6 +225,12 @@ nnoremap <A-h> <C-w>h
 nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
+
+" ### Format stuff
+nmap <Leader>a= :Tabularize /=<CR>
+vmap <Leader>a= :Tabularize /=<CR>
+nmap <Leader>a: :Tabularize /:\zs<CR>
+vmap <Leader>a: :Tabularize /:\zs<CR>
 
 " ### Encoding
 " Make sure utf-8 is used
