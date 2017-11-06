@@ -102,6 +102,7 @@ set number
 syntax enable
 set background=dark
 colorscheme jay
+set t_Co=256
 
 " Show matching brackets when text indicator is over them
 set showmatch
@@ -114,9 +115,14 @@ au BufNewFile,BufRead Jenkinsfile  setf groovy
 " #### Snippets
 "autocmd FileType sh UltiSnipsAddFiletype custom-sh
 
-" ### Undo
-set undolevels=100
+" ### Mouse
+set mouse=r
+set clipboard^=unnamed,unnamedplus
 
+" ### Undo
+set undolevels=500
+set undodir=$HOME/storage/.VIM_UNDO_FILES
+set history=700
 " ### Behaviour
 " I hate tabs.
 set expandtab           " enter spaces when tab is pressed
@@ -147,7 +153,6 @@ set backspace=2
 set undodir=$HOME/.VIM_UNDO_FILES
 set undolevels=5000
 set history=700
-
 
 " ### Completion
 " ## Filename completion
@@ -229,6 +234,8 @@ nnoremap <A-l> <C-w>l
 " ### Plugin Mappings
 
 " #### Tabularize
+nmap <Leader>a  :Tabularize / <CR>
+vmap <Leader>a  :Tabularize / <CR>
 nmap <Leader>a= :Tabularize /=<CR>
 vmap <Leader>a= :Tabularize /=<CR>
 nmap <Leader>a: :Tabularize /:\zs<CR>
