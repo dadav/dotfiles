@@ -57,10 +57,10 @@ disk "/" {
 disk "/storage" {
         format = "storage/%free"
 }
-volume master {        
-    format = "♪: %volume"        
-    format_muted = "X: muted (%volume)"        
-    device = "default"        
-    mixer = "Master"        
-    mixer_idx = 0 
+volume master {
+format       = "♪: %volume"
+format_muted = "X: muted (%volume)"
+device       = "default"
+mixer        = "Master"
+mixer_idx    = 0
 }
