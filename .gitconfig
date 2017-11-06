@@ -1,3 +1,7 @@
 [user]
-	email = joda4g@gmail.com
-	name = Daniel
+	name   = DaDaV
+	email = 33197631+DaDaV@users.noreply.github.com
+[color]
+	ui     = auto
+[core]
+	editor = vim
