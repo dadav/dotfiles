@@ -150,7 +150,9 @@ set backspace=2
 
 " ### History
 " Sets how many lines of history VIM has to remember
-
+set undodir=$HOME/.VIM_UNDO_FILES
+set undolevels=5000
+set history=700
 
 " ### Completion
 " ## Filename completion
