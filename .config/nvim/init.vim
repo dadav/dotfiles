@@ -108,7 +108,7 @@ set t_Co=256
 set showmatch
 
 " ### Auto Commands
-autocmd BufRead,BufNewFile *.yml syntax=ansible
+autocmd BufRead,BufNewFile *.yml setf ansible
 au BufNewFile,BufRead *.groovy  setf groovy
 au BufNewFile,BufRead Jenkinsfile  setf groovy
 
@@ -212,7 +212,7 @@ nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
 " Treat long lines as break lines (useful when moving around in them)
 map j gj
 map k gk
- 
+
 " ### Movement
 " https://neovim.io/doc/user/nvim_terminal_emulator.html
 " Use `ALT+{h,j,k,l}` to navigate windows from any mode:
@@ -254,7 +254,13 @@ set termencoding=utf-8
 cmap w!! w !sudo tee > /dev/null %
 
 " ### Plugin Options
-"
+" Airline
+" Fix ln character
+let g:airline_powerline_fonts = 1
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+let g:airline_symbols.linenr = '␤'
 " CtrlP.vim should be used for Ctrl+p
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
