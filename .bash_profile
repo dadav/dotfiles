@@ -1,3 +1,5 @@
+# ibus
+export QT_IM_MODULE=ibus
 # History
 export HISTTIMEFORMAT="%F %H:%M "
 export HISTCONTROL=ignoredups
