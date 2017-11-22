@@ -15,7 +15,7 @@ export SYSTEMD_EDITOR=$EDITOR
 
 # Path stuff
 export GOPATH="$HOME/go"
-export PATH="$HOME/.local/bin:/home/ddavid/.gem/ruby/2.4.0/bin:$PATH:$GOPATH/bin"
+export PATH="$HOME/.local/bin:$PATH:/home/ddavid/.gem/ruby/2.4.0/bin:$GOPATH/bin:/opt/vagrant/embedded/gems/bin"
 # Use colors inside tmux/vim
 #export TERM=xterm-256color
 # Python Virtualenvs
