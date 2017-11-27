@@ -218,6 +218,7 @@ map k gk
 " ### Movement
 " https://neovim.io/doc/user/nvim_terminal_emulator.html
 " Use `ALT+{h,j,k,l}` to navigate windows from any mode:
+tnoremap <Esc> <C-\><C-n>
 tnoremap <A-h> <C-\><C-N><C-w>h
 tnoremap <A-j> <C-\><C-N><C-w>j
 tnoremap <A-k> <C-\><C-N><C-w>k
