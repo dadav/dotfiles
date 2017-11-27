@@ -1,4 +1,4 @@
-" Specify a directory for plugins
+"         Specify a directory for plugins
 " - For Neovim: ~/.local/share/nvim/plugged
 " - Avoid using standard Vim directory names like 'plugin'
 call plug#begin('~/.vim/plugged')
@@ -245,6 +245,8 @@ vmap <Leader>a: :Tabularize /:\zs<CR>
 " #### NERDTree
 nmap <Leader>nt :NERDTreeToggle<CR>
 
+" #### Tagbar
+nmap <Leader>tt :TagbarToggle<CR>
 
 " ### Encoding
 " Make sure utf-8 is used
