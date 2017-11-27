@@ -68,6 +68,8 @@ Plug 'vim-airline/vim-airline'
 " syntax/indent/ftplugins for a many languages/tools
 Plug 'sheerun/vim-polyglot'
 
+" Autoscroll
+Plug 'yuttie/comfortable-motion.vim'
 
 " Any valid git URL is allowed
 "Plug 'https://github.com/junegunn/vim-github-dashboard.git'
