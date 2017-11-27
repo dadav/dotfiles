@@ -108,7 +108,7 @@ set t_Co=256
 set showmatch
 
 " ### Auto Commands
-autocmd BufRead,BufNewFile *.yml syntax=ansible
+"autocmd BufRead,BufNewFile *.yml syntax=yaml
 au BufNewFile,BufRead *.groovy  setf groovy
 au BufNewFile,BufRead Jenkinsfile  setf groovy
 
