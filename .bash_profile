@@ -16,10 +16,13 @@ export GOPATH="$HOME/go"
 export PATH="$HOME/.local/bin:$PATH:/home/ddavid/.gem/ruby/2.4.0/bin:$GOPATH/bin:/opt/vagrant/embedded/gems/bin"
 # Use colors inside tmux/vim
 #export TERM=xterm-256color
+
 # Python Virtualenvs
 export WORKON_HOME=$HOME/python/virtualenvs
+
 # Add autocomplete to virtualenv
 export PYTHONSTARTUP=$HOME/.pythonrc.py
+
 # Activate numlock on tty
 [[ -z "$TMUX" ]] && [[ "$(hostname)" == "darch" ]] && setleds -D +num
 [[ -s ~/.bashrc ]] && . ~/.bashrc

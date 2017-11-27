@@ -1,4 +1,4 @@
-" Specify a directory for plugins
+"         Specify a directory for plugins
 " - For Neovim: ~/.local/share/nvim/plugged
 " - Avoid using standard Vim directory names like 'plugin'
 call plug#begin('~/.vim/plugged')
@@ -214,7 +214,7 @@ nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
 " Treat long lines as break lines (useful when moving around in them)
 map j gj
 map k gk
- 
+
 " ### Movement
 " https://neovim.io/doc/user/nvim_terminal_emulator.html
 " Use `ALT+{h,j,k,l}` to navigate windows from any mode:
@@ -244,6 +244,8 @@ vmap <Leader>a: :Tabularize /:\zs<CR>
 " #### NERDTree
 nmap <Leader>nt :NERDTreeToggle<CR>
 
+" #### Tagbar
+nmap <Leader>tt :TagbarToggle<CR>
 
 " ### Encoding
 " Make sure utf-8 is used
