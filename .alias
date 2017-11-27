@@ -38,8 +38,8 @@ alias cal="cal -w3"
 #alias vm="virt-manager --connect qemu:///session"
 #alias pyenv="source ~/python/venv/bin/activate"
 alias clearhist="history -cw"
-# Print path 
-alias ppath="echo $PATH | tr ':' '\n' | nl" 
+# Print path
+alias ppath="echo $PATH | tr ':' '\n' | nl"
 
 # Beautiful git output
 alias gitlog="git log --oneline --decorate --graph --color --all"
@@ -59,9 +59,17 @@ alias rh-update="sudo rhash -r -u /root/hash.lst"
 alias rk-update="sudo rkhunter --update"
 alias rk-check="sudo rkhunter --check"
 alias rk-systemchange="sudo rkhunter --propupd"
+
+# OSINT
+
+
 ###################
 ##### FUNCS #######
 ###################
+
+function getsubdomains() {
+  curl -s https://virustotal.com/ui/domains/$1/subdomains\?limit\=10 | jq ".data[].id"
+}
 
 function addsubtitles() {
     ffmpeg -i "$1" -i "$2" -c:s mov_text -c:v copy -c:a copy "OUT_$1"
