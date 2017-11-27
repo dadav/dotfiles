@@ -23,11 +23,11 @@ GIT_PROMPT_ONLY_IN_REPO=1
 [[ -s ~/.bash-git-prompt/gitprompt.sh ]] && source ~/.bash-git-prompt/gitprompt.sh
 
 ## Colors
-.config/base16-shell/scripts/base16-default-dark.sh
+[ -x .config/base16-shell/scripts/base16-default-dark.sh ] && .config/base16-shell/scripts/base16-default-dark.sh
 
 # Languages
 ## Pythonenvs
-[[ -s $HOME/.local/bin/virtualenvwrapper.sh ]] && source $HOME/.local/bin/virtualenvwrapper.sh 
+[[ -s $HOME/.local/bin/virtualenvwrapper.sh ]] && source $HOME/.local/bin/virtualenvwrapper.sh
 
 # Bash options
 #shopt -s nocaseglob
