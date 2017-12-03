@@ -42,7 +42,7 @@ Plug 'tpope/vim-commentary'
 " Languages
 Plug 'saltstack/salt-vim'
 Plug 'pearofducks/ansible-vim', { 'do': './UltiSnips/generate.py' }
-Plug 'python-mode/python-mode'
+Plug 'python-mode/python-mode', {'branch': 'develop'}
 Plug 'fatih/vim-go'
 "Plug 'Shougo/deoplete.nvim'
 "Plug 'nsf/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
@@ -68,6 +68,8 @@ Plug 'vim-airline/vim-airline'
 " syntax/indent/ftplugins for a many languages/tools
 Plug 'sheerun/vim-polyglot'
 
+" Autoscroll
+Plug 'yuttie/comfortable-motion.vim'
 
 " Any valid git URL is allowed
 "Plug 'https://github.com/junegunn/vim-github-dashboard.git'
@@ -108,7 +110,9 @@ set t_Co=256
 set showmatch
 
 " ### Auto Commands
-"autocmd BufRead,BufNewFile *.yml syntax=yaml
+" #### Fixes code-completion bug
+autocmd BufRead,BufNewFile *.py :set omnifunc=python3complete#Complete
+autocmd BufRead,BufNewFile *.yml setf ansible
 au BufNewFile,BufRead *.groovy  setf groovy
 au BufNewFile,BufRead Jenkinsfile  setf groovy
 
@@ -218,18 +222,33 @@ map k gk
 " ### Movement
 " https://neovim.io/doc/user/nvim_terminal_emulator.html
 " Use `ALT+{h,j,k,l}` to navigate windows from any mode:
+tnoremap <Esc> <C-\><C-n>
 tnoremap <A-h> <C-\><C-N><C-w>h
 tnoremap <A-j> <C-\><C-N><C-w>j
 tnoremap <A-k> <C-\><C-N><C-w>k
 tnoremap <A-l> <C-\><C-N><C-w>l
-inoremap <A-h> <C-\><C-N><C-w>h
-inoremap <A-j> <C-\><C-N><C-w>j
-inoremap <A-k> <C-\><C-N><C-w>k
-inoremap <A-l> <C-\><C-N><C-w>l
+inoremap <A-h> <C-o>h
+inoremap <A-j> <C-o>j
+inoremap <A-k> <C-o>k
+inoremap <A-l> <C-o>l
 nnoremap <A-h> <C-w>h
 nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
+
+no <down> <Nop>
+no <left> <Nop>
+no <right> <Nop>
+no <up> <Nop>
+
+ino <down> <Nop>
+ino <left> <Nop>
+ino <right> <Nop>
+ino <up> <Nop>
+vno <down> <Nop>
+vno <left> <Nop>
+vno <right> <Nop>
+vno <up> <Nop>
 
 " ### Plugin Mappings
 
@@ -258,7 +277,13 @@ set termencoding=utf-8
 cmap w!! w !sudo tee > /dev/null %
 
 " ### Plugin Options
-"
+" Airline
+" Fix ln character
+let g:airline_powerline_fonts = 1
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+let g:airline_symbols.linenr = '␤'
 " CtrlP.vim should be used for Ctrl+p
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
