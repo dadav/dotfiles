@@ -30,6 +30,9 @@ alias stop_monitor="sudo ip link set wlp20s0 down; \
 # Track dotfiles
 alias config='/usr/bin/git --git-dir=$HOME/git/dotfiles --work-tree=$HOME'
 
+# Track scripts
+alias scripts='/usr/bin/git --git-dir=$HOME/git/scripts --work-tree=$HOME'
+
 # Fix the terminal
 alias fix='reset; stty sane; tput rs1; clear; echo -e "\033c"'
 

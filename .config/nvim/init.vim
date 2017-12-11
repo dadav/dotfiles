@@ -113,6 +113,10 @@ set showmatch
 " #### Fixes code-completion bug
 autocmd BufRead,BufNewFile *.py :set omnifunc=python3complete#Complete
 autocmd BufRead,BufNewFile *.yml setf ansible
+
+" #### Vim-Go
+autocmd FileType go nmap <Leader>i <Plug>(go-info)
+
 au BufNewFile,BufRead *.groovy  setf groovy
 au BufNewFile,BufRead Jenkinsfile  setf groovy
 
@@ -236,6 +240,7 @@ nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
 
+" #### Disable arrow keys
 no <down> <Nop>
 no <left> <Nop>
 no <right> <Nop>
@@ -250,8 +255,18 @@ vno <left> <Nop>
 vno <right> <Nop>
 vno <up> <Nop>
 
-" ### Plugin Mappings
+" ### F- Keys
+" #### Show Terminal
+nmap <F2> :terminal<CR>
 
+" #### Toogle Cross
+nmap <F3> :call ToggleCursor()<CR>
+function! ToggleCursor()
+  set cursorcolumn!
+  set cursorline!
+endfunction
+
+" ### Plugin Mappings
 " #### Tabularize
 nmap <Leader>a  :Tabularize / <CR>
 vmap <Leader>a  :Tabularize / <CR>
@@ -314,3 +329,5 @@ let g:ansible_extra_keywords_highlight = 1
 
 " Golang
 let g:go_fmt_command = "goimports"
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
