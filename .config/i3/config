@@ -162,8 +162,12 @@ bindsym $mod+Shift+s exec ~/bin/dsurfraw.sh
 
 # htop
 bindsym $mod+t	exec xfce4-terminal -e htop
+# firefox
 bindsym $mod+b  exec firefox
+# thunderbird
 bindsym $mod+m  exec thunderbird
+# i3lock
+bindsym $mod+i exec ~/.local/bin/lock
 # mod tab back and forth between workspaces
 bindsym $mod+Tab workspace back_and_forth
 
@@ -174,7 +178,7 @@ bindsym $mod+Tab workspace back_and_forth
 ##############################
 
 # Set wallpaper
-exec_always feh --bg-fill ~/bilder/wallpaper/linux_wp.png 
+exec_always feh --bg-fill ~/bilder/wallpaper/linux_wp.png
 
 #Deactivate HDMI output
 #exec_always /usr/bin/xrandr --output HDMI-A-0 --off
@@ -191,8 +195,8 @@ exec --no-startup-id redshift
 exec --no-startup-id numlockx on
 
 # Sound
-#bindcode 122 exec amixer -q set Master 5%- 
-#bindcode 123 exec amixer -q set Master 5%+ 
+#bindcode 122 exec amixer -q set Master 5%-
+#bindcode 123 exec amixer -q set Master 5%+
 #bindcode 121 exec amixer -q set Master toogle
 bindcode 156 exec firefox
 
