@@ -266,6 +266,18 @@ function! ToggleCursor()
   set cursorline!
 endfunction
 
+" #### Clean trailing whitespaces
+nnoremap <F4> :call Preserve("%s/\\s\\+$//e")<CR>
+xnoremap <F4> :call Preserve("'<,'>s/\\s\\+$//e")<CR>
+function! Preserve(command)
+  " Preparation: save window state
+  let l:saved_winview = winsaveview()
+  " Run the command:
+  execute a:command
+  " Clean up: restore previous window position
+  call winrestview(l:saved_winview)
+endfunction
+
 " ### Plugin Mappings
 " #### Tabularize
 nmap <Leader>a  :Tabularize / <CR>

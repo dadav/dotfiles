@@ -14,8 +14,10 @@ alias e="emacs"
 alias ..="cd .."
 alias ...="..;.."
 alias ....="...;.."
-
+# Colorgrep
 alias grep="grep --colour"
+# Audio + Buffer
+alias mpg123="mpg123 -b1024"
 
 # Go in Monitoring mode
 alias start_monitor="sudo systemctl stop NetworkManager; \
@@ -78,11 +80,6 @@ function addsubtitles() {
     ffmpeg -i "$1" -i "$2" -c:s mov_text -c:v copy -c:a copy "OUT_$1"
 }
 
-# Plays rain in the background
-function rain() {
-    mpg123 --loop -1 ~/music/rain.mp3 > /dev/null 2>&1 & 
-}
-
 # Shows map
 function showmap() {
     telnet mapscii.me
@@ -108,9 +105,9 @@ function manj() {
     man --pager='less -p "'$1'"' $2
 }
 
-# Show last commands 
-function getlast() { 
-    fc -ln -${1:-10} | sed 's/[[:space:]]*//' 
+# Show last commands
+function getlast() {
+    fc -ln -${1:-10} | sed 's/[[:space:]]*//'
 }
 
 # Small Calculator
@@ -119,20 +116,20 @@ function c(){
 }
 
 # Big clock
-function bclock(){ 
+function bclock(){
     watch -n1 -t "date +%T | toilet -f mono9"
 }
 
 # Small persistent clock
-function sclock(){ 
-    while sleep 1; do     
-        tput sc; tput cup 0 $(($(tput cols)-29)); date; tput rc; 
-    done 
+function sclock(){
+    while sleep 1; do
+        tput sc; tput cup 0 $(($(tput cols)-29)); date; tput rc;
+    done
 }
 
-# Get commandlinefu stuff 
-function cmdfu() {     
-    curl "http://www.commandlinefu.com/commands/matching/$@/$(echo -n $@ | openssl base64)/plaintext"; 
+# Get commandlinefu stuff
+function cmdfu() {
+    curl "http://www.commandlinefu.com/commands/matching/$@/$(echo -n $@ | openssl base64)/plaintext";
 }
 
 # Record screen
@@ -157,7 +154,7 @@ function bstrace() {
 
 # Share files
 function sharefiles() {
-    
+
 if [[ $# -eq 1 ]]; then
     port=$1
 else
@@ -175,4 +172,4 @@ function show_err(){
         return $ret
 }
 
-trap 'show_err' ERR 
+trap 'show_err' ERR
