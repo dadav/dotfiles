@@ -1,5 +1,9 @@
 "*":
   core:
     telemetryConsent: "no"
+  editor:
+    fontSize: 17
   "exception-reporting":
-    userId: "5e9a95e1-37ba-47ca-88e6-98d32d6a2076"
+    userId: "7d403235-b413-44ec-a252-b3b0148cca6f"
+  welcome:
+    showOnStartup: false
