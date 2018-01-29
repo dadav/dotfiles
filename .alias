@@ -18,6 +18,7 @@ alias ....="...;.."
 alias grep="grep --colour"
 # Audio + Buffer
 alias mpg123="mpg123 -b1024"
+# Search and play
 function findplay() {
 find ~/music/ -type f -iname "$1" -print0 -exec mpg123 -Z {} +
 }
