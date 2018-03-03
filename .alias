@@ -124,6 +124,12 @@ function bclock(){
     watch -n1 -t "date +%T | toilet -f mono9"
 }
 
+# Rainy mood
+function rainymood() {
+  FILE=$((RANDOM%4))
+  URL="https://rainymood.com/audio1110/${FILE}.ogg"
+  mpv "$URL" && rainymood
+}
 # Small persistent clock
 function sclock(){
     while sleep 1; do
