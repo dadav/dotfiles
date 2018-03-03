@@ -14,7 +14,7 @@ general {
 }
 
 #order += "ipv6"
-order += "disk /storage"
+order += "disk /home"
 order += "run_watch \ VPN"
 order += "run_watch \ DHCP"
 order += "wireless _first_"
@@ -54,13 +54,10 @@ load {
         format = " %1min %5min %15min"
 }
 
-disk "/" {
-        format = "%avail"
+disk "/home" {
+        format = " %free"
 }
 
-disk "/storage" {
-        format = "storage/%free"
-}
 volume master {
 format       = " %volume"
 format_muted = " muted (%volume)"
