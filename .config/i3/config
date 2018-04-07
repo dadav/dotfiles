@@ -186,7 +186,7 @@ exec_always feh --bg-fill ~/bilder/wallpaper/linux_wp.png
 
 # Fix tearing
 #exec --no-startup-id compton -CG --backend glx --vsync opengl-swc &
-exec --no-startup-id compton --backend glx --vsync opengl-swc --paint-on-overlay --config /dev/null
+exec --no-startup-id compton --backend xr_glx_hybrid --vsync opengl-swc --paint-on-overlay --config /dev/null
 
 exec --no-startup-id ibus-daemon -drx
 # Start redshift
