@@ -1,0 +1,117 @@
+URxvt*transparent: true
+URxvt*scrollBar: false
+!URxvt*font: xft:Monospace:pixelsize=13:antialias=true:hinting=true
+!URxvt*boldFont: xft:Monospace:bold:pixelsize=13:antialias=true:hinting=true
+!
+! Multiple fonts are necessary in order to print all Unicode symols. Strange urxvt behaviour
+! https://www.reddit.com/r/archlinux/comments/3pk3jt/rxvtunicode_cant_display_some_characters/
+URxvt*font: xft:Hack:pixelsize=20:antialias=true:hinting=true,xft: DejaVu Sans Mono,xft: Symbola:size=10,xft: Unifont
+URxvt*boldFont: xft:Hack:pixelsize=20:antialias=true:hinting=true,xft: DejaVu Sans Mono,xft: Symbola:size=10,xft: Unifont
+!URxvt*font: xft:Inconsolata:pixelsize=15:antialias=true:hinting=true
+!URxvt*boldFont: xft:Inconsolata:pixelsize=15:antialias=true:hinting=true
+
+! URxvt*boldFont: xft:DejaVu Sans Mono:bold:pixelsize=12:antialias=true:hinting=true
+
+! tint with any color; i.e., blue, red, tomato4, olivedrab2, etc.
+!   some nice listings are at:
+!     http://www.nisrv.com/drupal/?q=node/11
+!     http://www.htmlgoodies.com/tutorials/colors/article.php/3478921
+
+!URxvt*tintColor: darkslategray
+!URxvt*background: darkslategray
+!URxvt*tintColor: [30]orangered2
+!URxvt*background: Blue
+!URxvt*foreground: White
+URxvt*saveLines: 5000
+
+! Replace blue folder colors with a lighter shade for clarity. To
+!  set colored folders and files within urxvt, xterm, and aterm, add
+!  the following line to your ~/.bashrc ($HOME/.bashrc) file under
+!  the heading "# User specific aliases and functions":
+!   alias ls="ls -h --color=auto"
+!URxvt*color4: RoyalBlue
+!URxvt*color12: RoyalBlue
+
+!! source:
+!https://github.com/spazzpp2/dotfiles/blob/29819a5ac5e451bfa39bc324378aa508ef75cae8/Molokai.xrdb
+!
+!! Molokai theme
+URxvt*background: #101010
+URxvt*foreground: #d0d0d0
+URxvt*color0: #101010
+URxvt*color1: #960050
+URxvt*color2: #66aa11
+URxvt*color3: #c47f2c
+URxvt*color4: #30309b
+URxvt*color5: #7e40a5
+URxvt*color6: #3579a8
+URxvt*color7: #9999aa
+URxvt*color8: #303030
+URxvt*color9: #ff0090
+URxvt*color10: #80ff00
+URxvt*color11: #ffba68
+URxvt*color12: #5f5fee
+URxvt*color13: #bb88dd
+URxvt*color14: #4eb4fa
+URxvt*color15: #d0d0d0
+
+! shading - 0 to 99 darkens, 101 to 200 lightens.
+!   Dont use with tintColor; just use a darker or lighter color instead.
+URxvt*shading: 10
+
+!Clickable Links
+URxvt.perl-ext-common: default,matcher,resize-font,clipboard,url-select,keyboard-select
+
+! URxvt.perl-ext-common:      default,clipboard,url-select,keyboard-select
+URxvt.url-select.underline: true
+URxvt.keysym.M-u:           perl:url-select:select_next
+URxvt.keysym.M-Escape:      perl:keyboard-select:activate
+URxvt.keysym.M-s:           perl:keyboard-select:search
+
+URxvt.url-select.launcher: /usr/bin/firefox
+
+URxvt.urlLauncher: firefox
+URxvt.matcher.button: 2
+URxvt.matcher.pattern.1: \\bwww\\.[\\w-]\\.[\\w./?&@#-]*[\\w/-]
+
+!Clipboard stuff
+URxvt.keysym.Shift-Control-C: perl:clipboard:copy
+URxvt.keysym.Shift-Control-V: perl:clipboard:paste
+
+! must be disabled for most perl extensions
+URxvt.iso14755: false
+URxvt.iso14755_52: false
+
+!change fonts on demand (for demo purposes)
+! M-C-1=Ctrl-Alt-1
+URxvt.keysym.M-C-1: command:\033]710;xft:Inconsolata:pixelsize=13:antialias=true:hinting=true\007\033]711;xft:Inconsolata:pixelsize=13:antialias=true:hinting=true\007
+URxvt.keysym.M-C-2: command:\033]710;xft:Inconsolata:pixelsize=18:antialias=true:hinting=true\007\033]711;xft:Inconsolata:pixelsize=18:antialias=true:hinting=true\007
+
+! scrolling behaviour
+URxvt.scrollTtyOutput: False
+URxvt.scrollTtyKeypress: True
+URxvt.scrollWithBuffer: True
+
+! Make space between letters smaller
+! URxvt.letterSpace: -1
+
+!# change default colors
+! URxvt*background: #000000
+! URxvt*foreground: #A8A8A8
+! URxvt*color0: #000000
+! URxvt*color1: #A80000
+! URxvt*color2: #00A800
+! URxvt*color3: #A85400
+! URxvt*color4: #0000A8
+! URxvt*color5: #A800A8
+! URxvt*color6: #00A8A8
+! URxvt*color7: #A8A8A8
+! URxvt*color8: #545054
+! URxvt*color9: #F85450
+! URxvt*color10: #50FC50
+! URxvt*color11: #F2FC50
+! URxvt*color12: #5054F8
+! URxvt*color13: #F854F8
+! URxvt*color14: #50FCF8
+! URxvt*color15: #F8FCF8
+
