@@ -10,10 +10,6 @@ function getlast() {
 	fc -ln "-${1:-10}" | sed 's/[[:space:]]*//'
 }
 
-function wttr() {
-	curl -s "wttr.in/${1:-Ostfildern}?lang=de"
-}
-
 function btrace() {
 	strace $* |& vim -c ":set syntax=strace" -
 }
