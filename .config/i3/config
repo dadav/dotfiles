@@ -238,7 +238,7 @@ exec --no-startup-id dunst
 exec --no-startup-id numlockx on
 
 # Hide mouse
-exec --no-startup-id unclutter --timeout 5
+exec --no-startup-id unclutter -idle 5
 
 ##############################
 ##############################
