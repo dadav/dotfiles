@@ -5,3 +5,9 @@
 	ui     = auto
 [core]
 	editor = nvim
+[diff]
+	tool = vimdiff
+[difftool]
+	prompt = false
+[alias]
+	d = difftool
