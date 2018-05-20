@@ -237,6 +237,9 @@ exec --no-startup-id dunst
 # Enable numlock
 exec --no-startup-id numlockx on
 
+# Autolock
+exec --no-startup-id xautolock -detectsleep -time 3 -locker "/usr/local/bin/lock" -notify 30 -notifier "notify-send -u critical -t 10000 -- 'LOCKING screen in 30 seconds'"
+
 # Hide mouse
 exec --no-startup-id unclutter -idle 5
 
@@ -286,7 +289,7 @@ bindsym $mod+b  exec firefox
 bindsym $mod+m  exec thunderbird
 
 # i3lock
-bindsym $mod+i exec ~/.local/bin/lock
+bindsym $mod+i exec /usr/local/bin/lock
 
 # mod tab back and forth between workspaces
 bindsym $mod+Tab workspace back_and_forth
