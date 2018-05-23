@@ -238,7 +238,7 @@ exec --no-startup-id dunst
 exec --no-startup-id numlockx on
 
 # Autolock
-exec --no-startup-id xautolock -detectsleep -time 3 -locker "/usr/local/bin/lock" -notify 30 -notifier "notify-send -u critical -t 10000 -- 'LOCKING screen in 30 seconds'"
+exec --no-startup-id xautolock -detectsleep -time 5 -locker "/usr/local/bin/lock" -notify 30 -notifier "notify-send -u critical -t 10000 -- 'LOCKING screen in 30 seconds'"
 
 # Hide mouse
 exec --no-startup-id unclutter -idle 5
@@ -279,9 +279,6 @@ bindsym $mod+Shift+v exec ~/.local/bin/vim-anywhere clip
 # Screenshot
 bindsym --release Print exec scrot -s 'screenshot_%d-%m-%Y-%T.png' -e 'mv $f ~/bilder/screenshots/'
 
-# htop
-bindsym $mod+t	exec urxvt --title htop -e htop
-
 # firefox
 bindsym $mod+b  exec firefox
 
@@ -290,6 +287,9 @@ bindsym $mod+m  exec thunderbird
 
 # i3lock
 bindsym $mod+i exec /usr/local/bin/lock
+
+# Toggle autolock
+bindsym $mod+t exec ~/.local/bin/tl
 
 # mod tab back and forth between workspaces
 bindsym $mod+Tab workspace back_and_forth
