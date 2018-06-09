@@ -3,7 +3,7 @@ telnet mapscii.me
 }
 
 function cmdfu() {
-curl "http://www.commandlinefu.com/commands/matching/$@/$(echo -n $@ | openssl base64)/plaintext";
+curl "https://www.commandlinefu.com/commands/matching/$@/$(echo -n $@ | openssl base64)/plaintext";
 }
 
 function getlast() {
