@@ -9,3 +9,7 @@ function rainymood() {
 function fplay() {
   find ~/music/ -type f -iname "$1" -print0 -exec mpg123 -Z {} +
 }
+
+nmp3() {
+  ffmpeg-normalize "$1" -c:a libmp3lame -b:a 320k -ext mp3
+}
