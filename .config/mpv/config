@@ -1,0 +1,18 @@
+# Enable OpenGL and VA-API hardware decoding.
+vo=opengl,vx
+hwdec=vaapi
+# Start in full screen.
+fs=yes
+# Stop screensaver (xautolock).
+stop-screensaver=yes
+# Do not display audio file images.
+audio-display=no
+# Set default languages.
+alang=eng
+slang=eng
+# Show progress bar for audio files.
+term-osd-bar=yes
+screenshot-directory=~/tmp/
+# Loop all the gifs.
+[extension.gif]
+loop-file=yes
