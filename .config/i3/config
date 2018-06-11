@@ -70,11 +70,9 @@ bindsym $mod+d exec "rofi -show run -modi run -location 1 -width 100 \
 		 -disable-history \
 		 -hide-scrollbar \
 		 -kb-row-select 'Tab' -kb-row-tab ''"
+
+# Surfraw
 bindsym $mod+Shift+s exec surfraw-rofi
-# There also is the (new) i3-dmenu-desktop which only displays applications
-# shipping a .desktop file. It is a wrapper around dmenu, so you need that
-# installed.
-# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # change focus
 bindsym $mod+j focus left
