@@ -71,7 +71,7 @@ URxvt.keysym.M-u:           perl:url-select:select_next
 URxvt.keysym.M-Escape:      perl:keyboard-select:activate
 URxvt.keysym.M-s:           perl:keyboard-select:search
 
-URxvt.url-select.launcher: /usr/bin/firefox
+URxvt.url-select.launcher: xdg-open
 
 URxvt.urlLauncher: firefox
 URxvt.matcher.button: 2
@@ -118,3 +118,10 @@ URxvt.scrollWithBuffer: True
 ! URxvt*color14: #50FCF8
 ! URxvt*color15: #F8FCF8
 
+! Rofi font and colors
+rofi.font:Inconsolata Regular 12
+rofi.color-enabled: true
+rofi.color-window: #273238, #273238, #1e2529
+rofi.color-normal: #273238, #c1c1c1, #273238, #394249, #ffffff
+rofi.color-active: #273238, #80cbc4, #273238, #394249, #80cbc4
+rofi.color-urgent: #273238, #ff1844, #273238, #394249, #ff1844
