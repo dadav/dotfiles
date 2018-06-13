@@ -207,6 +207,7 @@ bar {
 
 # Assigns
 assign [class="Firefox"] $ws1
+assign [class="qutebrowser"] $ws1
 assign [class="Thunderbird"] $ws2
 
 # Fixes
@@ -283,8 +284,8 @@ bindsym $mod+Shift+v exec ~/.local/bin/vim-anywhere clip
 # Screenshot
 bindsym --release Print exec scrot -s 'screenshot_%d-%m-%Y-%T.png' -e 'mv $f ~/bilder/screenshots/'
 
-# firefox
-bindsym $mod+b  exec firefox
+# browser selector
+bindsym $mod+b  exec browser
 
 # thunderbird
 bindsym $mod+m  exec thunderbird
