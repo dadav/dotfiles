@@ -85,6 +85,12 @@ URxvt.keysym.Shift-Control-V: perl:clipboard:paste
 URxvt.iso14755: false
 URxvt.iso14755_52: false
 
+! resize font
+URxvt.keysym.C-minus: resize-font:smaller
+URxvt.keysym.C-plus:resize-font:bigger
+URxvt.keysym.C-equal: resize-font:reset
+URxvt.keysym.C-question:resize-font:show
+
 !change fonts on demand (for demo purposes)
 ! M-C-1=Ctrl-Alt-1
 URxvt.keysym.M-C-1: command:\033]710;xft:Inconsolata:pixelsize=13:antialias=true:hinting=true\007\033]711;xft:Inconsolata:pixelsize=13:antialias=true:hinting=true\007
