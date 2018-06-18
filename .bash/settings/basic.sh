@@ -1,4 +1,4 @@
-export PATH="$HOME/.local/bin:$PATH"
+[[ ! ":${HOME}/.local/bin:" =~ ":$PATH:" ]] && export PATH="${HOME}/.local/bin:$PATH" || true
 export PAGER=less
 export EDITOR=nvim
 export VISUAL=$EDITOR
