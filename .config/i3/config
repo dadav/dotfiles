@@ -212,6 +212,7 @@ assign [class="Thunderbird"] $ws2
 
 # Fixes
 for_window [title="Enter Passphrase"] floating enable; border none; focus mode_toggle
+#for_window [title="vim-anywhere"] floating enable; border none; focus mode_toggle
 
 # More behaviour
 focus_follows_mouse no
@@ -275,11 +276,12 @@ bindsym $mod+$alt+j workspace prev
 bindsym $mod+$alt+k workspace next
 
 # Youtube
-bindsym $mod+Shift+y exec ~/.local/bin/y2 music
-bindsym $mod+Control+y exec ~/.local/bin/y2 video
+bindsym $mod+y exec y2 rofi
+bindsym $mod+Shift+y exec y2 music
+bindsym $mod+Control+y exec y2 video
 
 # Launch vim-anywhere script
-bindsym $mod+Shift+v exec ~/.local/bin/vim-anywhere clip
+bindsym $mod+Shift+v exec vim-anywhere clip
 
 # Screenshot
 bindsym --release Print exec scrot -s 'screenshot_%d-%m-%Y-%T.png' -e 'mv $f ~/bilder/screenshots/'
@@ -291,10 +293,10 @@ bindsym $mod+b  exec browser
 bindsym $mod+m  exec thunderbird
 
 # i3lock
-bindsym $mod+i exec /usr/local/bin/lock
+bindsym $mod+i exec lock
 
 # Toggle autolock
-bindsym $mod+t exec ~/.local/bin/tl
+bindsym $mod+t exec tl
 
 # mod tab back and forth between workspaces
 bindsym $mod+Tab workspace back_and_forth
