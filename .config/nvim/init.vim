@@ -135,6 +135,7 @@ set history=700
 " I hate tabs.
 set expandtab           " enter spaces when tab is pressed
 set textwidth=100       " break lines when line length increases
+set formatoptions-=t    " No autolinebreak
 set tabstop=2           " use 2 spaces to represent tab
 set softtabstop=2
 set shiftwidth=2        " number of spaces to use for auto indent
