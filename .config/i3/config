@@ -224,7 +224,7 @@ focus_follows_mouse no
 ##############################
 
 # Set wallpaper
-exec_always feh --bg-fill ~/bilder/wallpaper/linux_wp.png
+exec_always feh --bg-fill ~/library/pictures/wallpaper/linux_wp.png
 
 #Deactivate HDMI output
 #exec_always /usr/bin/xrandr --output HDMI-A-0 --off
@@ -284,7 +284,7 @@ bindsym $mod+Control+y exec y2 video
 bindsym $mod+Shift+v exec vim-anywhere clip
 
 # Screenshot
-bindsym --release Print exec scrot -s 'screenshot_%d-%m-%Y-%T.png' -e 'mv $f ~/bilder/screenshots/'
+bindsym --release Print exec teiler
 
 # browser selector
 bindsym $mod+b  exec browser
