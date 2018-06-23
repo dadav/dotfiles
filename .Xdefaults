@@ -63,7 +63,7 @@ URxvt*color15: #d0d0d0
 URxvt*shading: 10
 
 !Clickable Links
-URxvt.perl-ext-common: default,matcher,resize-font,clipboard,url-select,keyboard-select
+URxvt.perl-ext-common: default,matcher,clipboard,url-select,keyboard-select,font-size
 
 ! URxvt.perl-ext-common:      default,clipboard,url-select,keyboard-select
 URxvt.url-select.underline: true
@@ -86,10 +86,12 @@ URxvt.iso14755: false
 URxvt.iso14755_52: false
 
 ! resize font
-URxvt.keysym.C-minus: resize-font:smaller
-URxvt.keysym.C-plus:resize-font:bigger
-URxvt.keysym.C-equal: resize-font:reset
-URxvt.keysym.C-question:resize-font:show
+URxvt.keysym.C-Up:     font-size:increase
+URxvt.keysym.C-Down:   font-size:decrease
+URxvt.keysym.C-S-Up:   font-size:incglobal
+URxvt.keysym.C-S-Down: font-size:decglobal
+URxvt.keysym.C-equal:  font-size:reset
+URxvt.keysym.C-slash:  font-size:show
 
 !change fonts on demand (for demo purposes)
 ! M-C-1=Ctrl-Alt-1
