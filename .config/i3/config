@@ -64,7 +64,7 @@ bindsym $mod+Return exec /usr/bin/urxvt
 bindsym $mod+Shift+q kill
 
 # start rofi (a program launcher)
-bindsym $mod+d exec "rofi -show run -modi run -location 1 -width 100 \
+bindsym $mod+Shift+d exec "rofi -show run -modi run -location 1 -width 100 \
 		 -lines 2 -line-margin 0 -line-padding 1 \
 		 -separator-style none -font 'mono 10' -columns 9 -bw 0 \
 		 -disable-history \
@@ -206,13 +206,13 @@ bar {
 }
 
 # Assigns
-assign [class="Firefox"] $ws1
 assign [class="qutebrowser"] $ws1
+assign [window_role="browser"] $ws1
 assign [class="Thunderbird"] $ws2
 
 # Fixes
 for_window [title="Enter Passphrase"] floating enable; border none; focus mode_toggle
-#for_window [title="vim-anywhere"] floating enable; border none; focus mode_toggle
+# for_window [command="*vim-anywhere*"] floating enable; border none; focus mode_toggle
 
 # More behaviour
 focus_follows_mouse no
