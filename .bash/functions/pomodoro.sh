@@ -66,7 +66,7 @@ function pomo {
         MESSAGE="Time to take a break"
     fi
 
-    echo -e "${RED}TIMER SET FOR $(($TIMER/60)) MINUTES"
+    echo -e "${RED}TIMER SET FOR $(($TIMER/60)) MINUTES${NC}"
 
     # LINUX users
     if [[ "$(uname)" == "Linux" ]]; then
