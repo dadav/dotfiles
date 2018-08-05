@@ -19,7 +19,7 @@ function pomo {
     fi
 
     if [[ "$1" == "-v" ]] || [[ "$1" == "--version" ]]; then
-        echo -e "${ORANGE}POMODORO TIMER BY RUKY"
+        echo -e "${ORANGE}POMODORO TIMER BY RUKY${NC}"
         echo "  v: 1"
         echo "  twitter: @justruky"
         echo "  blog: rukshn.github.io"
