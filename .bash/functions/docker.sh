@@ -80,3 +80,12 @@ yed() {
 
   rm $XAUTH
 }
+
+
+etherpad() {
+  PASS=password
+  PORT=9001
+  docker inspect ep_network &>/dev/null || docker network create ep_network
+  docker run --rm -d --network ep_network -e MYSQL_ROOT_PASSWORD=$PASS --name ep_mysql mysql mysqld --default-authentication-plugin=mysql_native_password
+  docker run --rm -d --network ep_network -e ETHERPAD_DB_HOST=ep_mysql -e ETHERPAD_DB_PASSWORD=$PASS -p $PORT:9001 tvelocity/etherpad-lite
+}
