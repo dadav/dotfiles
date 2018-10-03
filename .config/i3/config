@@ -206,6 +206,7 @@ bar {
 }
 
 # Assigns
+assign [title="Code - OSS"] $ws3
 assign [class="qutebrowser"] $ws1
 assign [window_role="browser"] $ws1
 assign [class="Thunderbird"] $ws2
