@@ -1,7 +1,9 @@
+#!/bin/bash
+
 del_if_stopped() {
   container=$1
   shift
-  docker ps -aq -f status=exited -f name=$container | xargs docker rm &>/dev/null
+  docker ps -aq -f status=exited -f name="$container" | xargs docker rm &>/dev/null
 }
 
 docker_clean() {
