@@ -13,3 +13,7 @@ function getlast() {
 function btrace() {
 	strace $* |& vim -c ":set syntax=strace" -
 }
+
+function lsofx() {
+sudo lsof -n -F | lsofgraph | unflatten -l1 -c6 | dot -Tpng | feh -
+}
