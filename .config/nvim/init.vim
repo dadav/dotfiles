@@ -110,6 +110,9 @@ set t_Co=256
 set showmatch
 
 " ### Auto Commands
+" Asciidoc
+autocmd BufWritePost *.adoc silent! !head -1 % | grep autocompile && asciidoctor-pdf % || true
+
 " #### Fixes code-completion bug
 autocmd BufRead,BufNewFile *.py :set omnifunc=python3complete#Complete
 autocmd BufRead,BufNewFile *.yml setf ansible
@@ -288,6 +291,8 @@ vmap <Leader>a= :Tabularize /=<CR>
 nmap <Leader>a: :Tabularize /:\zs<CR>
 vmap <Leader>a: :Tabularize /:\zs<CR>
 
+" #### Asciidoctor-pdf
+nmap <Leader>adc :!asciidoctor-pdf %<CR>
 " #### NERDTree
 nmap <Leader>nt :NERDTreeToggle<CR>
 
