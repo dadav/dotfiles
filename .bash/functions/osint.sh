@@ -3,5 +3,5 @@ function getsubdomains() {
 }
 
 function pnmap() {
-  xsltproc <(curl -s https://raw.githubusercontent.com/honze-net/nmap-bootstrap-xsl/master/nmap-bootstrap.xsl) <(sudo nmap -oX - $@) | firefox "data:text/html;base64,$(base64 -w 0 <&0)" 2>/dev/null
+  xsltproc <(curl -s https://raw.githubusercontent.com/honze-net/nmap-bootstrap-xsl/master/nmap-bootstrap.xsl) <(sudo nmap -oX - $@) |& firefox "data:text/html;base64,$(base64 -w 0 <&0)" 2>/dev/null
 }
