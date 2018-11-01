@@ -10,6 +10,12 @@ function fplay() {
   find ~/music/ -type f -iname "$1" -print0 -exec mpg123 -Z {} +
 }
 
-nmp3() {
+function nmp3() {
   ffmpeg-normalize "$1" -c:a libmp3lame -b:a 320k -ext mp3
+}
+
+function vidlen() {
+  for vid in "$@"; do
+    ffprobe -v quiet -of csv=p=0 -show_entries format=duration "$vid"
+  done
 }
