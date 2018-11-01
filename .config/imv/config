@@ -5,4 +5,4 @@
 <Shift+x> = exec rm "$imv_current_file"
 <Shift+x> = close
 # Tagging
-u = exec echo $imv_current_file >> ~/tags/$(ls ~/tags | dmenu -p "tag")
+u = exec echo $imv_current_file >> ~/library/pictures/tags/$(ls ~/library/pictures/tags | dmenu -p "tag")
