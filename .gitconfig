@@ -1,13 +1,15 @@
 [user]
-	name   = dadav
-	email = 33197631+dadav@users.noreply.github.com
+  name      = dadav
+  email     = 33197631+dadav@users.noreply.github.com
 [color]
-	ui     = auto
+  ui        = auto
 [core]
-	editor = nvim
+  editor    = nvim
 [diff]
-	tool = vimdiff
+  tool      = vimdiff
 [difftool]
-	prompt = false
+  prompt    = false
 [alias]
-	d = difftool
+  d         = difftool
+  lg        = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+  conflicts = diff --name-only --diff-filter=U
