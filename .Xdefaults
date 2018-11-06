@@ -1,40 +1,19 @@
+!General behaviour
 URxvt*transparent: true
 URxvt*scrollBar: false
-!URxvt*font: xft:Monospace:pixelsize=13:antialias=true:hinting=true
-!URxvt*boldFont: xft:Monospace:bold:pixelsize=13:antialias=true:hinting=true
-!
+URxvt*saveLines: 5000
+
+! FONTS
 ! Multiple fonts are necessary in order to print all Unicode symols. Strange urxvt behaviour
 ! https://www.reddit.com/r/archlinux/comments/3pk3jt/rxvtunicode_cant_display_some_characters/
 URxvt*font: xft:Hack:pixelsize=20:antialias=true:hinting=true,xft: DejaVu Sans Mono,xft: Symbola:size=10,xft: Unifont,IPAMincho:style=Regular:size=12
 URxvt*boldFont: xft:Hack:pixelsize=20:antialias=true:hinting=true,xft: DejaVu Sans Mono,xft: Symbola:size=10,xft: Unifont,IPAMincho:style=Regular:size=12
+
 ! Japanese support
 URxvt.inputMethod: ibus
 URxvt.preeditType: OverTheSpot
-!URxvt*font: xft:Inconsolata:pixelsize=15:antialias=true:hinting=true
-!URxvt*boldFont: xft:Inconsolata:pixelsize=15:antialias=true:hinting=true
 
-! URxvt*boldFont: xft:DejaVu Sans Mono:bold:pixelsize=12:antialias=true:hinting=true
-
-! tint with any color; i.e., blue, red, tomato4, olivedrab2, etc.
-!   some nice listings are at:
-!     http://www.nisrv.com/drupal/?q=node/11
-!     http://www.htmlgoodies.com/tutorials/colors/article.php/3478921
-
-!URxvt*tintColor: darkslategray
-!URxvt*background: darkslategray
-!URxvt*tintColor: [30]orangered2
-!URxvt*background: Blue
-!URxvt*foreground: White
-URxvt*saveLines: 5000
-
-! Replace blue folder colors with a lighter shade for clarity. To
-!  set colored folders and files within urxvt, xterm, and aterm, add
-!  the following line to your ~/.bashrc ($HOME/.bashrc) file under
-!  the heading "# User specific aliases and functions":
-!   alias ls="ls -h --color=auto"
-!URxvt*color4: RoyalBlue
-!URxvt*color12: RoyalBlue
-
+! THEME
 !! source:
 !https://github.com/spazzpp2/dotfiles/blob/29819a5ac5e451bfa39bc324378aa508ef75cae8/Molokai.xrdb
 !
@@ -105,26 +84,6 @@ URxvt.scrollWithBuffer: True
 
 ! Make space between letters smaller
 ! URxvt.letterSpace: -1
-
-!# change default colors
-! URxvt*background: #000000
-! URxvt*foreground: #A8A8A8
-! URxvt*color0: #000000
-! URxvt*color1: #A80000
-! URxvt*color2: #00A800
-! URxvt*color3: #A85400
-! URxvt*color4: #0000A8
-! URxvt*color5: #A800A8
-! URxvt*color6: #00A8A8
-! URxvt*color7: #A8A8A8
-! URxvt*color8: #545054
-! URxvt*color9: #F85450
-! URxvt*color10: #50FC50
-! URxvt*color11: #F2FC50
-! URxvt*color12: #5054F8
-! URxvt*color13: #F854F8
-! URxvt*color14: #50FCF8
-! URxvt*color15: #F8FCF8
 
 ! Rofi font and colors
 rofi.font:Inconsolata Regular 12
