@@ -1,2 +1,2 @@
 export GOPATH="$HOME/go"
-[[ ! ":${GOPATH}/bin:" =~ ":$PATH:" ]] && export PATH="${GOPATH}/bin:$PATH" || true
+[[ ! ":$PATH:" =~ ":${GOPATH}/bin:" ]] && export PATH="${GOPATH}/bin:$PATH" || true
