@@ -6,11 +6,12 @@ export -f animedl
 
 # Parallel Version
 function panimedl() {
+  FAIL=3
   # Check if first input is a integer. If yes, use it as thread count.
   if [[ $1 =~ ^[0-9]+$ ]]; then
     THREADS=$1
     shift
   fi
 
-  parallel --ungroup -j"${THREADS-3}" -- animedl ::: "$@"
+  parallel --halt soon,fail="$FAIL" --ungroup -j"${THREADS-3}" -- animedl ::: "$@"
 }
