@@ -1,6 +1,6 @@
 # Plot systemd dependencies
 function sadot() {
-  ARGS=""
+  ARGS="-Goverlap=false"
   FEH=0
   while [[ $# -gt 0 ]]; do
     key="$1"
