@@ -1,6 +1,7 @@
 # Plot systemd dependencies
 function sadot() {
-  ARGS="-Goverlap=false"
+  ARGS=""
+  DOTOPTS="-Goverlap=false"
   FEH=0
   while [[ $# -gt 0 ]]; do
     key="$1"
@@ -31,8 +32,8 @@ function sadot() {
     esac
   done
   if [[ $FEH -eq 1 ]]; then
-    systemd-analyze dot $ARGS 2>/dev/null | dot -Tpng | feh -
+    systemd-analyze dot $ARGS 2>/dev/null | dot $DOTOPTS | feh -
   else
-    systemd-analyze dot $ARGS 2>/dev/null | dot -Tpng > out.png
+    systemd-analyze dot $ARGS 2>/dev/null | dot $DOTOPTS > out.png
   fi
 }
