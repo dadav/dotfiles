@@ -1,7 +1,7 @@
-# Plot systemd dependencies
 function sadot() {
   ARGS=""
   DOTOPTS="-Goverlap=false"
+  FEHOPTS="--auto-scale --auto-zoom"
   OUTPUT=""
   while [[ $# -gt 0 ]]; do
     key="$1"
@@ -36,6 +36,6 @@ function sadot() {
     EXT="${OUTPUT##*.}"
     systemd-analyze dot $ARGS 2>/dev/null | dot $DOTOPTS -T${EXT:-png} > ${OUTPUT%.*}.${EXT:-png}
   else
-    systemd-analyze dot $ARGS 2>/dev/null | dot $DOTOPTS -Tpng | feh -
+    systemd-analyze dot $ARGS 2>/dev/null | dot $DOTOPTS -Tpng | feh $FEHOPTS -
   fi
 }
