@@ -1,7 +1,7 @@
 function sadot() {
   ARGS=""
   DOTOPTS="-Goverlap=false"
-  FEHOPTS="--auto-scale --auto-zoom"
+  FEHOPTS="--scale-down --auto-zoom"
   OUTPUT=""
   while [[ $# -gt 0 ]]; do
     key="$1"
