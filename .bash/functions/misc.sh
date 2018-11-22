@@ -45,9 +45,8 @@ function lsofx() {
         ;;
       *)
         echo "Invalid Argument"
-        exit 1
+        return
     esac
   done
-
   ${REMOTE:+ssh} $REMOTE sudo lsof -n -F ${NET:+-i} $NET ${PID:+-p} $PID | lsofgraph | $UNFLAT | dot $DOT_OPTS -Tpng | feh $FEH_OPTS -
 }
