@@ -18,6 +18,7 @@ function lsofx() {
   REMOTE=""
   PID=""
   NET=""
+  GVFS=""
   UNFLAT="unflatten -l1 -c6"
   FEH_OPTS="--scale-down --auto-zoom"
   DOT_OPTS="-Goverlap=false"
@@ -43,10 +44,14 @@ function lsofx() {
         shift
         shift
         ;;
+      --gvfs)
+        GVFS=1
+        shift
+        ;;
       *)
         echo "Invalid Argument"
         return
     esac
   done
-  ${REMOTE:+ssh} $REMOTE sudo lsof -n -F ${NET:+-i} $NET ${PID:+-p} $PID | lsofgraph | $UNFLAT | dot $DOT_OPTS -Tpng | feh $FEH_OPTS -
+  ${REMOTE:+ssh} $REMOTE sudo lsof -n -F ${GVFS:+'$(for a in $(mount | cut -d" " -f3); do test -e "$a" || echo -n -e$a\ ; done)'} ${NET:+-i} ${NET[@]} ${PID:+-p} $PID | lsofgraph | $UNFLAT | dot $DOT_OPTS -Tpng | feh $FEH_OPTS -
 }
