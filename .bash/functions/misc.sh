@@ -15,5 +15,39 @@ function btrace() {
 }
 
 function lsofx() {
-sudo lsof -n -F | lsofgraph | unflatten -l1 -c6 | dot -Tpng | feh -
+  REMOTE=""
+  PID=""
+  NET=""
+  UNFLAT="unflatten -l1 -c6"
+  FEH_OPTS="--scale-down --auto-zoom"
+  DOT_OPTS="-Goverlap=false"
+  while [[ $# -gt 0 ]]; do
+    key="$1"
+    case $key in
+      -r|--remote)
+        REMOTE="$2"
+        shift
+        shift
+        ;;
+      -p|--pid)
+        PID="$2"
+        shift
+        shift
+        ;;
+      -d|--disable-unflat)
+        UNFLAT="cat"
+        shift
+        ;;
+      -n|--network)
+        NET="$2"
+        shift
+        shift
+        ;;
+      *)
+        echo "Invalid Argument"
+        exit 1
+    esac
+  done
+
+  ${REMOTE:+ssh} $REMOTE sudo lsof -n -F ${NET:+-i} $NET ${PID:+-p} $PID | lsofgraph | $UNFLAT | dot $DOT_OPTS -Tpng | feh $FEH_OPTS -
 }
