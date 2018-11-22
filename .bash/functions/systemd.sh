@@ -2,7 +2,7 @@
 function sadot() {
   ARGS=""
   DOTOPTS="-Goverlap=false"
-  FEH=0
+  OUTPUT=""
   while [[ $# -gt 0 ]]; do
     key="$1"
     case $key in
@@ -21,8 +21,9 @@ function sadot() {
         shift
         shift
         ;;
-      -o|--open)
-        FEH=1
+      -s|--save)
+        OUTPUT="$2"
+        shift
         shift
         ;;
       *)
@@ -31,9 +32,10 @@ function sadot() {
         ;;
     esac
   done
-  if [[ $FEH -eq 1 ]]; then
-    systemd-analyze dot $ARGS 2>/dev/null | dot $DOTOPTS | feh -
+  if [[ -n "$OUTPUT" ]]; then
+    EXT="${OUTPUT##*.}"
+    systemd-analyze dot $ARGS 2>/dev/null | dot $DOTOPTS -T${EXT:-png} > ${OUTPUT%.*}.${EXT:-png}
   else
-    systemd-analyze dot $ARGS 2>/dev/null | dot $DOTOPTS > out.png
+    systemd-analyze dot $ARGS 2>/dev/null | dot $DOTOPTS -Tpng | feh -
   fi
 }
