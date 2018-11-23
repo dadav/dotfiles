@@ -1,6 +1,6 @@
 # Print all but last line of loginshell sources
 function bashvars() {
-  PS4='+$BASH_SOURCE ' BASH_XTRACEFD=7 bash -xlic "exit 0" 2>/dev/null 7>&1
+  PS4='+$BASH_SOURCE ' BASH_XTRACEFD=7 bash -xlic "exit 0" 2>&1 7>&2 >/dev/null
 }
 
 # Transforms bash xtracefd to dot
