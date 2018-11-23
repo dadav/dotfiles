@@ -5,7 +5,42 @@ function bashvars() {
 
 # Transforms bash xtracefd to dot
 function bashdot() {
-awk 'BEGIN {
+  SHOWVAR=""
+  SHOWDATA=""
+  REMOTE=""
+  while [[ $# -gt 0 ]]; do
+    key="$1"
+    case $key in
+      -r|--remote)
+        REMOTE="$2"
+        shift
+        shift
+        ;;
+      -v|--variables)
+        SHOWVAR=1
+        shift
+        ;;
+      -d|--data)
+        SHOWDATA=1
+        shift
+        ;;
+      *)
+        echo "Invalid Argument"
+        return
+        ;;
+    esac
+  done
+
+  if [[ -n "$REMOTE" ]]; then
+    ssh -T "$REMOTE" <<EOF | sed -ne '/digraph bash/,$ p'
+      $(typeset -f bashvars)
+      $(typeset -f bashdot)
+      bashdot ${SHOWVAR:+-v} ${SHOWDATA:+-d}
+EOF
+    return
+  fi
+
+awk -v showvar="$SHOWVAR" -v showdata="$SHOWDATA" 'BEGIN {
       print "digraph bash {"
       lastplus = 1;
       c = 1;
@@ -15,10 +50,24 @@ awk 'BEGIN {
       if ( $0 !~ /^\++\// ) {
         next;
       }
+
       path = $1;
+      type = $2;
+      data = $3;
+
       split(path, dummy, "/");
       plus = length(dummy[1]);
       path = substr(path,plus + 1);
+
+      if ( type == "export" && (showvar || showdata)) {
+        if ( ! showdata) {
+          split(data, dummy, "=");
+          data = dummy[1];
+        }
+        
+        print "\""data"\" [fillcolor=cyan style=filled];";
+        print "\""last[lastplus]"\"->\""data"\" [color=red];";
+      }
 
       if ( path == last[plus]) {
         last[plus] = path;
@@ -38,15 +87,4 @@ awk 'BEGIN {
     END {
       print "}"
     }' <(bashvars)
-}
-
-# Run one remote
-function remotebashdot() {
-  IP="$1"
-  shift
-  ssh -T $IP <<EOF | sed -ne '/digraph bash/,$ p'
-    $(typeset -f bashvars)
-    $(typeset -f bashdot)
-    bashdot
-EOF
 }
