@@ -6,7 +6,6 @@ function bashvars() {
 
 # Transforms bash xtracefd to dot
 function bashdot() {
-IN=$(bashvars)
 awk 'BEGIN {
       print "digraph bash {"
       lastplus = 1;
@@ -39,14 +38,14 @@ awk 'BEGIN {
 
     END {
       print "}"
-    }' <<<$IN
+    }' <(bashvars)
 }
 
 # Run one remote
 function remotebashdot() {
   IP="$1"
   shift
-  ssh $IP <<EOF
+  ssh -T $IP <<EOF
     $(typeset -f bashvars)
     $(typeset -f bashdot)
     bashdot
