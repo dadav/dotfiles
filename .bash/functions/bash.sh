@@ -44,7 +44,7 @@ awk 'BEGIN {
 function remotebashdot() {
   IP="$1"
   shift
-  ssh -T $IP <<EOF
+  ssh -T $IP <<EOF | sed -ne '/digraph bash/,$ p'
     $(typeset -f bashvars)
     $(typeset -f bashdot)
     bashdot
