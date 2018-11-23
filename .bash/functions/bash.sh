@@ -53,7 +53,9 @@ awk -v showvar="$SHOWVAR" -v showdata="$SHOWDATA" 'BEGIN {
 
       path = $1;
       type = $2;
-      data = $3;
+      $1 = "";
+      $2 = "";
+      data = $0;
 
       split(path, dummy, "/");
       plus = length(dummy[1]);
