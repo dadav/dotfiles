@@ -8,6 +8,7 @@ function bashdot() {
 awk 'BEGIN {
       print "digraph bash {"
       lastplus = 1;
+      c = 1;
     }
 
     {
@@ -25,10 +26,9 @@ awk 'BEGIN {
         next;
       };
 
-      if ( plus > lastplus && path != last[lastplus]) {
-        print "\""last[lastplus]"\"->\""path"\";";
-      } else if (plus < lastplus) {
-        print "\""last[lastplus]"\"->\""path"\";";
+      if ( plus > lastplus && path != last[lastplus] || plus < lastplus) {
+        print "\""last[lastplus]"\"->\""path"\" [label=\""c"\"];";
+        c++;
       }
 
       last[plus] = path;
