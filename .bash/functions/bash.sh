@@ -7,6 +7,7 @@ function bashvars() {
 function bashdot() {
   SHOWVAR=""
   SHOWDATA=""
+  SHOWREV=""
   REMOTE=""
   while [[ $# -gt 0 ]]; do
     key="$1"
@@ -18,6 +19,10 @@ function bashdot() {
         ;;
       -v|--variables)
         SHOWVAR=1
+        shift
+        ;;
+      --reversed)
+        SHOWREV=1
         shift
         ;;
       -d|--data)
@@ -40,7 +45,7 @@ EOF
     return
   fi
 
-awk -v showvar="$SHOWVAR" -v showdata="$SHOWDATA" 'BEGIN {
+awk -v showrev="$SHOWREV" -v showvar="$SHOWVAR" -v showdata="$SHOWDATA" 'BEGIN {
       print "digraph bash {"
       lastplus = 1;
       c = 1;
@@ -68,7 +73,12 @@ awk -v showvar="$SHOWVAR" -v showdata="$SHOWDATA" 'BEGIN {
         }
         
         print "\""data"\" [fillcolor=cyan style=filled];";
-        print "\""path"\"->\""data"\" [color=red];";
+        if ( showrev ) {
+          print "\""data"\"->\""path"\" [color=red];";
+        } else {
+          print "\""path"\"->\""data"\" [color=red];";
+        }
+        
       }
 
       if ( path == last[plus]) {
