@@ -68,7 +68,7 @@ awk -v showvar="$SHOWVAR" -v showdata="$SHOWDATA" 'BEGIN {
         }
         
         print "\""data"\" [fillcolor=cyan style=filled];";
-        print "\""last[lastplus]"\"->\""data"\" [color=red];";
+        print "\""path"\"->\""data"\" [color=red];";
       }
 
       if ( path == last[plus]) {
