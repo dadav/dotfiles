@@ -21,7 +21,7 @@ function bashdot() {
         SHOWVAR=1
         shift
         ;;
-      --reversed)
+      --reverse)
         SHOWREV=1
         shift
         ;;
@@ -74,7 +74,7 @@ awk -v showrev="$SHOWREV" -v showvar="$SHOWVAR" -v showdata="$SHOWDATA" 'BEGIN {
         
         print "\""data"\" [fillcolor=cyan style=filled];";
         if ( showrev ) {
-          print "\""data"\"->\""path"\" [color=red];";
+          print "\""data"\"->\""path"\" [color=red dir=back];";
         } else {
           print "\""path"\"->\""data"\" [color=red];";
         }
