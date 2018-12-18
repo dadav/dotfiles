@@ -1,0 +1,41 @@
+## Benutzerspezifische Beispielkonfigurationsdatei für youtube-dl in ~/.config/youtube-dl/config
+## Zeilen, die mit einem Rautenzeichen (#) beginnen, sind entweder Kommentare oder deaktivierte Argumente
+# Lade bei Vorliegen von zwei höchst-qualitativen separaten Dateien für Audio und Video diese getrennt herunter
+# (aber nur die in den Formaten m4a bzw. mp4);
+# ansonsten nehme die höchst-qualitative AV-Kombi-Einzeldatei:
+-f "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best"
+# Bevorzuge freie (Video-)Formate, außer ein spezifisches ist gefordert:
+#--prefer-free-formats
+# Der Zielordner ist das aktuelle Terminal-Arbeitsverzeichnis; entferne die Youtube-ID aus dem Namen/Titel des Videos:
+#-o "%(title)s.%(ext)s"
+# Der Zielordner ist ~/Videos; der Dateiname besteht – wie in der Voreinstellung – aus dem Namen/Titel und der YT-ID
+# des Videos sowie der Dateiendung:
+#-o "~/Videos/%(title)s-%(id)s.%(ext)s"
+# Beschränke Dateinamen auf reine ASCII-Zeichen und vermeide dort u.a. "&" und Leerzeichen, aber auch Umlaute;
+# wobei Leerzeichen in Unterstriche (_) sowie Umlaute in a, o und u umgewandelt werden:
+--restrict-filenames
+# Benutze den externen Downloader aria2 (das gleichnamige Paket muss installiert sein!):
+#--external-downloader "aria2c"
+# Übergebe die folgenden Argumente an aria2:
+# Minimale Teilstück-Größe 1MiB; maximale Anzahl an gleichzeitigen Verbindungen pro Server und pro Download;
+# bei HTTP(S)/FTP-Downloads setze bei nur teilweise von anderenProgrammen heruntergeladenen Dateien den
+# Download fort;
+# =>=>=> Achtung: Diese Option kann zu Störungen führen, falls youtube-dl einen HLS herunterlädt! Im Zweifelsfalle
+# diese Option bitte NICHT verwenden:
+#--external-downloader-args "-k1M -x8 -c"
+# Zeige den Download-Fortschritt in immer neuen Zeilen an =>=>=> Achtung: Diese Option bitte NICHT zusammen
+# mit "–external-downloader"-Optionen verwenden, um potenzielle Störungen auszuschließen:
+#--newline
+# Zeige den Download-Fortschritt in der Titelleiste des Terminalfensters an; zusammen mit
+# "–external-downloader"-Optionen wird evtl. lediglich der erfolgreiche Abschluss des Downloads bekanntgegeben;
+# =>=>=> Achtung: Diese Option kann zu Störungen führen, falls youtube-dl durch mpv aufgerufen wird! Im Zweifelsfalle
+# diese Option bitte NICHT verwenden:
+#--console-title
+# Schreibe die Metadaten mit in die Ausgabedatei:
+--add-metadata
+# Umgehe geographische Beschränkungen durch Fälschen des "X-Forwarded-For"-HTTP-Headers (experimentell):
+--geo-bypass
+# Bei Download-Fehlern trotzdem weiter herunterladen:
+--ignore-errors
+# Erzwinge das Fortsetzen des Downloads von teilweise heruntergeladenen Dateien:
+--continue
