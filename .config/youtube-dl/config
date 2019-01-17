@@ -13,15 +13,16 @@
 #-o "~/Videos/%(title)s-%(id)s.%(ext)s"
 # Beschränke Dateinamen auf reine ASCII-Zeichen und vermeide dort u.a. "&" und Leerzeichen, aber auch Umlaute;
 # wobei Leerzeichen in Unterstriche (_) sowie Umlaute in a, o und u umgewandelt werden:
---restrict-filenames
+#--restrict-filenames
 # Benutze den externen Downloader aria2 (das gleichnamige Paket muss installiert sein!):
-#--external-downloader "aria2c"
+--external-downloader "aria2c"
 # Übergebe die folgenden Argumente an aria2:
 # Minimale Teilstück-Größe 1MiB; maximale Anzahl an gleichzeitigen Verbindungen pro Server und pro Download;
 # bei HTTP(S)/FTP-Downloads setze bei nur teilweise von anderenProgrammen heruntergeladenen Dateien den
 # Download fort;
 # =>=>=> Achtung: Diese Option kann zu Störungen führen, falls youtube-dl einen HLS herunterlädt! Im Zweifelsfalle
 # diese Option bitte NICHT verwenden:
+--external-downloader-args "-c -j 3 -x 3 -s 3 -k 1M"
 #--external-downloader-args "-k1M -x8 -c"
 # Zeige den Download-Fortschritt in immer neuen Zeilen an =>=>=> Achtung: Diese Option bitte NICHT zusammen
 # mit "–external-downloader"-Optionen verwenden, um potenzielle Störungen auszuschließen:

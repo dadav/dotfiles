@@ -1,9 +1,0 @@
-"*":
-  core:
-    telemetryConsent: "no"
-  editor:
-    fontSize: 13
-  "exception-reporting":
-    userId: "7d403235-b413-44ec-a252-b3b0148cca6f"
-  welcome:
-    showOnStartup: false

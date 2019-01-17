@@ -316,7 +316,7 @@ let g:airline_powerline_fonts = 1
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
-let g:airline_symbols.linenr = '␤'
+let g:airline_symbols.linenr = ''
 " CtrlP.vim should be used for Ctrl+p
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
