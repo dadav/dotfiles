@@ -75,7 +75,7 @@ URxvt.keysym.C-slash:  font-size:show
 !change fonts on demand (for demo purposes)
 ! M-C-1=Ctrl-Alt-1
 URxvt.keysym.M-C-1: command:\033]710;xft:Inconsolata:pixelsize=13:antialias=true:hinting=true\007\033]711;xft:Inconsolata:pixelsize=13:antialias=true:hinting=true\007
-URxvt.keysym.M-C-2: command:\033]710;xft:Inconsolata:pixelsize=18:antialias=true:hinting=true\007\033]711;xft:Inconsolata:pixelsize=18:antialias=true:hinting=true\007
+URxvt.keysym.M-C-2: command:\033]710;xft:Chihaya Jyun:pixelsize=18:antialias=true:hinting=true\007\033]711;xft:Chihaya Jyun:pixelsize=18:antialias=true:hinting=true\007
 
 ! scrolling behaviour
 URxvt.scrollTtyOutput: False
