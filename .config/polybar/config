@@ -59,7 +59,7 @@ font-4 = DejaVu Sans:pixelsize=11;2
 
 modules-left = i3
 modules-center = date
-modules-right = vpn filesystem memory wlan eth battery0 battery1 temperature backlight pulseaudio
+modules-right = lock vpn filesystem memory wlan eth battery0 battery1 temperature backlight pulseaudio
 
 tray-position = right
 tray-padding = 2
@@ -85,7 +85,17 @@ exec = echo UP
 exec-if = systemctl is-active 'vpn@*.service'
 interval = 10
 format-underline = #268bd2
-format-prefix = "ꝑ "
+format-prefix = "🖧 "
+#tail = true
+#format-prefix-foreground = #5b
+
+[module/lock]
+type = custom/script
+exec = test S = $(ps -o state= -p $(pgrep -x xautolock)) && echo ON
+exec-if = pgrep -x xautolock
+interval = 10
+format-underline = #268bd2
+format-prefix = " "
 #tail = true
 #format-prefix-foreground = #5b
 
