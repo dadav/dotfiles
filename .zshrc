@@ -69,6 +69,8 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
+
+
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -95,3 +97,23 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# Sources
+## Check for interactive shell, if not, return
+[[ $- != *i* ]] && return
+
+## Its interactive, load aliases
+# source all settings
+for category in aliases settings functions ; do
+  for setting in $HOME/.shells/common/$category/*.sh;do
+    . "$setting"
+  done
+  for setting in $HOME/.shells/zsh/$category/*.sh;do
+    . "$setting"
+  done
+done
+
+### OTHER FILES
+for stuff in ~/{.profile,.alias}; do
+  [[ -f $stuff ]] && . $stuff
+done
