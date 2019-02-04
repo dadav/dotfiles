@@ -8,7 +8,7 @@ else
 fi
 
 #zplug "agnoster/agnoster-zsh-theme", use:agnoster.zsh-theme, from:github, as:theme, hook-build: "sed -e '/#/!s/.*prompt_context/#&/g' -i agnoster.zsh-theme"
-zplug "plguins/z", from:oh-my-zsh
+zplug "rupa/z", use:z.sh
 zplug "plugins/git", from:oh-my-zsh
 zplug "plugins/colored-man-pages", from:oh-my-zsh
 zplug "plguins/command-not-found", from:oh-my-zsh
