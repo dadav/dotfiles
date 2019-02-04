@@ -15,7 +15,7 @@ zplug "plguins/command-not-found", from:oh-my-zsh
 zplug "zsh-users/zsh-syntax-highlighting", from:github
 zplug "zsh-users/zsh-autosuggestions", from:github
 zplug "zsh-users/zsh-completions", from:github
-
+zplug "$HOME/.config/themes/agnoster.zsh-theme", from:local, as:theme
 # Install packages that have not been installed yet
 if ! zplug check --verbose; then
     printf "Install? [y/N]: "
