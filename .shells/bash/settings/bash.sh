@@ -28,7 +28,6 @@ export GIT_PROMPT_FETCH_REMOTE_STATUS=0
 
 # Colors
 [ -x .config/base16-shell/scripts/base16-default-dark.sh ] && .config/base16-shell/scripts/base16-default-dark.sh
-eval "$(dircolors -b "$HOME"/.dircolors)"
 
 # Pinguin
 function show_err(){
