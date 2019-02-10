@@ -1,10 +1,39 @@
+" Bootstrap vim-plug if it's not there
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent execute "!curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
+  autocmd VimEnter * PlugInstall | source $MYVIMRC
+endif
+
 "         Specify a directory for plugins
 " - For Neovim: ~/.local/share/nvim/plugged
 " - Avoid using standard Vim directory names like 'plugin'
 call plug#begin('~/.vim/plugged')
 
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+let g:deoplete#enable_at_startup = 1
+
+" Scalpel: better word replacer within a file
+" invoked with <Leader>e by default
+Plug 'wincent/scalpel'
+
+" Briefly highlight the yanked region
+Plug 'machakann/vim-highlightedyank'
+
+" Macro helper
+" <CR> will replay last recorded macro
+Plug 'wincent/replay'
+
 " multi-cursor FTW
 Plug 'terryma/vim-multiple-cursors'
+
+" Better mark management
+Plug 'kshenoy/vim-signature'
 
 " fuzzy file completion, me gusta!
 Plug 'ctrlpvim/ctrlp.vim'
@@ -47,6 +76,9 @@ Plug 'fatih/vim-go'
 "Plug 'Shougo/deoplete.nvim'
 "Plug 'nsf/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
 
+" PyDoc to quickly access documentation
+Plug 'fs111/pydoc.vim'
+
 " Tabmanager - visualizing tabs in vim
 Plug 'kien/tabman.vim'
 
@@ -68,6 +100,9 @@ Plug 'vim-airline/vim-airline'
 " syntax/indent/ftplugins for a many languages/tools
 Plug 'sheerun/vim-polyglot'
 
+" Visual helper
+Plug 'Yggdroot/indentLine'
+
 " Autoscroll
 Plug 'yuttie/comfortable-motion.vim'
 
@@ -81,21 +116,6 @@ Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 "Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 
-" Using a non-master branch
-"Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
-
-" Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
-"Plug 'fatih/vim-go', { 'tag': '*' }
-
-" Plugin options
-"Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
-
-" Plugin outside ~/.vim/plugged with post-update hook
-"Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-
-" Unmanaged plugin (manually installed and updated)
-"Plug '~/my-prototype-plugin'
-
 " Initialize plugin system
 call plug#end()
 
@@ -106,6 +126,11 @@ set background=dark
 colorscheme jay
 set t_Co=256
 
+" Live preview of substitutions
+if has('nvim')
+  set inccommand=split
+endif
+
 " Show matching brackets when text indicator is over them
 set showmatch
 
@@ -114,11 +139,17 @@ set showmatch
 autocmd BufWritePost *.adoc silent! !head -1 % | grep autocompile && asciidoctor-pdf % || true
 
 " #### Fixes code-completion bug
-autocmd BufRead,BufNewFile *.py :set omnifunc=python3complete#Complete
+" autocmd BufRead,BufNewFile *.py :set omnifunc=python3complete#Complete
 autocmd BufRead,BufNewFile *.yml setf ansible
+
+" Remove trailing spaces on write
+" http://vim.wikia.com/wiki/Remove_unwanted_spaces
+autocmd BufWritePre * %s/\s\+$//e
 
 " #### Vim-Go
 autocmd FileType go nmap <Leader>i <Plug>(go-info)
+autocmd FileType go nmap <leader>b  <Plug>(go-build)
+autocmd FileType go nmap <leader>r  <Plug>(go-run)
 
 au BufNewFile,BufRead *.groovy  setf groovy
 au BufNewFile,BufRead Jenkinsfile  setf groovy
@@ -127,13 +158,14 @@ au BufNewFile,BufRead Jenkinsfile  setf groovy
 "autocmd FileType sh UltiSnipsAddFiletype custom-sh
 
 " ### Mouse
-set mouse=r
+set mouse=
 set clipboard^=unnamed,unnamedplus
 
 " ### Undo
 set undolevels=500
 set undodir=$HOME/storage/.VIM_UNDO_FILES
 set history=700
+
 " ### Behaviour
 " I hate tabs.
 set expandtab           " enter spaces when tab is pressed
@@ -194,12 +226,24 @@ nmap <silent> <BS> :nohlsearch<CR>
 
 " Set the search scan to wrap around the file
 set wrapscan
+
 " Turn on Highlighting of search results
 set hlsearch
 
 " ### Shortcuts
 let mapleader = ","
 let g:mapleader = ","
+
+" Spawn terminals
+map <leader>t :spl term://bash<cr>
+map <leader>tv :vspl term://bash<cr>
+map <leader>T :tabe term://bash<cr>
+" Enter insert mode when we switch to a terminal
+" Super useful 😻
+:au BufEnter * if &buftype == 'terminal' | :startinsert | endif
+
+" Auomatically set the terminal title
+set title
 
 " ### Selection
 vnoremap > >gv
@@ -208,6 +252,7 @@ vnoremap < <gv
 " ### Buffers
 " No redraw durring macros
 set lazyredraw
+
 " ALT-n next buffer and list, ALT-p previous buffer
 nnoremap <A-n> :bnext<CR>:redraw<CR>:ls<CR>
 nnoremap <A-p> :bprevious<CR>:redraw<CR>:ls<CR>
