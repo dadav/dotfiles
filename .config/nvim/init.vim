@@ -73,8 +73,7 @@ Plug 'saltstack/salt-vim'
 Plug 'pearofducks/ansible-vim', { 'do': './UltiSnips/generate.py' }
 Plug 'python-mode/python-mode', {'branch': 'develop'}
 Plug 'fatih/vim-go'
-"Plug 'Shougo/deoplete.nvim'
-"Plug 'nsf/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
+Plug 'mdempsky/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
 
 " PyDoc to quickly access documentation
 Plug 'fs111/pydoc.vim'
