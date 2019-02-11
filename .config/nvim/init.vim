@@ -9,6 +9,9 @@ endif
 " - Avoid using standard Vim directory names like 'plugin'
 call plug#begin('~/.vim/plugged')
 
+" ##############################################
+" ###############  PLUGINS #####################
+" ##############################################
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 else
@@ -16,7 +19,14 @@ else
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
+
 let g:deoplete#enable_at_startup = 1
+
+" deoplete plugins
+Plug 'zchee/deoplete-jedi'
+Plug 'Shougo/neoinclude.vim'
+Plug 'Shougo/neco-syntax'
+Plug 'fszymanski/deoplete-emoji'
 
 " Scalpel: better word replacer within a file
 " invoked with <Leader>e by default
@@ -61,6 +71,12 @@ Plug 'rodjek/vim-puppet'
 
 " Highlight ugly extra whitespace
 Plug 'ntpeters/vim-better-whitespace'
+
+" fuzz all the things
+Plug 'junegunn/fzf.vim'
+
+"Open file under cursor with 'gf'
+Plug 'amix/open_file_under_cursor.vim'
 
 " tpope FTW
 Plug 'tpope/vim-surround'
@@ -118,7 +134,9 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 " Initialize plugin system
 call plug#end()
 
-" ### Looks
+" ##############################################
+" ################### Looks ####################
+" ##############################################
 set number
 syntax enable
 set background=dark
@@ -133,7 +151,9 @@ endif
 " Show matching brackets when text indicator is over them
 set showmatch
 
-" ### Auto Commands
+" ##############################################
+" ################ Auto Commands ###############
+" ##############################################
 " Asciidoc
 autocmd BufWritePost *.adoc silent! !head -1 % | grep autocompile && asciidoctor-pdf % || true
 
@@ -145,27 +165,25 @@ autocmd BufRead,BufNewFile *.yml setf ansible
 " http://vim.wikia.com/wiki/Remove_unwanted_spaces
 autocmd BufWritePre * %s/\s\+$//e
 
-" #### Vim-Go
-autocmd FileType go nmap <Leader>i <Plug>(go-info)
-autocmd FileType go nmap <leader>b  <Plug>(go-build)
-autocmd FileType go nmap <leader>r  <Plug>(go-run)
-
 au BufNewFile,BufRead *.groovy  setf groovy
 au BufNewFile,BufRead Jenkinsfile  setf groovy
 
-" #### Snippets
-"autocmd FileType sh UltiSnipsAddFiletype custom-sh
-
-" ### Mouse
+" ##############################################
+" ##################### Mouse ##################
+" ##############################################
 set mouse=
 set clipboard^=unnamed,unnamedplus
 
+" ##############################################
 " ### Undo
+" ##############################################
 set undolevels=500
 set undodir=$HOME/storage/.VIM_UNDO_FILES
 set history=700
 
+" ##############################################
 " ### Behaviour
+" ##############################################
 " I hate tabs.
 set expandtab           " enter spaces when tab is pressed
 set textwidth=100       " break lines when line length increases
@@ -177,11 +195,15 @@ set softtabstop=2
 
 set iskeyword+=_,$,@,%,#    " none of these are word dividers
 
+" ##############################################
 " ## Filetypes
+" ##############################################
 filetype plugin on
 filetype indent on
 
+" ##############################################
 " ## Folding
+" ##############################################
 set foldmethod=indent
 set foldnestmax=10
 set nofoldenable
@@ -191,13 +213,17 @@ set foldlevel=2
 set backspace=2
 
 
+" ##############################################
 " ### History
+" ##############################################
 " Sets how many lines of history VIM has to remember
 set undodir=$HOME/.VIM_UNDO_FILES
 set undolevels=5000
 set history=700
 
+" ##############################################
 " ### Completion
+" ##############################################
 " ## Filename completion
 set wildmenu
 set wildmode=longest:full,full
@@ -216,7 +242,9 @@ set noerrorbells visualbell t_vb=
 autocmd GUIEnter * set visualbell t_vb=
 
 
+" ##############################################
 " ### Search
+" ##############################################
 set incsearch
 set ignorecase
 
@@ -229,7 +257,9 @@ set wrapscan
 " Turn on Highlighting of search results
 set hlsearch
 
+" ##############################################
 " ### Shortcuts
+" ##############################################
 let mapleader = ","
 let g:mapleader = ","
 
@@ -244,11 +274,15 @@ map <leader>T :tabe term://bash<cr>
 " Auomatically set the terminal title
 set title
 
+" ##############################################
 " ### Selection
+" ##############################################
 vnoremap > >gv
 vnoremap < <gv
 
+" ##############################################
 " ### Buffers
+" ##############################################
 " No redraw durring macros
 set lazyredraw
 
@@ -266,7 +300,9 @@ nnoremap <Leader>s\| :vsplit<CR>
 nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
 nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
 
+" ##############################################
 " ### Motion
+" ##############################################
 " Treat long lines as break lines (useful when moving around in them)
 map j gj
 map k gk
@@ -326,7 +362,9 @@ function! Preserve(command)
   call winrestview(l:saved_winview)
 endfunction
 
+" ##############################################
 " ### Plugin Mappings
+" ##############################################
 " #### Tabularize
 nmap <Leader>a  :Tabularize / <CR>
 vmap <Leader>a  :Tabularize / <CR>
@@ -335,25 +373,41 @@ vmap <Leader>a= :Tabularize /=<CR>
 nmap <Leader>a: :Tabularize /:\zs<CR>
 vmap <Leader>a: :Tabularize /:\zs<CR>
 
+" #### Vim-Go
+autocmd FileType go nmap <Leader>i <Plug>(go-info)
+autocmd FileType go nmap <leader>b  <Plug>(go-build)
+autocmd FileType go nmap <leader>r  <Plug>(go-run)
+
 " #### Asciidoctor-pdf
 nmap <Leader>adc :!asciidoctor-pdf %<CR>
 " #### NERDTree
 nmap <Leader>nt :NERDTreeToggle<CR>
 
+" fast access to fzf
+map <leader>F :FZF!<cr>
+map <leader>f :FZF
+map <C-P> :FZF .<cr>
+
 " #### Tagbar
 nmap <Leader>tt :TagbarToggle<CR>
 
+" ##############################################
 " ### Encoding
+" ##############################################
 " Make sure utf-8 is used
 " Not really needed for neovim but vim
 set encoding=utf-8
 set termencoding=utf-8
 
+" ##############################################
 " ### Nifty tricks
+" ##############################################
 " Write files as root
 cmap w!! w !sudo tee > /dev/null %
 
+" ##############################################
 " ### Plugin Options
+" ##############################################
 " Airline
 " Fix ln character
 let g:airline_powerline_fonts = 1
