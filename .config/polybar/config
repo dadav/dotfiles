@@ -51,8 +51,8 @@ padding-right = 2
 module-margin-left = 1
 module-margin-right = 2
 
-font-0 = Iosevka Nerd Font Mono:pixelsize=12;1
-font-1 = Font Awesome 5 Free:pixelsize=12;1
+font-0 = FontAwesome:pixelsize=12;1
+font-1 = Iosevka Nerd Font Mono:pixelsize=12;1
 font-2 = Unifont:size=11;2
 font-3 = Wuncon Siji:pixelsize=11;3
 font-4 = DejaVu Sans:pixelsize=11;2
@@ -81,13 +81,11 @@ cursor-scroll = ns-resize
 
 [module/vpn]
 type = custom/script
-exec = echo UP
+exec = echo VPN
 exec-if = systemctl is-active 'vpn@*.service'
 interval = 10
 format-underline = #268bd2
-format-prefix = "🖧 "
-#tail = true
-#format-prefix-foreground = #5b
+format-prefix = " "
 
 [module/lock]
 type = custom/script
@@ -261,7 +259,7 @@ label = %percentage:2%%
 [module/memory]
 type = internal/memory
 interval = 2
-format-prefix = " "
+format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = #4bffdc
 label = %percentage_used%%
@@ -281,11 +279,7 @@ format-disconnected =
 ;label-disconnected = %ifname% disconnected
 ;label-disconnected-foreground = ${colors.foreground-alt}
 
-ramp-signal-0 = 
-ramp-signal-1 = 
-ramp-signal-2 = 
-ramp-signal-3 = 
-ramp-signal-4 = 
+ramp-signal-0 = 
 ramp-signal-foreground = ${colors.foreground-alt}
 
 [module/eth]
@@ -398,9 +392,11 @@ format-full-prefix = " "
 format-full-prefix-foreground = ${colors.foreground-alt}
 format-full-underline = ${self.format-charging-underline}
 
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
 ramp-capacity-foreground = ${colors.foreground-alt}
 
 animation-charging-0 = 
@@ -429,9 +425,11 @@ label = %temperature-c%
 label-warn = %temperature-c%
 label-warn-foreground = ${colors.secondary}
 
-ramp-0 = 
-ramp-1 = 
-ramp-2 = 
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-3 = 
+ramp-4 = 
 ramp-foreground = ${colors.foreground-alt}
 
 [module/powermenu]
