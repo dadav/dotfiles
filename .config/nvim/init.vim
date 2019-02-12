@@ -241,6 +241,13 @@ set wildignore+=*.dict,*.aux,*.nav,*.out,*.toc,*.vrb,*.snm
 set noerrorbells visualbell t_vb=
 autocmd GUIEnter * set visualbell t_vb=
 
+" ##############################################
+" ### Encoding
+" ##############################################
+" Make sure utf-8 is used
+" Not really needed for neovim but vim
+set encoding=utf-8
+set termencoding=utf-8
 
 " ##############################################
 " ### Search
@@ -339,32 +346,15 @@ vno <left> <Nop>
 vno <right> <Nop>
 vno <up> <Nop>
 
-" ### F- Keys
-" #### Show Terminal
-nmap <F2> :terminal<CR>
 
-" #### Toogle Cross
-nmap <F3> :call ToggleCursor()<CR>
-function! ToggleCursor()
-  set cursorcolumn!
-  set cursorline!
-endfunction
-
-" #### Clean trailing whitespaces
-nnoremap <F4> :call Preserve("%s/\\s\\+$//e")<CR>
-xnoremap <F4> :call Preserve("'<,'>s/\\s\\+$//e")<CR>
-function! Preserve(command)
-  " Preparation: save window state
-  let l:saved_winview = winsaveview()
-  " Run the command:
-  execute a:command
-  " Clean up: restore previous window position
-  call winrestview(l:saved_winview)
-endfunction
 
 " ##############################################
 " ### Plugin Mappings
 " ##############################################
+" #### EasyAlign
+nmap ga <Plug>(EasyAlign)
+xmap ga <Plug>(EasyAlign)
+
 " #### Tabularize
 nmap <Leader>a  :Tabularize / <CR>
 vmap <Leader>a  :Tabularize / <CR>
@@ -380,6 +370,7 @@ autocmd FileType go nmap <leader>r  <Plug>(go-run)
 
 " #### Asciidoctor-pdf
 nmap <Leader>adc :!asciidoctor-pdf %<CR>
+
 " #### NERDTree
 nmap <Leader>nt :NERDTreeToggle<CR>
 
@@ -391,19 +382,40 @@ map <C-P> :FZF .<cr>
 " #### Tagbar
 nmap <Leader>tt :TagbarToggle<CR>
 
-" ##############################################
-" ### Encoding
-" ##############################################
-" Make sure utf-8 is used
-" Not really needed for neovim but vim
-set encoding=utf-8
-set termencoding=utf-8
+
 
 " ##############################################
 " ### Nifty tricks
 " ##############################################
 " Write files as root
 cmap w!! w !sudo tee > /dev/null %
+
+" Terminal
+map <leader>t :spl term://bash<cr>
+map <leader>tv :vspl term://bash<cr>
+map <leader>T :tabe term://bash<cr>
+" Enter insert mode when we switch to a terminal
+" Super useful 😻
+:au BufEnter * if &buftype == 'terminal' | :startinsert | endif
+
+" #### Toogle Cross
+nmap <silent> <Leader>ct :call ToggleCursor()<CR>
+function! ToggleCursor()
+  set cursorcolumn!
+  set cursorline!
+endfunction
+
+" #### Clean trailing whitespaces
+nnoremap <silent> <Leader>cw :call Preserve("%s/\\s\\+$//e")<CR>
+xnoremap <silent> <Leader>cw :call Preserve("'<,'>s/\\s\\+$//e")<CR>
+function! Preserve(command)
+  " Preparation: save window state
+  let l:saved_winview = winsaveview()
+  " Run the command:
+  execute a:command
+  " Clean up: restore previous window position
+  call winrestview(l:saved_winview)
+endfunction
 
 " ##############################################
 " ### Plugin Options
