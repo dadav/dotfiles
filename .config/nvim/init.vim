@@ -399,7 +399,7 @@ map <leader>T :tabe term://bash<cr>
 :au BufEnter * if &buftype == 'terminal' | :startinsert | endif
 
 " #### Toogle Cross
-nmap <silent> <Leader>tc :call ToggleCursor()<CR>
+nmap <silent> <Leader>ct :call ToggleCursor()<CR>
 function! ToggleCursor()
   set cursorcolumn!
   set cursorline!
