@@ -28,6 +28,9 @@ Plug 'Shougo/neoinclude.vim'
 Plug 'Shougo/neco-syntax'
 Plug 'fszymanski/deoplete-emoji'
 
+" Limelight; Focus on stuff
+Plug 'junegunn/limelight.vim'
+
 " Scalpel: better word replacer within a file
 " invoked with <Leader>e by default
 Plug 'wincent/scalpel'
@@ -355,6 +358,10 @@ vno <up> <Nop>
 " ##############################################
 " ### Plugin Mappings
 " ##############################################
+" #### Limelight
+nmap <Leader>l <Plug>(Limelight)
+xmap <Leader>l <Plug>(Limelight)
+
 " #### EasyAlign
 nmap ga <Plug>(EasyAlign)
 xmap ga <Plug>(EasyAlign)
@@ -385,8 +392,6 @@ map <C-P> :FZF .<cr>
 
 " #### Tagbar
 nmap <Leader>tt :TagbarToggle<CR>
-
-
 
 " ##############################################
 " ### Nifty tricks
