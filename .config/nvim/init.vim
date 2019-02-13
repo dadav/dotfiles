@@ -287,6 +287,10 @@ set title
 vnoremap > >gv
 vnoremap < <gv
 
+" Move selected lines vertically
+xnoremap K :m '<-2<CR>gv=gv
+xnoremap J :m '>+1<CR>gv=gv
+
 " ##############################################
 " ### Buffers
 " ##############################################
