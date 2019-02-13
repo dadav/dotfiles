@@ -9,10 +9,6 @@ URxvt*saveLines: 5000
 URxvt*font: xft:Hack:pixelsize=20:antialias=true:hinting=true,xft: DejaVu Sans Mono,xft: Symbola:size=10,xft: Unifont,IPAMincho:style=Regular:size=12
 URxvt*boldFont: xft:Hack:pixelsize=20:antialias=true:hinting=true,xft: DejaVu Sans Mono,xft: Symbola:size=10,xft: Unifont,IPAMincho:style=Regular:size=12
 
-! Japanese support
-URxvt.inputMethod: ibus
-URxvt.preeditType: OverTheSpot
-
 ! THEME
 !! source:
 !https://github.com/spazzpp2/dotfiles/blob/29819a5ac5e451bfa39bc324378aa508ef75cae8/Molokai.xrdb
