@@ -1,7 +1,45 @@
-! Rofi font and colors
-rofi.font:Inconsolata Regular 12
+!rofi
+
+rofi.switchers:            run,window,ssh
+rofi.opacity:              80
+rofi.width:                50
+rofi.lines:                10
+rofi.columns:              1
+rofi.fuzzy:                true
+rofi.kb-cancel:            Escape,Control+c
+!rofi.font:                mono 10
+
+! https://davedavenport.github.io/rofi/p05-Themes.html
 rofi.color-enabled: true
-rofi.color-window: #273238, #273238, #1e2529
-rofi.color-normal: #273238, #c1c1c1, #273238, #394249, #ffffff
-rofi.color-active: #273238, #80cbc4, #273238, #394249, #80cbc4
-rofi.color-urgent: #273238, #ff1844, #273238, #394249, #ff1844
+rofi.color-window: #393939, #393939, #268bd2
+rofi.color-normal: #393939, #ffffff, #393939, #268bd2, #ffffff
+rofi.color-active: #393939, #268bd2, #393939, #268bd2, #205171
+rofi.color-urgent: #393939, #f3843d, #393939, #268bd2, #ffc39c
+!rofi.color-enabled:                  true
+!rofi.color-normal:                   #282828,#ebdbb2,#353535,#458588,#ebdbb2
+!rofi.color-urgent:                   #282828,#d79921,#353535,#d79921,#282828
+!rofi.color-active:                   #282828,#ebdbb2,#353535,#458588,#ebdbb2
+!rofi.color-window:                   #282828,#458488
+rofi.bc:                   black
+rofi.bw:                   1
+rofi.location:             0
+rofi.padding:              5
+rofi.yoffset:              0
+rofi.xoffset:              0
+rofi.fixed-num-lines:      false
+rofi.hmode:                true
+rofi.font:                 xft:Hack 20
+rofi.terminal:             urxvt
+rofi.ssh-client:           ssh
+rofi.ssh-command:          {terminal} -e {ssh-client} {host}
+rofi.run-command:          {cmd}
+rofi.run-list-command:
+rofi.run-shell-command:    {terminal} -e {cmd}
+rofi.disable-history:      false
+rofi.levenshtein-sort:     true
+rofi.case-sensitive:       false
+rofi.key:                  F12
+rofi.rkey:                 mod1+F1
+rofi.skey:                 mod1+F2
+rofi.sidebar-mode:         true
+rofi.lazy-filter-limit: 5000
