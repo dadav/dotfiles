@@ -359,8 +359,8 @@ vno <up> <Nop>
 " ### Plugin Mappings
 " ##############################################
 " #### Limelight
-nmap <Leader>l <Plug>(Limelight)
-xmap <Leader>l <Plug>(Limelight)
+nmap <Leader>l :Limelight!!<CR>
+xmap <Leader>l :Limelight!!<CR>
 
 " #### EasyAlign
 nmap ga <Plug>(EasyAlign)
