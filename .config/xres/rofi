@@ -7,7 +7,7 @@ rofi.lines:                10
 rofi.columns:              1
 rofi.fuzzy:                true
 rofi.kb-cancel:            Escape,Control+c
-!rofi.font:                mono 10
+!rofi.font:                 mono 8
 
 ! https://davedavenport.github.io/rofi/p05-Themes.html
 rofi.color-enabled: true
@@ -28,7 +28,7 @@ rofi.yoffset:              0
 rofi.xoffset:              0
 rofi.fixed-num-lines:      false
 rofi.hmode:                true
-rofi.font:                 xft:Hack 20
+rofi.font:                 xft:Hack 10
 rofi.terminal:             urxvt
 rofi.ssh-client:           ssh
 rofi.ssh-command:          {terminal} -e {ssh-client} {host}
