@@ -1,0 +1,3 @@
+! Japanese support
+URxvt.inputMethod: ibus
+URxvt.preeditType: OverTheSpot

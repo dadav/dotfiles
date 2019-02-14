@@ -28,6 +28,9 @@ Plug 'Shougo/neoinclude.vim'
 Plug 'Shougo/neco-syntax'
 Plug 'fszymanski/deoplete-emoji'
 
+" Limelight; Focus on stuff
+Plug 'junegunn/limelight.vim'
+
 " Scalpel: better word replacer within a file
 " invoked with <Leader>e by default
 Plug 'wincent/scalpel'
@@ -287,6 +290,15 @@ set title
 vnoremap > >gv
 vnoremap < <gv
 
+" Move selected lines vertically
+xnoremap K :m '<-2<CR>gv=gv
+xnoremap J :m '>+1<CR>gv=gv
+
+ " allow cursor to move where there is no text in visual block mode
+if has('virtualedit')
+  set virtualedit=block
+endif
+
 " ##############################################
 " ### Buffers
 " ##############################################
@@ -351,6 +363,10 @@ vno <up> <Nop>
 " ##############################################
 " ### Plugin Mappings
 " ##############################################
+" #### Limelight
+nmap <Leader>l :Limelight!!<CR>
+xmap <Leader>l :Limelight!!<CR>
+
 " #### EasyAlign
 nmap ga <Plug>(EasyAlign)
 xmap ga <Plug>(EasyAlign)
@@ -381,8 +397,6 @@ map <C-P> :FZF .<cr>
 
 " #### Tagbar
 nmap <Leader>tt :TagbarToggle<CR>
-
-
 
 " ##############################################
 " ### Nifty tricks
@@ -422,11 +436,23 @@ endfunction
 " ##############################################
 " Airline
 " Fix ln character
-let g:airline_powerline_fonts = 1
+"let g:airline_powerline_fonts = 1
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
-let g:airline_symbols.linenr = ''
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.crypt = '🔒'
+let g:airline_symbols.linenr = '☰'
+let g:airline_symbols.maxlinenr = '㏑'
+let g:airline_symbols.branch = '⎇'
+let g:airline_symbols.paste = 'ρ'
+let g:airline_symbols.notexists   = '∄'
+let g:airline_symbols.whitespace = 'Ξ'
+
 " CtrlP.vim should be used for Ctrl+p
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'

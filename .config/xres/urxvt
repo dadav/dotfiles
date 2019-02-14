@@ -1,0 +1,82 @@
+!General behaviour
+URxvt*transparent: true
+URxvt*scrollBar: false
+URxvt*saveLines: 5000
+
+! FONTS
+! Multiple fonts are necessary in order to print all Unicode symols. Strange urxvt behaviour
+! https://www.reddit.com/r/archlinux/comments/3pk3jt/rxvtunicode_cant_display_some_characters/
+URxvt*font: xft:Hack:pixelsize=20:antialias=true:hinting=true,xft: DejaVu Sans Mono,xft: Symbola:size=10,xft: Unifont,IPAMincho:style=Regular:size=12
+URxvt*boldFont: xft:Hack:pixelsize=20:antialias=true:hinting=true,xft: DejaVu Sans Mono,xft: Symbola:size=10,xft: Unifont,IPAMincho:style=Regular:size=12
+
+! THEME
+!! source:
+!https://github.com/spazzpp2/dotfiles/blob/29819a5ac5e451bfa39bc324378aa508ef75cae8/Molokai.xrdb
+!
+!! Molokai theme
+URxvt*background: #101010
+URxvt*foreground: #d0d0d0
+URxvt*color0: #101010
+URxvt*color1: #960050
+URxvt*color2: #66aa11
+URxvt*color3: #c47f2c
+URxvt*color4: #30309b
+URxvt*color5: #7e40a5
+URxvt*color6: #3579a8
+URxvt*color7: #9999aa
+URxvt*color8: #303030
+URxvt*color9: #ff0090
+URxvt*color10: #80ff00
+URxvt*color11: #ffba68
+URxvt*color12: #5f5fee
+URxvt*color13: #bb88dd
+URxvt*color14: #4eb4fa
+URxvt*color15: #d0d0d0
+
+! shading - 0 to 99 darkens, 101 to 200 lightens.
+!   Dont use with tintColor; just use a darker or lighter color instead.
+URxvt*shading: 10
+
+!Clickable Links
+URxvt.perl-ext-common: default,matcher,clipboard,url-select,keyboard-select,font-size
+
+! URxvt.perl-ext-common:      default,clipboard,url-select,keyboard-select
+URxvt.url-select.underline: true
+URxvt.keysym.M-u:           perl:url-select:select_next
+URxvt.keysym.M-Escape:      perl:keyboard-select:activate
+URxvt.keysym.M-s:           perl:keyboard-select:search
+
+URxvt.url-select.launcher: xdg-open
+
+URxvt.urlLauncher: firefox
+URxvt.matcher.button: 2
+URxvt.matcher.pattern.1: \\bwww\\.[\\w-]\\.[\\w./?&@#-]*[\\w/-]
+
+!Clipboard stuff
+URxvt.keysym.Shift-Control-C: perl:clipboard:copy
+URxvt.keysym.Shift-Control-V: perl:clipboard:paste
+
+! must be disabled for most perl extensions
+URxvt.iso14755: false
+URxvt.iso14755_52: false
+
+! resize font
+URxvt.keysym.C-Up:     font-size:increase
+URxvt.keysym.C-Down:   font-size:decrease
+URxvt.keysym.C-S-Up:   font-size:incglobal
+URxvt.keysym.C-S-Down: font-size:decglobal
+URxvt.keysym.C-equal:  font-size:reset
+URxvt.keysym.C-slash:  font-size:show
+
+!change fonts on demand (for demo purposes)
+! M-C-1=Ctrl-Alt-1
+URxvt.keysym.M-C-1: command:\033]710;xft:Inconsolata:pixelsize=13:antialias=true:hinting=true\007\033]711;xft:Inconsolata:pixelsize=13:antialias=true:hinting=true\007
+URxvt.keysym.M-C-2: command:\033]710;xft:Chihaya Jyun:pixelsize=18:antialias=true:hinting=true\007\033]711;xft:Chihaya Jyun:pixelsize=18:antialias=true:hinting=true\007
+
+! scrolling behaviour
+URxvt.scrollTtyOutput: False
+URxvt.scrollTtyKeypress: True
+URxvt.scrollWithBuffer: True
+
+! Make space between letters smaller
+! URxvt.letterSpace: -1
