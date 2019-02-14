@@ -269,6 +269,7 @@ type = custom/script
 exec = grep ^Dirty /proc/meminfo | awk '{ print $(NF-1)" "$NF }'
 interval = 5
 format-prefix = " "
+format-underline = #4bffdc
 
 [module/wlan]
 type = internal/network
