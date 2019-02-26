@@ -58,7 +58,7 @@ workspace_layout tabbed
 bindsym $mod+semicolon move workspace to output up
 
 # start a terminal
-bindsym $mod+Return exec /usr/bin/urxvt
+bindsym $mod+Return exec /usr/bin/kitty #/usr/bin/urxvt
 
 # kill focused window
 bindsym $mod+Shift+q kill
