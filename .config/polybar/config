@@ -59,7 +59,7 @@ font-4 = DejaVu Sans:pixelsize=11;2
 
 modules-left = i3
 modules-center = date
-modules-right = lock vpn filesystem memory dirtymem wlan eth battery0 battery1 temperature backlight pulseaudio
+modules-right = mpd lock vpn filesystem memory dirtymem wlan eth battery0 battery1 temperature backlight pulseaudio
 
 tray-position = right
 tray-padding = 2
@@ -199,6 +199,9 @@ icon-next = 
 
 label-song-maxlen = 25
 label-song-ellipsis = true
+
+host = 127.0.0.1
+port = 6600
 
 [module/xbacklight]
 type = internal/xbacklight
