@@ -57,9 +57,9 @@ font-2 = Unifont:size=11;2
 font-3 = Wuncon Siji:pixelsize=11;3
 font-4 = DejaVu Sans:pixelsize=11;2
 
-modules-left = i3
+modules-left = i3 mpd
 modules-center = date
-modules-right = mpd lock vpn filesystem memory dirtymem wlan eth battery0 battery1 temperature backlight pulseaudio
+modules-right = lock vpn filesystem memory dirtymem wlan eth battery0 battery1 temperature backlight pulseaudio
 
 tray-position = right
 tray-padding = 2
@@ -191,16 +191,16 @@ label-urgent-padding = ${module/bspwm.label-urgent-padding}
 type = internal/mpd
 format-online = <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>
 
-icon-play =                                                                                                                                                                  
-icon-pause =                                                                                                                                                                 
-icon-stop =                                                                                                                                                                  
-icon-prev =                                                                                                                                                                  
-icon-next =                                                                                                                                                                  
-icon-seekb =                                                                                                                                                                 
-icon-seekf =                                                                                                                                                                 
-icon-random =                                                                                                                                                                
-icon-repeat =                                                                                                                                                                
-icon-repeatone =  
+icon-play = 
+icon-pause = 
+icon-stop = 
+icon-prev = 
+icon-next = 
+icon-seekb = 
+icon-seekf = 
+icon-random = 
+icon-repeat = 
+icon-repeatone = 
 
 label-song-maxlen = 25
 label-song-ellipsis = true
