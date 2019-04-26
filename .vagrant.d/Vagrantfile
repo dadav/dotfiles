@@ -1,0 +1,15 @@
+Vagrant.configure(2) do |config|
+    if Vagrant.has_plugin?('vagrant-cachier')
+      config.cache.scope = :box
+      config.cache.enable :yum
+      config.cache.enable :apt
+      config.cache.enable :zypper
+      config.cache.enable :generic, 'wget' => { cache_dir: '/var/cache/wget' }
+    end
+
+    if Vagrant.has_plugin?('vagrant-proxyconf')
+      config.proxy.http     = ENV['http_proxy']
+      config.proxy.https    = ENV['https_proxy']
+      config.proxy.no_proxy = ENV['no_proxy']
+    end
+end
