@@ -4,15 +4,14 @@
 location:
     # List of source directories to backup (required). Globs and tildes are expanded.
     source_directories:
-        - /home
-        - /etc
+        - ~/go/src/github.com/dadav
+        - ~/documents
 
     # Paths to local or remote repositories (required). Tildes are expanded. Multiple
     # repositories are backed up to in sequence. See ssh_command for SSH options like
     # identity file or port.
     repositories:
-        - /media/usb/fatman/backup/laptop/
-        - /media/usb/fatwoman/backup/laptop/
+        - /media/usb/fatman/backup/desktop/
 
     # Stay in same file system (do not cross mount points). Defaults to false.
     #one_file_system: true
@@ -193,7 +192,7 @@ retention:
 # IMPORTANT: All provided commands and scripts are executed with user permissions of borgmatic.
 # Do not forget to set secure permissions on this file as well as on any script listed (chmod 0700) to
 # prevent potential shell injection or privilege escalation.
-#hooks:
+hooks:
     # List of one or more shell commands or scripts to execute before creating a backup.
     before_backup:
         - echo "Starting a backup job."
