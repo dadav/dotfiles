@@ -35,6 +35,7 @@ bindkey -e # reset
 bindkey "^[[5~" history-beginning-search-backward # page up
 bindkey "^[[6~" history-beginning-search-forward # page down
 bindkey "\e[3~" delete-char # del
+bindkey '^[\' pound-insert # also use setopt interactivecomments
 
 # Sources
 ## Check for interactive shell, if not, return
