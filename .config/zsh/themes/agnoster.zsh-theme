@@ -229,8 +229,6 @@ prompt_status() {
 
 ## Main prompt
 build_prompt() {
-  # fix warning
-  local ZSH_DEBUG_CMD
   RETVAL=$?
   prompt_status
   prompt_virtualenv
