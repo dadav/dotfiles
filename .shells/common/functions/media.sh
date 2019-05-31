@@ -19,3 +19,9 @@ function vidlen() {
     ffprobe -v quiet -of csv=p=0 -show_entries format=duration "$vid"
   done
 }
+
+function vidres() {
+  for vid in "$@"; do
+    ffprobe -v error -select_streams v:0 -show_entries stream=width,height -of default=nw=1 "$vid"
+  done
+}

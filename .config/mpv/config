@@ -1,3 +1,5 @@
+# Volume
+volume=25
 # Enable OpenGL and VA-API hardware decoding.
 vo=opengl,vx
 hwdec=vaapi
