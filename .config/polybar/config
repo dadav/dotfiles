@@ -57,7 +57,7 @@ font-2 = Unifont:size=11;2
 font-3 = Wuncon Siji:pixelsize=11;3
 font-4 = DejaVu Sans:pixelsize=11;2
 
-modules-left = i3 mpd
+modules-left = i3 mpd spotify
 modules-center = date
 modules-right = lock vpn filesystem memory dirtymem wlan eth battery0 battery1 temperature backlight pulseaudio
 
@@ -96,6 +96,13 @@ format-underline = #268bd2
 format-prefix = " "
 #tail = true
 #format-prefix-foreground = #5b
+
+[module/spotify]
+type = custom/script
+exec = spotify-cli --meta
+exec-if = pgrep -x spotify
+interval = 5
+format-underline = #4bffdc
 
 [module/xwindow]
 type = internal/xwindow

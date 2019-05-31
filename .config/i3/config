@@ -237,7 +237,8 @@ exec_always --no-startup-id ~/.local/bin/poly
 # Fix tearing
 exec --no-startup-id compton --no-fading-openclose --backend xr_glx_hybrid --vsync opengl-swc --paint-on-overlay --config /dev/null
 
-exec --no-startup-id ibus-daemon -drx
+#exec --no-startup-id ibus-daemon -drx
+exec --no-startup-id fcitx -d
 
 # Start redshift
 exec --no-startup-id redshift -l 48.780679:9.199159
