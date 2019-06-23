@@ -211,6 +211,7 @@ assign [class="qutebrowser"] $ws1
 assign [window_role="browser"] $ws1
 assign [class="Thunderbird"] $ws2
 assign [class="Clementine"] $ws10
+for_window [class="Spotify"] move to workspace $ws10
 
 # Fixes
 for_window [title="Enter Passphrase"] floating enable; border none; focus mode_toggle
@@ -302,6 +303,9 @@ bindsym $mod+b  exec browser
 
 # thunderbird
 bindsym $mod+m  exec thunderbird
+
+# spotify
+bindsym $mod+p  exec spotify
 
 # i3lock
 bindsym $mod+i exec lock
