@@ -10,7 +10,7 @@
 #-o "%(title)s.%(ext)s"
 # Der Zielordner ist ~/Videos; der Dateiname besteht – wie in der Voreinstellung – aus dem Namen/Titel und der YT-ID
 # des Videos sowie der Dateiendung:
-#-o "~/Videos/%(title)s-%(id)s.%(ext)s"
+-o "~/downloads/%(title)s-%(id)s.%(ext)s"
 # Beschränke Dateinamen auf reine ASCII-Zeichen und vermeide dort u.a. "&" und Leerzeichen, aber auch Umlaute;
 # wobei Leerzeichen in Unterstriche (_) sowie Umlaute in a, o und u umgewandelt werden:
 #--restrict-filenames
@@ -22,7 +22,7 @@
 # Download fort;
 # =>=>=> Achtung: Diese Option kann zu Störungen führen, falls youtube-dl einen HLS herunterlädt! Im Zweifelsfalle
 # diese Option bitte NICHT verwenden:
---external-downloader-args "-c -j 3 -x 3 -s 3 -k 1M"
+--external-downloader-args "-c -j 3 -x 3 -s 3 -k 1M -d ."
 #--external-downloader-args "-k1M -x8 -c"
 # Zeige den Download-Fortschritt in immer neuen Zeilen an =>=>=> Achtung: Diese Option bitte NICHT zusammen
 # mit "–external-downloader"-Optionen verwenden, um potenzielle Störungen auszuschließen:
