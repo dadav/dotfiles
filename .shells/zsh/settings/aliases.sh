@@ -1,0 +1,1 @@
+setopt complete_aliases
