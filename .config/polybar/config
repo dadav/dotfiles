@@ -89,7 +89,7 @@ format-prefix = " "
 
 [module/lock]
 type = custom/script
-exec = test S = $(ps -o state= -p $(pgrep -x xautolock)) && echo ON
+exec = test S = $(ps -o state= -p $(pgrep -x xautolock | head -1)) && echo ON
 exec-if = pgrep -x xautolock
 interval = 10
 format-underline = #268bd2
