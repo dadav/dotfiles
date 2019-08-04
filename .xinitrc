@@ -1,6 +1,6 @@
 nm-applet --sm-disable &
 firewall-applet &
 udiskie &
+fcitx -d
 xmodmap ~/.Xmodmap
-setxkbmap -variant nodeadkeys de
 exec i3
