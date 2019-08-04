@@ -385,11 +385,11 @@ nmap <Leader>adc :!asciidoctor-pdf %<CR>
 nmap <Leader>nt :NERDTreeToggle<CR>
 
 " fast access to fzf
-map <leader>fl :BLines
-map <leader>ff :FZF
-map <leader>fgf :GFiles
-map <leader>fh :History
-map <C-P> :FZF .<cr>
+map <leader>fl :BLines<CR>
+map <leader>ff :FZF<CR>
+map <leader>fgf :GFiles<CR>
+map <leader>fh :History<CR>
+map <C-P> :FZF .<CR>
 
 " #### Tagbar
 nmap <Leader>tt :TagbarToggle<CR>
