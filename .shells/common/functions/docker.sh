@@ -59,31 +59,23 @@ dockerlint() {
   docker run -it --rm -v "$PWD/Dockerfile":/Dockerfile:ro $IMAGE
 }
 
-yed() {
-  IMAGE='yed:latest'
-  HOME=$(pwd)
-  XSOCK=/tmp/.X11-unix
-  XAUTH=$(mktemp /tmp/.docker.xauth-XXXXX)
-  xauth nlist :0 | sed -e 's/^..../ffff/' | xauth -f $XAUTH nmerge -
+# Select a docker container to start and attach to
+function da() {
+  local cid
+  cid=$(docker ps -a | sed 1d | fzf -1 -q "$1" | awk '{print $1}')
 
-  docker run \
-    -t \
-    -i \
-    --memory 2gb \
-    --cpuset-cpus 0 \
-    --rm \
-    -v /etc/localtime:/etc/localtime:ro \
-    -v $XSOCK:$XSOCK \
-    -v $XAUTH:$XAUTH \
-    -v $HOME:/work \
-    -e DISPLAY=unix$DISPLAY \
-    -e XAUTHORITY=$XAUTH \
-    "$IMAGE" "$@"
-
-  rm $XAUTH
+  [ -n "$cid" ] && docker start "$cid" && docker attach "$cid"
 }
 
+# Select a running docker container to stop
+function ds() {
+  local cid
+  cid=$(docker ps | sed 1d | fzf -q "$1" | awk '{print $1}')
 
+  [ -n "$cid" ] && docker stop "$cid"
+}
+
+# start etherpad
 etherpad() {
   PASS=password
   PORT=9001
