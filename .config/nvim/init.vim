@@ -275,14 +275,6 @@ set hlsearch
 let mapleader = ","
 let g:mapleader = ","
 
-" Spawn terminals
-map <leader>t :spl term://bash<cr>
-map <leader>tv :vspl term://bash<cr>
-map <leader>T :tabe term://bash<cr>
-" Enter insert mode when we switch to a terminal
-" Super useful 😻
-:au BufEnter * if &buftype == 'terminal' | :startinsert | endif
-
 " Auomatically set the terminal title
 set title
 
@@ -374,12 +366,12 @@ nmap ga <Plug>(EasyAlign)
 xmap ga <Plug>(EasyAlign)
 
 " #### Tabularize
-nmap <Leader>a  :Tabularize / <CR>
-vmap <Leader>a  :Tabularize / <CR>
-nmap <Leader>a= :Tabularize /=<CR>
-vmap <Leader>a= :Tabularize /=<CR>
-nmap <Leader>a: :Tabularize /:\zs<CR>
-vmap <Leader>a: :Tabularize /:\zs<CR>
+nmap <Leader>t  :Tabularize / <CR>
+vmap <Leader>t  :Tabularize / <CR>
+nmap <Leader>t= :Tabularize /=<CR>
+vmap <Leader>t= :Tabularize /=<CR>
+nmap <Leader>t: :Tabularize /:\zs<CR>
+vmap <Leader>t: :Tabularize /:\zs<CR>
 
 " #### Vim-Go
 autocmd FileType go nmap <Leader>i <Plug>(go-info)
@@ -393,8 +385,10 @@ nmap <Leader>adc :!asciidoctor-pdf %<CR>
 nmap <Leader>nt :NERDTreeToggle<CR>
 
 " fast access to fzf
-map <leader>F :FZF!<cr>
-map <leader>f :FZF
+map <leader>fl :BLines
+map <leader>ff :FZF
+map <leader>fgf :GFiles
+map <leader>fh :History
 map <C-P> :FZF .<cr>
 
 " #### Tagbar
@@ -407,9 +401,9 @@ nmap <Leader>tt :TagbarToggle<CR>
 cmap w!! w !sudo tee > /dev/null %
 
 " Terminal
-map <leader>t :spl term://bash<cr>
-map <leader>tv :vspl term://bash<cr>
-map <leader>T :tabe term://bash<cr>
+"map <leader>t :spl term://bash<cr>
+"map <leader>tv :vspl term://bash<cr>
+"map <leader>T :tabe term://bash<cr>
 " Enter insert mode when we switch to a terminal
 " Super useful 😻
 :au BufEnter * if &buftype == 'terminal' | :startinsert | endif
