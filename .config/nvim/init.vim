@@ -95,6 +95,9 @@ Plug 'pearofducks/ansible-vim', { 'do': './UltiSnips/generate.py' }
 Plug 'python-mode/python-mode', {'branch': 'develop'}
 Plug 'fatih/vim-go'
 Plug 'mdempsky/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
+Plug 'vim-ruby/vim-ruby' " solargraph
+Plug 'mrk21/yaml-vim' " For hieradata
+Plug 'elzr/vim-json' " For metadata.json
 
 " PyDoc to quickly access documentation
 Plug 'fs111/pydoc.vim'
