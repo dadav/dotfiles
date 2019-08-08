@@ -41,6 +41,9 @@ bindkey '^[\' pound-insert # also use setopt interactivecomments
 ## Check for interactive shell, if not, return
 [[ $- != *i* ]] && return
 
+# virtualenv
+. virtualenvwrapper_lazy.sh
+
 ## Its interactive, load aliases
 # source all settings
 for category in aliases settings functions ; do
