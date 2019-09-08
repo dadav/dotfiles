@@ -1,5 +1,7 @@
 # Volume
 volume=25
+# save volume on quit
+save-position-on-quit
 # Enable OpenGL and VA-API hardware decoding.
 vo=opengl,vx
 hwdec=vaapi
