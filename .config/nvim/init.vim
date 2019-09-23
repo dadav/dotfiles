@@ -22,6 +22,10 @@ endif
 
 let g:deoplete#enable_at_startup = 1
 
+" neosnippet
+Plug 'Shougo/neosnippet.vim'
+Plug 'Shougo/neosnippet-snippets'
+
 " deoplete plugins
 Plug 'zchee/deoplete-jedi'
 Plug 'Shougo/neoinclude.vim'
@@ -29,7 +33,7 @@ Plug 'Shougo/neco-syntax'
 Plug 'fszymanski/deoplete-emoji'
 
 " Markdown
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
+"Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 " Limelight; Focus on stuff
 Plug 'junegunn/limelight.vim'
 
@@ -120,8 +124,8 @@ Plug 'mileszs/ack.vim'
 
 Plug 'vim-airline/vim-airline'
 
-" syntax/indent/ftplugins for a many languages/tools
-Plug 'sheerun/vim-polyglot'
+" syntax/indent/ftplugins for a many languages/tools (fucks up MD)
+"Plug 'sheerun/vim-polyglot'
 
 " Visual helper
 Plug 'Yggdroot/indentLine'
@@ -133,7 +137,7 @@ Plug 'yuttie/comfortable-motion.vim'
 "Plug 'https://github.com/junegunn/vim-github-dashboard.git'
 
 " Multiple Plug commands can be written in a single line using | separators
-Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+"Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
 " On-demand loading
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
@@ -360,6 +364,26 @@ vno <up> <Nop>
 " ##############################################
 " ### Plugin Mappings
 " ##############################################
+" neosnippet
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+" SuperTab like snippets behavior.
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+"imap <expr><TAB>
+" \ pumvisible() ? "\<C-n>" :
+" \ neosnippet#expandable_or_jumpable() ?
+" \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+" For conceal markers.
+if has('conceal')
+  set conceallevel=2 concealcursor=niv
+endif
+
 " #### Limelight
 nmap <Leader>l :Limelight!!<CR>
 xmap <Leader>l :Limelight!!<CR>
