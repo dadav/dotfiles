@@ -33,7 +33,7 @@ Plug 'Shougo/neco-syntax'
 Plug 'fszymanski/deoplete-emoji'
 
 " Markdown
-"Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 " Limelight; Focus on stuff
 Plug 'junegunn/limelight.vim'
 
