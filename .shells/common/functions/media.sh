@@ -2,7 +2,7 @@
 function rainymood() {
   FILE=$((RANDOM%4))
   URL="https://rainymood.com/audio1110/${FILE}.ogg"
-  mpv "$URL" && rainymood
+  mpv --volume 70 "$URL" && rainymood
 }
 
 # Search for music and play it in random order

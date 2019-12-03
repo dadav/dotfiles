@@ -7,8 +7,11 @@
   editor    = nvim
 [diff]
   tool      = vimdiff
+	noprefix = true
 [difftool]
   prompt    = false
 [alias]
   lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
   cf = diff --name-only --diff-filter=U
+[rerere]
+	enabled = true

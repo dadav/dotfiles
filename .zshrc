@@ -59,3 +59,6 @@ done
 for stuff in ~/{.profile,.alias}; do
   [[ -f $stuff ]] && . $stuff
 done
+
+# added by travis gem
+[ -f /home/ddavid/.travis/travis.sh ] && source /home/ddavid/.travis/travis.sh
