@@ -102,6 +102,7 @@ Plug 'mdempsky/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink
 Plug 'vim-ruby/vim-ruby' " solargraph
 Plug 'mrk21/yaml-vim' " For hieradata
 Plug 'elzr/vim-json' " For metadata.json
+Plug 'cespare/vim-toml' " TOML
 
 " PyDoc to quickly access documentation
 Plug 'fs111/pydoc.vim'
