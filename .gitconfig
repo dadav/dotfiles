@@ -1,17 +1,38 @@
 [user]
   name      = dadav
   email     = 33197631+dadav@users.noreply.github.com
+
 [color]
-  ui        = auto
+	ui = true
+
 [core]
   editor    = nvim
+	pager = diff-so-fancy | less --tabs=4 -RFX
+
 [diff]
   tool      = vimdiff
 	noprefix = true
+
 [difftool]
   prompt    = false
+
 [alias]
   lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
   cf = diff --name-only --diff-filter=U
+
 [rerere]
 	enabled = true
+
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
+
+[color "diff"]
+	meta = 11
+	frag = magenta bold
+	commit = yellow bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
