@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # Check if zplug is installed
 export ZPLUG_HOME="${HOME}/.zplug"
 if [[ ! -d ${ZPLUG_HOME} ]]; then
@@ -13,10 +20,11 @@ zplug "plugins/git", from:oh-my-zsh
 zplug "plugins/colored-man-pages", from:oh-my-zsh
 zplug "plugins/command-not-found", from:oh-my-zsh
 zplug "lib/history", from:oh-my-zsh
-#zplug "zsh-users/zsh-syntax-highlighting", from:github
+zplug "zsh-users/zsh-syntax-highlighting", from:github
 zplug "zsh-users/zsh-autosuggestions", from:github
 zplug "zsh-users/zsh-completions", from:github
-zplug "$HOME/.config/zsh/themes/", from:local, use:"agnoster.zsh-theme", as:theme
+#zplug "$HOME/.config/zsh/themes/", from:local, use:"agnoster.zsh-theme", as:theme
+zplug "romkatv/powerlevel10k", as:theme, depth:1
 
 # Install packages that have not been installed yet
 if ! zplug check --verbose; then
@@ -62,3 +70,6 @@ done
 
 # added by travis gem
 [ -f /home/ddavid/.travis/travis.sh ] && source /home/ddavid/.travis/travis.sh
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
