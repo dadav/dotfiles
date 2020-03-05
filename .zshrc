@@ -20,7 +20,7 @@ zplug "plugins/git", from:oh-my-zsh
 zplug "plugins/colored-man-pages", from:oh-my-zsh
 zplug "plugins/command-not-found", from:oh-my-zsh
 zplug "lib/history", from:oh-my-zsh
-zplug "zsh-users/zsh-syntax-highlighting", from:github
+#zplug "zsh-users/zsh-syntax-highlighting", from:github
 zplug "zsh-users/zsh-autosuggestions", from:github
 zplug "zsh-users/zsh-completions", from:github
 #zplug "$HOME/.config/zsh/themes/", from:local, use:"agnoster.zsh-theme", as:theme
