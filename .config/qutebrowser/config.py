@@ -5,6 +5,7 @@
 # ---------------------------------------------------
 
 # general settings
+c.url.start_pages = ['https://www.google.de/']
 c.url.default_page = 'about:blank'
 c.editor.command = ["urxvt", "-title", "scratchpad", "-geometry", "86x24+40+60", "-e", "nvim", "-f", "{}"]
 c.new_instance_open_target = "tab-bg"
@@ -14,7 +15,7 @@ c.completion.web_history.max_items = 1000
 c.input.partial_timeout = 2000
 c.tabs.background = True
 c.tabs.favicons.show = "never"
-c.tabs.title.format = "{title}"
+c.tabs.title.format = "{current_title}"
 c.downloads.location.directory = '/home/ddavid/downloads'
 c.content.cache.size = 52428800
 c.content.webgl = False
@@ -33,7 +34,6 @@ c.url.searchengines['w'] = 'https://secure.wikimedia.org/wikipedia/en/w/index.ph
 c.url.searchengines['gh'] = 'https://github.com/search?q={}&type=Code'
 
 # aliases
-c.aliases['ge'] = 'open -t https://wiki.archlinux.org/index.php/Forum_Etiquette'
 c.aliases['gs'] = 'open -t https://unix.stackexchange.com'
 c.aliases['gj'] = 'open -t http://takoboto.jp/'
 
