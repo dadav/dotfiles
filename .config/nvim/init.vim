@@ -22,6 +22,9 @@ endif
 
 let g:deoplete#enable_at_startup = 1
 
+" editorconfig
+Plug 'editorconfig/editorconfig-vim'
+
 " neosnippet
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
