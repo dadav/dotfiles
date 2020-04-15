@@ -15,7 +15,7 @@ else
 fi
 
 # nav
-zplug "knu/z", use:z.sh, nice:10
+zplug "knu/z", use:z.sh
 
 # completion / help
 zplug "zsh-users/zsh-autosuggestions", from:github
@@ -30,7 +30,9 @@ zplug "romkatv/powerlevel10k", as:theme, depth:1
 
 # cmds
 zplug "plugins/git", from:oh-my-zsh
-zplug "junegunn/fzf", use: "shell/*.zsh"
+zplug "junegunn/fzf", as: command, use: "bin/fzf-tmux"
+zplug "junegunn/fzf", use: "shell/completion.zsh"
+zplug "junegunn/fzf", use: "shell/key-bindings.zsh"
 zplug "junegunn/fzf-bin", \
     from:gh-r, \
     as:command, \
