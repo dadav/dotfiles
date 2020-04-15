@@ -14,17 +14,29 @@ else
   source ~/.zplug/init.zsh
 fi
 
-#zplug "agnoster/agnoster-zsh-theme", use:agnoster.zsh-theme, from:github, as:theme, hook-build: "sed -e '/#/!s/.*prompt_context/#&/g' -i agnoster.zsh-theme"
-zplug "rupa/z", use:z.sh
-zplug "plugins/git", from:oh-my-zsh
-zplug "plugins/colored-man-pages", from:oh-my-zsh
-zplug "plugins/command-not-found", from:oh-my-zsh
-zplug "lib/history", from:oh-my-zsh
-#zplug "zsh-users/zsh-syntax-highlighting", from:github
+# nav
+zplug "knu/z", use:z.sh, nice:10
+
+# completion / help
 zplug "zsh-users/zsh-autosuggestions", from:github
 zplug "zsh-users/zsh-completions", from:github
-#zplug "$HOME/.config/zsh/themes/", from:local, use:"agnoster.zsh-theme", as:theme
+zplug "zsh-users/zsh-history-substring-search"
+zplug "lib/history", from:oh-my-zsh
+zplug "plugins/command-not-found", from:oh-my-zsh
+
+# eyecandy
+zplug "plugins/colored-man-pages", from:oh-my-zsh
 zplug "romkatv/powerlevel10k", as:theme, depth:1
+
+# cmds
+zplug "plugins/git", from:oh-my-zsh
+zplug "junegunn/fzf", use: "shell/*.zsh"
+zplug "junegunn/fzf-bin", \
+    from:gh-r, \
+    as:command, \
+    rename-to:fzf, \
+    use:"*linux*amd64*"
+
 
 # Install packages that have not been installed yet
 if ! zplug check --verbose; then
