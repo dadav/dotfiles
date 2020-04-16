@@ -14,12 +14,34 @@ else
   source ~/.zplug/init.zsh
 fi
 
+# options
+setopt interactivecomments
+setopt complete_aliases
+setopt extendedglob
+
+
+# autoload
+autoload -Uz compinit zmv colors
+compinit
+colors
+
+# Keybindings + Completions
+bindkey -e # emacs
+bindkey "^[[5~" history-beginning-search-backward # page up
+bindkey "^[[6~" history-beginning-search-forward # page down
+bindkey "\e[3~" delete-char # del
+bindkey '^[\' pound-insert # also use setopt interactivecomments
+zplug "zsh-users/zsh-autosuggestions", from:github
+zplug "zsh-users/zsh-completions", from:github
+zplug "junegunn/fzf", use:"shell/{key-bindings,completion}.zsh"
+kitty + complete setup zsh | source /dev/stdin
+compdef config="git"
+compdef scripts="git"
+
 # nav
 zplug "knu/z", use:z.sh
 
 # completion / help
-zplug "zsh-users/zsh-autosuggestions", from:github
-zplug "zsh-users/zsh-completions", from:github
 zplug "zsh-users/zsh-history-substring-search"
 zplug "lib/history", from:oh-my-zsh
 zplug "plugins/command-not-found", from:oh-my-zsh
@@ -27,11 +49,11 @@ zplug "plugins/command-not-found", from:oh-my-zsh
 # eyecandy
 zplug "plugins/colored-man-pages", from:oh-my-zsh
 zplug "romkatv/powerlevel10k", as:theme, depth:1
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
 
 # cmds
 zplug "plugins/git", from:oh-my-zsh
 zplug "junegunn/fzf", as:command, use:"bin/fzf-tmux"
-zplug "junegunn/fzf", use:"shell/{key-bindings,completion}.zsh"
 zplug "junegunn/fzf-bin", \
     from:gh-r, \
     as:command, \
@@ -51,12 +73,6 @@ fi
 
 zplug load
 
-# Bindkeys
-bindkey -e # reset
-bindkey "^[[5~" history-beginning-search-backward # page up
-bindkey "^[[6~" history-beginning-search-forward # page down
-bindkey "\e[3~" delete-char # del
-bindkey '^[\' pound-insert # also use setopt interactivecomments
 
 # Sources
 ## Check for interactive shell, if not, return
