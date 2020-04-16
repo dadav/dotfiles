@@ -7,7 +7,7 @@ function pregre() {
 # select file with fzf; open with given cmd
 function f() {
   F="$(fzf --preview 'bat --style=numbers --color=always {} | head -500')"
-  [[ -n "$F" ]] && $* "$F"
+  [[ -n "$F" ]] && ${*:-nvim} "$F"
 }
 
 # open file with nvim
