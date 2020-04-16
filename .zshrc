@@ -30,9 +30,8 @@ zplug "romkatv/powerlevel10k", as:theme, depth:1
 
 # cmds
 zplug "plugins/git", from:oh-my-zsh
-zplug "junegunn/fzf", as:command, use: "bin/fzf-tmux"
-zplug "junegunn/fzf", use: "shell/completion.zsh"
-zplug "junegunn/fzf", use: "shell/key-bindings.zsh"
+zplug "junegunn/fzf", as:command, use:"bin/fzf-tmux"
+zplug "junegunn/fzf", use:"shell/{key-bindings,completion}.zsh"
 zplug "junegunn/fzf-bin", \
     from:gh-r, \
     as:command, \
