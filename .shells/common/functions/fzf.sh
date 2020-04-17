@@ -23,7 +23,7 @@ function fzv() {
 
 # fuzzy ssh with ping check
 function fssh() {
-  TARGET="$(awk '{ print $1 }' "$HOME"/.ssh/known_hosts | tr ',' '\n' | fzf-tmux -0 -d 10 --print-query --preview-window=top:1 --preview "ping -w1 -c1 {} >/dev/null 2>&1 && echo status: ok || echo status: cant ping")"
+  TARGET="$(awk '{ print $1 }' "$HOME"/.ssh/known_hosts | tr ',' '\n' | fzf-tmux -d 10 --preview-window=top:1 --preview "ping -w1 -c1 {} >/dev/null 2>&1 && echo status: ok || echo status: cant ping")"
   [[ -n "$TARGET" ]] && ssh $* "$TARGET"
 }
 
