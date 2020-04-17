@@ -21,6 +21,12 @@ function fzv() {
   f nvim
 }
 
+# fuzzy ssh with ping check
+function fssh() {
+  TARGET="$(awk '{ print $1 }' "$HOME"/.ssh/known_hosts | tr ',' '\n' | fzf-tmux -d 10 --print-query --preview "ping -w1 -c1 {} | tail -n-2")"
+  [[ -n "$TARGET" ]] && ssh $* "$TARGET"
+}
+
 # use fd
 function _fzf_compgen_path() {
   fd --hidden --follow --exclude ".git" . "$1"
