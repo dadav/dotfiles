@@ -27,6 +27,12 @@ function fssh() {
   [[ -n "$TARGET" ]] && ssh $* "$TARGET"
 }
 
+# switch to venv
+function fvenv() {
+  TARGET="$(lsvirtualenv -b | fzf-tmux -d 10)"
+  [[ -n "$TARGET" ]] && workon "$TARGET"
+}
+
 # https://wiki.archlinux.org/index.php/Fzf#Arch_specific_fzf_uses
 function fpac() {
   pacman -Slq | fzf -m --preview 'pacman -Si {1}' | xargs -ro sudo pacman -S
