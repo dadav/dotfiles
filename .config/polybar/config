@@ -59,7 +59,7 @@ font-4 = DejaVu Sans:pixelsize=11;2
 
 modules-left = i3 mpd spotify
 modules-center = date
-modules-right = lock vpn filesystem memory dirtymem wlan eth battery0 battery1 temperature backlight pulseaudio
+modules-right = lock filesystem memory dirtymem wlan eth battery0 battery1 temperature backlight pulseaudio
 
 tray-position = right
 tray-padding = 2
@@ -79,13 +79,13 @@ wm-restack = i3
 cursor-click = pointer
 cursor-scroll = ns-resize
 
-[module/vpn]
-type = custom/script
-exec = echo VPN
-exec-if = systemctl is-active 'vpn@*.service'
-interval = 10
-format-underline = #268bd2
-format-prefix = " "
+;[module/vpn]
+;type = custom/script
+;exec = echo VPN
+;exec-if = systemctl is-active 'vpn@*.service'
+;interval = 10
+;format-underline = #268bd2
+;format-prefix = " "
 
 [module/lock]
 type = custom/script
