@@ -209,9 +209,9 @@ bindsym $mod+r mode "resize"
 assign [class="qutebrowser"] $ws1
 assign [window_role="browser"] $ws1
 assign [class="Thunderbird"] $ws2
-assign [title="Code - OSS"] $ws3
 assign [class="Clementine"] $ws10
 assign [class="Spotify"] $ws10
+for_window [class="code-oss"] move to workspace $ws3
 for_window [class="discord"] move to workspace $ws9
 for_window [class="Spotify"] move to workspace $ws10
 
