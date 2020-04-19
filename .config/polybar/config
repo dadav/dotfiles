@@ -99,6 +99,7 @@ format-prefix = " "
 
 [module/spotify]
 type = custom/script
+label = "%{A1:spotify-cli --prev:}  %{A}%{A1:spotify-cli --toggle:}  %{A}%{A1:spotify-cli --next:}  %{A} %output%"
 exec = spotify-cli --meta
 exec-if = pgrep -x spotify
 interval = 5
