@@ -33,6 +33,12 @@ function fvenv() {
   [[ -n "$TARGET" ]] && workon "$TARGET"
 }
 
+# search thru manpages
+fman() {
+  FILE="$(2>/dev/null ag -l -r -z "$@" $(sed 's/:/ /g' <<<$MANPATH) | fzf --prompt 'man> ' --preview 'man {} | grep --color=always -C5 '$@'')"
+  [[ -n "$FILE" ]] && man --pager "less -p $@" "$FILE"
+}
+
 # https://wiki.archlinux.org/index.php/Fzf#Arch_specific_fzf_uses
 function fpac() {
   pacman -Slq | fzf -m --preview 'pacman -Si {1}' | xargs -ro sudo pacman -S
