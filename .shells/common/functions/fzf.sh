@@ -35,7 +35,7 @@ function fvenv() {
 
 # search thru manpages
 fman() {
-  FILE="$(2>/dev/null ag -l -r -z "$@" $(sed 's/:/ /g' <<<$MANPATH) | fzf --prompt 'man> ' --preview 'man {} | grep --color=always -C5 '$@'')"
+  FILE="$(2>/dev/null ag -l -r -z "$*" $(sed 's/:/ /g' <<<$MANPATH) | fzf --prompt 'man> ' --preview 'man {} | grep --color=always -C5 '\""$*"\"'')"
   [[ -n "$FILE" ]] && man --pager "less -p $@" "$FILE"
 }
 
