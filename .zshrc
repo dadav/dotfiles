@@ -21,6 +21,7 @@ zplug "junegunn/fzf", use:"shell/{key-bindings,completion}.zsh"
 
 # nav
 zplug "rupa/z", use:z.sh
+zplug "b4b4r07/enhancd", use:init.sh
 
 # completion / help
 zplug "zsh-users/zsh-history-substring-search"
@@ -71,13 +72,18 @@ setopt interactivecomments
 setopt complete_aliases
 setopt extendedglob
 
+# plugins
+## enhancd
+export ENHANCD_DISABLE_DOT=1
+export ENHANCD_DISABLE_HYPHEN=1
+export ENHANCD_DISABLE_HOME=1
+
 # Keybindings + Completions
 bindkey -e # emacs
 bindkey "^[[5~" history-beginning-search-backward # page up
 bindkey "^[[6~" history-beginning-search-forward # page down
 bindkey "\e[3~" delete-char # del
 bindkey '^[\' pound-insert # also use setopt interactivecomments
-
 
 # copy autocompletion
 compdef config="git"
