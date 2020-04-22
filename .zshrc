@@ -14,7 +14,17 @@ else
   source ~/.zplug/init.zsh
 fi
 
-# autocompletion
+# autoload
+autoload -Uz compinit && compinit
+autoload -U colors && colors
+autoload -U zmv
+
+# keybindings + completions
+bindkey -e # emacs
+bindkey "^[[5~" history-beginning-search-backward # page up
+bindkey "^[[6~" history-beginning-search-forward # page down
+bindkey "\e[3~" delete-char # del
+bindkey '^[\' pound-insert # also use setopt interactivecomments
 zplug "zsh-users/zsh-autosuggestions", from:github
 zplug "zsh-users/zsh-completions", from:github
 zplug "junegunn/fzf", use:"shell/{key-bindings,completion}.zsh"
@@ -59,11 +69,6 @@ zplug load
 ## Check for interactive shell, if not, return
 [[ $- != *i* ]] && return
 
-# autoload
-autoload -Uz compinit && compinit
-autoload -U colors && colors
-autoload -U zmv
-
 # kitty completion; has to be after compinit
 kitty + complete setup zsh | source /dev/stdin
 
@@ -78,16 +83,10 @@ export ENHANCD_DISABLE_DOT=1
 export ENHANCD_DISABLE_HYPHEN=1
 export ENHANCD_DISABLE_HOME=1
 
-# Keybindings + Completions
-bindkey -e # emacs
-bindkey "^[[5~" history-beginning-search-backward # page up
-bindkey "^[[6~" history-beginning-search-forward # page down
-bindkey "\e[3~" delete-char # del
-bindkey '^[\' pound-insert # also use setopt interactivecomments
-
 # copy autocompletion
-compdef config="git"
-compdef scripts="git"
+compdef config=git
+compdef scripts=git
+compdef mosh=ssh
 
 # virtualenv
 . virtualenvwrapper_lazy.sh
