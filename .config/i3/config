@@ -307,7 +307,7 @@ bindsym $mod+b  exec browser
 bindsym $mod+m  exec thunderbird
 
 # spotify
-bindsym $mod+p  exec spotify
+bindsym $mod+p  exec flock -w1 /tmp -c spotify
 
 # i3lock
 bindsym $mod+i exec lock
