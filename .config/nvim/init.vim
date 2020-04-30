@@ -183,6 +183,8 @@ autocmd BufWritePre * %s/\s\+$//e
 au BufNewFile,BufRead *.groovy  setf groovy
 au BufNewFile,BufRead Jenkinsfile  setf groovy
 
+au FileType markdown setlocal cole=1
+
 " ##############################################
 " ##################### Mouse ##################
 " ##############################################
