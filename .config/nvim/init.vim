@@ -523,3 +523,5 @@ let g:vim_json_syntax_conceal = 0
 " dont make ** to fat
 let g:indentLine_setConceal = 0
 
+" nerdtree
+let NERDTreeIgnore = ['\.pyc$', '__pycache__', '\.mypy_cache']
