@@ -170,20 +170,27 @@ set showmatch
 " ################ Auto Commands ###############
 " ##############################################
 " Asciidoc
-autocmd BufWritePost *.adoc silent! !head -1 % | grep autocompile && asciidoctor-pdf % || true
+au BufWritePost *.adoc silent! !head -1 % | grep autocompile && asciidoctor-pdf % || true
 
 " #### Fixes code-completion bug
 " autocmd BufRead,BufNewFile *.py :set omnifunc=python3complete#Complete
-autocmd BufRead,BufNewFile *.yml setf ansible
+au BufRead,BufNewFile *.yml setf ansible
 
 " Remove trailing spaces on write
 " http://vim.wikia.com/wiki/Remove_unwanted_spaces
-autocmd BufWritePre * %s/\s\+$//e
+au BufWritePre * %s/\s\+$//e
 
+" Filetypes
 au BufNewFile,BufRead *.groovy  setf groovy
 au BufNewFile,BufRead Jenkinsfile  setf groovy
 
+" Markdown
 au FileType markdown setlocal cole=1
+
+" python
+au VimEnter *.py NERDTree
+au VimEnter *.py Tagbar
+au VimEnter * wincmd p
 
 " ##############################################
 " ##################### Mouse ##################
