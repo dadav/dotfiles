@@ -66,6 +66,8 @@ Plug 'junegunn/vim-easy-align'
 " Async File Linter, whoohoo
 Plug 'w0rp/ale'
 
+" jsonnet
+Plug 'google/vim-jsonnet'
 " Easily align text
 " used by puppet-vim
 Plug 'godlygeek/tabular'
