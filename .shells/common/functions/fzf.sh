@@ -41,11 +41,11 @@ fman() {
 
 # https://wiki.archlinux.org/index.php/Fzf#Arch_specific_fzf_uses
 function fpac() {
-  pacman -Slq | fzf -m --preview 'pacman -Si {1}' | xargs -ro sudo pacman -S
+  pacman -Slq | fzf -e -m --preview 'pacman -Si {1}' | xargs -ro sudo pacman -S
 }
 
 function fyay() {
-  yay -Slq | fzf -m --preview 'yay -Si {1}' | xargs -ro yay -S
+  yay -Slq | fzf -e -m --preview 'yay -Si {1}' | xargs -ro yay -S
 }
 
 # use fd
