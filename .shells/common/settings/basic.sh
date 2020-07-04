@@ -1,5 +1,9 @@
-[[ ! ":$PATH" =~ ":/usr/local/bin:" ]] && export PATH="/usr/local/bin:$PATH" || true
-[[ ! ":$PATH" =~ ":${HOME}/.local/bin:" ]] && export PATH="${HOME}/.local/bin:$PATH" || true
+if [[ ! ":$PATH" =~ :/usr/local/bin: ]]; then
+  export PATH="/usr/local/bin:$PATH"
+fi
+if [[ ! ":$PATH" =~ :${HOME}/.local/bin: ]]; then
+  export PATH="${HOME}/.local/bin:$PATH"
+fi
 export PAGER=less
 export EDITOR=nvim
 export VISUAL=$EDITOR

@@ -29,6 +29,9 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
 
+" tests
+Plug 'junegunn/vader.vim'
+
 " deoplete plugins
 Plug 'zchee/deoplete-jedi'
 Plug 'Shougo/neoinclude.vim'
