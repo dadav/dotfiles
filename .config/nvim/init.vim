@@ -1,3 +1,5 @@
+" vim: set sw=4 ts=4 sts=4 et tw=78 foldmarker={,} foldlevel=0 foldmethod=marker :
+
 " Bootstrap vim-plug if it's not there
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent execute "!curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
@@ -24,6 +26,9 @@ let g:deoplete#enable_at_startup = 1
 
 " wiki
 Plug 'vimwiki/vimwiki'
+
+" easymotion
+Plug 'easymotion/vim-easymotion'
 
 " editorconfig
 Plug 'editorconfig/editorconfig-vim'
@@ -210,8 +215,11 @@ set clipboard^=unnamed,unnamedplus
 " ##############################################
 " ### Undo
 " ##############################################
-set undolevels=500
-set undodir=$HOME/storage/.VIM_UNDO_FILES
+if has("persistent_undo")
+    set undofile
+    set undolevels=500
+    set undodir=$HOME/.VIM_UNDO_FILES
+endif
 set history=700
 
 " ##############################################
