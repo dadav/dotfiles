@@ -22,6 +22,9 @@ endif
 
 let g:deoplete#enable_at_startup = 1
 
+" wiki
+Plug 'vimwiki/vimwiki'
+
 " editorconfig
 Plug 'editorconfig/editorconfig-vim'
 
@@ -377,8 +380,6 @@ vno <left> <Nop>
 vno <right> <Nop>
 vno <up> <Nop>
 
-
-
 " ##############################################
 " ### Plugin Mappings
 " ##############################################
@@ -414,9 +415,20 @@ nmap <Leader>t: :Tabularize /:\zs<CR>
 vmap <Leader>t: :Tabularize /:\zs<CR>
 
 " #### Vim-Go
-autocmd FileType go nmap <Leader>i <Plug>(go-info)
-autocmd FileType go nmap <leader>b  <Plug>(go-build)
-autocmd FileType go nmap <leader>r  <Plug>(go-run)
+autocmd FileType go nmap <Leader>d :GoDoc<CR>
+autocmd FileType go nmap <Leader>D :GoDocBrowser<CR>
+autocmd FileType go nmap <Leader>g :GoDef<CR>
+autocmd FileType go nmap <Leader>i :GoImports<CR>
+autocmd FileType go nmap <leader>b :GoBuild<CR>
+autocmd FileType go nmap <leader>r :GoRun<CR>
+autocmd FileType go nmap <leader>f :GoErrCheck<CR>
+autocmd FileType go inoremap <buffer> . .<C-x><C-o>
+
+" #### python-mode
+autocmd FileType py nmap <leader>g  :RopeGotoDefinition<CR>
+autocmd FileType py nmap <leader>r  :PymodeRun<CR>
+autocmd FileType py nmap <leader>d  :PymodeDoc<CR>
+autocmd FileType py nmap <leader>f  :PymodeLint<CR>
 
 " #### Asciidoctor-pdf
 nmap <Leader>adc :!asciidoctor-pdf %<CR>
@@ -446,7 +458,7 @@ cmap w!! w !sudo tee > /dev/null %
 "map <leader>T :tabe term://bash<cr>
 " Enter insert mode when we switch to a terminal
 " Super useful 😻
-:au BufEnter * if &buftype == 'terminal' | :startinsert | endif
+au BufEnter * if &buftype == 'terminal' | :startinsert | endif
 
 " #### Toogle Cross
 nmap <silent> <Leader>ct :call ToggleCursor()<CR>
@@ -531,3 +543,6 @@ let g:indentLine_setConceal = 0
 
 " nerdtree
 let NERDTreeIgnore = ['\.pyc$', '__pycache__', '\.mypy_cache']
+" wiki
+
+let g:vimwiki_list = [{'path': '~/.vimwiki/code', 'path_html': '~/.vimwiki/html'}]
