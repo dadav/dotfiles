@@ -1,19 +1,15 @@
 " vim: set sw=4 ts=4 sts=4 et tw=78 foldmarker={,} foldlevel=0 foldmethod=marker :
 
-" Bootstrap vim-plug if it's not there
+" Bootstrap {
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent execute "!curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
   autocmd VimEnter * PlugInstall | source $MYVIMRC
 endif
-
-"         Specify a directory for plugins
-" - For Neovim: ~/.local/share/nvim/plugged
-" - Avoid using standard Vim directory names like 'plugin'
+" }
+" Plugins {
+" Specify a directory for plugins
 call plug#begin('~/.vim/plugged')
 
-" ##############################################
-" ###############  PLUGINS #####################
-" ##############################################
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 else
@@ -163,9 +159,8 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 " Initialize plugin system
 call plug#end()
 
-" ##############################################
-" ################### Looks ####################
-" ##############################################
+" }
+"  Looks {
 set number
 syntax enable
 set background=dark
@@ -180,9 +175,8 @@ endif
 " Show matching brackets when text indicator is over them
 set showmatch
 
-" ##############################################
-" ################ Auto Commands ###############
-" ##############################################
+" }
+" Auto Commands {
 " Asciidoc
 au BufWritePost *.adoc silent! !head -1 % | grep autocompile && asciidoctor-pdf % || true
 
@@ -206,26 +200,44 @@ au VimEnter *.py NERDTree
 au VimEnter *.py Tagbar
 au VimEnter * wincmd p
 
-" ##############################################
-" ##################### Mouse ##################
-" ##############################################
+" Vim-Go
+au FileType go nmap <Leader>d :GoDoc<CR>
+au FileType go nmap <Leader>D :GoDocBrowser<CR>
+au FileType go nmap <Leader>g :GoDef<CR>
+au FileType go nmap <Leader>i :GoImports<CR>
+au FileType go nmap <leader>b :GoBuild<CR>
+au FileType go nmap <leader>r :GoRun<CR>
+au FileType go nmap <leader>f :GoErrCheck<CR>
+au FileType go inoremap <buffer> . .<C-x><C-o>
+
+" python-mode
+au FileType py nmap <leader>g  :RopeGotoDefinition<CR>
+au FileType py nmap <leader>r  :PymodeRun<CR>
+au FileType py nmap <leader>d  :PymodeDoc<CR>
+au FileType py nmap <leader>f  :PymodeLint<CR>
+
+" Terminal
+" Enter insert mode when we switch to a terminal
+" Super useful 😻
+au BufEnter * if &buftype == 'terminal' | :startinsert | endif
+" }
+" Mouse {
 set mouse=
 set clipboard^=unnamed,unnamedplus
-
-" ##############################################
-" ### Undo
-" ##############################################
+" }
+" Cursor {
+set cursorline
+" }
+" History {
+set history=700
+set backup
 if has("persistent_undo")
     set undofile
-    set undolevels=500
+    set undolevels=1000
     set undodir=$HOME/.VIM_UNDO_FILES
 endif
-set history=700
-
-" ##############################################
-" ### Behaviour
-" ##############################################
-" I hate tabs.
+" }
+" Behaviour {
 set expandtab           " enter spaces when tab is pressed
 set textwidth=100       " break lines when line length increases
 set formatoptions-=t    " No autolinebreak
@@ -233,39 +245,15 @@ set tabstop=2           " use 2 spaces to represent tab
 set softtabstop=2
 set shiftwidth=2        " number of spaces to use for auto indent
 set softtabstop=2
-
 set iskeyword+=_,$,@,%,#    " none of these are word dividers
-
-" ##############################################
-" ## Filetypes
-" ##############################################
-filetype plugin on
-filetype indent on
-
-" ##############################################
-" ## Folding
-" ##############################################
+" }
+" Folding {
 set foldmethod=indent
 set foldnestmax=10
 set nofoldenable
 set foldlevel=2
-
- " Allow backspacing over indent, eol, and the start of an insert
-set backspace=2
-
-
-" ##############################################
-" ### History
-" ##############################################
-" Sets how many lines of history VIM has to remember
-set undodir=$HOME/.VIM_UNDO_FILES
-set undolevels=5000
-set history=700
-
-" ##############################################
-" ### Completion
-" ##############################################
-" ## Filename completion
+" }
+" Completion {
 set wildmenu
 set wildmode=longest:full,full
 
@@ -274,49 +262,48 @@ if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
 
-
 "" ignore unneccessary file types in autocomplete mode
 set wildignore+=*.dict,*.aux,*.nav,*.out,*.toc,*.vrb,*.snm
-"
-" I don't want no fucking bell
+" }
+" Sound {
 set noerrorbells visualbell t_vb=
 autocmd GUIEnter * set visualbell t_vb=
-
-" ##############################################
-" ### Encoding
-" ##############################################
+" }
+" Encoding {
 " Make sure utf-8 is used
 " Not really needed for neovim but vim
 set encoding=utf-8
 set termencoding=utf-8
-
-" ##############################################
-" ### Search
-" ##############################################
+" }
+" Search {
 set incsearch
 set ignorecase
-
-" Cancel selection
+" Cancel selection on backspace
 nmap <silent> <BS> :nohlsearch<CR>
-
 " Set the search scan to wrap around the file
 set wrapscan
-
 " Turn on Highlighting of search results
 set hlsearch
-
-" ##############################################
-" ### Shortcuts
-" ##############################################
-let mapleader = ","
-let g:mapleader = ","
-
+" }
+" General {
 " Auomatically set the terminal title
 set title
 
-" ##############################################
-" ### Selection
-" ##############################################
+" No redraw durring macros
+set lazyredraw
+
+" Allow backspacing over indent, eol, and the start of an insert
+set backspace=2
+
+" Filetypes
+filetype plugin on
+filetype indent on
+" }
+" Mappings {
+let mapleader = ","
+let g:mapleader = ","
+
+" Selection {
 vnoremap > >gv
 vnoremap < <gv
 
@@ -328,13 +315,9 @@ xnoremap J :m '>+1<CR>gv=gv
 if has('virtualedit')
   set virtualedit=block
 endif
+" }
 
-" ##############################################
-" ### Buffers
-" ##############################################
-" No redraw durring macros
-set lazyredraw
-
+" Buffers {
 " ALT-n next buffer and list, ALT-p previous buffer
 nnoremap <A-n> :bnext<CR>:redraw<CR>:ls<CR>
 nnoremap <A-p> :bprevious<CR>:redraw<CR>:ls<CR>
@@ -348,15 +331,31 @@ nnoremap <Leader>s\| :vsplit<CR>
 " Resize
 nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
 nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
+" }
 
-" ##############################################
-" ### Motion
-" ##############################################
+" Nifty tricks {
+" Write files as root
+cmap w!! w !sudo tee > /dev/null %
+
+" #### Clean trailing whitespaces
+nnoremap <silent> <Leader>cw :call Preserve("%s/\\s\\+$//e")<CR>
+xnoremap <silent> <Leader>cw :call Preserve("'<,'>s/\\s\\+$//e")<CR>
+function! Preserve(command)
+  " Preparation: save window state
+  let l:saved_winview = winsaveview()
+  " Run the command:
+  execute a:command
+  " Clean up: restore previous window position
+  call winrestview(l:saved_winview)
+endfunction
+" }
+" }
+" Motion {
 " Treat long lines as break lines (useful when moving around in them)
 map j gj
 map k gk
 
-" ### Movement
+" Movement {
 " https://neovim.io/doc/user/nvim_terminal_emulator.html
 " Use `ALT+{h,j,k,l}` to navigate windows from any mode:
 tnoremap <Esc> <C-\><C-n>
@@ -372,8 +371,9 @@ nnoremap <A-h> <C-w>h
 nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
+" }
 
-" #### Disable arrow keys
+" Disable arrow keys {
 no <down> <Nop>
 no <left> <Nop>
 no <right> <Nop>
@@ -387,10 +387,9 @@ vno <down> <Nop>
 vno <left> <Nop>
 vno <right> <Nop>
 vno <up> <Nop>
+" }
 
-" ##############################################
-" ### Plugin Mappings
-" ##############################################
+" Plugin Mappings {
 " neosnippet
 " Note: It must be "imap" and "smap".  It uses <Plug> mappings.
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
@@ -422,22 +421,6 @@ vmap <Leader>t= :Tabularize /=<CR>
 nmap <Leader>t: :Tabularize /:\zs<CR>
 vmap <Leader>t: :Tabularize /:\zs<CR>
 
-" #### Vim-Go
-autocmd FileType go nmap <Leader>d :GoDoc<CR>
-autocmd FileType go nmap <Leader>D :GoDocBrowser<CR>
-autocmd FileType go nmap <Leader>g :GoDef<CR>
-autocmd FileType go nmap <Leader>i :GoImports<CR>
-autocmd FileType go nmap <leader>b :GoBuild<CR>
-autocmd FileType go nmap <leader>r :GoRun<CR>
-autocmd FileType go nmap <leader>f :GoErrCheck<CR>
-autocmd FileType go inoremap <buffer> . .<C-x><C-o>
-
-" #### python-mode
-autocmd FileType py nmap <leader>g  :RopeGotoDefinition<CR>
-autocmd FileType py nmap <leader>r  :PymodeRun<CR>
-autocmd FileType py nmap <leader>d  :PymodeDoc<CR>
-autocmd FileType py nmap <leader>f  :PymodeLint<CR>
-
 " #### Asciidoctor-pdf
 nmap <Leader>adc :!asciidoctor-pdf %<CR>
 
@@ -453,46 +436,12 @@ map <C-P> :FZF .<CR>
 
 " #### Tagbar
 nmap <Leader>tt :TagbarToggle<CR>
-
-" ##############################################
-" ### Nifty tricks
-" ##############################################
-" Write files as root
-cmap w!! w !sudo tee > /dev/null %
-
-" Terminal
-"map <leader>t :spl term://bash<cr>
-"map <leader>tv :vspl term://bash<cr>
-"map <leader>T :tabe term://bash<cr>
-" Enter insert mode when we switch to a terminal
-" Super useful 😻
-au BufEnter * if &buftype == 'terminal' | :startinsert | endif
-
-" #### Toogle Cross
-nmap <silent> <Leader>ct :call ToggleCursor()<CR>
-function! ToggleCursor()
-  set cursorcolumn!
-  set cursorline!
-endfunction
-
-" #### Clean trailing whitespaces
-nnoremap <silent> <Leader>cw :call Preserve("%s/\\s\\+$//e")<CR>
-xnoremap <silent> <Leader>cw :call Preserve("'<,'>s/\\s\\+$//e")<CR>
-function! Preserve(command)
-  " Preparation: save window state
-  let l:saved_winview = winsaveview()
-  " Run the command:
-  execute a:command
-  " Clean up: restore previous window position
-  call winrestview(l:saved_winview)
-endfunction
-
-" ##############################################
-" ### Plugin Options
-" ##############################################
-" Airline
-" Fix ln character
-"let g:airline_powerline_fonts = 1
+" }
+" }
+" Autocmds {
+" }
+" Plugin Options {
+" Airline {
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
@@ -508,8 +457,9 @@ let g:airline_symbols.branch = '⎇'
 let g:airline_symbols.paste = 'ρ'
 let g:airline_symbols.notexists   = '∄'
 let g:airline_symbols.whitespace = 'Ξ'
+" }
 
-" CtrlP.vim should be used for Ctrl+p
+" CtrlP.vim {
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 " Working Path Mode:
@@ -519,9 +469,9 @@ let g:ctrlp_cmd = 'CtrlP'
 " 'w' - modifier to "r": start search from the cwd instead of the current file's directory
 " 0 or '' (empty string) - disable this feature.
 let g:ctrlp_working_path_mode = 'ra'
+" }
 
-" Tabman
-" Default hotkeys
+" Tabman {
 let g:tabman_toggle = '<leader>mt'
 let g:tabman_focus  = '<leader>mf'
 let g:tabman_side = 'left'
@@ -530,27 +480,35 @@ let g:tabman_width = 25
 let g:tabman_specials = 0
 " Set this to 0 to disable line numbering in the TabMan window:
 let g:tabman_number = 1
-
-" Advanced ansible-vim config
+" }
+" ansible-vim {
 let g:ansible_unindent_after_newline = 1
 let g:ansible_extra_syntaxes = "sh.vim python.vim"
 let g:ansible_attribute_highlight = "ob"
 let g:ansible_extra_keywords_highlight = 1
+" }
 
-" Golang
+" Golang {
 let g:go_fmt_command = "goimports"
 let g:go_highlight_types = 1
 let g:go_highlight_fields = 1
+" }
+" pymode {
 let g:pymode_python = 'python3'
+" }
 
-" json
+" json {
 let g:vim_json_syntax_conceal = 0
+" }
 
 " dont make ** to fat
 let g:indentLine_setConceal = 0
 
-" nerdtree
+" nerdtree {
 let NERDTreeIgnore = ['\.pyc$', '__pycache__', '\.mypy_cache']
-" wiki
+" }
 
+" vim-wiki {
 let g:vimwiki_list = [{'path': '~/.vimwiki/code', 'path_html': '~/.vimwiki/html'}]
+" }
+" }
