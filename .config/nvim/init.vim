@@ -230,7 +230,7 @@ set cursorline
 " }
 " History {
 set history=700
-set backup
+" set backup
 if has("persistent_undo")
     set undofile
     set undolevels=1000
