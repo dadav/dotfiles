@@ -1,3 +1,4 @@
+setxkbmap -option ctrl:nocaps
 nm-applet --sm-disable &
 firewall-applet &
 udiskie &
