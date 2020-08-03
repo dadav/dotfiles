@@ -10,4 +10,3 @@ export VISUAL=$EDITOR
 export SYSTEMD_EDITOR=$EDITOR
 export BROWSER=chromium
 export GREP_COLOR='1;32'
-export MANPAGER="sh -c 'col -bx | bat -l man -p'"
