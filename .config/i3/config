@@ -301,10 +301,10 @@ bindsym $mod+Shift+v exec vim-anywhere clip
 bindsym --release Print exec teiler
 
 # browser selector
-bindsym $mod+b  exec browser
+bindsym $mod+b exec browser
 
 # thunderbird
-bindsym $mod+m  exec thunderbird
+bindsym $mod+m exec thunderbird
 
 # spotify
 bindsym $mod+p  exec flock -w1 /tmp -c spotify
