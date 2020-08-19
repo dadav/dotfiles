@@ -94,7 +94,8 @@ c.colors.prompts.selected.bg = "#4779B3"
 
 # fonts
 #c.fonts.monospace = "Noto Sans Mono", "DejaVu Sans Mono", "Liberation Mono", monospace
-c.fonts.tabs = "7pt Noto Sans Mono"
+c.fonts.tabs.selected = "7pt Noto Sans Mono"
+c.fonts.tabs.unselected = "5pt Noto Sans Mono"
 c.fonts.statusbar = "8pt Noto Sans Mono"
 c.fonts.downloads = c.fonts.statusbar
 c.fonts.prompts = c.fonts.statusbar
