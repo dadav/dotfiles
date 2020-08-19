@@ -196,8 +196,8 @@ au BufNewFile,BufRead Jenkinsfile  setf groovy
 au FileType markdown setlocal cole=1
 
 " python
-au VimEnter *.py NERDTree
-au VimEnter *.py Tagbar
+" au VimEnter *.py NERDTree
+" au VimEnter *.py Tagbar
 au VimEnter * wincmd p
 
 " Vim-Go
@@ -507,8 +507,10 @@ let g:indentLine_setConceal = 0
 " nerdtree {
 let NERDTreeIgnore = ['\.pyc$', '__pycache__', '\.mypy_cache']
 " }
-
+" tagbar
+let g:tagbar_position = 'right'
 " vim-wiki {
 let g:vimwiki_list = [{'path': '~/.vimwiki/code', 'path_html': '~/.vimwiki/html'}]
 " }
 " }
+"
