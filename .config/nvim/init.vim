@@ -495,6 +495,7 @@ let g:go_highlight_fields = 1
 " }
 " pymode {
 let g:pymode_python = 'python3'
+let g:pymode_lint_ignore = 'E501' " dont lint long lines
 " }
 
 " json {
