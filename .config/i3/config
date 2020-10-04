@@ -238,7 +238,8 @@ exec_always feh --bg-fill ~/library/pictures/wallpaper/linux_wp.png
 exec_always --no-startup-id ~/.local/bin/poly
 
 # Fix tearing
-exec --no-startup-id compton --no-fading-openclose --backend xr_glx_hybrid --vsync opengl-swc --paint-on-overlay --config /dev/null
+# exec --no-startup-id compton --no-fading-openclose --backend xr_glx_hybrid --vsync opengl-swc --paint-on-overlay --config /dev/null
+exec --no-startup-id picom
 
 #exec --no-startup-id ibus-daemon -drx
 #exec --no-startup-id fcitx -d
