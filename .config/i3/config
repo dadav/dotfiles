@@ -119,10 +119,10 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 
 # focus the parent container
-bindsym $mod+a focus parent
+# bindsym $mod+a focus parent
 
 # focus the child container
-bindsym $mod+c focus child
+# bindsym $mod+c focus child
 
 # Workspace defs
 set $ws1 1
@@ -241,6 +241,9 @@ exec_always --no-startup-id ~/.local/bin/poly
 # exec --no-startup-id compton --no-fading-openclose --backend xr_glx_hybrid --vsync opengl-swc --paint-on-overlay --config /dev/null
 exec --no-startup-id picom
 
+# clipboard manager
+exec --no-startup-id greenclip daemon>/dev/null
+
 #exec --no-startup-id ibus-daemon -drx
 #exec --no-startup-id fcitx -d
 
@@ -302,13 +305,19 @@ bindsym $mod+Shift+v exec vim-anywhere clip
 bindsym --release Print exec teiler
 
 # browser selector
+bindsym $mod+c exec rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
+
+# browse docs
+bindsym $mod+d exec rofi-zeal
+
+# browser selector
 bindsym $mod+b exec browser
 
 # thunderbird
 bindsym $mod+m exec thunderbird
 
 # spotify
-bindsym $mod+p  exec flock -w1 /tmp -c spotify
+bindsym $mod+p exec flock -w1 /tmp -c spotify
 
 # i3lock
 bindsym $mod+i exec lock
