@@ -1,8 +1,8 @@
 # Play rainsound
 function rainymood() {
   FILE=$((RANDOM%4))
-  URL="https://rainymood.com/audio1110/${FILE}.ogg"
-  mpv --volume 70 "$URL" && rainymood
+  URL="https://rainymood.com/audio1112/${FILE}.m4a"
+  mpv --volume=70 "$URL" && rainymood
 }
 
 # Search for music and play it in random order
