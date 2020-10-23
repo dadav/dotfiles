@@ -7,7 +7,7 @@ umask 022
 ## Its interactive, load aliases
 # source all settings
 for category in aliases settings functions ; do
-  for setting in $HOME/.bash/$category/*.sh;do
+  for setting in $HOME/.shells/bash/$category/*.sh;do
     . "$setting"
   done
 done
