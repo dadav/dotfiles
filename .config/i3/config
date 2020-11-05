@@ -71,8 +71,6 @@ bindsym $mod+Shift+d exec "rofi -show run -modi run -location 1 -width 100 \
 		 -hide-scrollbar \
 		 -kb-row-select 'Tab' -kb-row-tab ''"
 
-# Surfraw
-bindsym $mod+Shift+s exec surfraw-rofi
 
 # change focus
 bindsym $mod+j focus left
@@ -99,13 +97,13 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+h split h
+bindsym $mod+h split v
 
 # split in vertical orientation
-bindsym $mod+v split v
+bindsym $mod+v split h
 
 # enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen toggle
+bindsym $mod+z fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
@@ -314,7 +312,16 @@ bindsym $mod+d exec rofi-zeal
 bindsym $mod+b exec browser
 
 # thunderbird
-bindsym $mod+m exec thunderbird
+#bindsym $mod+m exec thunderbird
+
+# Surfraw
+bindsym $mod+g exec surfraw-rofi
+
+# tmpmail
+bindsym $mod+m exec rofi-tmpmail
+
+# select a window
+bindsym $mod+f exec wmfocus
 
 # spotify
 bindsym $mod+p exec flock -w1 /tmp -c spotify
