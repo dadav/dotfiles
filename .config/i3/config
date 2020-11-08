@@ -44,6 +44,9 @@ client.urgent #373b41 #cc6666 #ffffff #cc6666
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
+# Default Orientation
+default_orientation vertical
+
 # Default Tabmode
 workspace_layout tabbed
 
