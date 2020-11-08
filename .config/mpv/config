@@ -1,14 +1,25 @@
-# Volume
-volume=25
-# save volume on quit
-save-position-on-quit
+# video
 # Enable OpenGL and VA-API hardware decoding.
 vo=opengl,vx
 hwdec=vaapi
 # Start in full screen.
 fs=yes
-# Stop screensaver (xautolock).
-stop-screensaver=yes
+# force starting with centered window
+geometry=50%:50%
+window-scale=0.5
+# don't allow a new window to have a size larger than 90% of the screen size
+autofit-larger=50%x50%
+
+# cache
+cache=yes
+#cache-default=153600
+cache-pause=no
+
+# audio
+# driver
+ao=pulse
+# Volume
+volume=25
 # Do not display audio file images.
 audio-display=no
 # Set default languages.
@@ -16,7 +27,16 @@ alang=eng
 slang=eng
 # Show progress bar for audio files.
 term-osd-bar=yes
+# Do not filter audio to keep pitch when changing playback speed.
+audio-pitch-correction=yes
+
+# other
 screenshot-directory=~/tmp/
+# Stop screensaver (xautolock).
+stop-screensaver=yes
+# save volume on quit
+save-position-on-quit
+
 # Loop all the gifs.
 [extension.gif]
 loop-file=yes
