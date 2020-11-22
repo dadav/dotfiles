@@ -1,0 +1,4 @@
+---
+ls: 'ls -ahl'
+rsync: 'rsync -aP'
+dl: 'aria2c -x16'

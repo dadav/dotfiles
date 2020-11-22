@@ -1,2 +1,2 @@
 alias p='pueue'
-alias pa'pueue add --'
+alias pa='pueue add --'
