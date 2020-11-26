@@ -238,6 +238,7 @@ if has("persistent_undo")
 endif
 " }
 " Behaviour {
+set updatetime=300      " update faster
 set expandtab           " enter spaces when tab is pressed
 set textwidth=100       " break lines when line length increases
 set formatoptions-=t    " No autolinebreak
