@@ -10,6 +10,9 @@ endif
 " Specify a directory for plugins
 call plug#begin('~/.vim/plugged')
 
+" Session management
+Plug 'thaerkh/vim-workspace'
+
 " show hex colors
 Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 
@@ -278,7 +281,10 @@ filetype indent on
 " Mappings {
 let mapleader = ","
 let g:mapleader = ","
-" neosnippet {
+" Diable stuff {
+nnoremap Q <NOP>
+" }
+" Neosnippet {
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 xmap <C-k>     <Plug>(neosnippet_expand_target)
@@ -438,6 +444,7 @@ let g:airline_symbols.branch = '⎇'
 let g:airline_symbols.paste = 'ρ'
 let g:airline_symbols.notexists   = '∄'
 let g:airline_symbols.whitespace = 'Ξ'
+let g:airline_theme='Base2Tone_MeadowDark'
 " }
 " CtrlP.vim {
 let g:ctrlp_map = '<c-p>'
@@ -560,6 +567,10 @@ imap <C-l> <Plug>(coc-snippets-expand)
 " coc-yank {
 nnoremap <silent> <leader>y  :<C-u>CocList -A --normal yank<cr>
 " }
-
+" workspace {
+nnoremap <leader>s :ToggleWorkspace<CR>
+" Don't load on vim with args
+let g:workspace_session_disable_on_args = 1
+" }
 " }
 "
