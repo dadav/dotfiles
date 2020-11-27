@@ -85,6 +85,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'amix/open_file_under_cursor.vim'
 
 " tpope FTW
+Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-endwise'
@@ -94,16 +95,8 @@ Plug 'tpope/vim-eunuch'
 " Languages
 Plug 'google/vim-jsonnet'
 Plug 'rodjek/vim-puppet'
-Plug 'plasticboy/vim-markdown'
-Plug 'mzlogin/vim-markdown-toc'
-Plug 'saltstack/salt-vim'
 Plug 'pearofducks/ansible-vim', { 'do': './UltiSnips/generate.py' }
-Plug 'fatih/vim-go'
 Plug 'hashivim/vim-terraform'
-Plug 'mdempsky/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
-Plug 'vim-ruby/vim-ruby' " solargraph
-Plug 'mrk21/yaml-vim' " For hieradata
-Plug 'elzr/vim-json' " For metadata.json
 Plug 'cespare/vim-toml' " TOML
 Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'tmux-plugins/vim-tmux'
@@ -120,7 +113,6 @@ Plug 'owickstrom/vim-colors-paramount'
 Plug 'tomasr/molokai'
 
 " git stuff
-Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'jreybert/vimagit'
 
@@ -183,8 +175,10 @@ au BufWritePost *.adoc silent! !head -1 % | grep autocompile && asciidoctor-pdf 
 " http://vim.wikia.com/wiki/Remove_unwanted_spaces
 au BufWritePre * %s/\s\+$//e
 
-" git
-autocmd FileType gitcommit setlocal textwidth=72 spell
+" enable spell for certain filetypes
+au FileType gitcommit setlocal textwidth=72 spell
+au FileType markdown setlocal spell
+au FileType vimwiki setlocal spell
 
 " Filetypes
 au BufNewFile,BufRead *.groovy  setf groovy
@@ -193,15 +187,8 @@ au BufNewFile,BufRead Jenkinsfile  setf groovy
 " Markdown
 au FileType markdown setlocal cole=1
 
-" Vim-Go
-au FileType go nmap <Leader>d :GoDoc<CR>
-au FileType go nmap <Leader>D :GoDocBrowser<CR>
-au FileType go nmap <Leader>g :GoDef<CR>
-au FileType go nmap <Leader>i :GoImports<CR>
-au FileType go nmap <leader>b :GoBuild<CR>
-au FileType go nmap <leader>r :GoRun<CR>
-au FileType go nmap <leader>f :GoErrCheck<CR>
-au FileType go inoremap <buffer> . .<C-x><C-o>
+" go
+au BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport')
 " }
 " Mouse {
 set mouse=
@@ -415,16 +402,8 @@ nmap <Leader>l :Limelight!!<CR>
 xmap <Leader>l :Limelight!!<CR>
 
 " #### EasyAlign
-nmap ga <Plug>(EasyAlign)
-xmap ga <Plug>(EasyAlign)
-
-" #### Tabularize
-nmap <Leader>t  :Tabularize / <CR>
-vmap <Leader>t  :Tabularize / <CR>
-nmap <Leader>t= :Tabularize /=<CR>
-vmap <Leader>t= :Tabularize /=<CR>
-nmap <Leader>t: :Tabularize /:\zs<CR>
-vmap <Leader>t: :Tabularize /:\zs<CR>
+nmap ta <Plug>(EasyAlign)
+xmap ta <Plug>(EasyAlign)
 
 " #### Asciidoctor-pdf
 nmap <Leader>adc :!asciidoctor-pdf %<CR>
@@ -509,7 +488,20 @@ let NERDTreeIgnore = ['\.pyc$', '__pycache__', '\.mypy_cache']
 " tagbar
 let g:tagbar_position = 'right'
 " vim-wiki {
-let g:vimwiki_list = [{'path': '~/.vimwiki/code', 'path_html': '~/.vimwiki/html'}]
+let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
+let g:vimwiki_conceallevel = 0
+" dont use vimwiki filetype for all .md files
+let g:vimwiki_global_ext = 0
+
+" default wiki
+let wiki_default = {}
+let wiki_default.path = '~/.vimwiki/notes'
+let wiki_default.syntax = 'markdown'
+let wiki_default.ext = 'md'
+let wiki_default.nested_syntaxes = {'md':'markdown', 'sh':'sh','python': 'python', 'c++': 'cpp'}
+
+let g:vimwiki_list = [wiki_default]
+
 " }
 " ale {
 let g:ale_sign_error = '💩'
@@ -524,7 +516,7 @@ let g:neosnippet#enable_conceal_markers = 0
 " }
 " coc {
 " Manage these extensions automatically
-let g:coc_global_extensions = [ 'coc-diagnostic', 'coc-powershell', 'coc-python', 'coc-json', 'coc-html', 'coc-highlight', 'coc-snippets', 'coc-vimlsp', 'coc-texlab', 'coc-yaml', 'coc-xml', 'coc-git', 'coc-marketplace', 'coc-emoji', 'coc-dictionary', 'coc-tag', 'coc-neosnippet', 'coc-yank', 'coc-sh']
+let g:coc_global_extensions = [ 'coc-solargraph', 'coc-go', 'coc-diagnostic', 'coc-python', 'coc-json', 'coc-html', 'coc-highlight', 'coc-snippets', 'coc-vimlsp', 'coc-texlab', 'coc-yaml', 'coc-xml', 'coc-git', 'coc-marketplace', 'coc-emoji', 'coc-dictionary', 'coc-tag', 'coc-neosnippet', 'coc-yank', 'coc-sh', 'coc-markdownlint']
 
 " Give more space for displaying messages.
 set cmdheight=2

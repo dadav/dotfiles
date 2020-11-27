@@ -27,7 +27,6 @@ bindkey "\e[3~" delete-char # del
 bindkey '^[\' pound-insert # also use setopt interactivecomments
 zplug "zsh-users/zsh-autosuggestions", from:github
 zplug "zsh-users/zsh-completions", from:github
-zplug "junegunn/fzf", use:"shell/{key-bindings,completion}.zsh"
 
 # nav
 zplug "rupa/z", use:z.sh
@@ -43,14 +42,17 @@ zplug "plugins/colored-man-pages", from:oh-my-zsh
 zplug "romkatv/powerlevel10k", as:theme, depth:1
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 
-# misc
-zplug "plugins/git", from:oh-my-zsh
+# fzf
 zplug "junegunn/fzf", as:command, use:"bin/fzf-tmux"
-zplug "junegunn/fzf-bin", \
+zplug "junegunn/fzf", use:"shell/*.zsh", defer:2
+zplug "junegunn/fzf", \
     from:gh-r, \
     as:command, \
     rename-to:fzf, \
     use:"*linux*amd64*"
+
+# misc
+zplug "plugins/git", from:oh-my-zsh
 
 
 # Install packages that have not been installed yet
