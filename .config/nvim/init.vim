@@ -10,15 +10,17 @@ endif
 " Specify a directory for plugins
 call plug#begin('~/.vim/plugged')
 
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
+" show hex colors
+Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 
-let g:deoplete#enable_at_startup = 1
+" LSP code completion/diagnostics
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+" better syntax
+Plug 'Shougo/neco-syntax'
+
+" Fancy start screen
+Plug 'mhinz/vim-startify'
 
 " wiki
 Plug 'vimwiki/vimwiki'
@@ -29,21 +31,14 @@ Plug 'easymotion/vim-easymotion'
 " editorconfig
 Plug 'editorconfig/editorconfig-vim'
 
-" neosnippet
+" snippets
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
+Plug 'Shougo/context_filetype.vim'
 
-" tests
-Plug 'junegunn/vader.vim'
-
-" deoplete plugins
-Plug 'zchee/deoplete-jedi'
-Plug 'Shougo/neoinclude.vim'
-Plug 'Shougo/neco-syntax'
-Plug 'fszymanski/deoplete-emoji'
-
-" Markdown
+" Preview markdown
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
+
 " Limelight; Focus on stuff
 Plug 'junegunn/limelight.vim'
 
@@ -70,25 +65,12 @@ Plug 'ctrlpvim/ctrlp.vim'
 " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
 Plug 'junegunn/vim-easy-align'
 
-" Async File Linter, whoohoo
-Plug 'w0rp/ale'
+" Async syntax linters/fixers
+Plug 'dense-analysis/ale'
 
-" jsonnet
-Plug 'google/vim-jsonnet'
 " Easily align text
 " used by puppet-vim
 Plug 'godlygeek/tabular'
-
-" ctags support/puppet-vim
-Plug 'majutsushi/tagbar'
-
-" reqs for snipmate (utility plugins)
-Plug 'tomtom/tlib_vim'
-Plug 'MarcWeber/vim-addon-mw-utils'
-
-Plug 'garbas/vim-snipmate'
-
-Plug 'rodjek/vim-puppet'
 
 " Highlight ugly extra whitespace
 Plug 'ntpeters/vim-better-whitespace'
@@ -104,28 +86,34 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-eunuch'
 
 " Languages
+Plug 'google/vim-jsonnet'
+Plug 'rodjek/vim-puppet'
+Plug 'plasticboy/vim-markdown'
+Plug 'mzlogin/vim-markdown-toc'
 Plug 'saltstack/salt-vim'
 Plug 'pearofducks/ansible-vim', { 'do': './UltiSnips/generate.py' }
-Plug 'python-mode/python-mode', {'branch': 'develop'}
-Plug 'hynek/vim-python-pep8-indent'
 Plug 'fatih/vim-go'
+Plug 'hashivim/vim-terraform'
 Plug 'mdempsky/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
 Plug 'vim-ruby/vim-ruby' " solargraph
 Plug 'mrk21/yaml-vim' " For hieradata
 Plug 'elzr/vim-json' " For metadata.json
 Plug 'cespare/vim-toml' " TOML
-
-" PyDoc to quickly access documentation
-Plug 'fs111/pydoc.vim'
-
-" Tabmanager - visualizing tabs in vim
-Plug 'kien/tabman.vim'
+Plug 'Glench/Vim-Jinja2-Syntax'
+Plug 'tmux-plugins/vim-tmux'
 
 " themes
-Plug 'josuegaleas/jay'
+Plug 'atelierbram/Base2Tone-vim'
 Plug 'chriskempson/base16-vim'
+Plug 'endel/vim-github-colorscheme'
+Plug 'flazz/vim-colorschemes'
+Plug 'josuegaleas/jay'
+Plug 'lifepillar/vim-solarized8'
+Plug 'morhetz/gruvbox'
+Plug 'owickstrom/vim-colors-paramount'
 Plug 'tomasr/molokai'
 
 " git stuff
@@ -135,37 +123,35 @@ Plug 'airblade/vim-gitgutter'
 " search files with ack/ag
 Plug 'mileszs/ack.vim'
 
-
 Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 " syntax/indent/ftplugins for a many languages/tools (fucks up MD)
-"Plug 'sheerun/vim-polyglot'
+Plug 'sheerun/vim-polyglot'
 
 " Visual helper
 Plug 'Yggdroot/indentLine'
 " Autoscroll
 Plug 'yuttie/comfortable-motion.vim'
-
-" Any valid git URL is allowed
-"Plug 'https://github.com/junegunn/vim-github-dashboard.git'
-
-" Multiple Plug commands can be written in a single line using | separators
-"Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
-
-" On-demand loading
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-"Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
-
-" Initialize plugin system
 call plug#end()
-
 " }
 "  Looks {
+" Terminal behaviour
+" Disable background color erase because of a bug in VIM which shows in kitty
+" see https://github.com/kovidgoyal/kitty (search for bce)
+let &t_ut=''
+" Show numbers
 set number
+" Enable syntax highlighting
 syntax enable
+
 set background=dark
-colorscheme jay
-set t_Co=256
+
+" also good: jay
+colorscheme solarized8_high
+
+" Do not hide characters in, for example, markdown mode
+set conceallevel=0
 
 " Live preview of substitutions
 if has('nvim')
@@ -175,18 +161,21 @@ endif
 " Show matching brackets when text indicator is over them
 set showmatch
 
+set spelllang=de,en
+setlocal dictionary=/usr/share/dict/german
+setlocal dictionary+=/usr/share/dict/american-english
+
 " }
 " Auto Commands {
 " Asciidoc
 au BufWritePost *.adoc silent! !head -1 % | grep autocompile && asciidoctor-pdf % || true
 
-" #### Fixes code-completion bug
-" autocmd BufRead,BufNewFile *.py :set omnifunc=python3complete#Complete
-au BufRead,BufNewFile *.yml setf ansible
-
 " Remove trailing spaces on write
 " http://vim.wikia.com/wiki/Remove_unwanted_spaces
 au BufWritePre * %s/\s\+$//e
+
+" git
+autocmd FileType gitcommit setlocal textwidth=72 spell
 
 " Filetypes
 au BufNewFile,BufRead *.groovy  setf groovy
@@ -194,11 +183,6 @@ au BufNewFile,BufRead Jenkinsfile  setf groovy
 
 " Markdown
 au FileType markdown setlocal cole=1
-
-" python
-" au VimEnter *.py NERDTree
-" au VimEnter *.py Tagbar
-au VimEnter * wincmd p
 
 " Vim-Go
 au FileType go nmap <Leader>d :GoDoc<CR>
@@ -209,17 +193,6 @@ au FileType go nmap <leader>b :GoBuild<CR>
 au FileType go nmap <leader>r :GoRun<CR>
 au FileType go nmap <leader>f :GoErrCheck<CR>
 au FileType go inoremap <buffer> . .<C-x><C-o>
-
-" python-mode
-au FileType py nmap <leader>g  :RopeGotoDefinition<CR>
-au FileType py nmap <leader>r  :PymodeRun<CR>
-au FileType py nmap <leader>d  :PymodeDoc<CR>
-au FileType py nmap <leader>f  :PymodeLint<CR>
-
-" Terminal
-" Enter insert mode when we switch to a terminal
-" Super useful 😻
-au BufEnter * if &buftype == 'terminal' | :startinsert | endif
 " }
 " Mouse {
 set mouse=
@@ -238,7 +211,6 @@ if has("persistent_undo")
 endif
 " }
 " Behaviour {
-set updatetime=300      " update faster
 set expandtab           " enter spaces when tab is pressed
 set textwidth=100       " break lines when line length increases
 set formatoptions-=t    " No autolinebreak
@@ -247,12 +219,15 @@ set softtabstop=2
 set shiftwidth=2        " number of spaces to use for auto indent
 set softtabstop=2
 set iskeyword+=_,$,@,%,#    " none of these are word dividers
+set autowrite " save when useing make
+set scrolloff=3 " Start scrolling 3 lines before edge of viewport
 " }
 " Folding {
-set foldmethod=indent
+set foldmethod=syntax
+set foldlevelstart=1
 set foldnestmax=10
 set nofoldenable
-set foldlevel=2
+set foldlevel=1
 " }
 " Completion {
 set wildmenu
@@ -303,7 +278,14 @@ filetype indent on
 " Mappings {
 let mapleader = ","
 let g:mapleader = ","
-
+" neosnippet {
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+" }
+" Pasta {
+map <leader>pp :setlocal paste!<cr>
+" }
 " Selection {
 vnoremap > >gv
 vnoremap < <gv
@@ -317,7 +299,11 @@ if has('virtualedit')
   set virtualedit=block
 endif
 " }
-
+" Terminals {
+map <leader>tt :spl term://zsh<cr>
+map <leader>tv :vspl term://zsh<cr>
+map <leader>T :tabe term://zsh<cr>
+" }
 " Buffers {
 " ALT-n next buffer and list, ALT-p previous buffer
 nnoremap <A-n> :bnext<CR>:redraw<CR>:ls<CR>
@@ -333,7 +319,6 @@ nnoremap <Leader>s\| :vsplit<CR>
 nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
 nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
 " }
-
 " Nifty tricks {
 " Write files as root
 cmap w!! w !sudo tee > /dev/null %
@@ -425,9 +410,6 @@ vmap <Leader>t: :Tabularize /:\zs<CR>
 " #### Asciidoctor-pdf
 nmap <Leader>adc :!asciidoctor-pdf %<CR>
 
-" #### NERDTree
-nmap <Leader>nt :NERDTreeToggle<CR>
-
 " fast access to fzf
 map <leader>fl :BLines<CR>
 map <leader>ff :FZF<CR>
@@ -435,8 +417,6 @@ map <leader>fgf :GFiles<CR>
 map <leader>fh :History<CR>
 map <C-P> :FZF .<CR>
 
-" #### Tagbar
-nmap <Leader>tt :TagbarToggle<CR>
 " }
 " }
 " Autocmds {
@@ -459,7 +439,6 @@ let g:airline_symbols.paste = 'ρ'
 let g:airline_symbols.notexists   = '∄'
 let g:airline_symbols.whitespace = 'Ξ'
 " }
-
 " CtrlP.vim {
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
@@ -471,7 +450,6 @@ let g:ctrlp_cmd = 'CtrlP'
 " 0 or '' (empty string) - disable this feature.
 let g:ctrlp_working_path_mode = 'ra'
 " }
-
 " Tabman {
 let g:tabman_toggle = '<leader>mt'
 let g:tabman_focus  = '<leader>mf'
@@ -488,17 +466,16 @@ let g:ansible_extra_syntaxes = "sh.vim python.vim"
 let g:ansible_attribute_highlight = "ob"
 let g:ansible_extra_keywords_highlight = 1
 " }
-
 " Golang {
 let g:go_fmt_command = "goimports"
 let g:go_highlight_types = 1
 let g:go_highlight_fields = 1
 " }
-" pymode {
-let g:pymode_python = 'python3'
-let g:pymode_lint_ignore = 'E501' " dont lint long lines
+" markdown {
+let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'puppet']
+let g:markdown_minlines = 100
+let g:markdown_syntax_conceal = 0
 " }
-
 " json {
 let g:vim_json_syntax_conceal = 0
 " }
@@ -514,5 +491,75 @@ let g:tagbar_position = 'right'
 " vim-wiki {
 let g:vimwiki_list = [{'path': '~/.vimwiki/code', 'path_html': '~/.vimwiki/html'}]
 " }
+" ale {
+let g:ale_sign_error = '💩'
+let g:ale_sign_warning = '⚡'
+let g:ale_completion_enabled = 0
+" Enable integration with airline.
+let g:airline#extensions#ale#enabled = 1
+" }
+" neosnippet {
+" No conceal markers
+let g:neosnippet#enable_conceal_markers = 0
+" }
+" coc {
+" Manage these extensions automatically
+let g:coc_global_extensions = [ 'coc-powershell', 'coc-python', 'coc-json', 'coc-html', 'coc-highlight', 'coc-snippets', 'coc-vimlsp', 'coc-texlab', 'coc-yaml', 'coc-xml', 'coc-git', 'coc-marketplace', 'coc-emoji', 'coc-dictionary', 'coc-tag', 'coc-neosnippet', 'coc-yank', 'coc-sh']
+
+" Give more space for displaying messages.
+set cmdheight=2
+
+" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
+" delays and poor user experience.
+set updatetime=300
+
+" Don't pass messages to |ins-completion-menu|.
+set shortmess+=c
+
+" Always show the signcolumn, otherwise it would shift the text each time
+" diagnostics appear/become resolved.
+set signcolumn=yes
+
+" Use `[g` and `]g` to navigate diagnostics
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
+
+" Formatting selected code.
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+
+" }
+
+" coc-snippets {
+imap <C-l> <Plug>(coc-snippets-expand)
+" }
+
+" coc-yank {
+nnoremap <silent> <leader>y  :<C-u>CocList -A --normal yank<cr>
+" }
+
 " }
 "
