@@ -122,6 +122,7 @@ Plug 'tomasr/molokai'
 " git stuff
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
+Plug 'jreybert/vimagit'
 
 " search files with ack/ag
 Plug 'mileszs/ack.vim'
@@ -134,8 +135,12 @@ Plug 'sheerun/vim-polyglot'
 
 " Visual helper
 Plug 'Yggdroot/indentLine'
+
 " Autoscroll
 Plug 'yuttie/comfortable-motion.vim'
+
+" Grepper
+Plug 'mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] }
 call plug#end()
 " }
 "  Looks {
@@ -168,6 +173,7 @@ set spelllang=de,en
 setlocal dictionary=/usr/share/dict/german
 setlocal dictionary+=/usr/share/dict/american-english
 
+set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<,space:␣
 " }
 " Auto Commands {
 " Asciidoc
@@ -281,6 +287,11 @@ filetype indent on
 " Mappings {
 let mapleader = ","
 let g:mapleader = ","
+" Hidden stuff {
+noremap <leader>lc :set list!<CR>
+inoremap <leader>lc <C-o>:set list!<CR>
+cnoremap <leader>lc <C-c>:set list!<CR>
+" }
 " Diable stuff {
 nnoremap Q <NOP>
 " }
@@ -341,6 +352,8 @@ function! Preserve(command)
   call winrestview(l:saved_winview)
 endfunction
 " }
+" Git {
+nnoremap <leader>gs :Magit<CR>
 " }
 " Motion {
 " Treat long lines as break lines (useful when moving around in them)
@@ -511,7 +524,7 @@ let g:neosnippet#enable_conceal_markers = 0
 " }
 " coc {
 " Manage these extensions automatically
-let g:coc_global_extensions = [ 'coc-powershell', 'coc-python', 'coc-json', 'coc-html', 'coc-highlight', 'coc-snippets', 'coc-vimlsp', 'coc-texlab', 'coc-yaml', 'coc-xml', 'coc-git', 'coc-marketplace', 'coc-emoji', 'coc-dictionary', 'coc-tag', 'coc-neosnippet', 'coc-yank', 'coc-sh']
+let g:coc_global_extensions = [ 'coc-diagnostic', 'coc-powershell', 'coc-python', 'coc-json', 'coc-html', 'coc-highlight', 'coc-snippets', 'coc-vimlsp', 'coc-texlab', 'coc-yaml', 'coc-xml', 'coc-git', 'coc-marketplace', 'coc-emoji', 'coc-dictionary', 'coc-tag', 'coc-neosnippet', 'coc-yank', 'coc-sh']
 
 " Give more space for displaying messages.
 set cmdheight=2
