@@ -317,13 +317,13 @@ bindsym $mod+d exec rofi-zeal
 bindsym $mod+b exec browser
 
 # thunderbird
-#bindsym $mod+m exec thunderbird
-
-# Surfraw
-bindsym $mod+g exec surfraw-rofi
+bindsym $mod+shift+m exec thunderbird
 
 # tmpmail
 bindsym $mod+m exec rofi-tmpmail
+
+# Surfraw
+bindsym $mod+g exec surfraw-rofi
 
 # select a window
 bindsym $mod+f exec wmfocus
