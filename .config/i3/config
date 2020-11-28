@@ -203,15 +203,18 @@ bindsym $mod+r mode "resize"
 ## Browsers
 assign [class="qutebrowser"] $ws1
 assign [window_role="browser"] $ws1
+
+## Code
+for_window [class="code-oss"] move to workspace $ws3
+
 ## Mail
-assign [class="Thunderbird"] $ws2
+assign [class="Thunderbird"] $ws9
+for_window [window_role="Msgcompose" class="(?i)Thunderbird"] floating enable
+
 ## Audio
 assign [class="Clementine"] $ws10
 assign [class="Spotify"] $ws10
-for_window [class="discord"] move to workspace $ws9
 for_window [class="Spotify"] move to workspace $ws10
-## Code
-for_window [class="code-oss"] move to workspace $ws3
 
 # Custom window settings
 for_window [urgent="latest"] focus
@@ -246,9 +249,6 @@ exec --no-startup-id picom
 
 # clipboard manager
 exec --no-startup-id greenclip daemon>/dev/null
-
-#exec --no-startup-id ibus-daemon -drx
-#exec --no-startup-id fcitx -d
 
 # Start redshift
 exec --no-startup-id redshift -l 48.780679:9.199159
