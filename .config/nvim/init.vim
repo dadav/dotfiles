@@ -10,6 +10,9 @@ endif
 " Specify a directory for plugins
 call plug#begin('~/.vim/plugged')
 
+" Powerful multi file search
+Plug 'wincent/ferret'
+
 " show all the filePlug 'scrooloose/nerdtree's
 Plug 'scrooloose/nerdtree'
 
@@ -582,6 +585,10 @@ nnoremap <silent> <leader>y  :<C-u>CocList -A --normal yank<cr>
 " }
 " Grepper {
 nnoremap <leader>g :Grepper -tool g<cr>
+" }
+" Ferret {
+nmap <leader>z <Plug>(FerretAckWord)
+nmap <leader>x <Plug>(FerretAck)
 " }
 " workspace {
 nnoremap <leader>s :ToggleWorkspace<CR>
