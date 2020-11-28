@@ -10,6 +10,9 @@ endif
 " Specify a directory for plugins
 call plug#begin('~/.vim/plugged')
 
+" show all the filePlug 'scrooloose/nerdtree's
+Plug 'scrooloose/nerdtree'
+
 " Session management
 Plug 'thaerkh/vim-workspace'
 
@@ -274,6 +277,11 @@ filetype indent on
 " Mappings {
 let mapleader = ","
 let g:mapleader = ","
+" NerdTree {
+map <leader>nn :NERDTreeToggle<cr>
+map <leader>nb :NERDTreeFromBookmark
+map <leader>nf :NERDTreeFind<cr><Paste>
+" }
 " Hidden stuff {
 noremap <leader>lc :set list!<CR>
 inoremap <leader>lc <C-o>:set list!<CR>
