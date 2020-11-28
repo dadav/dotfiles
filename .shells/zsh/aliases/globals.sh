@@ -19,3 +19,4 @@ alias -g OF10='*(.Om[1,10])'
 
 # others
 alias -g Q='>/dev/null 2>&1'
+
