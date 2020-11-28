@@ -5,16 +5,17 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# Check if zplug is installed
-export ZPLUG_HOME="${HOME}/.zplug"
-if [[ ! -d ${ZPLUG_HOME} ]]; then
-  git clone https://github.com/zplug/zplug ${ZPLUG_HOME}
-  source ${ZPLUG_HOME}/init.zsh && zplug update --self
-else
-  source ~/.zplug/init.zsh
-fi
+# options
+setopt interactivecomments
+setopt complete_aliases
+setopt extendedglob
+setopt notify
+setopt appendhistory
+setopt incappendhistory
+setopt sharehistory
 
 # autoload
+plugins+=(zsh-completions)
 autoload -Uz compinit && compinit
 autoload -U colors && colors
 autoload -U zmv
@@ -25,60 +26,9 @@ bindkey "^[[5~" history-beginning-search-backward # page up
 bindkey "^[[6~" history-beginning-search-forward # page down
 bindkey "\e[3~" delete-char # del
 bindkey '^[\' pound-insert # also use setopt interactivecomments
-zplug "zsh-users/zsh-autosuggestions", from:github
-zplug "zsh-users/zsh-completions", from:github
-
-# nav
-zplug "rupa/z", use:z.sh
-zplug "b4b4r07/enhancd", use:init.sh
-
-# completion / help
-zplug "zsh-users/zsh-history-substring-search"
-zplug "lib/history", from:oh-my-zsh
-zplug "plugins/command-not-found", from:oh-my-zsh
-
-# eyecandy
-zplug "plugins/colored-man-pages", from:oh-my-zsh
-zplug "romkatv/powerlevel10k", as:theme, depth:1
-zplug "zsh-users/zsh-syntax-highlighting", defer:2
-
-# fzf
-zplug "junegunn/fzf", as:command, hook-build:"./install --bin", use:"bin/{fzf-tmux,fzf}"
-zplug "junegunn/fzf", use:"shell/*.zsh", defer:2
-
-# misc
-zplug "plugins/git", from:oh-my-zsh
-
-
-# Install packages that have not been installed yet
-if ! zplug check --verbose; then
-    printf "Install? [y/N]: "
-    if read -q; then
-        echo; zplug install
-    else
-        echo
-    fi
-fi
-
-# add stuff to path
-zplug load
-
-## Check for interactive shell, if not, return
-[[ $- != *i* ]] && return
 
 # kitty completion; has to be after compinit
 kitty + complete setup zsh | source /dev/stdin
-
-# options
-setopt interactivecomments
-setopt complete_aliases
-setopt extendedglob
-
-# plugins
-## enhancd
-export ENHANCD_DISABLE_DOT=1
-export ENHANCD_DISABLE_HYPHEN=1
-export ENHANCD_DISABLE_HOME=1
 
 # copy autocompletion
 compdef config=git
@@ -88,8 +38,7 @@ compdef mosh=ssh
 # virtualenv
 . virtualenvwrapper_lazy.sh
 
-## Its interactive, load aliases
-# source all settings
+# source settings aliases functions
 for category in aliases settings functions ; do
   for setting in $HOME/.shells/common/$category/*.sh;do
     . "$setting"
@@ -99,16 +48,25 @@ for category in aliases settings functions ; do
   done
 done
 
-### OTHER FILES
+# others
 for stuff in ~/{.profile,.alias}; do
   [[ -f $stuff ]] && . $stuff
 done
 
-# added by travis gem
-[ -f /home/ddavid/.travis/travis.sh ] && source /home/ddavid/.travis/travis.sh
+# powerlevel10k
+[[ -r '/usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme' ]] \
+  && source '/usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme'
+[[ -r "$HOME/.p10k.zsh" ]] && source "$HOME/.p10k.zsh"
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+custom_plugins=(
+  '/usr/share/z/z.sh'
+  '/usr/share/fzf/key-bindings.zsh'
+  '/usr/share/fzf/completions.zsh'
+  '/usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh'
+  '/usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh'
+  '/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh'
+)
 
-autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /usr/bin/terraform terraform
+for plugin in $custom_plugins; do
+  [[ -r "$plugin" ]] && source "$plugin"
+done
