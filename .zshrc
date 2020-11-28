@@ -43,13 +43,8 @@ zplug "romkatv/powerlevel10k", as:theme, depth:1
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 
 # fzf
-zplug "junegunn/fzf", as:command, use:"bin/fzf-tmux"
+zplug "junegunn/fzf", as:command, hook-build:"./install --bin", use:"bin/{fzf-tmux,fzf}"
 zplug "junegunn/fzf", use:"shell/*.zsh", defer:2
-zplug "junegunn/fzf", \
-    from:gh-r, \
-    as:command, \
-    rename-to:fzf, \
-    use:"*linux*amd64*"
 
 # misc
 zplug "plugins/git", from:oh-my-zsh
