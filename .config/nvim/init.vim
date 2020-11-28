@@ -580,6 +580,9 @@ imap <C-l> <Plug>(coc-snippets-expand)
 " coc-yank {
 nnoremap <silent> <leader>y  :<C-u>CocList -A --normal yank<cr>
 " }
+" Grepper {
+nnoremap <leader>g :Grepper -tool g<cr>
+" }
 " workspace {
 nnoremap <leader>s :ToggleWorkspace<CR>
 " Don't load on vim with args
