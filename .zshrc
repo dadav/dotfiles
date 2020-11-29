@@ -25,6 +25,10 @@ autoload -U colors && colors
 autoload -U zmv
 autoload -U history-search-end
 # }
+# kitty {
+# has to be after compinit
+kitty + complete setup zsh | source /dev/stdin
+# }
 # autocompletion {
 autoload -U compinit
 zstyle ':completion:*' menu select
@@ -33,6 +37,7 @@ bindkey -M menuselect 'h' vi-backward-char
 bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
+bindkey '^[\' pound-insert # use alt+'#' to comment current cmdline
 compinit
 # }
 # history {
@@ -42,11 +47,10 @@ zle -N history-beginning-search-forward-end history-search-end
 bindkey '^[[5~' history-beginning-search-backward-end # page up
 bindkey '^[[6~' history-beginning-search-forward-end # page down
 bindkey '\e[3~' delete-char # del
-bindkey '^[\' pound-insert # also use setopt interactivecomments
 # }
-# kitty {
-# has to be after compinit
-kitty + complete setup zsh | source /dev/stdin
+# autosuggestion {
+# press ctrl+space to use suggestion
+bindkey '^ ' autosuggest-accept
 # }
 # virtualenv {
 source virtualenvwrapper_lazy.sh
@@ -75,7 +79,7 @@ done
 custom_plugins=(
   '/usr/share/z/z.sh'
   '/usr/share/fzf/key-bindings.zsh'
-  '/usr/share/fzf/completions.zsh'
+  '/usr/share/fzf/completion.zsh'
   '/usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh'
   '/usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh'
   '/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh'
@@ -90,4 +94,8 @@ done
 compdef config=git
 compdef scripts=git
 compdef mosh=ssh
+# }
+# zsh profiler {
+# enable if slow start
+# zmodload zsh/zprof
 # }
