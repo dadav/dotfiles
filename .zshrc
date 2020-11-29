@@ -1,50 +1,63 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
+# vim: set foldmarker={,} foldlevel=0 foldmethod=marker :
+# instant prompt {
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
-
-# options
+# }
+# options {
 setopt interactivecomments
 setopt complete_aliases
 setopt extendedglob
 setopt notify
+# }
+# history {
+HISTFILE=~/.cache/zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
 setopt appendhistory
 setopt incappendhistory
 setopt sharehistory
-
-# autoload
-plugins+=(zsh-completions)
+# }
+# autoload {
 autoload -Uz compinit && compinit
+autoload -U bashcompinit && bashcompinit
 autoload -U colors && colors
 autoload -U zmv
-
-# keybindings + completions
+autoload -U history-search-end
+# }
+# autocompletion {
+autoload -U compinit
+zstyle ':completion:*' menu select
+zmodload zsh/complist
+bindkey -M menuselect 'h' vi-backward-char
+bindkey -M menuselect 'k' vi-up-line-or-history
+bindkey -M menuselect 'l' vi-forward-char
+bindkey -M menuselect 'j' vi-down-line-or-history
+compinit
+# }
+# history {
 bindkey -e # emacs
-bindkey "^[[5~" history-beginning-search-backward # page up
-bindkey "^[[6~" history-beginning-search-forward # page down
-bindkey "\e[3~" delete-char # del
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
+bindkey '^[[5~' history-beginning-search-backward-end # page up
+bindkey '^[[6~' history-beginning-search-forward-end # page down
+bindkey '\e[3~' delete-char # del
 bindkey '^[\' pound-insert # also use setopt interactivecomments
-
-# kitty completion; has to be after compinit
+# }
+# kitty {
+# has to be after compinit
 kitty + complete setup zsh | source /dev/stdin
-
-# copy autocompletion
-compdef config=git
-compdef scripts=git
-compdef mosh=ssh
-
-# virtualenv
-. virtualenvwrapper_lazy.sh
-
-# source settings aliases functions
+# }
+# virtualenv {
+source virtualenvwrapper_lazy.sh
+# }
+# source additional configs {
 for category in aliases settings functions ; do
-  for setting in $HOME/.shells/common/$category/*.sh;do
-    . "$setting"
+  for config in $HOME/.shells/common/$category/*.sh;do
+    source "$config"
   done
-  for setting in $HOME/.shells/zsh/$category/*.sh;do
-    . "$setting"
+  for config in $HOME/.shells/zsh/$category/*.sh;do
+    source "$config"
   done
 done
 
@@ -52,12 +65,13 @@ done
 for stuff in ~/{.profile,.alias}; do
   [[ -f $stuff ]] && . $stuff
 done
-
-# powerlevel10k
+# }
+# theme {
 [[ -r '/usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme' ]] \
   && source '/usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme'
 [[ -r "$HOME/.p10k.zsh" ]] && source "$HOME/.p10k.zsh"
-
+# }
+# plugins {
 custom_plugins=(
   '/usr/share/z/z.sh'
   '/usr/share/fzf/key-bindings.zsh'
@@ -70,3 +84,10 @@ custom_plugins=(
 for plugin in $custom_plugins; do
   [[ -r "$plugin" ]] && source "$plugin"
 done
+# }
+# map autocompletions {
+# needs to be at the end
+compdef config=git
+compdef scripts=git
+compdef mosh=ssh
+# }
