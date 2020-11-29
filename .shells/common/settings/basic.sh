@@ -1,7 +1,7 @@
-if [[ ! ":$PATH" =~ :/usr/local/bin: ]]; then
+if [[ ! ":$PATH:" =~ :/usr/local/bin: ]]; then
   export PATH="/usr/local/bin:$PATH"
 fi
-if [[ ! ":$PATH" =~ :${HOME}/.local/bin: ]]; then
+if [[ ! ":$PATH:" =~ :${HOME}/.local/bin: ]]; then
   export PATH="${HOME}/.local/bin:$PATH"
 fi
 export PAGER=less
