@@ -141,6 +141,25 @@ Plug 'yuttie/comfortable-motion.vim'
 Plug 'mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] }
 call plug#end()
 " }
+" General {
+" Auomatically set the terminal title
+set title
+
+" No redraw durring macros
+set lazyredraw
+
+" Allow backspacing over indent, eol, and the start of an insert
+set backspace=2
+
+" Filetypes
+filetype plugin on
+filetype indent on
+
+" }
+" Interpreter {
+" python
+let g:python3_host_prog = '/usr/bin/python3'
+" }
 "  Looks {
 " Terminal behaviour
 " Disable background color erase because of a bug in VIM which shows in kitty
@@ -264,20 +283,6 @@ set ignorecase
 set wrapscan
 " Turn on Highlighting of search results
 set hlsearch
-" }
-" General {
-" Auomatically set the terminal title
-set title
-
-" No redraw durring macros
-set lazyredraw
-
-" Allow backspacing over indent, eol, and the start of an insert
-set backspace=2
-
-" Filetypes
-filetype plugin on
-filetype indent on
 " }
 " Mappings {
 let mapleader = ","
