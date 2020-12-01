@@ -167,11 +167,15 @@ endif
 " Show matching brackets when text indicator is over them
 set showmatch
 
+" lang
 set spelllang=de,en
 setlocal dictionary=/usr/share/dict/german
 setlocal dictionary+=/usr/share/dict/american-english
 
 set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<,space:␣
+
+" dont make ** to fat
+let g:indentLine_setConceal = 0
 " }
 " Auto Commands {
 " Asciidoc
@@ -245,7 +249,7 @@ set wildignore+=*.dict,*.aux,*.nav,*.out,*.toc,*.vrb,*.snm
 " }
 " Sound {
 set noerrorbells visualbell t_vb=
-autocmd GUIEnter * set visualbell t_vb=
+au GUIEnter * set visualbell t_vb=
 " }
 " Encoding {
 " Make sure utf-8 is used
@@ -256,8 +260,6 @@ set termencoding=utf-8
 " Search {
 set incsearch
 set ignorecase
-" Cancel selection on backspace
-nmap <silent> <BS> :nohlsearch<CR>
 " Set the search scan to wrap around the file
 set wrapscan
 " Turn on Highlighting of search results
@@ -280,23 +282,52 @@ filetype indent on
 " Mappings {
 let mapleader = ","
 let g:mapleader = ","
-" NerdTree {
-map <leader>nn :NERDTreeToggle<cr>
-map <leader>nb :NERDTreeFromBookmark
-map <leader>nf :NERDTreeFind<cr><Paste>
+
+" Diable this {
+nnoremap Q <NOP>
+
+no <down> <Nop>
+no <left> <Nop>
+no <right> <Nop>
+no <up> <Nop>
+
+ino <down> <Nop>
+ino <left> <Nop>
+ino <right> <Nop>
+ino <up> <Nop>
+vno <down> <Nop>
+vno <left> <Nop>
+vno <right> <Nop>
+vno <up> <Nop>
+" }
+" Movement {
+" Treat long lines as break lines (useful when moving around in them)
+map j gj
+map k gk
+
+" https://neovim.io/doc/user/nvim_terminal_emulator.html
+" Use `ALT+{h,j,k,l}` to navigate windows from any mode:
+tnoremap <Esc> <C-\><C-n>
+tnoremap <A-h> <C-\><C-N><C-w>h
+tnoremap <A-j> <C-\><C-N><C-w>j
+tnoremap <A-k> <C-\><C-N><C-w>k
+tnoremap <A-l> <C-\><C-N><C-w>l
+inoremap <A-h> <C-o>h
+inoremap <A-j> <C-o>j
+inoremap <A-k> <C-o>k
+inoremap <A-l> <C-o>l
+nnoremap <A-h> <C-w>h
+nnoremap <A-j> <C-w>j
+nnoremap <A-k> <C-w>k
+nnoremap <A-l> <C-w>l
+" }
+" Remote highlight {
+nmap <silent> <BS> :nohlsearch<CR>
 " }
 " Hidden stuff {
 noremap <leader>lc :set list!<CR>
 inoremap <leader>lc <C-o>:set list!<CR>
 cnoremap <leader>lc <C-c>:set list!<CR>
-" }
-" Diable stuff {
-nnoremap Q <NOP>
-" }
-" Neosnippet {
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
 " }
 " Pasta {
 map <leader>pp :setlocal paste!<cr>
@@ -350,50 +381,34 @@ function! Preserve(command)
   call winrestview(l:saved_winview)
 endfunction
 " }
+" Plugin Mappings {
+" Neosnippet {
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+" }
 " Git {
 nnoremap <leader>gs :Magit<CR>
 " }
-" Motion {
-" Treat long lines as break lines (useful when moving around in them)
-map j gj
-map k gk
+" EasyMotion {
+" <Leader>f{char} to move to {char}
+map  <Leader>f <Plug>(easymotion-bd-f)
+nmap <Leader>f <Plug>(easymotion-overwin-f)
 
-" Movement {
-" https://neovim.io/doc/user/nvim_terminal_emulator.html
-" Use `ALT+{h,j,k,l}` to navigate windows from any mode:
-tnoremap <Esc> <C-\><C-n>
-tnoremap <A-h> <C-\><C-N><C-w>h
-tnoremap <A-j> <C-\><C-N><C-w>j
-tnoremap <A-k> <C-\><C-N><C-w>k
-tnoremap <A-l> <C-\><C-N><C-w>l
-inoremap <A-h> <C-o>h
-inoremap <A-j> <C-o>j
-inoremap <A-k> <C-o>k
-inoremap <A-l> <C-o>l
-nnoremap <A-h> <C-w>h
-nnoremap <A-j> <C-w>j
-nnoremap <A-k> <C-w>k
-nnoremap <A-l> <C-w>l
+" Move to line
+map <Leader>L <Plug>(easymotion-bd-jk)
+nmap <Leader>L <Plug>(easymotion-overwin-line)
+
+" Move to word
+map  <Leader>w <Plug>(easymotion-bd-w)
+nmap <Leader>w <Plug>(easymotion-overwin-w)
 " }
-
-" Disable arrow keys {
-no <down> <Nop>
-no <left> <Nop>
-no <right> <Nop>
-no <up> <Nop>
-
-ino <down> <Nop>
-ino <left> <Nop>
-ino <right> <Nop>
-ino <up> <Nop>
-vno <down> <Nop>
-vno <left> <Nop>
-vno <right> <Nop>
-vno <up> <Nop>
+" NerdTree {
+map <leader>nn :NERDTreeToggle<cr>
+map <leader>nb :NERDTreeFromBookmark
+map <leader>nf :NERDTreeFind<cr><Paste>
 " }
-
-" Plugin Mappings {
-" neosnippet
+" neosnippet {
 " Note: It must be "imap" and "smap".  It uses <Plug> mappings.
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
@@ -407,28 +422,65 @@ xmap <C-k>     <Plug>(neosnippet_expand_target)
 " \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-
-" #### Limelight
+" }
+" Limelight {
 nmap <Leader>l :Limelight!!<CR>
 xmap <Leader>l :Limelight!!<CR>
-
-" #### EasyAlign
+" }
+" EasyAlign {
 nmap ta <Plug>(EasyAlign)
 xmap ta <Plug>(EasyAlign)
-
-" #### Asciidoctor-pdf
+" }
+" Asciidoctor-pdf {
 nmap <Leader>adc :!asciidoctor-pdf %<CR>
-
-" fast access to fzf
+" }
+" fzf {
 map <leader>fl :BLines<CR>
 map <leader>ff :FZF<CR>
 map <leader>fgf :GFiles<CR>
 map <leader>fh :History<CR>
 map <C-P> :FZF .<CR>
+" }
+" coc (general){
+" Use `[g` and `]g` to navigate diagnostics
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
+
+" Formatting selected code.
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+" }
+" coc-snippets {
+imap <C-l> <Plug>(coc-snippets-expand)
+" }
+" coc-yank {
+nnoremap <silent> <leader>y  :<C-u>CocList -A --normal yank<cr>
+" }
+" Grepper {
+nnoremap <leader>g :Grepper -tool g<cr>
+" }
+" Ferret {
+nmap <leader>z <Plug>(FerretAckWord)
+nmap <leader>x <Plug>(FerretAck)
+" }
+" workspace {
+nnoremap <leader>s :ToggleWorkspace<CR>
+" Don't load on vim with args
+let g:workspace_session_disable_on_args = 1
 " }
 " }
-" Autocmds {
 " }
 " Plugin Options {
 " Airline {
@@ -460,44 +512,20 @@ let g:ctrlp_cmd = 'CtrlP'
 " 0 or '' (empty string) - disable this feature.
 let g:ctrlp_working_path_mode = 'ra'
 " }
-" Tabman {
-let g:tabman_toggle = '<leader>mt'
-let g:tabman_focus  = '<leader>mf'
-let g:tabman_side = 'left'
-let g:tabman_width = 25
-" Set this to 1 to show windows created by plugins, help and quickfix:
-let g:tabman_specials = 0
-" Set this to 0 to disable line numbering in the TabMan window:
-let g:tabman_number = 1
-" }
 " ansible-vim {
 let g:ansible_unindent_after_newline = 1
 let g:ansible_extra_syntaxes = "sh.vim python.vim"
 let g:ansible_attribute_highlight = "ob"
 let g:ansible_extra_keywords_highlight = 1
 " }
-" Golang {
-let g:go_fmt_command = "goimports"
-let g:go_highlight_types = 1
-let g:go_highlight_fields = 1
-" }
 " markdown {
 let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'puppet']
 let g:markdown_minlines = 100
 let g:markdown_syntax_conceal = 0
 " }
-" json {
-let g:vim_json_syntax_conceal = 0
-" }
-
-" dont make ** to fat
-let g:indentLine_setConceal = 0
-
 " nerdtree {
 let NERDTreeIgnore = ['\.pyc$', '__pycache__', '\.mypy_cache']
 " }
-" tagbar
-let g:tagbar_position = 'right'
 " vim-wiki {
 let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
 let g:vimwiki_conceallevel = 0
@@ -512,7 +540,6 @@ let wiki_default.ext = 'md'
 let wiki_default.nested_syntaxes = {'md':'markdown', 'sh':'sh','python': 'python', 'c++': 'cpp'}
 
 let g:vimwiki_list = [wiki_default]
-
 " }
 " ale {
 let g:ale_sign_error = '💩'
@@ -543,19 +570,6 @@ set shortmess+=c
 " diagnostics appear/become resolved.
 set signcolumn=yes
 
-" Use `[g` and `]g` to navigate diagnostics
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
-
-" GoTo code navigation.
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-
-" Use K to show documentation in preview window.
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
     execute 'h '.expand('<cword>')
@@ -565,35 +579,6 @@ function! s:show_documentation()
 endfunction
 
 " Highlight the symbol and its references when holding the cursor.
-autocmd CursorHold * silent call CocActionAsync('highlight')
-
-" Symbol renaming.
-nmap <leader>rn <Plug>(coc-rename)
-
-" Formatting selected code.
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
-
-" }
-
-" coc-snippets {
-imap <C-l> <Plug>(coc-snippets-expand)
-" }
-
-" coc-yank {
-nnoremap <silent> <leader>y  :<C-u>CocList -A --normal yank<cr>
-" }
-" Grepper {
-nnoremap <leader>g :Grepper -tool g<cr>
-" }
-" Ferret {
-nmap <leader>z <Plug>(FerretAckWord)
-nmap <leader>x <Plug>(FerretAck)
-" }
-" workspace {
-nnoremap <leader>s :ToggleWorkspace<CR>
-" Don't load on vim with args
-let g:workspace_session_disable_on_args = 1
+au CursorHold * silent call CocActionAsync('highlight')
 " }
 " }
-"
