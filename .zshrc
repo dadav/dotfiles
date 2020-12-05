@@ -49,8 +49,8 @@ bindkey '^[[6~' history-beginning-search-forward-end # page down
 bindkey '\e[3~' delete-char # del
 # }
 # autosuggestion {
-# press ctrl+space to use suggestion
-bindkey '^ ' autosuggest-accept
+# press alt+space to use suggestion
+bindkey '^[ ' autosuggest-accept
 # }
 # virtualenv {
 source virtualenvwrapper_lazy.sh
