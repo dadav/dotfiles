@@ -14,7 +14,8 @@ call plug#begin('~/.vim/plugged')
 Plug 'wincent/ferret'
 
 " show all the filePlug 'scrooloose/nerdtree's
-Plug 'scrooloose/nerdtree'
+" (currently replaced with coc-explorer)
+" Plug 'scrooloose/nerdtree'
 
 " Session management
 Plug 'thaerkh/vim-workspace'
@@ -363,8 +364,8 @@ nnoremap <A-p> :bprevious<CR>:redraw<CR>:ls<CR>
 "nnoremap <C-p> :bprevious<CR>:redraw<CR>
 
 " Split Screen
-nnoremap <Leader>s- :split<CR>
-nnoremap <Leader>s\| :vsplit<CR>
+nnoremap <Leader>ss- :split<CR>
+nnoremap <Leader>ss\| :vsplit<CR>
 
 " Resize
 nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
@@ -409,9 +410,9 @@ map  <Leader>w <Plug>(easymotion-bd-w)
 nmap <Leader>w <Plug>(easymotion-overwin-w)
 " }
 " NerdTree {
-map <leader>nn :NERDTreeToggle<cr>
-map <leader>nb :NERDTreeFromBookmark
-map <leader>nf :NERDTreeFind<cr><Paste>
+" map <leader>nn :NERDTreeToggle<cr>
+" map <leader>nb :NERDTreeFromBookmark
+" map <leader>nf :NERDTreeFind<cr><Paste>
 " }
 " neosnippet {
 " Note: It must be "imap" and "smap".  It uses <Plug> mappings.
@@ -461,7 +462,7 @@ nmap <silent> gr <Plug>(coc-references)
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 " Symbol renaming.
-nmap <leader>rn <Plug>(coc-rename)
+" nmap <leader>r <Plug>(coc-rename)
 
 " Formatting selected code.
 xmap <leader>f  <Plug>(coc-format-selected)
@@ -481,9 +482,17 @@ nmap <leader>z <Plug>(FerretAckWord)
 nmap <leader>x <Plug>(FerretAck)
 " }
 " workspace {
-nnoremap <leader>s :ToggleWorkspace<CR>
+nnoremap <leader>tw :ToggleWorkspace<CR>
 " Don't load on vim with args
 let g:workspace_session_disable_on_args = 1
+" }
+" scalpel {
+nmap <Leader>r <Plug>(Scalpel)
+" }
+" coc-explorer {
+nmap <Leader>e :CocCommand explorer<CR>
+autocmd FileType coc-explorer unmap j
+autocmd FileType coc-explorer unmap k
 " }
 " }
 " }
@@ -529,7 +538,7 @@ let g:markdown_minlines = 100
 let g:markdown_syntax_conceal = 0
 " }
 " nerdtree {
-let NERDTreeIgnore = ['\.pyc$', '__pycache__', '\.mypy_cache']
+" let NERDTreeIgnore = ['\.pyc$', '__pycache__', '\.mypy_cache']
 " }
 " vim-wiki {
 let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
@@ -559,7 +568,7 @@ let g:neosnippet#enable_conceal_markers = 0
 " }
 " coc {
 " Manage these extensions automatically
-let g:coc_global_extensions = [ 'coc-solargraph', 'coc-go', 'coc-diagnostic', 'coc-python', 'coc-json', 'coc-html', 'coc-highlight', 'coc-snippets', 'coc-vimlsp', 'coc-texlab', 'coc-yaml', 'coc-xml', 'coc-git', 'coc-marketplace', 'coc-emoji', 'coc-dictionary', 'coc-tag', 'coc-neosnippet', 'coc-yank', 'coc-sh', 'coc-markdownlint']
+let g:coc_global_extensions = [ 'coc-solargraph', 'coc-go', 'coc-diagnostic', 'coc-python', 'coc-json', 'coc-html', 'coc-highlight', 'coc-snippets', 'coc-vimlsp', 'coc-texlab', 'coc-yaml', 'coc-xml', 'coc-git', 'coc-marketplace', 'coc-emoji', 'coc-dictionary', 'coc-tag', 'coc-neosnippet', 'coc-yank', 'coc-sh', 'coc-markdownlint', 'coc-explorer']
 
 " Give more space for displaying messages.
 set cmdheight=2
@@ -585,5 +594,9 @@ endfunction
 
 " Highlight the symbol and its references when holding the cursor.
 au CursorHold * silent call CocActionAsync('highlight')
+" }
+" coc-explorer {
+" exit if last buffer is coc-explorer
+au BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | endif
 " }
 " }
