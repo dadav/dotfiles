@@ -17,6 +17,7 @@
   "explorer.width": 30,
   "explorer.previewAction.onHover": false,
   "explorer.keyMappings.global": {
+    "i": "preview:labeling",
     "<cr>": ["expandable?", "expand", "open"],
     "<space>": "toggleSelection",
     "<bs>": "collapse",
