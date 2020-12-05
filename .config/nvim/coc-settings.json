@@ -4,5 +4,15 @@
   },
   "diagnostic-languageserver.formatFiletypes": {
     "sh": "shfmt"
+  },
+  "explorer.icon.enableNerdfont": true,
+  "explorer.width": 30,
+  "explorer.previewAction.onHover": false,
+  "explorer.keyMappings.global": {
+    "<cr>": ["expandable?", "expand", "open"],
+    "<space>": "toggleSelection",
+    "<bs>": "collapse",
+    "oh": "open:split",
+    "ov": "open:vsplit"
   }
 }
