@@ -5,6 +5,10 @@
   "diagnostic-languageserver.formatFiletypes": {
     "sh": "shfmt"
   },
+  "snippets.ultisnips.directories": [
+    "UltiSnips",
+    "~/.config/nvim/utils/snips"
+  ],
   "python.pythonPath": "python3",
   "python.venvFolders": ["~/python/virtualenvs"],
   "python.jediEnabled": true,

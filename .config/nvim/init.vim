@@ -1,4 +1,4 @@
-" vim: set sw=4 ts=4 sts=4 et tw=78 foldmarker={,} foldlevel=0 foldmethod=marker :
+" vim: set sw=4 ts=4 sts=4 et tw=78 foldmarker={,} foldlevel=0 foldmethod=marker :'
 
 " Bootstrap {
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -45,6 +45,10 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'Shougo/context_filetype.vim'
+
+" ultisnipets
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 
 " Preview markdown
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
@@ -139,7 +143,7 @@ Plug 'Yggdroot/indentLine'
 Plug 'yuttie/comfortable-motion.vim'
 
 " Grepper
-Plug 'mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] }
+" Plug 'mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] }
 call plug#end()
 " }
 " General {
@@ -392,11 +396,6 @@ function! Preserve(command)
 endfunction
 " }
 " Plugin Mappings {
-" Neosnippet {
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
-" }
 " Git {
 nnoremap <leader>gs :Magit<CR>
 " }
@@ -419,7 +418,6 @@ nmap <Leader>w <Plug>(easymotion-overwin-w)
 " map <leader>nf :NERDTreeFind<cr><Paste>
 " }
 " neosnippet {
-" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 xmap <C-k>     <Plug>(neosnippet_expand_target)
@@ -446,8 +444,10 @@ nmap <Leader>adc :!asciidoctor-pdf %<CR>
 " }
 " fzf {
 map <leader>fl :BLines<CR>
+map <leader>fc :Colors<CR>
 map <leader>ff :FZF<CR>
 map <leader>fgf :GFiles<CR>
+map <leader>fg :Ag<space>
 map <leader>fh :History<CR>
 map <C-P> :FZF .<CR>
 " }
@@ -474,12 +474,14 @@ nmap <leader>f  <Plug>(coc-format-selected)
 " }
 " coc-snippets {
 imap <C-l> <Plug>(coc-snippets-expand)
+vmap <C-j> <Plug>(coc-snippets-select)
+imap <C-j> <Plug>(coc-snippets-expand-jump)
 " }
 " coc-yank {
 nnoremap <silent> <leader>y  :<C-u>CocList -A --normal yank<cr>
 " }
 " Grepper {
-nnoremap <leader>g :Grepper -tool g<cr>
+" nnoremap <leader>g :Grepper -tool g<cr>
 " }
 " Ferret {
 nmap <leader>z <Plug>(FerretAckWord)
