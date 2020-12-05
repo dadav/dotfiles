@@ -5,6 +5,14 @@
   "diagnostic-languageserver.formatFiletypes": {
     "sh": "shfmt"
   },
+  "python.pythonPath": "python3",
+  "python.venvFolders": ["~/python/virtualenvs"],
+  "python.jediEnabled": true,
+  "python.jediPath": "/usr/lib/python3.9/site-packages/",
+  "python.linting.lintOnSave": false,
+  "python.linting.pylintEnabled": true,
+  "python.linting.flake8Enabled": false,
+  "python.formatting.provider": "autopep8",
   "explorer.icon.enableNerdfont": true,
   "explorer.width": 30,
   "explorer.previewAction.onHover": false,
