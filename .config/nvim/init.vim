@@ -174,7 +174,11 @@ syntax enable
 set background=dark
 
 " also good: jay
-colorscheme solarized8_high
+if exists('$TMUX')
+    colorscheme jay
+else
+    colorscheme solarized8_high
+endif
 
 " Do not hide characters in, for example, markdown mode
 set conceallevel=0
