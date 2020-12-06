@@ -41,11 +41,6 @@ Plug 'easymotion/vim-easymotion'
 " editorconfig
 Plug 'editorconfig/editorconfig-vim'
 
-" snippets
-Plug 'Shougo/neosnippet.vim'
-Plug 'Shougo/neosnippet-snippets'
-Plug 'Shougo/context_filetype.vim'
-
 " ultisnipets
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
@@ -417,20 +412,6 @@ nmap <Leader>w <Plug>(easymotion-overwin-w)
 " map <leader>nb :NERDTreeFromBookmark
 " map <leader>nf :NERDTreeFind<cr><Paste>
 " }
-" neosnippet {
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
-"
-" SuperTab like snippets behavior.
-" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
-"imap <expr><TAB>
-" \ pumvisible() ? "\<C-n>" :
-" \ neosnippet#expandable_or_jumpable() ?
-" \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-" }
 " Limelight {
 nmap <Leader>l :Limelight!!<CR>
 xmap <Leader>l :Limelight!!<CR>
@@ -476,6 +457,7 @@ nmap <leader>f  <Plug>(coc-format-selected)
 imap <C-l> <Plug>(coc-snippets-expand)
 vmap <C-j> <Plug>(coc-snippets-select)
 imap <C-j> <Plug>(coc-snippets-expand-jump)
+xmap <leader>x  <Plug>(coc-convert-snippet)
 " }
 " coc-yank {
 nnoremap <silent> <leader>y  :<C-u>CocList -A --normal yank<cr>
@@ -568,13 +550,9 @@ let g:ale_completion_enabled = 0
 " Enable integration with airline.
 let g:airline#extensions#ale#enabled = 1
 " }
-" neosnippet {
-" No conceal markers
-let g:neosnippet#enable_conceal_markers = 0
-" }
 " coc {
 " Manage these extensions automatically
-let g:coc_global_extensions = [ 'coc-solargraph', 'coc-go', 'coc-diagnostic', 'coc-python', 'coc-json', 'coc-html', 'coc-highlight', 'coc-snippets', 'coc-vimlsp', 'coc-texlab', 'coc-yaml', 'coc-xml', 'coc-git', 'coc-marketplace', 'coc-emoji', 'coc-dictionary', 'coc-tag', 'coc-neosnippet', 'coc-yank', 'coc-sh', 'coc-markdownlint', 'coc-explorer']
+let g:coc_global_extensions = [ 'coc-solargraph', 'coc-go', 'coc-diagnostic', 'coc-python', 'coc-json', 'coc-html', 'coc-highlight', 'coc-snippets', 'coc-vimlsp', 'coc-texlab', 'coc-yaml', 'coc-xml', 'coc-git', 'coc-marketplace', 'coc-emoji', 'coc-dictionary', 'coc-tag', 'coc-yank', 'coc-sh', 'coc-markdownlint', 'coc-explorer']
 
 " Give more space for displaying messages.
 set cmdheight=2
