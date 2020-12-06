@@ -424,11 +424,22 @@ xmap ta <Plug>(EasyAlign)
 nmap <Leader>adc :!asciidoctor-pdf %<CR>
 " }
 " fzf {
+"
+" use bat preview
+command! -bang -nargs=? -complete=dir Files
+    \ call fzf#vim#files(<q-args>, {'options': ['--layout=reverse', '--info=inline', '--preview', '~/.vim/plugged/fzf.vim/bin/preview.sh {}']}, <bang>0)
+
+" use bat preview
+command! -bang -nargs=* Rg
+    \ call fzf#vim#grep(
+    \   'rg --column --line-number --no-heading --color=never --smart-case -- '.shellescape(<q-args>), 1,
+    \   {'options': ['--layout=reverse', '--info=inline', '--preview', '~/.vim/plugged/fzf.vim/bin/preview.sh {}']}, <bang>0)
+
 map <leader>fl :BLines<CR>
 map <leader>fc :Colors<CR>
-map <leader>ff :FZF<CR>
+map <leader>ff :Files<CR>
 map <leader>fgf :GFiles<CR>
-map <leader>fg :Ag<space>
+map <leader>fg :Rg<space>
 map <leader>fh :History<CR>
 map <C-P> :FZF .<CR>
 " }
