@@ -10,13 +10,6 @@ endif
 " Specify a directory for plugins
 call plug#begin('~/.vim/plugged')
 
-" Powerful multi file search
-Plug 'wincent/ferret'
-
-" show all the filePlug 'scrooloose/nerdtree's
-" (currently replaced with coc-explorer)
-" Plug 'scrooloose/nerdtree'
-
 " Session management
 Plug 'thaerkh/vim-workspace'
 
@@ -136,9 +129,6 @@ Plug 'Yggdroot/indentLine'
 
 " Autoscroll
 Plug 'yuttie/comfortable-motion.vim'
-
-" Grepper
-" Plug 'mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] }
 call plug#end()
 " }
 " General {
@@ -472,13 +462,6 @@ xmap <leader>x  <Plug>(coc-convert-snippet)
 " }
 " coc-yank {
 nnoremap <silent> <leader>y  :<C-u>CocList -A --normal yank<cr>
-" }
-" Grepper {
-" nnoremap <leader>g :Grepper -tool g<cr>
-" }
-" Ferret {
-nmap <leader>z <Plug>(FerretAckWord)
-nmap <leader>x <Plug>(FerretAck)
 " }
 " workspace {
 nnoremap <leader>tw :ToggleWorkspace<CR>
