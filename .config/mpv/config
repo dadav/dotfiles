@@ -3,7 +3,7 @@
 vo=opengl,vx
 hwdec=vaapi
 # Start in full screen.
-fs=yes
+fs=no
 # force starting with centered window
 geometry=50%:50%
 window-scale=0.5
