@@ -29,6 +29,22 @@ autoload -U history-search-end
 # has to be after compinit
 kitty + complete setup zsh | source /dev/stdin
 # }
+# bindings {
+bindkey -e # emacs
+bindkey '\e[3~' delete-char # del
+
+# history {
+bindkey '^[[5~' history-substring-search-up
+bindkey '^[[6~' history-substring-search-down
+bindkey -M emacs '^P' history-substring-search-up
+bindkey -M emacs '^N' history-substring-search-down
+# }
+
+# autosuggestion {
+bindkey '^[ ' autosuggest-accept
+# }
+
+# }
 # autocompletion {
 autoload -U compinit
 zstyle ':completion:*' menu select
@@ -40,18 +56,6 @@ bindkey -M menuselect 'j' vi-down-line-or-history
 bindkey '^[#' pound-insert
 bindkey '^[+' push-line
 compinit
-# }
-# history {
-bindkey -e # emacs
-zle -N history-beginning-search-backward-end history-search-end
-zle -N history-beginning-search-forward-end history-search-end
-bindkey '^[[5~' history-beginning-search-backward-end # page up
-bindkey '^[[6~' history-beginning-search-forward-end # page down
-bindkey '\e[3~' delete-char # del
-# }
-# autosuggestion {
-# press alt+space to use suggestion
-bindkey '^[ ' autosuggest-accept
 # }
 # virtualenv {
 source virtualenvwrapper_lazy.sh
@@ -92,8 +96,22 @@ done
 
 # }
 # plugin settings {
-# fix the color of comments
+# zsh-syntax-highlighting {
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
+
+# better visibility
+ZSH_HIGHLIGHT_PATTERNS+=('\|' fg=cyan,bold)
+
+# potentially dangerous
+ZSH_HIGHLIGHT_PATTERNS+=('rm -rf *' 'fg=white,bold,bg=red')
+ZSH_HIGHLIGHT_PATTERNS+=('sudo *' 'fg=white,bold,bg=red')
+
+# makes comments visible
 ZSH_HIGHLIGHT_STYLES[comment]='none'
+# }
+# zsh-autosuggestions {
+ZSH_AUTOSUGGEST_USE_ASYNC=1
+# }
 # }
 # map autocompletions {
 # needs to be at the end
