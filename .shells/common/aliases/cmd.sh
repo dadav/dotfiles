@@ -1,5 +1,6 @@
 # ls
-alias ll="ls -l --color=auto"
+alias ls="lsd --group-dirs first"
+alias ll="ls -Alh"
 
 # nvim
 alias vi="vim"
