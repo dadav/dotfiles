@@ -105,6 +105,7 @@ Plug 'atelierbram/Base2Tone-vim'
 Plug 'chriskempson/base16-vim'
 Plug 'endel/vim-github-colorscheme'
 Plug 'flazz/vim-colorschemes'
+Plug 'bluz71/vim-nightfly-guicolors'
 Plug 'josuegaleas/jay'
 Plug 'lifepillar/vim-solarized8'
 Plug 'morhetz/gruvbox'
@@ -171,7 +172,7 @@ set termguicolors
 " else
 "     colorscheme solarized8_high
 " endif
-colorscheme jay
+colorscheme nightfly
 
 " Do not hide characters in, for example, markdown mode
 set conceallevel=0
