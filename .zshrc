@@ -37,7 +37,8 @@ bindkey -M menuselect 'h' vi-backward-char
 bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
-bindkey '^[\' pound-insert # use alt+'#' to comment current cmdline
+bindkey '^[#' pound-insert
+bindkey '^[+' push-line
 compinit
 # }
 # history {
@@ -88,6 +89,11 @@ custom_plugins=(
 for plugin in $custom_plugins; do
   [[ -r "$plugin" ]] && source "$plugin"
 done
+
+# }
+# plugin settings {
+# fix the color of comments
+ZSH_HIGHLIGHT_STYLES[comment]='none'
 # }
 # map autocompletions {
 # needs to be at the end
