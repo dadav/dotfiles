@@ -162,12 +162,16 @@ syntax enable
 
 set background=dark
 
+" enables 24-bit RGB color in the TUI
+set termguicolors
+
 " also good: jay
-if exists('$TMUX')
-    colorscheme jay
-else
-    colorscheme solarized8_high
-endif
+" if exists('$TMUX')
+"     colorscheme jay
+" else
+"     colorscheme solarized8_high
+" endif
+colorscheme jay
 
 " Do not hide characters in, for example, markdown mode
 set conceallevel=0
