@@ -103,8 +103,10 @@ ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
 ZSH_HIGHLIGHT_PATTERNS+=('\|' fg=cyan,bold)
 
 # potentially dangerous
-ZSH_HIGHLIGHT_PATTERNS+=('rm -rf *' 'fg=white,bold,bg=red')
+ZSH_HIGHLIGHT_PATTERNS+=('rm -(r|f)## *' 'fg=white,bold,bg=red')
 ZSH_HIGHLIGHT_PATTERNS+=('sudo *' 'fg=white,bold,bg=red')
+ZSH_HIGHLIGHT_PATTERNS+=('curl * \| (b|a)#sh *' 'fg=white,bold,bg=red')
+ZSH_HIGHLIGHT_PATTERNS+=('git push (-f|--force)# *' 'fg=white,bold,bg=red')
 
 # makes comments visible
 ZSH_HIGHLIGHT_STYLES[comment]='none'
