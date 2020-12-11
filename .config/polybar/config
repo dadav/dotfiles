@@ -99,8 +99,8 @@ format-prefix = " "
 
 [module/spotify]
 type = custom/script
-label = "%{A1:spotify-cli --prev:}  %{A}%{A1:spotify-cli --toggle:}  %{A}%{A1:spotify-cli --next:}  %{A} %output%"
-exec = spotify-cli --meta
+label = "%{A1:playerctl -p spotify previous:}  %{A}%{A1:playerctl -p spotify play-pause:}  %{A}%{A1:playerctl next:}  %{A} %output%"
+exec = playerctl -p spotify metadata --format "{{ artist }} - {{ title }}"
 exec-if = pgrep -x spotify
 interval = 5
 format-underline = #4bffdc
