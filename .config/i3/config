@@ -298,8 +298,6 @@ bindsym $mod+$alt+k workspace next
 
 # Youtube
 bindsym $mod+y exec y2 rofi
-bindsym $mod+Shift+y exec y2 music
-bindsym $mod+Control+y exec y2 video
 
 # Launch vim-anywhere script
 bindsym $mod+Shift+v exec vim-anywhere clip
