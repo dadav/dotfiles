@@ -192,7 +192,7 @@ setlocal dictionary+=/usr/share/dict/american-english
 
 set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<,space:␣
 
-" dont make ** to fat
+" dont hide stuff
 let g:indentLine_setConceal = 0
 " }
 " Auto Commands {
@@ -211,9 +211,6 @@ au FileType vimwiki setlocal spell
 " Filetypes
 au BufNewFile,BufRead *.groovy  setf groovy
 au BufNewFile,BufRead Jenkinsfile  setf groovy
-
-" Markdown
-au FileType markdown setlocal cole=1
 
 " go
 au BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport')

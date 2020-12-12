@@ -94,16 +94,17 @@ exec-if = pgrep -x xautolock
 interval = 10
 format-underline = #268bd2
 format-prefix = " "
-#tail = true
-#format-prefix-foreground = #5b
+; tail = true
+; format-prefix-foreground = #5b
 
 [module/spotify]
 type = custom/script
 label = "%{A1:playerctl -p spotify previous:}  %{A}%{A1:playerctl -p spotify play-pause:}  %{A}%{A1:playerctl next:}  %{A} %output%"
-exec = playerctl -p spotify metadata --format "{{ artist }} - {{ title }}"
+exec = playerctl -p spotify metadata --format '{{ artist }} - {{ title }}'
 exec-if = pgrep -x spotify
 interval = 5
 format-underline = #4bffdc
+tail = true
 
 [module/xwindow]
 type = internal/xwindow
