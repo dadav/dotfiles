@@ -1,21 +1,37 @@
-# video
-# Enable OpenGL and VA-API hardware decoding.
-vo=opengl,vx
-hwdec=vaapi
+# vim: set sw=4 ts=4 sts=4 et tw=78 foldmarker={,} foldlevel=0 foldmethod=marker :'
+
+# general {
+# keep window on top
+ontop=yes
 # Start in full screen.
 fs=no
+# Stop screensaver (xautolock).
+stop-screensaver=yes
+# other
+screenshot-directory=~/tmp/
+screenshot-format = png
+# allow seeking in streamed media
+force-seekable
+# only print these
+display-tags=Artist,Title,Genre
+# }
+# video {
+# Enable OpenGL and VA-API hardware decoding.
+vo=gpu
+hwdec=auto-safe
 # force starting with centered window
 geometry=50%:50%
 window-scale=0.5
 # don't allow a new window to have a size larger than 90% of the screen size
-autofit-larger=50%x50%
-
-# cache
+autofit-larger=90%x90%
+# }
+# cache {
 cache=yes
-#cache-default=153600
+#cache-deault=153600
 cache-pause=no
-
-# audio
+# }
+# audio {
+audio-channels=stereo
 # driver
 ao=pulse
 # Volume
@@ -23,20 +39,57 @@ volume=25
 # Do not display audio file images.
 audio-display=no
 # Set default languages.
+# audiostream
 alang=eng
+# subtitles
 slang=eng
 # Show progress bar for audio files.
 term-osd-bar=yes
 # Do not filter audio to keep pitch when changing playback speed.
 audio-pitch-correction=yes
 
-# other
-screenshot-directory=~/tmp/
-# Stop screensaver (xautolock).
-stop-screensaver=yes
-# save volume on quit
+# }
+# profiles {
+[long-file]
+profile-desc="Save position on long files"
+profile-cond=duration >= 300
 save-position-on-quit
 
+[podcast]
+volume=90
+force-window=yes
+lavfi-complex='[aid1]asplit[ao][a1];[a1]showwaves=mode=cline:colors=white:scale=sqrt:rate=25[vo]'
+terminal=no
+alpha=no
+
+[music]
+force-window=yes
+lavfi-complex='[aid1]asplit[ao][a1];[a1]showwaves=mode=cline:colors=white:rate=25[vo]'
+terminal=no
+alpha=no
+save-position-on-quit=no
+
+[movie]
+# load hq profile
+profile=gpu-hq
+# best scaling
+# scale=ewa_lanczossharp
+# best scaling
+# cscale=ewa_lanczossharp
+# resample audio if auto of sync
+video-sync=display-resample
+# make it smooth
+interpolation
+tscale=oversample
+# }
+# extensions {
 # Loop all the gifs.
+[extension.mp3]
+profile=music
+
 [extension.gif]
 loop-file=yes
+
+[extension.mp4]
+profile=movie
+# }
