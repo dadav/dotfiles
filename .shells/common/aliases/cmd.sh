@@ -11,3 +11,6 @@ alias grep="grep --colour"
 
 # less
 alias less="less -r"
+
+# reverse
+alias fontpreview-ueberzug="fontpreview-ueberzug -f white -b black"
