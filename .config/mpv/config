@@ -35,7 +35,9 @@ audio-channels=stereo
 # driver
 ao=pulse
 # Volume
-volume=25
+volume=100
+# normalize
+af=loudnorm=I=-30
 # Do not display audio file images.
 audio-display=no
 # Set default languages.
@@ -55,18 +57,32 @@ profile-desc="Save position on long files"
 profile-cond=duration >= 300
 save-position-on-quit
 
-[podcast]
-volume=90
+[_mini]
+geometry=200x100+100%+25
+border=no
+
+[_waves]
 force-window=yes
 lavfi-complex='[aid1]asplit[ao][a1];[a1]showwaves=mode=cline:colors=white:scale=sqrt:rate=25[vo]'
-terminal=no
 alpha=no
 
+[podcast]
+profile=_mini
+profile=_waves
+save-position-on-quit
+
 [music]
-force-window=yes
+profile=_mini
+profile=_waves
 lavfi-complex='[aid1]asplit[ao][a1];[a1]showwaves=mode=cline:colors=white:rate=25[vo]'
-terminal=no
-alpha=no
+save-position-on-quit=no
+
+[ambient]
+profile=_mini
+profile=_waves
+volume=70
+shuffle
+loop-playlist
 save-position-on-quit=no
 
 [movie]
@@ -92,4 +108,9 @@ loop-file=yes
 
 [extension.mp4]
 profile=movie
+# }
+# protocols {
+[protocol.ytdl]
+ytdl-format="((bestvideo[vcodec^=vp9]/bestvideo)+(bestaudio[acodec=opus]/bestaudio[acodec=vorbis]/bestaudio[acodec=aac]/bestaudio))/best"
+force-window=yes
 # }
