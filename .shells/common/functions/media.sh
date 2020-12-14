@@ -1,7 +1,11 @@
-# Play rainsound
 function ambient() {
-  notify-send -u normal "Loading playlist"
-  mpv --profile=ambient "https://raw.githubusercontent.com/dadav/naturemood/master/playlist.m3u" &>/dev/null & disown
+  if [[ "$#" -eq 1 ]]; then
+    notify-send -u normal "Loading rainymood sounds"
+    mpv --profile=ambient https://rainymood.com/audio1112/{0..4}.ogg &>/dev/null & disown
+  else
+    notify-send -u normal "Loading playlist with random ambient sounds"
+    mpv --profile=ambient "https://raw.githubusercontent.com/dadav/naturemood/master/playlist.m3u" &>/dev/null & disown
+  fi
 }
 
 function nmp3() {

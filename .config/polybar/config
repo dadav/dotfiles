@@ -109,7 +109,7 @@ label = "%{A1:playerctl -p spotify previous:}  %{A}%{A1:playerctl -p spotify 
 exec = playerctl -p spotify metadata --format '{{ artist }} - {{ title }}'
 exec-if = pgrep -x spotify
 interval = 5
-format-underline = #4bffdc
+format-underline = #268bd2
 tail = true
 
 [module/xwindow]
@@ -303,8 +303,7 @@ format-connected = <ramp-signal> <label-connected>
 format-connected-underline = #9f78e1
 label-connected = %essid% %local_ip%
 
-format-disconnected =
-;format-disconnected = <label-disconnected>
+format-disconnected = <label-disconnected>
 ;format-disconnected-underline = ${self.format-connected-underline}
 ;label-disconnected = %ifname% disconnected
 ;label-disconnected-foreground = ${colors.foreground-alt}
@@ -447,9 +446,9 @@ thermal-zone = 0
 warn-temperature = 75
 
 format = <ramp> <label>
-format-underline = #f50a4d
+format-underline = #bfff00
 format-warn = <ramp> <label-warn>
-format-warn-underline = ${self.format-underline}
+format-warn-underline = #f5a70a
 
 label = %temperature-c%
 label-warn = %temperature-c%
