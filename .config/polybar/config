@@ -98,7 +98,7 @@ format-prefix = " "
 [module/covid]
 type = custom/script
 exec = ~/.local/bin/covid-plz -s 73728
-interval = 3600
+interval = 21600
 format-underline = #e60000
 format-prefix = "☠ "
 
