@@ -172,7 +172,7 @@ set termguicolors
 " else
 "     colorscheme solarized8_high
 " endif
-colorscheme nightfly
+colorscheme jay
 
 " Do not hide characters in, for example, markdown mode
 set conceallevel=0
@@ -370,26 +370,14 @@ nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
 " Write files as root
 cmap w!! w !sudo tee > /dev/null %
 
-" #### Clean trailing whitespaces
-nnoremap <silent> <Leader>cw :call Preserve("%s/\\s\\+$//e")<CR>
-xnoremap <silent> <Leader>cw :call Preserve("'<,'>s/\\s\\+$//e")<CR>
-function! Preserve(command)
-  " Preparation: save window state
-  let l:saved_winview = winsaveview()
-  " Run the command:
-  execute a:command
-  " Clean up: restore previous window position
-  call winrestview(l:saved_winview)
-endfunction
-" }
 " Plugin Mappings {
 " Git {
 nnoremap <leader>gs :Magit<CR>
 " }
 " EasyMotion {
 " <Leader>f{char} to move to {char}
-map  <Leader>f <Plug>(easymotion-bd-f)
-nmap <Leader>f <Plug>(easymotion-overwin-f)
+map  <Leader>c <Plug>(easymotion-bd-f)
+nmap <Leader>c <Plug>(easymotion-overwin-f)
 
 " Move to line
 map <Leader>L <Plug>(easymotion-bd-jk)
