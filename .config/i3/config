@@ -45,7 +45,7 @@ client.urgent #373b41 #cc6666 #ffffff #cc6666
 floating_modifier $mod
 
 # Default Orientation
-default_orientation vertical
+default_orientation horizontal
 
 # Default Tabmode
 workspace_layout tabbed
