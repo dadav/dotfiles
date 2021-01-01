@@ -299,9 +299,6 @@ bindsym $mod+$alt+k workspace next
 # Youtube
 bindsym $mod+y exec y2 rofi
 
-# Launch vim-anywhere script
-bindsym $mod+Shift+v exec vim-anywhere clip
-
 # Screenshot
 bindsym --release Print exec teiler
 
