@@ -1,6 +1,6 @@
 update 5
 log_pressures false
 
-threshold cpu some avg10 70.00
-threshold memory some avg10 10.00
-threshold io full avg10 15.00
+threshold cpu some avg10 60.00
+threshold memory some avg10 15.00
+threshold io full avg10 20.00
