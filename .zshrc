@@ -4,6 +4,9 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 # }
+# fpath {
+fpath=(${ASDF_DIR}/completions $fpath)
+# }
 # options {
 setopt interactivecomments
 setopt complete_aliases

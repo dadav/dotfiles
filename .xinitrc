@@ -1,4 +1,4 @@
-setxkbmap -option ctrl:nocaps
+setxkbmap -layout de -variant nodeadkeys -option ctrl:nocaps
 nm-applet --sm-disable &
 firewall-applet &
 udiskie &

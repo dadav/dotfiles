@@ -42,7 +42,7 @@ dnsmasq() {
 }
 
 
-nginx() {
+nginxD() {
   IMAGE=nginx:latest
   VOLUME=${1:-$(pwd)}
   PROFILE=${2:-fileserver}
