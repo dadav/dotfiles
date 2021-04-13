@@ -19,7 +19,7 @@ c.tabs.title.format = "{current_title}"
 c.downloads.location.directory = '/home/ddavid/downloads'
 c.content.cache.size = 52428800
 c.content.webgl = False
-c.content.host_blocking.enabled = False
+c.content.blocking.enabled = False
 c.hints.border = "1px solid #CCCCCC"
 c.hints.mode = "number"
 c.hints.chars = "123456789"
@@ -124,3 +124,6 @@ config.bind('B', 'set-cmd-text -s :bookmark-add', mode='normal')
 config.bind('t', 'set-cmd-text -s :open -t', mode='normal')
 config.bind('<Escape>', 'leave-mode', mode='passthrough')
 config.bind('gi', 'enter-mode insert ;; jseval --quiet var inputs = document.getElementsByTagName("input"); for(var i = 0; i < inputs.length; i++) { var hidden = false; for(var j = 0; j < inputs[i].attributes.length; j++) { hidden = hidden || inputs[i].attributes[j].value.includes("hidden"); }; if(!hidden) { inputs[i].focus(); break; } }')
+
+# no autoloading
+config.load_autoconfig(False)

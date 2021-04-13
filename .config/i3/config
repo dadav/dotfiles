@@ -300,10 +300,8 @@ bindsym $mod+$alt+k workspace next
 bindsym $mod+y exec y2 rofi
 
 # Screenshot
-bindsym --release Print exec teiler
-
-# browser selector
-bindsym $mod+c exec rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
+# bindsym --release Print exec teiler
+bindsym --release Print exec flameshot gui
 
 # browse docs
 bindsym $mod+d exec rofi-zeal
@@ -331,6 +329,8 @@ bindsym $mod+i exec lock
 
 # Toggle autolock
 bindsym $mod+t exec tl
+
+bindsym $mod+q exec qclip
 
 # mod tab back and forth between workspaces
 bindsym $mod+Tab workspace back_and_forth
