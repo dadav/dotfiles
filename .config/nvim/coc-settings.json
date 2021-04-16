@@ -1,5 +1,4 @@
 {
-  "http.proxyStrictSSL": false,
   "diagnostic-languageserver.filetypes": {
     "sh": "shellcheck"
   },
