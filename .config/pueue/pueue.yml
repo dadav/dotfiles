@@ -1,0 +1,22 @@
+---
+client:
+  read_local_logs: true
+  show_confirmation_questions: false
+  show_expanded_aliases: false
+  max_status_height: null
+daemon:
+  default_parallel_tasks: 1
+  pause_group_on_failure: false
+  pause_all_on_failure: false
+  callback: "Task {{ id }}\nCommand: {{ command }}\nPath: {{ path }}\nFinished with status '{{ result }}'"
+  groups:
+    default: 1
+shared:
+  pueue_directory: ~/.local/share/pueue
+  use_unix_socket: true
+  unix_socket_path: ~/.local/share/pueue/pueue.socket
+  host: localhost
+  port: "6924"
+  daemon_cert: ~/.local/share/pueue/certs/daemon.cert
+  daemon_key: ~/.local/share/pueue/certs/daemon.key
+  shared_secret_path: ~/.local/share/pueue/shared_secret
