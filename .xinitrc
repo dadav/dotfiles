@@ -1,5 +1,6 @@
 nm-applet --sm-disable &
 firewall-applet &
+pasystray &
 udiskie &
 flameshot &
 fcitx -d
