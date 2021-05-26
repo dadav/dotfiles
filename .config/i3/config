@@ -215,6 +215,7 @@ for_window [window_role="Msgcompose" class="(?i)Thunderbird"] floating enable
 assign [class="Clementine"] $ws10
 assign [class="Spotify"] $ws10
 for_window [class="Spotify"] move to workspace $ws10
+for_window [class="Pavucontrol"] floating enable, resize set 700px 500px, move position center
 
 # Custom window settings
 for_window [urgent="latest"] focus

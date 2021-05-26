@@ -14,3 +14,6 @@ alias less="less -r"
 
 # reverse
 alias fontpreview-ueberzug="fontpreview-ueberzug -f white -b black"
+
+# keep the old file
+alias gunzip="gunzip -k"

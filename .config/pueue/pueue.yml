@@ -8,7 +8,7 @@ daemon:
   default_parallel_tasks: 1
   pause_group_on_failure: false
   pause_all_on_failure: false
-  callback: "Task {{ id }}\nCommand: {{ command }}\nPath: {{ path }}\nFinished with status '{{ result }}'"
+  callback: "notify-send \"[{{ exit_code }}] {{ command }}\n($(bc <<< \"{{end}} - {{start}}\") secs)\""
   groups:
     default: 1
 shared:
