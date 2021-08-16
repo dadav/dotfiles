@@ -12,6 +12,7 @@ setopt interactivecomments
 setopt complete_aliases
 setopt extendedglob
 setopt notify
+setopt AUTO_LIST
 # }
 # history {
 HISTFILE=~/.cache/zsh_history

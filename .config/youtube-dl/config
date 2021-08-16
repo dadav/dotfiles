@@ -40,3 +40,4 @@
 --ignore-errors
 # Erzwinge das Fortsetzen des Downloads von teilweise heruntergeladenen Dateien:
 --continue
+--retries 1000

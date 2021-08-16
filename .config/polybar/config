@@ -59,7 +59,7 @@ font-4 = DejaVu Sans:pixelsize=11;2
 
 modules-left = i3 mpd spotify
 modules-center = date
-modules-right = covid lock filesystem memory dirtymem wlan eth battery0 battery1 temperature backlight pulseaudio
+modules-right = lock filesystem memory dirtymem wlan eth battery0 battery1 temperature backlight pulseaudio
 
 tray-position = right
 tray-padding = 2
