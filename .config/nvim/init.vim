@@ -211,6 +211,7 @@ au FileType vimwiki setlocal spell
 " Filetypes
 au BufNewFile,BufRead *.groovy  setf groovy
 au BufNewFile,BufRead Jenkinsfile  setf groovy
+au BufNewFile,BufRead *.smali  setf smali
 
 " go
 au BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport')
