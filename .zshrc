@@ -27,6 +27,7 @@ autoload -Uz compinit && compinit
 autoload -U bashcompinit && bashcompinit
 autoload -U colors && colors
 autoload -U zmv
+autoload -U zargs
 autoload -U history-search-end
 # }
 # kitty {
