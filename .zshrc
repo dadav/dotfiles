@@ -12,6 +12,7 @@ setopt interactivecomments
 setopt complete_aliases
 setopt extendedglob
 setopt notify
+setopt ignore_eof
 setopt AUTO_LIST
 # }
 # history {
@@ -29,6 +30,7 @@ autoload -U colors && colors
 autoload -U zmv
 autoload -U zargs
 autoload -U history-search-end
+unalias run-help && autoload -U run-help
 # }
 # kitty {
 # has to be after compinit
@@ -37,6 +39,7 @@ kitty + complete setup zsh | source /dev/stdin
 # bindings {
 bindkey -e # emacs
 bindkey '\e[3~' delete-char # del
+bindkey '\C-w' kill-region # kill region not word
 
 # history {
 bindkey '^[[5~' history-substring-search-up
