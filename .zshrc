@@ -39,7 +39,7 @@ kitty + complete setup zsh | source /dev/stdin
 # bindings {
 bindkey -e # emacs
 bindkey '\e[3~' delete-char # del
-bindkey '\C-w' kill-region # kill region not word
+#bindkey '\C-w' kill-region # kill region not word
 
 # history {
 bindkey '^[[5~' history-substring-search-up
@@ -55,8 +55,12 @@ bindkey '^[ ' autosuggest-accept
 # }
 # autocompletion {
 autoload -U compinit
-zstyle ':completion:*' menu select
+zstyle ':completion*:default' menu 'select=0'
 zmodload zsh/complist
+# if matches dont fit on one page, use a pager
+zstyle ':completion:*:default' list-prompt '%S%M matches%s'
+# use q to exist this pager
+bindkey -M listscroll q send-break
 bindkey -M menuselect 'h' vi-backward-char
 bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
