@@ -22,5 +22,8 @@
     "<bs>": "collapse",
     "oh": "open:split",
     "ov": "open:vsplit"
+  },
+  "yaml.schemas": {
+      "kubernetes": "/k8s-*.yml"
   }
 }
