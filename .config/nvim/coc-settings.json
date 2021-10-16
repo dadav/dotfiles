@@ -24,6 +24,7 @@
     "ov": "open:vsplit"
   },
   "yaml.schemas": {
-      "kubernetes": "/k8s-*.yml"
+      "kubernetes": "/k8s-*.ya?ml",
+      "ansible": "/main.ya?ml"
   }
 }
