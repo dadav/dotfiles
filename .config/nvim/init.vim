@@ -538,6 +538,9 @@ let g:airline#extensions#ale#enabled = 1
 " coc {
 " Manage these extensions automatically
 let g:coc_global_extensions = [ 'coc-solargraph', 'coc-go', 'coc-diagnostic', 'coc-pyright', 'coc-json', 'coc-html', 'coc-highlight', 'coc-snippets', 'coc-vimlsp', 'coc-texlab', 'coc-yaml', 'coc-xml', 'coc-git', 'coc-marketplace', 'coc-emoji', 'coc-dictionary', 'coc-tag', 'coc-yank', 'coc-sh', 'coc-markdownlint', 'coc-explorer']
+ " let g:coc_filetype_map = {
+ " \ 'yaml.ansible': 'yaml',
+ " \ }
 
 " Give more space for displaying messages.
 set cmdheight=2
