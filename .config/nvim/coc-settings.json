@@ -24,7 +24,11 @@
     "ov": "open:vsplit"
   },
   "yaml.schemas": {
-      "kubernetes": "/k8s-*.ya?ml",
-      "ansible": "/main.ya?ml"
+      "kubernetes": ["/deployment.ya?ml", "/k8s-*.ya?ml"],
+      "chart": "/Chart.ya?ml",
+      "chart-lock": "/Chart.lock",
+      "ansible-role": ["/handlers/*.ya?ml", "/tasks/*.ya?ml"],
+      "ansible-playbook": ["/site.ya?ml", "/playbook.ya?ml"],
+      "ansible-inventory": "/*servers?.ya?ml"
   }
 }

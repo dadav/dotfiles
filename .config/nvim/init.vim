@@ -94,7 +94,7 @@ Plug 'tpope/vim-eunuch'
 " Languages
 Plug 'google/vim-jsonnet'
 Plug 'rodjek/vim-puppet'
-Plug 'pearofducks/ansible-vim', { 'do': './UltiSnips/generate.py' }
+Plug 'pearofducks/ansible-vim', { 'do': './UltiSnips/generate.sh' }
 Plug 'hashivim/vim-terraform'
 Plug 'cespare/vim-toml' " TOML
 Plug 'Glench/Vim-Jinja2-Syntax'
