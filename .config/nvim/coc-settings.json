@@ -23,13 +23,12 @@
     "oh": "open:split",
     "ov": "open:vsplit"
   },
-  "yaml.trace.server": "verbose",
   "yaml.schemaStore.enable": true,
   "yaml.schemas": {
       "kubernetes": ["deployment.ya?ml", "k8s-*.ya?ml"],
       "chart": "Chart.ya?ml",
       "chart-lock": "Chart.lock",
-      "ansible-role-2.9": ["handlers/*.ya?ml", "tasks/*.ya?ml", "main.ya?ml"],
+      "ansible-role-2.9": ["handlers/*.ya?ml", "/tasks/*.ya?ml", "main.ya?ml"],
       "ansible-playbook": ["playbooks/*.ya?ml", "site.ya?ml", "playbook.ya?ml"],
       "ansible-inventory": "*servers?.ya?ml"
   }

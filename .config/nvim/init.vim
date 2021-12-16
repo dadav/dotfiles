@@ -201,7 +201,13 @@ au BufWritePost *.adoc silent! !head -1 % | grep autocompile && asciidoctor-pdf 
 
 " Remove trailing spaces on write
 " http://vim.wikia.com/wiki/Remove_unwanted_spaces
-au BufWritePre * %s/\s\+$//e
+fun! StripWS()
+  if &ft =~ 'markdown'
+    return
+  endif
+  %s/\s\+$//e
+endfun
+au BufWritePre * :call StripWS()
 
 " enable spell for certain filetypes
 au FileType gitcommit setlocal textwidth=72 spell
@@ -234,7 +240,7 @@ endif
 " }
 " Behaviour {
 set expandtab           " enter spaces when tab is pressed
-set textwidth=100       " break lines when line length increases
+set textwidth=80        " break lines when line length increases
 set formatoptions-=t    " No autolinebreak
 set tabstop=2           " use 2 spaces to represent tab
 set softtabstop=2
@@ -538,9 +544,9 @@ let g:airline#extensions#ale#enabled = 1
 " coc {
 " Manage these extensions automatically
 let g:coc_global_extensions = [ 'coc-solargraph', 'coc-go', 'coc-diagnostic', 'coc-pyright', 'coc-json', 'coc-html', 'coc-highlight', 'coc-snippets', 'coc-vimlsp', 'coc-texlab', 'coc-yaml', 'coc-xml', 'coc-git', 'coc-marketplace', 'coc-emoji', 'coc-dictionary', 'coc-tag', 'coc-yank', 'coc-sh', 'coc-markdownlint', 'coc-explorer']
- " let g:coc_filetype_map = {
- " \ 'yaml.ansible': 'yaml',
- " \ }
+ let g:coc_filetype_map = {
+ \ 'yaml.ansible': 'yaml',
+ \ }
 
 " Give more space for displaying messages.
 set cmdheight=2

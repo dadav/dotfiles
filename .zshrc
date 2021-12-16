@@ -132,6 +132,7 @@ ZSH_AUTOSUGGEST_USE_ASYNC=1
 compdef config=git
 compdef scripts=git
 compdef mosh=ssh
+compdef k=kubectl
 # }
 # zsh profiler {
 # enable if slow start
