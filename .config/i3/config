@@ -205,7 +205,7 @@ assign [class="qutebrowser"] $ws1
 assign [window_role="browser"] $ws1
 
 ## Code
-for_window [class="code-oss"] move to workspace $ws3
+for_window [class="(?i)code"] move to workspace $ws3
 
 ## Mail
 assign [class="Thunderbird"] $ws9

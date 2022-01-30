@@ -1,0 +1,43 @@
+{
+
+		"Some main function template": {
+		"scope": "flutter,dart",
+		"prefix": "mainfunc",
+		"body": [
+			"import 'package:flutter/material.dart';",
+			"",
+			"void main() {",
+			  "runApp(const ${1:MyApp}());",
+			"}",
+			"",
+			"class ${1:MyApp} extends StatelessWidget {",
+			  "const ${1:MyApp}({Key? key}) : super(key: key);",
+			"",
+			  "@override",
+			  "Widget build(BuildContext context) {",
+				"return MaterialApp(",
+				  "initialRoute: ${2:MainScreen}.routeName,",
+				  "routes: {",
+					"${2:MainScreen}.routeName: (ctx) => const ${2:MainScreen}(),",
+				  "},",
+				");",
+			  "}",
+			"}",
+			"",
+			"class ${2:MainScreen} extends StatelessWidget {",
+			  "static const String routeName = '/main';",
+			  "const ${2:MainScreen}({Key? key}) : super(key: key);",
+			"",
+			  "@override",
+			  "Widget build(BuildContext context) {",
+				"return const Scaffold(",
+				  "body: Center(",
+					"child: Text('Hello'),",
+				  "),",
+				");",
+			  "}",
+			"}",
+		],
+		"description": "Create some default code"
+	}
+}

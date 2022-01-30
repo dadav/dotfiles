@@ -1,0 +1,45 @@
+// Place your key bindings in this file to override the defaultsauto[]
+[
+    {
+        "key": "alt+numpad5",
+        "command": "flutter.hotReload"
+    },
+    {
+        "key": "alt+numpad9",
+        "command": "flutter.attach"
+    },
+    {
+        "key": "alt+numpad4",
+        "command": "flutter.hotRestart"
+    },
+    {
+        "key": "alt+numpad_separator",
+        "command": "editor.action.quickFix",
+        "when": "editorHasCodeActionsProvider && editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "ctrl+[Period]",
+        "command": "-editor.action.quickFix",
+        "when": "editorHasCodeActionsProvider && editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "ctrl+numpad1",
+        "command": "workbench.action.debug.run",
+        "when": "debuggersAvailable && debugState != 'initializing'"
+    },
+    {
+        "key": "ctrl+f5",
+        "command": "-workbench.action.debug.run",
+        "when": "debuggersAvailable && debugState != 'initializing'"
+    },
+    {
+        "key": "ctrl+numpad2",
+        "command": "workbench.action.debug.start",
+        "when": "debuggersAvailable && debugState == 'inactive'"
+    },
+    {
+        "key": "f5",
+        "command": "-workbench.action.debug.start",
+        "when": "debuggersAvailable && debugState == 'inactive'"
+    }
+]
