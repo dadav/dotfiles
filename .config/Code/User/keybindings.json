@@ -23,7 +23,7 @@
         "when": "editorHasCodeActionsProvider && editorTextFocus && !editorReadonly"
     },
     {
-        "key": "ctrl+numpad1",
+        "key": "alt+numpad1",
         "command": "workbench.action.debug.run",
         "when": "debuggersAvailable && debugState != 'initializing'"
     },
@@ -33,7 +33,7 @@
         "when": "debuggersAvailable && debugState != 'initializing'"
     },
     {
-        "key": "ctrl+numpad2",
+        "key": "alt+numpad2",
         "command": "workbench.action.debug.start",
         "when": "debuggersAvailable && debugState == 'inactive'"
     },
