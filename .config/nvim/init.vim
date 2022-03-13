@@ -10,6 +10,9 @@ endif
 " Specify a directory for plugins
 call plug#begin('~/.vim/plugged')
 
+" Show current location in yaml hierarchy
+Plug 'Einenlum/yaml-revealer'
+
 " Session management
 Plug 'thaerkh/vim-workspace'
 
