@@ -46,4 +46,4 @@
 [pull]
 	rebase = true
 [init]
-	defaultBranch = production
+	defaultBranch = main
