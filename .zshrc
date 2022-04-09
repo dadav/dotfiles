@@ -73,7 +73,7 @@ compinit
 source virtualenvwrapper_lazy.sh
 # }
 # source additional configs {
-for category in aliases settings functions ; do
+for category in aliases settings functions completions; do
   for config in $HOME/.shells/common/$category/*.sh;do
     source "$config"
   done
