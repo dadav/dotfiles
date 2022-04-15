@@ -9,7 +9,7 @@ fpath=(${ASDF_DIR}/completions $fpath)
 # }
 # options {
 setopt interactivecomments
-setopt complete_aliases
+# setopt complete_aliases
 setopt extendedglob
 setopt notify
 setopt ignore_eof
@@ -74,12 +74,16 @@ source virtualenvwrapper_lazy.sh
 # }
 # source additional configs {
 for category in aliases settings functions completions; do
-  for config in $HOME/.shells/common/$category/*.sh;do
-    source "$config"
-  done
-  for config in $HOME/.shells/zsh/$category/*.sh;do
-    source "$config"
-  done
+  if [[ -d $HOME/.shells/common/$category/ ]]; then
+    for config in $HOME/.shells/common/$category/*.sh;do
+      source "$config"
+    done
+  fi
+  if [[ -d $HOME/.shells/zsh/$category/ ]]; then
+    for config in $HOME/.shells/zsh/$category/*.sh;do
+      source "$config"
+    done
+  fi
 done
 
 # others

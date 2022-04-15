@@ -1,6 +1,7 @@
 {
   "diagnostic-languageserver.filetypes": {
-    "sh": "shellcheck"
+    "sh": "shellcheck",
+    "dockerfile": "hadolint"
   },
   "diagnostic-languageserver.formatFiletypes": {
     "sh": "shfmt"
