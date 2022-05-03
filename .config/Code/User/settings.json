@@ -16,6 +16,8 @@
         "editor.tabCompletion": "onlySnippets",
         "editor.wordBasedSuggestions": false
     },
-    "window.zoomLevel": 1,
     "editor.linkedEditing": true,
+    "window.zoomLevel": 1,
+    "liveServer.settings.CustomBrowser": "firefox",
+    "editor.formatOnSave": true,
 }
