@@ -390,8 +390,8 @@ map  <Leader>c <Plug>(easymotion-bd-f)
 nmap <Leader>c <Plug>(easymotion-overwin-f)
 
 " Move to line
-map <Leader>L <Plug>(easymotion-bd-jk)
-nmap <Leader>L <Plug>(easymotion-overwin-line)
+map <Leader>l <Plug>(easymotion-bd-jk)
+nmap <Leader>l <Plug>(easymotion-overwin-line)
 
 " Move to word
 map  <Leader>w <Plug>(easymotion-bd-w)
@@ -403,8 +403,8 @@ nmap <Leader>w <Plug>(easymotion-overwin-w)
 " map <leader>nf :NERDTreeFind<cr><Paste>
 " }
 " Limelight {
-nmap <Leader>l :Limelight!!<CR>
-xmap <Leader>l :Limelight!!<CR>
+nmap <Leader>L :Limelight!!<CR>
+xmap <Leader>L :Limelight!!<CR>
 " }
 " EasyAlign {
 nmap ta <Plug>(EasyAlign)
