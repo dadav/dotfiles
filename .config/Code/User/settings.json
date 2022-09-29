@@ -1,23 +1,26 @@
 {
-    "editor.bracketPairColorization.enabled": true,
-    "editor.guides.bracketPairs": true,
-    "http.systemCertificates": false,
-    "workbench.colorCustomizations": {},
-    "dart.lineLength": 150,
-    "[dart]": {
-        "editor.formatOnSave": true,
-        "editor.formatOnType": true,
-        "editor.rulers": [
-            150
-        ],
-        "editor.selectionHighlight": false,
-        "editor.suggest.snippetsPreventQuickSuggestions": false,
-        "editor.suggestSelection": "first",
-        "editor.tabCompletion": "onlySnippets",
-        "editor.wordBasedSuggestions": false
-    },
-    "editor.linkedEditing": true,
-    "window.zoomLevel": 1,
-    "liveServer.settings.CustomBrowser": "firefox",
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs": true,
+  "http.systemCertificates": false,
+  "workbench.colorCustomizations": {},
+  "dart.lineLength": 150,
+  "[dart]": {
     "editor.formatOnSave": true,
+    "editor.formatOnType": true,
+    "editor.rulers": [150],
+    "editor.selectionHighlight": false,
+    "editor.suggest.snippetsPreventQuickSuggestions": false,
+    "editor.suggestSelection": "first",
+    "editor.tabCompletion": "onlySnippets",
+    "editor.wordBasedSuggestions": false
+  },
+  "editor.linkedEditing": true,
+  "window.zoomLevel": 1,
+  "liveServer.settings.CustomBrowser": "firefox",
+  "editor.formatOnSave": true,
+  "explorer.confirmDelete": false,
+  "go.toolsManagement.autoUpdate": true,
+  "[go]": {
+    "editor.formatOnSaveMode": "file"
+  }
 }
