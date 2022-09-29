@@ -11,6 +11,11 @@ docker_clean() {
   docker images -q --filter "dangling=true" | xargs -r docker rmi
 }
 
+podman_clean() {
+  podman ps -qa -f status=exited | xargs -r podman rm
+  podman images -q --filter "dangling=true" | xargs -r podman rmi
+}
+
 # https://github.com/docker/docker/issues/20399
 docker_imagelayers() {
   [[ "$#" -lt 1 ]] && {
