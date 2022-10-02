@@ -1,0 +1,100 @@
+{
+    "layer": "top", // Waybar at top layer
+    "position": "top", // Waybar at the bottom of your screen
+    // "height": 30, // Waybar height
+    // "width": 1280, // Waybar width
+    // Choose the order of the modules
+    "modules-left": ["sway/workspaces", "sway/mode"],
+    "modules-center": ["sway/window"],
+    "modules-right": ["idle_inhibitor", "pulseaudio", "network", "cpu", "custom/cputemp","memory", "backlight", "battery", "battery#bat1", "clock", "tray"],
+    // Modules configuration
+    // "sway/workspaces": {
+    //     "disable-scroll": true,
+    //     "all-outputs": true,
+    //     "format": "{name}: {icon}",
+    //     "format-icons": {
+    //         "1": "\uf120",
+    //         "2": "\uf268",
+    //         "3": "\uf121",
+    //         "4": "\uf1bc",
+    //         "5": "\uf075",
+    //         "urgent": "\uf06a",
+    //         "focused": "\uf192",
+    //         "default": "\uf111"
+    //     }
+    // },
+    "sway/mode": {
+        "format": "<span style=\"italic\">{}</span>"
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "\uf06e",
+            "deactivated": "\uf070"
+        }
+    },
+    "tray": {
+        "icon-size": 21,
+        "spacing": 10
+    },
+    "clock": {
+        "tooltip-format": "{:%Y-%m-%d | %H:%M}",
+        "format-alt": "{:%Y-%m-%d}"
+    },
+    "cpu": {
+        "format": "{usage}% \uf2db"
+    },
+    "memory": {
+        "format": "{}% \uf0c9"
+    },
+    "backlight": {
+        // "device": "acpi_video1",
+        "format": "{percent}% {icon}",
+        "format-icons": ["\uf185", "\uf111"]
+    },
+    "battery": {
+        "states": {
+            // "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        // "format-good": "", // An empty format will hide the module
+        // "format-full": "",
+        "format-icons": ["\uf244", "\uf243", "\uf242", "\uf241", "\uf240"]
+    },
+    "battery#bat0": {
+        "bat": "BAT0"
+    },
+    "battery#bat1": {
+        "bat": "BAT1"
+    },
+    "network": {
+        // "interface": "enp0s31f6", // (Optional) To force the use of this interface
+        "format-wifi": "{essid} ({signalStrength}%) \uf1eb",
+        "format-ethernet": "{ifname}: {ipaddr}/{cidr} \uf0c1",
+        "format-disconnected": "Disconnected \u26a0"
+    },
+    "pulseaudio": {
+        //"scroll-step": 1,
+        "format": "{volume}% {icon}",
+        "format-bluetooth": "{volume}% {icon}\uf294",
+        "format-muted": "\uf026",
+        "format-icons": {
+            "headphones": "\uf025",
+            "handsfree": "\uf590",
+            "headset": "\uf590",
+            "phone": "\uf095",
+            "portable": "\uf095",
+            "car": "\uf1b9",
+            "default": ["\uf027", "\uf028"]
+        },
+        "on-click": "ponymix toggle",
+        "on-click-right": "pavucontrol"
+    },
+    "custom/cputemp": {
+        "format": "{}\u00b0C \u0001f975",
+        "interval": 20,
+        "exec": "$HOME/.config/waybar/cputemp.sh 2> /dev/null"
+    }
+}
