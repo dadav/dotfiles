@@ -8,6 +8,7 @@
 
 #window {
     border-bottom: 1px solid white;
+    margin: 0 10px;
 }
 
 window#waybar {
@@ -29,12 +30,8 @@ window#waybar {
     border-bottom: 3px solid white;
 }
 
-#mode {
-    background: #64727D;
-    border-bottom: 3px solid white;
-}
-
 #clock,
+#bluetooth,
 #battery,
 #cpu,
 #memory,
@@ -43,6 +40,7 @@ window#waybar {
 #pulseaudio,
 #custom-spotify,
 #custom-cputemp,
+#custom-dirty-memory,
 #idle_inhibitor,
 #disk.home,
 #language {
@@ -50,31 +48,35 @@ window#waybar {
     margin: 0 5px;
 }
 
+#bluetooth {
+    background: #2980b9;
+}
+
 #disk.home {
-    background-color: #215c53;
+    background: #215c53;
 }
 
 #language {
-    background-color: #ad765a;
+    background: #ad765a;
 }
 
 #clock {
-    background-color: #64727D;
+    background: #64727D;
 }
 
 #battery {
-    background-color: #ffffff;
+    background: #ffffff;
     color: black;
 }
 
 #battery.charging {
     color: white;
-    background-color: #26A65B;
+    background: #26A65B;
 }
 
 @keyframes blink {
     to {
-        background-color: #ffffff;
+        background: #ffffff;
         color: black;
     }
 }
@@ -89,16 +91,18 @@ window#waybar {
     animation-direction: alternate;
 }
 
-#cpu {
+#cpu,
+#custom-cputemp {
     background: #2ecc71;
     color: #000000;
 }
 
-#custom-cputemp {
-    background-color: #64727D;
+#custom-dirty-memory {
+    background: #000053;
 }
+
 #memory {
-    background: #9b59b6;
+    background: #000053;
 }
 
 #backlight {
@@ -129,5 +133,5 @@ window#waybar {
 }
 
 #idle_inhibitor {
-    background-color: #2d3436;
+    background: #2d3436;
 }

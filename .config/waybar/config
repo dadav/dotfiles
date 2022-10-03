@@ -1,6 +1,7 @@
 {
     "layer": "top",
     "position": "top",
+    "fixed-center": false,
 
     "modules-left": [
         "sway/workspaces",
@@ -8,17 +9,17 @@
     ],
 
     "modules-center": [
-        "custom/spotify"
+        "custom/spotify",
     ],
 
     "modules-right": [
         "idle_inhibitor",
         "pulseaudio",
         "network",
-        "bluetooth",
         "cpu",
         "custom/cputemp",
         "memory",
+        "custom/dirty-memory",
         "disk#home",
         "backlight",
         "battery",
@@ -35,11 +36,11 @@
     "sway/window": {
         "format": "{}",
         "max-length": 60,
-        "icon": true
+        "icon": false,
     },
 
     "custom/spotify": {
-        "format": "<span foreground='#ffffff'> </span><span font='Iosevka Term weight=325'>{}</span>",
+        "format": "<span foreground='#ffffff'>\uf001 </span><span font='Iosevka Term weight=325'>{}</span>",
         "interval": 1,
         "exec-if": "pgrep -x spotify",
         "on-click": "playerctl -p spotify play-pause",
@@ -109,6 +110,12 @@
 
     "memory": {
         "format": "{}% \uf0c9"
+    },
+
+    "custom/dirty-memory": {
+        "interval": "5",
+        "exec": "$HOME/.local/bin/swaybar-dirty-memory",
+        "format": "{} \uf044",
     },
 
    "disk#home": {
