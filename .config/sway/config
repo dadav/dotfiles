@@ -34,7 +34,7 @@ input * {
 
 input type:touchpad {
   tap enabled
-  natural_scroll enabled
+  natural_scroll disabled
   dwt enabled
   click_method clickfinger
   accel_profile adaptive

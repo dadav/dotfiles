@@ -16,6 +16,7 @@
         "idle_inhibitor",
         "pulseaudio",
         "network",
+        "bluetooth",
         "cpu",
         "custom/cputemp",
         "memory",
@@ -121,7 +122,7 @@
    "disk#home": {
         "path": "/home",
         "interval": 30,
-        "format": "{percentage_free}% \uf0c7",
+        "format": "/home {percentage_free}% \uf0c7",
     },
 
     "backlight": {

@@ -1,0 +1,3 @@
+#!/bin/bash
+
+grep ^Dirty /proc/meminfo | awk '{ print $(NF-1)" "$NF }'

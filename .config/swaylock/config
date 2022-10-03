@@ -28,9 +28,14 @@ ring-color=00000000
 ring-ver-color=00000000
 ring-wrong-color=00000000
 ring-clear-color=00000000
+ring-caps-lock-color=00000000
+
+separator-color=ffffffff
+
 line-color=00000000
 line-clear-color=00000000
 line-ver-color=00000000
+
 key-hl-color=ffffffff
 bs-hl-color=ffffffff
 
