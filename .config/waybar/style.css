@@ -41,6 +41,9 @@ window#waybar {
 #custom-spotify,
 #custom-cputemp,
 #custom-dirty-memory,
+#custom-gammastep,
+#custom-pacman,
+#custom-journalctl,
 #idle_inhibitor,
 #disk.home,
 #language {
@@ -101,12 +104,24 @@ window#waybar {
     background: #000053;
 }
 
-#memory {
-    background: #000053;
+#custom-gammastep {
+    background: #fc8803;
+}
+
+#custom-pacman {
+    background: #de1010;
+}
+
+#custom-journalctl {
+    background: #de1010;
 }
 
 #backlight {
-    background: #90b1b1;
+    background: #fc8803;
+}
+
+#memory {
+    background: #000053;
 }
 
 #network {

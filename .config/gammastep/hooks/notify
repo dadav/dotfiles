@@ -1,0 +1,6 @@
+#!/bin/bash
+
+case "$1" in
+  period-changed)
+    exec notify-send -a Gammastep Update "Period changed to $3"
+esac

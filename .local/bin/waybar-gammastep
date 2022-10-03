@@ -1,0 +1,17 @@
+#!/bin/bash
+
+if [[ $1 = "toggle" ]]; then
+	if pgrep -x "gammastep" &> /dev/null; then
+		pkill gammastep
+	else
+		swaymsg exec gammastep
+	fi
+fi
+
+if pgrep -x gammastep &> /dev/null; then
+	echo ""
+	echo "Is running"
+else
+	echo ""
+	echo "Not running"
+fi

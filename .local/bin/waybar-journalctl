@@ -1,0 +1,11 @@
+#!/bin/bash
+
+minutes_ago=${1:-10}
+
+err_count=$(journalctl -q -p err -S "$minutes_ago minutes ago" -o cat --output-fields=_COMM | wc -l)
+
+if [[ $err_count -eq 0 ]]; then
+  echo ""
+else
+  echo -e "$err_count \uf071"
+fi

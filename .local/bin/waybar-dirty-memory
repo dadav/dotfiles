@@ -1,0 +1,6 @@
+#!/bin/bash
+
+mem=$(grep ^Dirty /proc/meminfo | awk '{ print $(NF-1)" "$NF }')
+
+echo "$mem"
+echo "$mem of memory is dirty"

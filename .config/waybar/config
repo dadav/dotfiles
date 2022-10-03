@@ -13,9 +13,12 @@
     ],
 
     "modules-right": [
+        "custom/pacman",
+        "custom/journalctl",
         "idle_inhibitor",
         "pulseaudio",
         "network",
+        "network#wireguard",
         "bluetooth",
         "cpu",
         "custom/cputemp",
@@ -23,8 +26,8 @@
         "custom/dirty-memory",
         "disk#home",
         "backlight",
+        "custom/gammastep",
         "battery",
-        "sway/language",
         "clock"
     ],
 
@@ -51,6 +54,22 @@
         "escape": true,
         "max-length": 60,
         "exec": "playerctl -p spotify metadata --format '{{ artist }} - {{ title }}'"
+    },
+
+    "custom/pacman": {
+        "format": "{}",
+        "interval": 3600,
+        "exec": "$HOME/.local/bin/waybar-pacman",
+        "exec-if": "exit 0",
+        "tooltip": false,
+    },
+
+    "custom/journalctl": {
+        "format": "{}",
+        "interval": 60,
+        "exec": "$HOME/.local/bin/waybar-journalctl",
+        "exec-if": "exit 0",
+        "tooltip": true,
     },
 
     "idle_inhibitor": {
@@ -86,7 +105,15 @@
         "format-disconnected": "\uf1eb \uf05e",
         "format-alt": "<span color='gray'>{essid}</span> \uf019 {bandwidthDownBits} \uf093 {bandwidthUpBits}",
         "tooltip-format": "{ifname} \uf0a9 {ipaddr}",
-        "interval": 60
+        "interval": 15,
+    },
+
+    "network#wireguard": {
+        "interface": "wg0",
+        "format": "VPN \uf0c1",
+        "format-disconnected": "",
+        "tooltip-format": "{ifname} \uf0a9 {ipaddr}",
+        "interval": 5,
     },
 
    "bluetooth": {
@@ -106,7 +133,7 @@
     "custom/cputemp": {
         "format": "{}°C",
         "interval": 20,
-        "exec": "$HOME/.local/bin/swaybar-cputemp 2> /dev/null"
+        "exec": "$HOME/.local/bin/waybar-cputemp 2> /dev/null"
     },
 
     "memory": {
@@ -114,9 +141,10 @@
     },
 
     "custom/dirty-memory": {
-        "interval": "5",
-        "exec": "$HOME/.local/bin/swaybar-dirty-memory",
         "format": "{} \uf044",
+        "interval": 5,
+        "exec": "$HOME/.local/bin/waybar-dirty-memory",
+        "on-click": "sync",
     },
 
    "disk#home": {
@@ -127,7 +155,16 @@
 
     "backlight": {
         "format": "{percent}% {icon}",
-        "format-icons": ["\uf185", "\uf111"]
+        "format-icons": ["\uf185", "\uf111"],
+        "on-scroll-up": "light -A 5",
+        "on-scroll-down": "light -U 5",
+    },
+
+    "custom/gammastep": {
+        "format": "{}",
+        "interval": 5,
+        "exec": "$HOME/.local/bin/waybar-gammastep",
+        "on-click": "$HOME/.local/bin/waybar-gammastep toggle",
     },
 
     "battery": {
