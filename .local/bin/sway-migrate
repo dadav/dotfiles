@@ -1,0 +1,6 @@
+#!/bin/bash
+#
+# Migrate from i3 to sway
+
+pacman -S sway weston waybar mako gammastep pango bemenu swayidle swaybg
+yay -S j4-dmenu-desktop swaylock-effects

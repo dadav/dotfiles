@@ -46,7 +46,7 @@ focus_follows_mouse no
 
 # autostarts
 exec udiskie
-exec gammastep
+exec gammastep -m wayland -l 48.780679:9.199159
 exec swayidle -w \
 	timeout 600 'swaylock -f' \
 	timeout 1800 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
