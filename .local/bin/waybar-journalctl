@@ -8,4 +8,5 @@ if [[ $err_count -eq 0 ]]; then
   echo ""
 else
   echo -e "$err_count \uf071"
+  echo "$err_count errors found (-$minutes_ago minutes)"
 fi
