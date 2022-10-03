@@ -9,5 +9,6 @@ export EDITOR=nvim
 export VISUAL=$EDITOR
 export SYSTEMD_EDITOR=$EDITOR
 export BROWSER=chromium
-export GREP_COLOR='1;32'
+export GREP_COLOR='mt=1;32'
 export TERM=kitty
+export XDG_CURRENT_DESKTOP=sway

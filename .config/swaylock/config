@@ -1,0 +1,36 @@
+ignore-empty-password
+disable-caps-lock-text
+image=~/.wallpapers/arch.png
+font=Iosevka
+
+text-ver-color=ffffffff
+text-wrong-color=ffffffff
+text-clear-color=ffffffff
+inside-color=ffffffff
+inside-ver-color=00000000
+inside-wrong-color=00000000
+inside-clear-color=00000000
+inside-caps-lock-color=00000000
+ring-color=ffffffff
+ring-ver-color=ffffffff
+ring-wrong-color=ffffffff
+ring-clear-color=ffffffff
+line-color=ffffffff
+line-clear-color=ffffffff
+line-ver-color=ffffffff
+key-hl-color=ffffffff
+bs-hl-color=ffffffff
+caps-lock-bs-hl-color=ffffffff
+caps-lock-key-hl-color=ffffffff
+separator-color=ffffffff
+
+scaling=fill
+indicator
+clock
+timestr=%I:%M %p
+datestr=%A, %d %B
+indicator-x-position=450
+indicator-y-position=675
+indicator-radius=450
+font-size=200
+text-color=080808

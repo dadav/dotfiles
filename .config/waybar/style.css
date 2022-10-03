@@ -1,9 +1,13 @@
 * {
     border: none;
     border-radius: 0;
-    font-family: Iosevka;
+    font-family: FontAwesome, Iosevka;
     font-size: 14px;
     min-height: 0;
+}
+
+#window {
+    border-bottom: 1px solid white;
 }
 
 window#waybar {
@@ -30,9 +34,28 @@ window#waybar {
     border-bottom: 3px solid white;
 }
 
-#clock, #battery, #cpu, #memory, #backlight, #network, #pulseaudio, #custom-spotify, #tray, #mode, #idle_inhibitor {
+#clock,
+#battery,
+#cpu,
+#memory,
+#backlight,
+#network,
+#pulseaudio,
+#custom-spotify,
+#custom-cputemp,
+#idle_inhibitor,
+#disk.home,
+#language {
     padding: 0 10px;
     margin: 0 5px;
+}
+
+#disk.home {
+    background-color: #215c53;
+}
+
+#language {
+    background-color: #ad765a;
 }
 
 #clock {
@@ -102,14 +125,9 @@ window#waybar {
 
 #custom-spotify {
     background: #66cc99;
-    color: #2a5c45;
-}
-
-#tray {
-    background-color: #2980b9;
+    color: #000000;
 }
 
 #idle_inhibitor {
     background-color: #2d3436;
 }
-
