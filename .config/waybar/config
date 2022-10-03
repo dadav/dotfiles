@@ -29,12 +29,7 @@
     "sway/workspaces": {
         "disable-scroll": true,
         "all-outputs": true,
-        "format": "{name}",
-        "format-icons": {
-          "urgent": "<span color='#e85c5c'></span>",
-          "focused": "<span color='#8af0f0'></span>",
-          "default": "<span color='#b8b8b8'></span>"
-        }
+        "format": "{name}"
     },
 
     "sway/window": {
@@ -44,7 +39,7 @@
     },
 
     "custom/spotify": {
-        "format": "<span foreground='#ffffff'> </span><span font='Iosevka Term Nerd Font weight=325 Italic'>{}</span>",
+        "format": "<span foreground='#ffffff'> </span><span font='Iosevka Term weight=325'>{}</span>",
         "interval": 1,
         "exec-if": "pgrep -x spotify",
         "on-click": "playerctl -p spotify play-pause",
