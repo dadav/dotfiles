@@ -2,5 +2,5 @@
 #
 # Migrate from i3 to sway
 
-sudo pacman -S sway weston waybar mako gammastep pango bemenu swayidle swaybg
+sudo pacman -S sway weston waybar mako gammastep pango bemenu swayidle swaybg grim slurp swappy wl-clipboard
 yay -S j4-dmenu-desktop swaylock-effects ponymix
