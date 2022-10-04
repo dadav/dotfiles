@@ -16,10 +16,8 @@
         "custom/pacman",
         "custom/journalctl",
         "idle_inhibitor",
-        "pulseaudio",
         "network",
-        "network#wireguard",
-        "bluetooth",
+        "custom/ip",
         "cpu",
         "custom/cputemp",
         "memory",
@@ -28,19 +26,24 @@
         "backlight",
         "custom/gammastep",
         "battery",
+        "pulseaudio",
         "clock"
     ],
 
     "sway/workspaces": {
         "disable-scroll": true,
         "all-outputs": true,
-        "format": "{name}"
+        "format": "{name}",
     },
 
     "sway/window": {
-        "format": "{}",
         "max-length": 60,
         "icon": false,
+        "format": "{}",
+        "rewrite": {
+            "(.*) — Mozilla Firefox": "\uf0ac: $1",
+            "(.*) - zsh": "> [$1]"
+        },
     },
 
     "custom/spotify": {
@@ -56,12 +59,22 @@
         "exec": "playerctl -p spotify metadata --format '{{ artist }} - {{ title }}'"
     },
 
+    "custom/ip": {
+        "format": "{} \uf129",
+        "exec": "$HOME/.local/bin/waybar-ip",
+        "return-type": "json",
+        "interval": 600,
+        "on-click": "$HOME/.local/bin/waybar-ip copy-ipv4",
+        "on-click-right": "$HOME/.local/bin/waybar-ip copy-ipv6",
+    },
+
     "custom/pacman": {
         "format": "{}",
         "interval": 3600,
         "exec": "$HOME/.local/bin/waybar-pacman",
         "exec-if": "exit 0",
         "tooltip": false,
+        "signal": 8,
     },
 
     "custom/journalctl": {
@@ -108,31 +121,15 @@
         "interval": 15,
     },
 
-    "network#wireguard": {
-        "interface": "wg0",
-        "format": "VPN \uf0c1",
-        "format-disconnected": "",
-        "tooltip-format": "{ifname} \uf0a9 {ipaddr}",
-        "interval": 5,
-    },
-
-   "bluetooth": {
-    "format": "\uf294 {status}",
-    "format-connected": "\uf294 {device_alias}",
-    "format-connected-battery": "\uf294 {device_alias} {device_battery_percentage}%",
-    "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
-    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
-    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
-    "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%"
-    },
-
     "cpu": {
         "format": "{usage}% \uf2db"
     },
 
     "custom/cputemp": {
-        "format": "{}°C",
+        "format": "{}°C {icon}",
+        "return-type": "json",
         "interval": 20,
+        "format-icons": ["\uf2cb", "\uf2ca", "\uf2c9", "\uf2c8", "\uf2c7"],
         "exec": "$HOME/.local/bin/waybar-cputemp 2> /dev/null"
     },
 
@@ -174,10 +171,6 @@
         },
         "format": "{capacity}% {icon}",
         "format-icons": ["\uf244", "\uf243", "\uf242", "\uf241", "\uf240"]
-    },
-
-    "sway/language": {
-        "format": "{short} \uf0ac"
     },
 
     "clock": {

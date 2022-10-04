@@ -181,9 +181,6 @@ bindsym $mod+p exec flock -w1 /tmp -c spotify
 # i3lock
 bindsym $mod+i exec swaylock -f
 
-# Toggle autolock
-bindsym $mod+t exec makoctl set-mode do-not-disturb
-
 # mod tab back and forth between workspaces
 bindsym $mod+Tab workspace back_and_forth
 

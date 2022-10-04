@@ -1,5 +1,35 @@
 #!/bin/bash
-h=$(hostnamectl hostname)
-[[ "$h" = 'darch' ]] && sensors -j acpitz-acpi-0 | jq '.["acpitz-acpi-0"]["temp1"]["temp1_input"]'
-[[ "$h" = 'lapt430' ]] && sensors -j thinkpad-isa-0000 2>/dev/null | jq '.["thinkpad-isa-0000"]["CPU"]["temp1_input"]'
-true
+
+host=$(hostnamectl hostname)
+cpu_temp=0
+crit_temp=90
+
+case $host in
+  darch)
+    cpu_temp="$(sensors -j acpitz-acpi-0 | jq '.["acpitz-acpi-0"]["temp1"]["temp1_input"]')"
+    ;;
+  lapt430)
+    cpu_temp="$(sensors -j thinkpad-isa-0000 2>/dev/null | jq '.["thinkpad-isa-0000"]["CPU"]["temp1_input"]')"
+    ;;
+  default)
+    exit 0
+    ;;
+esac
+
+cur_pct="$(echo "scale=0; (${crit_temp} * ${cpu_temp}/100)/1" | bc -l)"
+tooltip="Temp is ${cpu_temp}°C"
+class="low"
+
+if [[ $cur_pct -gt 90 ]]; then
+  class="crit"
+elif [[ $cur_pct -gt 70 ]]; then
+  class="high"
+elif [[ $cur_pct -gt 50 ]]; then
+  class="normal"
+elif [[ $cur_pct -gt 20 ]]; then
+  class="ok"
+fi
+
+cat <<EOF
+{"text": "$cpu_temp", "tooltip": "$tooltip", "class": "$class", "percentage": $cur_pct }
+EOF

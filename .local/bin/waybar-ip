@@ -1,0 +1,37 @@
+#!/bin/bash
+
+action="$1"
+
+ipv4=$(dig @resolver4.opendns.com myip.opendns.com +short -4 2>/dev/null)
+ipv6=$(dig @resolver1.ipv6-sandbox.opendns.com AAAA myip.opendns.com +short -6 2>/dev/null)
+
+case $action in
+  copy-ipv4)
+    wl-copy --primary "$ipv4"
+    notify-send -a Copied IPv4 "$ipv4"
+    exit 0
+    ;;
+  copy-ipv6)
+    wl-copy --primary "$ipv6"
+    notify-send -a Copied IPv6 "$ipv6"
+    exit 0
+    ;;
+esac
+
+stat4="4"
+stat6="6"
+
+if [[ -z $ipv4 ]]; then
+  stat4="-"
+fi
+
+if [[ -z $ipv6 ]]; then
+  stat6="-"
+fi
+
+stat="$stat4/$stat6"
+tooltip="4: $ipv4\n6: $ipv6"
+
+cat <<EOF
+{"text": "$stat", "tooltip": "$tooltip" }
+EOF

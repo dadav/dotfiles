@@ -31,7 +31,6 @@ window#waybar {
 }
 
 #clock,
-#bluetooth,
 #battery,
 #cpu,
 #memory,
@@ -44,15 +43,11 @@ window#waybar {
 #custom-gammastep,
 #custom-pacman,
 #custom-journalctl,
+#custom-ip,
 #idle_inhibitor,
-#disk.home,
-#language {
+#disk.home {
     padding: 0 10px;
     margin: 0 5px;
-}
-
-#bluetooth {
-    background: #2980b9;
 }
 
 #disk.home {
@@ -100,20 +95,35 @@ window#waybar {
     color: #000000;
 }
 
+#custom-cputemp.low {
+    background: #C0FDFB;
+    color: #000000;
+}
+
+#custom-cputemp.crit {
+    background: #F46036;
+    color: #000000;
+}
+
+#custom-cputemp.high {
+    background: #FFA737;
+    color: #000000;
+}
+
 #custom-dirty-memory {
     background: #000053;
 }
 
 #custom-gammastep {
-    background: #fc8803;
+    background: #BE5A38;
 }
 
 #custom-pacman {
-    background: #de1010;
+    background: #C84630;
 }
 
 #custom-journalctl {
-    background: #de1010;
+    background: #F06543;
 }
 
 #backlight {
@@ -125,6 +135,10 @@ window#waybar {
 }
 
 #network {
+    background: #2980b9;
+}
+
+#custom-ip {
     background: #2980b9;
 }
 
