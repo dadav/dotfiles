@@ -167,8 +167,7 @@ bindsym $mod+$alt+j workspace prev
 bindsym $mod+$alt+k workspace next
 
 # Screenshot
-# bindsym --release Print exec teiler
-bindsym --release Print exec flameshot gui
+bindsym --release Print exec grim -g "$(slurp)" - | swappy -f -
 
 # browse docs
 # bindsym $mod+d exec rofi-zeal
