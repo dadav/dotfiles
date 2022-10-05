@@ -47,7 +47,7 @@
     },
 
     "custom/spotify": {
-        "format": "<span foreground='#ffffff'>\uf001 </span><span font='Iosevka Term weight=325'>{}</span>",
+        "format": "<span foreground='#ffffff'>\uf001 </span><span font='Hack weight=325'>{}</span>",
         "interval": 1,
         "exec-if": "pgrep -x spotify",
         "on-click": "playerctl -p spotify play-pause",
@@ -126,7 +126,7 @@
     },
 
     "custom/cputemp": {
-        "format": "{text}°C {icon}",
+        "format": "{}°C {icon}",
         "return-type": "json",
         "interval": 20,
         "format-icons": ["\uf2cb", "\uf2ca", "\uf2c9", "\uf2c8", "\uf2c7"],

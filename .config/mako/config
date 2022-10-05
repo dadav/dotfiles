@@ -15,10 +15,10 @@ border-radius=15
 progress-color=over #332E41
 default-timeout=10000
 group-by=summary
-format=<span font="Iosevka Term" size="small">%a</span>\n<span font="Iosevka Term weight=bold" size="xx-large">%s</span>\n<span font="Iosevka Term weight=325" size="large">%b</span>
+format=<span font="Hack" size="small">%a</span>\n<span font="Hack weight=bold" size="xx-large">%s</span>\n<span font="Hack weight=325" size="large">%b</span>
 
 [grouped]
-format=<span font="Iosevka Term" size="small">%a (%g)</span>\n<span font="Iosevka Term  weight=bold" size="xx-large">%s</span>\n<span font="Iosevka Term weight=325" size="large">%b</span>
+format=<span font="Hack" size="small">%a (%g)</span>\n<span font="Hack  weight=bold" size="xx-large">%s</span>\n<span font="Hack weight=325" size="large">%b</span>
 
 [mode=do-not-disturb]
 invisible=1

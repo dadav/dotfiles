@@ -18,7 +18,7 @@ image=~/.wallpapers/pixel_art1.png
 scaling=fill
 fade-in=1
 
-font=Iosevka Term
+font=Hack
 text-color=ffffffff
 text-ver-color=ffffffff
 text-wrong-color=ffffffff
