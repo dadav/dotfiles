@@ -78,10 +78,10 @@
     },
 
     "custom/journalctl": {
+        "return-type": "json",
         "format": "{}",
         "interval": 60,
         "exec": "$HOME/.local/bin/waybar-journalctl",
-        "exec-if": "exit 0",
         "tooltip": true,
     },
 
@@ -126,11 +126,11 @@
     },
 
     "custom/cputemp": {
-        "format": "{}°C {icon}",
+        "format": "{text}°C {icon}",
         "return-type": "json",
         "interval": 20,
         "format-icons": ["\uf2cb", "\uf2ca", "\uf2c9", "\uf2c8", "\uf2c7"],
-        "exec": "$HOME/.local/bin/waybar-cputemp 2> /dev/null"
+        "exec": "$HOME/.local/bin/waybar-cputemp 2> /dev/null",
     },
 
     "memory": {

@@ -1,12 +1,19 @@
 #!/bin/bash
 
-minutes_ago=${1:-10}
+mins_ago=${1:-10}
 
-err_count=$(journalctl -q -p err -S "$minutes_ago minutes ago" -o cat --output-fields=_COMM | wc -l)
+errors=$(journalctl -q -p err -S "$mins_ago minutes ago" -o cat --output-fields=_COMM \
+  | sort | uniq -c | sort -rn | sed 's/^\s*//g')
 
-if [[ $err_count -eq 0 ]]; then
-  echo ""
-else
-  echo -e "$err_count \uf071"
-  echo "$err_count errors found (-$minutes_ago minutes)"
+errors_cnt=$(awk 'BEGIN { c=0 } { c += $1 } END { print c }' <<<"$errors")
+errors_fmt=""
+text=""
+
+if [[ $errors_cnt -gt 0 ]]; then
+  text="$errors_cnt \uf071"
+  errors_fmt=$(sed -zn 's/\n/\\n/gp' <<<"$errors")
 fi
+
+cat <<EOF
+{"text": "$text", "tooltip": "$errors_cnt errors found (-$mins_ago minutes)\n\n$errors_fmt"}
+EOF
