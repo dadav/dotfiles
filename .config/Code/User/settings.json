@@ -23,5 +23,6 @@
   "[go]": {
     "editor.formatOnSaveMode": "file"
   },
-  "editor.stickyScroll.enabled": true
+  "editor.stickyScroll.enabled": true,
+  "editor.fontFamily": "'FontAwesome', 'Hack'"
 }
