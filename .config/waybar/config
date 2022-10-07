@@ -69,12 +69,13 @@
     },
 
     "custom/pacman": {
+        "return-type": "json",
         "format": "{}",
         "interval": 3600,
         "exec": "$HOME/.local/bin/waybar-pacman",
-        "exec-if": "exit 0",
-        "tooltip": false,
+        "tooltip": true,
         "signal": 8,
+        "on-click": "swaymsg 'set $PROP floating:width50:height50:sticky; exec kitty sudo pacman -Syu'",
     },
 
     "custom/journalctl": {

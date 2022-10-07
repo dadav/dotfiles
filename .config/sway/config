@@ -226,7 +226,7 @@ bindsym $mod+o move workspace to output right
 bindsym $mod+Shift+c reload
 
 # exit sway
-bindsym $mod+Shift+r exec swaymsg exit
+bindsym $mod+Shift+r exec swaynag -m "Rly want to exit?" -b Yes "swaymsg exit" -s No -t warning
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -251,23 +251,31 @@ bar {
     swaybar_command waybar
 }
 
+# Dynamic options
+set $PROP none
+for_window [shell="."] mark --add "prop:$$PROP:"
+for_window [con_mark=^prop.*:floating:] floating enable
+for_window [con_mark=^prop.*:fullscreen:] fullscreen enable
+for_window [con_mark=^prop.*:border10:] border normal 10
+for_window [con_mark=^prop.*:sticky:] sticky enable
+for_window [con_mark=^prop.*:center:] move position center
+for_window [con_mark=^prop.*:width50:] resize set width 50 ppt
+for_window [con_mark=^prop.*:height50:] resize set height 50 ppt
+for_window [con_mark=^prop:] mark --toggle "prop:$$PROP:" ; set $$PROP none
+
 # Assignments
 ## Browsers
-assign [class="qutebrowser"] $ws1
+assign [app_id="org.qutebrowser.qutebrowser"] $ws1
 assign [window_role="browser"] $ws1
 
 ## Code
 for_window [class="(?i)code"] move to workspace $ws3
 
-## Mail
-assign [class="Thunderbird"] $ws9
-for_window [window_role="Msgcompose" class="(?i)Thunderbird"] floating enable
-
 ## Audio
 assign [class="Clementine"] $ws10
 assign [class="Spotify"] $ws10
 for_window [class="Spotify"] move to workspace $ws10
-for_window [class="Pavucontrol"] floating enable, resize set 700px 500px, move position center
+for_window [app_id="pavucontrol"] floating enable, resize set 700px 500px, move position center
 
 # Custom window settings
 for_window [urgent="latest"] focus
@@ -279,7 +287,6 @@ for_window [window_type="dialog"] floating enable, move position center
 for_window [window_type="menu"] floating enable, move position center
 
 # Sticky
-for_window [class="mpv"] sticky enable, floating enable #, move position center
-
+for_window [class="mpv"] sticky enable, floating enable
 
 include /etc/sway/config.d/*

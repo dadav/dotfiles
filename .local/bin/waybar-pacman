@@ -1,9 +1,15 @@
 #!/bin/bash
 
-update_num=$(checkupdates | wc -l)
+packages=$(checkupdates)
+update_num=$(wc -l <<<"$packages")
+text=""
+tooltip=""
 
-if [[ $update_num -eq 0 ]]; then
-  echo ""
-else
-  echo -e "$update_num \uf187"
+if [[ $update_num -gt 0 ]]; then
+  text="$update_num \uf187"
+  tooltip="$(sed -zn 's/\n/\\n/gp' <<<"$packages")"
 fi
+
+cat <<EOF
+{"text": "$text", "tooltip": "$tooltip"}
+EOF

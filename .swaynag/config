@@ -1,0 +1,15 @@
+# vim: ft=ini:
+
+font=Hack
+edge=top
+message-padding=15
+button-padding=10
+layer=overlay
+
+[info]
+background=03cffc
+button-background=69d6f0
+text=000000
+button-text=000000
+border=014d5e
+border-bottom=036a82
