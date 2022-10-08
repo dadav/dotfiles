@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# uses slurp to get x y and then clicks it
+
+div=7
+
+while [[ $div -gt 1 ]]; do
+	if [[ -z $x ]]; then
+		read -r x y w h < <(build/slurp -l -f "%x %y %w %h" -x "$div:$div")
+	else
+		read -r x y w h < <(<<<"$x,$y ${w}x${h}" build/slurp -l -f "%x %y %w %h" -x "$div:$div")
+	fi
+
+	div=$((div-2))
+done
+
+swaymsg seat - cursor set "$x" "$y"
+swaymsg seat - cursor press button1
+swaymsg seat - cursor release button1
