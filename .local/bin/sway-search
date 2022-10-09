@@ -1,0 +1,12 @@
+#!/bin/bash
+
+set -eu
+
+browser="firefox"
+
+engine=$(surfraw -elvi | bemenu -n -i -l10 -P use --prompt 'search-engine' | cut -f1)
+
+query=$(echo '' | bemenu -n -i -P "search for" --prompt "$engine:")
+
+surfraw -browser="$browser" "$engine" "$query"
+swaymsg '[class="firefox"]' focus

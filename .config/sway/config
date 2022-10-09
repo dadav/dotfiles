@@ -26,10 +26,11 @@ output "*" bg ~/.wallpapers/town.jpeg fill
 
 # keyboard
 input * {
-    xkb_layout "de"
+    xkb_layout  "de"
     xkb_variant "nodeadkeys"
     xkb_options "terminate:ctrl_alt_bksp"
 		xkb_model   "pc105"
+    xkb_numlock "enabled"
 }
 
 input type:touchpad {
@@ -136,7 +137,7 @@ bindsym $mod+Control+v split h
 bindsym $mod+z fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
+# bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
@@ -185,6 +186,9 @@ bindsym $mod+i exec swaylock -f
 
 # mod tab back and forth between workspaces
 bindsym $mod+Tab workspace back_and_forth
+
+# start search engine
+bindsym $mod+s exec sway-search
 
 # Workspace defs
 set $ws1 1
