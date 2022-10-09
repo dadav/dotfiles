@@ -2,6 +2,8 @@
 
 # uses slurp to get x y and then clicks it
 
+set -eo pipefail
+
 div=7
 
 while [[ $div -gt 1 ]]; do

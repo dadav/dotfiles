@@ -28,9 +28,6 @@
   "yaml.schemas": {
       "kubernetes": ["/deployment.y*ml", "/k8s-*.y*ml"],
       "chart": "/Chart.y*ml",
-      "chart-lock": "/Chart.lock",
-      "ansible-role-2.9": ["/handlers/*.y*ml", "/tasks/*.y*ml", "/main.y*ml"],
-      "ansible-playbook": ["/playbooks/*.y*ml", "/site.y*ml", "/playbook.y*ml"],
-      "ansible-inventory": ["/hosts", "/*servers*.y*ml"]
+      "chart-lock": "/Chart.lock"
   }
 }
