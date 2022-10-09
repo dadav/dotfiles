@@ -42,6 +42,7 @@
         "format": "{}",
         "rewrite": {
             "(.*) — Mozilla Firefox": "\uf0ac: $1",
+            "Mozilla Firefox": "\uf0ac",
             "(.*) - zsh": "> [$1]"
         },
     },
