@@ -10,14 +10,14 @@ set $left-alt Left
 set $down-alt Down
 set $up-alt Up
 set $right-alt Right
-set	$menu j4-dmenu-desktop --no-generic --dmenu="bemenu -l10 -n -i --prompt 'search' --fn 'Hack 16'" \
+set	$menu j4-dmenu-desktop --no-generic --dmenu="bemenu -l10 -n -i --prompt 'search' --fn 'Hack 12'" \
   | xargs swaymsg exec --
 set $browser-list "firejail firefox -P default\n" \
                   "firejail qutebrowser\n" \
                   "firejail tor-browser\n" \
                   "firejail chromium\n"
 set	$browser-menu echo -e $browser-list \
-  | bemenu -l10 -n -i --prompt 'browser' --fn 'Hack 16' \
+  | bemenu -l10 -n -i --prompt 'browser' --fn 'Hack 12' \
   | xargs swaymsg exec --
 
 # screen related stuff
