@@ -97,6 +97,8 @@ bindsym $mod+q kill
 bindsym $mod+space exec	$menu
 # bindsym $mod+Shift+space exec ~/.local/bin/sway-online-search
 
+bindsym $mod+y exec ~/.local/bin/sway-slurp-clicker
+
 # dismiss notification
 bindsym	Control+Backspace	exec makoctl dismiss
 

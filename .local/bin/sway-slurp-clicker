@@ -6,9 +6,9 @@ div=7
 
 while [[ $div -gt 1 ]]; do
 	if [[ -z $x ]]; then
-		read -r x y w h < <(build/slurp -l -f "%x %y %w %h" -x "$div:$div")
+		read -r x y w h < <(slurp -l -f "%x %y %w %h" -m "$div:$div")
 	else
-		read -r x y w h < <(<<<"$x,$y ${w}x${h}" build/slurp -l -f "%x %y %w %h" -x "$div:$div")
+		read -r x y w h < <(<<<"$x,$y ${w}x${h}" slurp -l -f "%x %y %w %h" -m "$div:$div")
 	fi
 
 	div=$((div-2))
