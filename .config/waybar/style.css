@@ -65,7 +65,7 @@ window#waybar {
 #idle_inhibitor,
 #disk.home {
     padding: 0 10px;
-    margin: 0 5px;
+    margin: 0 3px;
 }
 
 #disk.home {
@@ -182,3 +182,4 @@ window#waybar {
 #idle_inhibitor {
     background: #2d3436;
 }
+
