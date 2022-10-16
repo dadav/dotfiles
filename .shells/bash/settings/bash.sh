@@ -30,10 +30,10 @@ export GIT_PROMPT_FETCH_REMOTE_STATUS=0
 [ -x .config/base16-shell/scripts/base16-default-dark.sh ] && .config/base16-shell/scripts/base16-default-dark.sh
 
 # Pinguin
-function show_err(){
-  ret=$?
-  echo "return code $ret" | cowsay -f tux | toilet -f term --gay
-  return $ret
-}
+# function show_err(){
+#   ret=$?
+#   echo "return code $ret" | cowsay -f tux | toilet -f term --gay
+#   return $ret
+# }
 
-trap 'show_err' ERR
+# trap 'show_err' ERR

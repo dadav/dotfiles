@@ -541,15 +541,20 @@ let g:vimwiki_list = [wiki_default]
 let g:ale_sign_error = '💩'
 let g:ale_sign_warning = '⚡'
 let g:ale_completion_enabled = 0
+let g:ale_linters = {
+ \ 'ansible': '',
+ \ 'ansible-lint': '',
+ \ }
+
 " Enable integration with airline.
 let g:airline#extensions#ale#enabled = 1
 " }
 " coc {
 " Manage these extensions automatically
-let g:coc_global_extensions = [ 'coc-solargraph', 'coc-go', 'coc-diagnostic', 'coc-pyright', 'coc-json', 'coc-html', 'coc-highlight', 'coc-snippets', 'coc-vimlsp', 'coc-texlab', 'coc-xml', 'coc-git', 'coc-marketplace', 'coc-emoji', 'coc-dictionary', 'coc-tag', 'coc-yank', 'coc-sh', 'coc-markdownlint', 'coc-explorer', 'coc-emoji']
- " let g:coc_filetype_map = {
- " \ 'yaml.ansible': 'yaml',
- " \ }
+let g:coc_global_extensions = [ 'coc-solargraph', 'coc-go', 'coc-diagnostic', 'coc-pyright', 'coc-json', 'coc-html', 'coc-highlight', 'coc-snippets', 'coc-vimlsp', 'coc-texlab', 'coc-xml', 'coc-git', 'coc-marketplace', 'coc-emoji', 'coc-dictionary', 'coc-tag', 'coc-yank', 'coc-sh', 'coc-markdownlint', 'coc-explorer', 'coc-emoji', '@yaegassy/coc-ansible']
+let g:coc_filetype_map = {
+ \ 'yaml.ansible': 'ansible',
+ \ }
 
 " Give more space for displaying messages.
 set cmdheight=2
