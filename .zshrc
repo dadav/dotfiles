@@ -97,6 +97,21 @@ done
 [[ -r "$HOME/.p10k.zsh" ]] && source "$HOME/.p10k.zsh"
 # }
 # plugins {
+plugins_dir="$HOME/.zsh/plugins"
+[[ -d "$plugins_dir" ]] || mkdir -p "$plugins_dir"
+
+additional_plugins=(
+  'https://github.com/reegnz/jq-zsh-plugin'
+)
+
+for plugin in $additional_plugins; do
+  plugin_path="$plugins_dir/${plugin##*/}"
+  [[ -d "$plugin_path" ]] || git clone "$plugin" "$plugin_path"
+  for p in "$plugin_path"/*.plugin.zsh; do
+    source "$p"
+  done
+done
+
 custom_plugins=(
   '/usr/share/z/z.sh'
   '/usr/share/fzf/key-bindings.zsh'
