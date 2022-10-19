@@ -293,6 +293,6 @@ for_window [window_type="dialog"] floating enable, move position center
 for_window [window_type="menu"] floating enable, move position center
 
 # Sticky
-for_window [class="mpv"] sticky enable, floating enable
+for_window [app_id="mpv"] sticky enable, floating enable
 
 include /etc/sway/config.d/*
