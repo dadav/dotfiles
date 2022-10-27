@@ -13,9 +13,6 @@ call plug#begin('~/.vim/plugged')
 " Show current location in yaml hierarchy
 Plug 'Einenlum/yaml-revealer'
 
-" Session management
-Plug 'thaerkh/vim-workspace'
-
 " show hex colors
 Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 
@@ -28,9 +25,6 @@ Plug 'Shougo/neco-syntax'
 " Fancy start screen
 Plug 'mhinz/vim-startify'
 
-" wiki
-Plug 'vimwiki/vimwiki'
-
 " easymotion
 Plug 'easymotion/vim-easymotion'
 
@@ -41,50 +35,32 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
-" Preview markdown
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
-
-" Limelight; Focus on stuff
-Plug 'junegunn/limelight.vim'
-
-" Scalpel: better word replacer within a file
-" invoked with <Leader>e by default
+" Better word replacer within a file
 Plug 'wincent/scalpel'
 
 " Briefly highlight the yanked region
 Plug 'machakann/vim-highlightedyank'
 
-" Macro helper
-" <CR> will replay last recorded macro
+" Just press return to replay last macro
 Plug 'wincent/replay'
 
 " multi-cursor FTW
 Plug 'terryma/vim-multiple-cursors'
 
-" Better mark management
-Plug 'kshenoy/vim-signature'
-
 " fuzzy file completion, me gusta!
 Plug 'ctrlpvim/ctrlp.vim'
 
-" Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
+" A simple, easy-to-use Vim alignment plugin
 Plug 'junegunn/vim-easy-align'
 
 " Async syntax linters/fixers
 Plug 'dense-analysis/ale'
-
-" Easily align text
-" used by puppet-vim
-Plug 'godlygeek/tabular'
 
 " Highlight ugly extra whitespace
 Plug 'ntpeters/vim-better-whitespace'
 
 " fuzz all the things
 Plug 'junegunn/fzf.vim'
-
-"Open file under cursor with 'gf'
-Plug 'amix/open_file_under_cursor.vim'
 
 " tpope FTW
 Plug 'tpope/vim-fugitive'
@@ -95,11 +71,7 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-eunuch'
 
 " Languages
-Plug 'google/vim-jsonnet'
-Plug 'rodjek/vim-puppet'
 Plug 'pearofducks/ansible-vim', { 'do': './UltiSnips/generate.sh' }
-Plug 'hashivim/vim-terraform'
-Plug 'cespare/vim-toml' " TOML
 Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'tmux-plugins/vim-tmux'
 
@@ -133,6 +105,7 @@ Plug 'Yggdroot/indentLine'
 
 " Autoscroll
 Plug 'yuttie/comfortable-motion.vim'
+
 call plug#end()
 " }
 " General {
@@ -397,15 +370,6 @@ nmap <Leader>l <Plug>(easymotion-overwin-line)
 map  <Leader>w <Plug>(easymotion-bd-w)
 nmap <Leader>w <Plug>(easymotion-overwin-w)
 " }
-" NerdTree {
-" map <leader>nn :NERDTreeToggle<cr>
-" map <leader>nb :NERDTreeFromBookmark
-" map <leader>nf :NERDTreeFind<cr><Paste>
-" }
-" Limelight {
-nmap <Leader>L :Limelight!!<CR>
-xmap <Leader>L :Limelight!!<CR>
-" }
 " EasyAlign {
 nmap ta <Plug>(EasyAlign)
 xmap ta <Plug>(EasyAlign)
@@ -463,11 +427,6 @@ xmap <leader>x  <Plug>(coc-convert-snippet)
 " coc-yank {
 nnoremap <silent> <leader>y  :<C-u>CocList -A --normal yank<cr>
 " }
-" workspace {
-nnoremap <leader>tw :ToggleWorkspace<CR>
-" Don't load on vim with args
-let g:workspace_session_disable_on_args = 1
-" }
 " scalpel {
 nmap <Leader>r <Plug>(Scalpel)
 " }
@@ -518,24 +477,6 @@ let g:ansible_extra_keywords_highlight = 1
 let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'puppet']
 let g:markdown_minlines = 100
 let g:markdown_syntax_conceal = 0
-" }
-" nerdtree {
-" let NERDTreeIgnore = ['\.pyc$', '__pycache__', '\.mypy_cache']
-" }
-" vim-wiki {
-let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
-let g:vimwiki_conceallevel = 0
-" dont use vimwiki filetype for all .md files
-let g:vimwiki_global_ext = 0
-
-" default wiki
-let wiki_default = {}
-let wiki_default.path = '~/.vimwiki/notes'
-let wiki_default.syntax = 'markdown'
-let wiki_default.ext = 'md'
-let wiki_default.nested_syntaxes = {'md':'markdown', 'sh':'sh','python': 'python', 'c++': 'cpp'}
-
-let g:vimwiki_list = [wiki_default]
 " }
 " ale {
 let g:ale_sign_error = '💩'
