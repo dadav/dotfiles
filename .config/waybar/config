@@ -122,6 +122,7 @@
         "format-alt": "<span color='gray'>{essid}</span> \uf019 {bandwidthDownBits} \uf093 {bandwidthUpBits}",
         "tooltip-format": "{ifname} \uf0a9 {ipaddr}",
         "interval": 15,
+        "on-click-right": "iwgtk",
     },
 
     "cpu": {
