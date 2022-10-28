@@ -2,8 +2,15 @@
 
 action="$1"
 
-ipv4=$(dig @resolver4.opendns.com myip.opendns.com +short -4 2>/dev/null)
-ipv6=$(dig @resolver1.ipv6-sandbox.opendns.com AAAA myip.opendns.com +short -6 2>/dev/null)
+ipv4=$(dig @resolver4.opendns.com myip.opendns.com +short -4)
+if [[ $(wc -l <<<"$ipv4") -ne 1 ]]; then
+  ipv4="error"
+fi
+
+ipv6=$(dig @resolver1.ipv6-sandbox.opendns.com AAAA myip.opendns.com +short -6)
+if [[ $(wc -l <<<"$ipv6") -ne 1 ]]; then
+  ipv6="error"
+fi
 
 case $action in
   copy-ipv4)

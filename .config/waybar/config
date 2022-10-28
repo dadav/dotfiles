@@ -65,6 +65,7 @@
         "exec": "$HOME/.local/bin/waybar-ip",
         "return-type": "json",
         "interval": 600,
+        "signal": 7,
         "on-click": "$HOME/.local/bin/waybar-ip copy-ipv4",
         "on-click-right": "$HOME/.local/bin/waybar-ip copy-ipv6",
     },
