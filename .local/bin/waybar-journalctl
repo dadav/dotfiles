@@ -2,8 +2,8 @@
 
 mins_ago=${1:-10}
 
-errors=$(journalctl -q -p err -S "$mins_ago minutes ago" -o cat --output-fields=_COMM \
-  | sort | uniq -c | sort -rn | sed 's/^\s*//g')
+errors=$(journalctl -q -S "$mins_ago minutes ago" -p err -o json \
+  | jq -r -s '[.[]._COMM // empty] | group_by(.) | .[] | [.|length,.[0]] | sort |@tsv')
 
 errors_cnt=$(awk 'BEGIN { c=0 } { c += $1 } END { print c }' <<<"$errors")
 errors_fmt=""
