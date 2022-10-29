@@ -26,8 +26,6 @@
   },
   "yaml.schemaStore.enable": true,
   "yaml.schemas": {
-      "kubernetes": ["/deployment.y*ml", "/k8s-*.y*ml"],
-      "chart": "/Chart.y*ml",
-      "chart-lock": "/Chart.lock"
+      "kubernetes": ["/*.y*ml"]
   }
 }

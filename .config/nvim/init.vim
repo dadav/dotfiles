@@ -163,6 +163,7 @@ set showmatch
 
 " lang
 set spelllang=de,en
+set spellsuggest=best,3
 setlocal dictionary=/usr/share/dict/german
 setlocal dictionary+=/usr/share/dict/american-english
 
@@ -188,7 +189,6 @@ au BufWritePre * :call StripWS()
 " enable spell for certain filetypes
 au FileType gitcommit setlocal textwidth=72 spell
 au FileType markdown setlocal spell
-au FileType vimwiki setlocal spell
 
 " Filetypes
 au BufNewFile,BufRead *.groovy  setf groovy
@@ -398,11 +398,8 @@ map <leader>fh :History<CR>
 map <C-P> :FZF .<CR>
 " }
 " coc (general){
-" Use `[g` and `]g` to navigate diagnostics
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
-
-" GoTo code navigation.
+nmap <silent> gh <Plug>(coc-diagnostic-prev)
+nmap <silent> gl <Plug>(coc-diagnostic-next)
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
@@ -492,7 +489,7 @@ let g:airline#extensions#ale#enabled = 1
 " }
 " coc {
 " Manage these extensions automatically
-let g:coc_global_extensions = [ 'coc-solargraph', 'coc-go', 'coc-diagnostic', 'coc-pyright', 'coc-json', 'coc-html', 'coc-highlight', 'coc-snippets', 'coc-vimlsp', 'coc-texlab', 'coc-xml', 'coc-git', 'coc-marketplace', 'coc-emoji', 'coc-dictionary', 'coc-tag', 'coc-yank', 'coc-sh', 'coc-markdownlint', 'coc-explorer', 'coc-emoji', '@yaegassy/coc-ansible']
+let g:coc_global_extensions = [ 'coc-solargraph', 'coc-go', 'coc-diagnostic', 'coc-pyright', 'coc-json', 'coc-html', 'coc-highlight', 'coc-snippets', 'coc-vimlsp', 'coc-texlab', 'coc-xml', 'coc-git', 'coc-marketplace', 'coc-emoji', 'coc-dictionary', 'coc-tag', 'coc-yank', 'coc-sh', 'coc-markdownlint', 'coc-explorer', 'coc-emoji', '@yaegassy/coc-ansible', 'coc-yaml']
 let g:coc_filetype_map = {
  \ 'yaml.ansible': 'ansible',
  \ }
