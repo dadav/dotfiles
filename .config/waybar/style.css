@@ -64,6 +64,7 @@ window#waybar {
 #custom-ip,
 #idle_inhibitor,
 #disk.home {
+    color: #FFFFFF;
     padding: 0 10px;
     margin: 0 3px;
 }
@@ -182,4 +183,3 @@ window#waybar {
 #idle_inhibitor {
     background: #2d3436;
 }
-
