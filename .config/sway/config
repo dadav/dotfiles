@@ -10,15 +10,19 @@ set $left-alt Left
 set $down-alt Down
 set $up-alt Up
 set $right-alt Right
-set	$menu j4-dmenu-desktop --no-generic --dmenu="bemenu -C -T -l10 -n -i --prompt 'search' --fn 'Hack 12'" \
-  | xargs swaymsg exec --
 set $browser-list "firejail firefox -P default\n" \
                   "firejail qutebrowser\n" \
                   "firejail tor-browser\n" \
                   "firejail chromium\n"
+
+# Define some menus for bemenu
+set	$exec-menu j4-dmenu-desktop --no-generic --dmenu="bemenu -C -T -l10 -n -i --prompt 'search' --fn 'Hack 12'" \
+  | xargs swaymsg exec --
 set	$browser-menu echo -e $browser-list \
   | bemenu -C -T -l10 -n -i --prompt 'browser' --fn 'Hack 12' \
   | xargs swaymsg exec --
+set $zeal-menu echo '' | bemenu -n -i -P "search for" --prompt "query:" --fn "Hack 12" \
+  | xargs swaymsg exec -- zeal
 
 # screen related stuff
 output HDMI-A-0 scale 2
@@ -96,7 +100,7 @@ bindsym $mod+Return exec $term
 bindsym $mod+q kill
 
 # start launcher
-bindsym $mod+space exec	$menu
+bindsym $mod+space exec	$exec-menu
 # bindsym $mod+Shift+space exec ~/.local/bin/sway-online-search
 
 bindsym $mod+y exec ~/.local/bin/sway-slurp-clicker
@@ -174,7 +178,7 @@ bindsym $mod+$alt+k workspace next
 bindsym --release Print exec grim -g "$(slurp)" - | swappy -f -
 
 # browse docs
-# bindsym $mod+d exec rofi-zeal
+bindsym $mod+d exec $zeal-menu
 
 # browser selector
 bindsym $mod+b exec $browser-menu
@@ -295,6 +299,8 @@ for_window [window_type="menu"] floating enable, move position center
 for_window [app_id="org.twosheds.iwgtk"] floating enable, move position center
 for_window [app_id="virt-manager"] floating enable, move position center
 for_window [app_id="com.github.wwmm.easyeffects"] floating enable, resize set 1200px 900px, move position center
+for_window [app_id="org.zealdocs.zeal"] floating enable, resize set 1200px 700px, move position center
+
 # Sticky
 for_window [app_id="mpv"] sticky enable, floating enable
 
