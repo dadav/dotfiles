@@ -54,6 +54,7 @@ exec swayidle -w \
 	before-sleep 'swaylock -f'
 exec mako
 exec unclutter -idle 5
+exec easyeffects --gapplication-service
 
 # font
 font pango:monospace 16px
