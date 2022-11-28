@@ -6,6 +6,7 @@
   "diagnostic-languageserver.formatFiletypes": {
     "sh": "shfmt"
   },
+  "diagnostic.displayByAle": true,
   "snippets.snipmate.enable": false,
   "snippets.userSnippetsDirectory": "~/.config/nvim/ultis/snips",
   "python.pythonPath": "python3",

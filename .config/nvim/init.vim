@@ -6,6 +6,11 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall | source $MYVIMRC
 endif
 " }
+" Pre-Plugin-config {
+" Ale should recive lsp data from coc.nvim
+" https://github.com/dense-analysis/ale#faq-coc-nvim
+let g:ale_disable_lsp = 1
+" }
 " Plugins {
 " Specify a directory for plugins
 call plug#begin('~/.vim/plugged')
@@ -18,9 +23,6 @@ Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 
 " LSP code completion/diagnostics
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-" better syntax
-Plug 'Shougo/neco-syntax'
 
 " Fancy start screen
 Plug 'mhinz/vim-startify'
@@ -94,6 +96,7 @@ Plug 'jreybert/vimagit'
 " search files with ack/ag
 Plug 'mileszs/ack.vim'
 
+" airline for vim
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
@@ -408,9 +411,6 @@ nmap <silent> gr <Plug>(coc-references)
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
-" Symbol renaming.
-" nmap <leader>r <Plug>(coc-rename)
-
 " Formatting selected code.
 xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
@@ -489,7 +489,7 @@ let g:airline#extensions#ale#enabled = 1
 " }
 " coc {
 " Manage these extensions automatically
-let g:coc_global_extensions = [ 'coc-solargraph', 'coc-go', 'coc-diagnostic', 'coc-pyright', 'coc-json', 'coc-html', 'coc-highlight', 'coc-snippets', 'coc-vimlsp', 'coc-texlab', 'coc-xml', 'coc-git', 'coc-marketplace', 'coc-emoji', 'coc-dictionary', 'coc-tag', 'coc-yank', 'coc-sh', 'coc-markdownlint', 'coc-explorer', 'coc-emoji', '@yaegassy/coc-ansible', 'coc-yaml']
+let g:coc_global_extensions = [ 'coc-solargraph', 'coc-go', 'coc-diagnostic', 'coc-pyright', 'coc-json', 'coc-html', 'coc-highlight', 'coc-snippets', 'coc-vimlsp', 'coc-texlab', 'coc-xml', 'coc-git', 'coc-marketplace', 'coc-emoji', 'coc-tag', 'coc-yank', 'coc-sh', 'coc-markdownlint', 'coc-explorer', 'coc-emoji', '@yaegassy/coc-ansible', 'coc-yaml']
 let g:coc_filetype_map = {
  \ 'yaml.ansible': 'ansible',
  \ }
