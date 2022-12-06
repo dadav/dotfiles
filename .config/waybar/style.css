@@ -69,6 +69,11 @@ window#waybar {
     margin: 0 3px;
 }
 
+#tray {
+    color: #FFFFFF;
+    margin: 0 3px;
+}
+
 #disk.home {
     background: #215c53;
 }

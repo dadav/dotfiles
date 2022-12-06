@@ -27,8 +27,14 @@
         "custom/gammastep",
         "battery",
         "pulseaudio",
-        "clock"
+        "clock",
+        "tray"
     ],
+
+    "tray": {
+        "icon-size": 21,
+        "spacing": 10
+    },
 
     "sway/workspaces": {
         "disable-scroll": true,
