@@ -63,6 +63,7 @@ window#waybar {
 #custom-journalctl,
 #custom-ip,
 #idle_inhibitor,
+#bluetooth,
 #disk.home {
     color: #FFFFFF;
     padding: 0 10px;
@@ -72,6 +73,10 @@ window#waybar {
 #tray {
     color: #FFFFFF;
     margin: 0 3px;
+}
+
+#bluetooth {
+    background: #215cff;
 }
 
 #disk.home {

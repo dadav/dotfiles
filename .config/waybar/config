@@ -28,13 +28,9 @@
         "battery",
         "pulseaudio",
         "clock",
+        "bluetooth",
         "tray"
     ],
-
-    "tray": {
-        "icon-size": 21,
-        "spacing": 10
-    },
 
     "sway/workspaces": {
         "disable-scroll": true,
@@ -187,5 +183,19 @@
         "tooltip-format": "{:%Y-%m-%d | %H:%M}",
         "format": "{:%H:%M} \uf017",
         "format-alt": "{:%Y-%m-%d} \uf017"
+    },
+
+    "bluetooth": {
+        "format": " {status}",
+        "format-disabled": "",
+        "format-connected": " {num_connections}",
+        "tooltip-format": "{controller_alias}\t{controller_address}",
+        "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}"
+    },
+
+    "tray": {
+        "icon-size": 21,
+        "spacing": 10
     },
 }
