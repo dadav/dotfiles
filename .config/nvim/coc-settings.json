@@ -25,9 +25,5 @@
     "oh": "open:split",
     "ov": "open:vsplit"
   },
-  "yaml.schemaStore.enable": true,
-  "yaml.schemas": {
-      "kubernetes": ["/*.y*ml"]
-  },
   "ansible.validation.lint.enabled": false
 }
