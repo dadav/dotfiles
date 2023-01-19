@@ -22,6 +22,11 @@ staged = "++"
 renamed = "👅"
 deleted = "🫥"
 
+# Show time
+[time]
+disabled = false
+time_format = '%H:%M'
+
 # Show if sudo credentials are cached
 [sudo]
 disabled = false
