@@ -1,0 +1,31 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# Inserts a blank line between shell prompts
+add_newline = true
+
+# Change the return code symbols
+[character]
+success_symbol = '[➜](bold green)'
+error_symbol = '[✗](bold red)'
+
+# Adjust prompt to git status
+[git_status]
+conflicted = "💣"
+ahead = "🏎💨"
+behind = "😰"
+diverged = "😵"
+untracked = "🤷"
+stashed = "📦"
+modified = "📝"
+staged = "++"
+renamed = "👅"
+deleted = "🫥"
+
+# Show if sudo credentials are cached
+[sudo]
+disabled = false
+
+# Disable these
+[package]
+disabled = true

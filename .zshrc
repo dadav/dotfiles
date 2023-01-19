@@ -1,9 +1,4 @@
 # vim: set foldmarker={,} foldlevel=0 foldmethod=marker :
-# instant prompt {
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-# }
 # fpath {
 fpath=(${ASDF_DIR}/completions $fpath)
 # }
@@ -91,11 +86,6 @@ for stuff in ~/{.profile,.alias}; do
   [[ -f $stuff ]] && . $stuff
 done
 # }
-# theme {
-[[ -r '/usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme' ]] \
-  && source '/usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme'
-[[ -r "$HOME/.p10k.zsh" ]] && source "$HOME/.p10k.zsh"
-# }
 # plugins {
 plugins_dir="$HOME/.zsh/plugins"
 [[ -d "$plugins_dir" ]] || mkdir -p "$plugins_dir"
@@ -152,6 +142,9 @@ compdef config=git
 compdef scripts=git
 compdef mosh=ssh
 compdef k=kubectl
+# }
+# starship {
+eval "$(starship init zsh)"
 # }
 # zsh profiler {
 # enable if slow start
