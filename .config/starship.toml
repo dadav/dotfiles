@@ -25,6 +25,7 @@ deleted = "🫥"
 # Show time
 [time]
 disabled = false
+format = '[$time]($style) '
 time_format = '%H:%M'
 
 # Show if sudo credentials are cached
