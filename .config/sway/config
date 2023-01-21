@@ -289,6 +289,9 @@ assign [class="Spotify"] $ws10
 for_window [class="Spotify"] move to workspace $ws10
 for_window [app_id="pavucontrol"] floating enable, resize set 700px 500px, move position center
 
+# others
+assign [class="com-eteks-sweethome3d-SweetHome3D"] $ws4
+
 # Custom window settings
 for_window [urgent="latest"] focus
 for_window [window_role="pop-up"] floating enable, move position center

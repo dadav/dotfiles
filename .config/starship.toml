@@ -33,5 +33,7 @@ time_format = '%H:%M'
 disabled = false
 
 # Disable these
+[nodejs]
+disabled = true
 [package]
 disabled = true
