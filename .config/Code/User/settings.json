@@ -24,5 +24,11 @@
     "editor.formatOnSaveMode": "file"
   },
   "editor.stickyScroll.enabled": true,
-  "editor.fontFamily": "Hack"
+  "editor.fontFamily": "Hack",
+  "vsicons.dontShowNewVersionMessage": true,
+  "redhat.telemetry.enabled": false,
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "workbench.startupEditor": "none"
 }

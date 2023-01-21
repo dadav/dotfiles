@@ -53,10 +53,10 @@ focus_follows_mouse no
 exec udiskie -t --appindicator
 exec iwgtk -i
 exec gammastep
-exec swayidle -w \
-	timeout 600 'swaylock -f' \
-	timeout 1800 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-	before-sleep 'swaylock -f'
+# exec swayidle -w \
+# 	timeout 600 'swaylock -f' \
+# 	timeout 1800 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+# 	before-sleep 'swaylock -f'
 exec mako
 exec unclutter -idle 5
 exec easyeffects --gapplication-service
