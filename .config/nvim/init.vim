@@ -179,6 +179,9 @@ let g:indentLine_setConceal = 0
 " Asciidoc
 au BufWritePost *.adoc silent! !head -1 % | grep autocompile && asciidoctor-pdf % || true
 
+" m3u syntax highlighting
+autocmd BufEnter *.m3u\(8\|\) setlocal filetype=m3u
+
 " Remove trailing spaces on write
 " http://vim.wikia.com/wiki/Remove_unwanted_spaces
 fun! StripWS()
