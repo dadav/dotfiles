@@ -50,16 +50,17 @@ input type:touchpad {
 focus_follows_mouse no
 
 # autostarts
-exec udiskie -t --appindicator
-exec iwgtk -i
-exec gammastep
+exec --no-startup-id udiskie -t --appindicator
+exec_always --no-startup-id fcitx5 -d --replace
+exec --no-startup-id iwgtk -i
+exec --no-startup-id gammastep
 # exec swayidle -w \
 # 	timeout 600 'swaylock -f' \
 # 	timeout 1800 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
 # 	before-sleep 'swaylock -f'
-exec mako
-exec unclutter -idle 5
-exec easyeffects --gapplication-service
+exec --no-startup-id mako
+exec --no-startup-id unclutter -idle 5
+exec --no-startup-id easyeffects --gapplication-service
 
 # font
 font pango:monospace 16px
@@ -281,16 +282,15 @@ assign [app_id="org.qutebrowser.qutebrowser"] $ws1
 assign [window_role="browser"] $ws1
 
 ## Code
-for_window [class="(?i)code"] move to workspace $ws3
+assign [class="(?i)code"] $ws3
 
 ## Audio
-assign [class="Clementine"] $ws10
 assign [class="Spotify"] $ws10
-for_window [class="Spotify"] move to workspace $ws10
 for_window [app_id="pavucontrol"] floating enable, resize set 700px 500px, move position center
 
 # others
 assign [class="com-eteks-sweethome3d-SweetHome3D"] $ws4
+assign [app_id="org.fcitx.fcitx5-config-qt"] $ws4
 
 # Custom window settings
 for_window [urgent="latest"] focus
