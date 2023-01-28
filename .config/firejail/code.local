@@ -1,0 +1,9 @@
+ignore net none
+ignore nogroups
+noblacklist ${HOME}/go
+noblacklist ${HOME}/python
+noblacklist ${HOME}/git
+noblacklist ${HOME}/.irbrc
+noblacklist ${HOME}/.irb_history
+noblacklist ${HOME}/.gem
+ignore noexec /tmp

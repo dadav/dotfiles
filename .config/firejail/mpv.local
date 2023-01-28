@@ -1,0 +1,3 @@
+noblacklist ${HOME}/library
+noblacklist ${HOME}/tmp
+noblacklist ${PICTURES}
