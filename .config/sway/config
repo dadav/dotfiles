@@ -30,11 +30,10 @@ output "*" bg ~/.wallpapers/town.jpeg fill
 
 # keyboard
 input * {
-    xkb_layout  "de"
-    xkb_variant "nodeadkeys"
-    xkb_options "terminate:ctrl_alt_bksp"
+    xkb_layout  "de,us"
+    xkb_variant "de_nodeadkeys"
+    xkb_options "caps:hyper"
 		xkb_model   "pc105"
-    xkb_numlock "enabled"
 }
 
 input type:touchpad {
