@@ -1,5 +1,6 @@
 # ls
-alias ls="lsd --group-dirs first"
+command -v lsd &>/dev/null \
+  && alias ls="lsd --group-dirs first"
 alias ll="ls -lh"
 
 # nvim
@@ -11,9 +12,6 @@ alias grep="grep --colour"
 
 # less
 alias less="less -r"
-
-# reverse
-alias fontpreview-ueberzug="fontpreview-ueberzug -f white -b black"
 
 # keep the old file
 alias gunzip="gunzip -k"
