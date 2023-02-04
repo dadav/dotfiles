@@ -113,7 +113,8 @@
             "default": ["\uf027", "\uf028"]
         },
         "on-click": "ponymix toggle",
-        "on-click-right": "pavucontrol"
+        "on-click-right": "pavucontrol",
+        "ignored-sinks": ["Easy Effects Sink"]
     },
 
     "network": {
