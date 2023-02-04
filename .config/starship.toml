@@ -29,8 +29,8 @@ format = '[$time]($style) '
 time_format = '%H:%M'
 
 # Show if sudo credentials are cached
-[sudo]
-disabled = false
+# [sudo]
+# disabled = false
 
 # Disable these
 [nodejs]
