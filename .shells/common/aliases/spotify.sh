@@ -1,1 +1,1 @@
-alias spotify=">/dev/null nohup spotify &"
+alias spotify=">/dev/null nohup spotify-launcher &"

@@ -5,7 +5,7 @@ alias tb="(exec 3<>/dev/tcp/termbin.com/9999; cat >&3; cat <&3; exec 3<&-)"
 alias pp="tr ':' '\n' <<< $PATH | nl"
 
 # Reset the terminal
-alias fix='reset; stty sane; tput rs1; clear; echo -e "\033c"'
+alias fix_terminal='reset; stty sane; tput rs1; clear; echo -e "\033c"'
 
 # no nohup.out
 alias nohup='>/dev/null 2>&1 nohup'
