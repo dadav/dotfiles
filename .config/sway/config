@@ -185,7 +185,7 @@ bindsym $mod+d exec $zeal-menu
 bindsym $mod+b exec $browser-menu
 
 # spotify
-bindsym $mod+p exec flock -w1 /tmp -c spotify
+bindsym $mod+p exec flock -w1 /tmp -c spotify-launcher
 
 # i3lock
 bindsym $mod+i exec swaylock -f
