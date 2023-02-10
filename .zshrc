@@ -46,10 +46,49 @@ bindkey '^[ ' autosuggest-accept
 # }
 # autocompletion {
 autoload -U compinit
-zstyle ':completion*:default' menu 'select=0'
+
+# extensions for completion lists
 zmodload zsh/complist
+
+# enable menu
+zstyle ':completion*:default' menu select search
+
 # if matches dont fit on one page, use a pager
 zstyle ':completion:*:default' list-prompt '%S%M matches%s'
+
+# sort files by modification date
+zstyle ':completion:*' file-sort modification
+
+# show file details
+zstyle ':completion:*' file-list all
+
+# colorful file list
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+
+# squash // and dont expand to /*/
+zstyle ':completion:*' squeeze-slashes true
+
+# enable partitial matching
+zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+
+# enable verbose mode for completions
+zstyle ':completion:*' verbose yes
+
+# default completers
+zstyle ':completion:*' completer _complete _approximate
+
+# enable caching
+zstyle ':completion:*' use-cache on
+
+# group the completions
+zstyle ':completion:*' group-name ''
+
+# change format of the completions
+zstyle ':completion:*:*:*:*:descriptions' format '%F{green}-- %d --%f'
+zstyle ':completion:*:*:*:*:corrections' format '%F{yellow}!- %d (errors: %e) -!%f'
+zstyle ':completion:*:messages' format ' %F{purple} -- %d --%f'
+zstyle ':completion:*:warnings' format ' %F{red}-- no matches found --%f'
+
 # use q to exist this pager
 bindkey -M listscroll q send-break
 bindkey -M menuselect 'h' vi-backward-char
