@@ -25,12 +25,17 @@ autoload -U colors && colors
 autoload -U zmv
 autoload -U zargs
 autoload -U history-search-end
+autoload -Uz edit-command-line
 unalias run-help && autoload -U run-help
 # }
 # bindings {
-bindkey -e # emacs
-bindkey '\e[3~' delete-char # del
-#bindkey '\C-w' kill-region # kill region not word
+bindkey -e
+bindkey '\e[3~' delete-char
+
+# start editor to edit command
+# turn function into a widget and bind it to a key
+zle -N edit-command-line
+bindkey -M emacs '\ev' edit-command-line
 
 # history {
 bindkey '^[[5~' history-substring-search-up
