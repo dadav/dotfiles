@@ -10,8 +10,6 @@ daemon:
   pause_group_on_failure: false
   pause_all_on_failure: false
   callback: "notify-send \"[{{ exit_code }}] {{ command }}\n($(bc <<< \"{{end}} - {{start}}\") secs)\""
-  groups:
-    default: 4
 shared:
   pueue_directory: ~/.local/share/pueue
   use_unix_socket: true
