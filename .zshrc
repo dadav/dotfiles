@@ -149,6 +149,7 @@ custom_plugins=(
   '/usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh'
   '/usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh'
   '/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh'
+  '/usr/share/doc/pkgfile/command-not-found.zsh'
 )
 
 for plugin in $custom_plugins; do
