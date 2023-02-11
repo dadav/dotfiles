@@ -16,12 +16,12 @@ set $browser-list "firejail firefox -P default\n" \
                   "firejail chromium\n"
 
 # Define some menus for bemenu
-set	$exec-menu j4-dmenu-desktop --no-generic --dmenu="bemenu -C -T -l10 -n -i --prompt 'search' --fn 'Hack 12'" \
+set	$exec-menu j4-dmenu-desktop --no-generic --dmenu="bemenu -C -T -l10 -n -i -W 0.25 --center --prompt 'search' --fn 'Hack 12'" \
   | xargs swaymsg exec --
 set	$browser-menu echo -e $browser-list \
-  | bemenu -C -T -l10 -n -i --prompt 'browser' --fn 'Hack 12' \
+  | bemenu -C -T -l10 -n -i -W 0.25 --center --prompt 'browser' --fn 'Hack 12' \
   | xargs swaymsg exec --
-set $zeal-menu echo '' | bemenu -n -i -P "search for" --prompt "query:" --fn "Hack 12" \
+set $zeal-menu echo '' | bemenu -n -i -W 0.25 --center -P "search for" --prompt "query:" --fn "Hack 12" \
   | xargs swaymsg exec -- zeal
 
 # screen related stuff
