@@ -35,7 +35,7 @@ bindkey '\e[3~' delete-char
 # start editor to edit command
 # turn function into a widget and bind it to a key
 zle -N edit-command-line
-bindkey -M emacs '\ev' edit-command-line
+bindkey -M emacs '\ee' edit-command-line
 
 # history {
 bindkey '^[[5~' history-substring-search-up
