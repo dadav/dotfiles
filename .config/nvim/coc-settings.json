@@ -25,5 +25,6 @@
     "oh": "open:split",
     "ov": "open:vsplit"
   },
-  "ansible.validation.lint.enabled": false
+  "ansible.validation.lint.enabled": false,
+  "rust-analyzer.server.path": "/usr/bin/rust-analyzer"
 }
