@@ -37,3 +37,5 @@ time_format = '%H:%M'
 disabled = true
 [package]
 disabled = true
+[java]
+disabled = true
