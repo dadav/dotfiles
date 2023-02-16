@@ -51,7 +51,7 @@ focus_follows_mouse no
 # autostarts
 exec --no-startup-id udiskie -t --appindicator
 exec_always --no-startup-id fcitx5 -d --replace
-exec --no-startup-id iwgtk -i
+exec --no-startup-id nm-applet --indicator
 exec --no-startup-id gammastep
 # exec swayidle -w \
 # 	timeout 600 'swaylock -f' \
