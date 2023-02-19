@@ -21,8 +21,11 @@ set	$exec-menu j4-dmenu-desktop --no-generic --dmenu="bemenu -C -T -l10 -n -i -W
 set	$browser-menu echo -e $browser-list \
   | bemenu -C -T -l10 -n -i -W 0.25 --center --prompt 'browser' --fn 'Hack 12' \
   | xargs swaymsg exec --
-set $zeal-menu echo '' | bemenu -n -i -W 0.25 --center -P "search for" --prompt "query:" --fn "Hack 12" \
-  | xargs swaymsg exec -- zeal
+
+# Additional vars
+## Wob setup (progressbar)
+set $WOBSOCK $XDG_RUNTIME_DIR/wob.sock
+exec rm -f $WOBSOCK && mkfifo $WOBSOCK && tail -f $WOBSOCK | wob
 
 # screen related stuff
 output HDMI-A-0 scale 2
@@ -151,9 +154,9 @@ bindsym $mod+e layout toggle split
 bindsym $mod+f floating toggle
 
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5% #increase sound volume
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -5% #decrease sound volume
-bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle # mute sound
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5% && pactl get-sink-volume @DEFAULT_SINK@ | head -n 1| awk '{print substr($5, 1, length($5)-1)}' > $WOBSOCK
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5% && pactl get-sink-volume @DEFAULT_SINK@ | head -n 1| awk '{print substr($5, 1, length($5)-1)}' > $WOBSOCK
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle # mute sound
 
 # mpd
 bindsym XF86AudioPlay exec playerctl play-pause
@@ -161,8 +164,8 @@ bindsym XF86AudioPrev exec playerctl previous
 bindsym XF86AudioNext exec playerctl next
 
 # Brightness
-bindsym XF86MonBrightnessUp exec light -A 10
-bindsym XF86MonBrightnessDown exec light -U 10
+bindsym XF86MonBrightnessUp exec light -A 10 && light -G | cut -d'.' -f1 > $WOBSOCK
+bindsym XF86MonBrightnessDown exec light -U 10 && light -G | cut -d'.' -f1 > $WOBSOCK
 
 # Screen
 bindsym $mod+XF86Display arandr
@@ -177,9 +180,6 @@ bindsym $mod+$alt+k workspace next
 
 # Screenshot
 bindsym --release Print exec grim -g "$(slurp)" - | swappy -f -
-
-# browse docs
-bindsym $mod+d exec $zeal-menu
 
 # browser selector
 bindsym $mod+b exec $browser-menu
@@ -299,11 +299,8 @@ for_window [window_role="task_dialog"] floating enable, move position center
 for_window [window_role="Preferences"] floating enable, move position center
 for_window [window_type="dialog"] floating enable, move position center
 for_window [window_type="menu"] floating enable, move position center
-for_window [app_id="org.twosheds.iwgtk"] floating enable, move position center
-for_window [class="iwgtk"] floating enable, move position center
 for_window [app_id="virt-manager"] floating enable, move position center
 for_window [app_id="com.github.wwmm.easyeffects"] floating enable, resize set 1200px 900px, move position center
-for_window [app_id="org.zealdocs.zeal"] floating enable, resize set 1200px 700px, move position center
 
 # Sticky
 for_window [app_id="mpv"] sticky enable, floating enable
