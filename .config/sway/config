@@ -52,8 +52,8 @@ input type:touchpad {
 focus_follows_mouse no
 
 # autostarts
+exec --no-startup-id volume-to-wob $WOBSOCK
 exec --no-startup-id udiskie -t --appindicator
-exec_always --no-startup-id fcitx5 -d --replace
 exec --no-startup-id nm-applet --indicator
 exec --no-startup-id gammastep
 # exec swayidle -w \
@@ -63,6 +63,8 @@ exec --no-startup-id gammastep
 exec --no-startup-id mako
 exec --no-startup-id unclutter -idle 5
 exec --no-startup-id easyeffects --gapplication-service
+# also execute when sway restarts
+exec_always --no-startup-id fcitx5 -d --replace
 
 # font
 font pango:monospace 16px
@@ -154,8 +156,8 @@ bindsym $mod+e layout toggle split
 bindsym $mod+f floating toggle
 
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5% && pactl get-sink-volume @DEFAULT_SINK@ | head -n 1| awk '{print substr($5, 1, length($5)-1)}' > $WOBSOCK
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5% && pactl get-sink-volume @DEFAULT_SINK@ | head -n 1| awk '{print substr($5, 1, length($5)-1)}' > $WOBSOCK
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5% # && pactl get-sink-volume @DEFAULT_SINK@ | head -n 1| awk '{print substr($5, 1, length($5)-1)}' > $WOBSOCK
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5% # && pactl get-sink-volume @DEFAULT_SINK@ | head -n 1| awk '{print substr($5, 1, length($5)-1)}' > $WOBSOCK
 bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle # mute sound
 
 # mpd
