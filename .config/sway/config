@@ -286,7 +286,8 @@ assign [window_role="browser"] $ws1
 assign [class="(?i)code"] $ws3
 
 ## Audio
-assign [class="(?i)Spotify"] $ws10
+# assign [class="(?i)Spotify"] $ws10
+for_window [class="(?i)Spotify"] move window to workspace $ws10
 for_window [app_id="pavucontrol"] floating enable, resize set 700px 500px, move position center
 
 # others
