@@ -293,6 +293,7 @@ for_window [app_id="pavucontrol"] floating enable, resize set 700px 500px, move 
 # others
 assign [class="com-eteks-sweethome3d-SweetHome3D"] $ws4
 assign [app_id="org.fcitx.fcitx5-config-qt"] $ws4
+for_window [app_id="imv"] floating enable, move position center
 
 # Custom window settings
 for_window [urgent="latest"] focus

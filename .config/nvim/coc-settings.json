@@ -6,15 +6,13 @@
   "diagnostic-languageserver.formatFiletypes": {
     "sh": "shfmt"
   },
-  "diagnostic.displayByAle": true,
   "snippets.snipmate.enable": false,
   "snippets.userSnippetsDirectory": "~/.config/nvim/ultis/snips",
   "python.pythonPath": "python3",
-  "python.linting.ruffEnabled": true,
-  "python.linting.lintOnSave": false,
-  "python.linting.pylintEnabled": false,
-  "python.linting.flake8Enabled": false,
-  "python.formatting.provider": "autopep8",
+  "python.linting.enabled": false,
+  "python.formatting.provider": "black",
+  "pyright.inlayHints.functionReturnTypes": false,
+  "pyright.inlayHints.variableTypes": false,
   "explorer.icon.enableNerdfont": true,
   "explorer.width": 30,
   "explorer.previewAction.onHover": false,
@@ -27,5 +25,6 @@
     "ov": "open:vsplit"
   },
   "ansible.validation.lint.enabled": false,
-  "rust-analyzer.server.path": "/usr/bin/rust-analyzer"
+  "rust-analyzer.server.path": "/usr/bin/rust-analyzer",
+  "suggest.noselect": true
 }

@@ -6,11 +6,6 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall | source $MYVIMRC
 endif
 " }
-" Pre-Plugin-config {
-" Ale should recive lsp data from coc.nvim
-" https://github.com/dense-analysis/ale#faq-coc-nvim
-let g:ale_disable_lsp = 1
-" }
 " Plugins {
 " Specify a directory for plugins
 call plug#begin('~/.vim/plugged')
@@ -54,9 +49,6 @@ Plug 'ctrlpvim/ctrlp.vim'
 
 " A simple, easy-to-use Vim alignment plugin
 Plug 'junegunn/vim-easy-align'
-
-" Async syntax linters/fixers
-Plug 'dense-analysis/ale'
 
 " Highlight ugly extra whitespace
 Plug 'ntpeters/vim-better-whitespace'
@@ -348,12 +340,12 @@ nnoremap <A-p> :bprevious<CR>:redraw<CR>:ls<CR>
 "nnoremap <C-p> :bprevious<CR>:redraw<CR>
 
 " Split Screen
-nnoremap <Leader>ss- :split<CR>
-nnoremap <Leader>ss\| :vsplit<CR>
+nnoremap <leader>ss- :split<CR>
+nnoremap <leader>ss\| :vsplit<CR>
 
 " Resize
-nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
-nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
+nnoremap <silent> <leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
+nnoremap <silent> <leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
 " }
 " Nifty tricks {
 " Write files as root
@@ -361,27 +353,24 @@ cmap w!! w !sudo tee > /dev/null %
 
 " Plugin Mappings {
 " Git {
-nnoremap <leader>gs :Magit<CR>
+nnoremap <leader>gg :Magit<CR>
 " }
 " EasyMotion {
 " <Leader>f{char} to move to {char}
-map  <Leader>c <Plug>(easymotion-bd-f)
-nmap <Leader>c <Plug>(easymotion-overwin-f)
+map  <leader>mc <Plug>(easymotion-bd-f)
+nmap <leader>mc <Plug>(easymotion-overwin-f)
 
 " Move to line
-map <Leader>l <Plug>(easymotion-bd-jk)
-nmap <Leader>l <Plug>(easymotion-overwin-line)
+map <leader>ml <Plug>(easymotion-bd-jk)
+nmap <leader>ml <Plug>(easymotion-overwin-line)
 
 " Move to word
-map  <Leader>w <Plug>(easymotion-bd-w)
-nmap <Leader>w <Plug>(easymotion-overwin-w)
+map  <leader>mw <Plug>(easymotion-bd-w)
+nmap <leader>mw <Plug>(easymotion-overwin-w)
 " }
 " EasyAlign {
-nmap ta <Plug>(EasyAlign)
-xmap ta <Plug>(EasyAlign)
-" }
-" Asciidoctor-pdf {
-nmap <Leader>adc :!asciidoctor-pdf %<CR>
+nmap <leader>ta <Plug>(EasyAlign)
+xmap <leader>ta <Plug>(EasyAlign)
 " }
 " fzf {
 "
@@ -395,28 +384,58 @@ command! -bang -nargs=* Rg
     \   'rg --column --line-number --no-heading --color=never --smart-case -- '.shellescape(<q-args>), 1,
     \   {'options': ['--layout=reverse', '--info=inline', '--preview', '~/.vim/plugged/fzf.vim/bin/preview.sh {}']}, <bang>0)
 
-map <leader>fl :BLines<CR>
-map <leader>fc :Colors<CR>
-map <leader>ff :Files<CR>
+map <leader>fl  :BLines<CR>
+map <leader>fc  :Colors<CR>
+map <leader>ff  :Files<CR>
 map <leader>fgf :GFiles<CR>
-map <leader>fg :Rg<space>
-map <leader>fh :History<CR>
+map <leader>fg  :Rg<space>
+map <leader>fh  :History<CR>
 map <C-P> :FZF .<CR>
 " }
 " coc (general){
-nmap <silent> gh <Plug>(coc-diagnostic-prev)
-nmap <silent> gl <Plug>(coc-diagnostic-next)
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
+" Use tab for trigger completion with characters ahead and navigate
+" NOTE: There's always complete item selected by default, you may want to enable
+" no select by `"suggest.noselect": true` in your configuration file
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config
+inoremap <silent><expr> <TAB>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+
+" Make <CR> to accept selected completion item or notify coc.nvim to format
+" <C-g>u breaks current undo, please make your own choice
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
+nmap <silent> <leader>cp <Plug>(coc-diagnostic-prev)
+nmap <silent> <leader>cn <Plug>(coc-diagnostic-next)
+nmap <silent> <leader>cd <Plug>(coc-definition)
+nmap <silent> <leader>ctd <Plug>(coc-type-definition)
+nmap <silent> <leader>ci <Plug>(coc-implementation)
+nmap <silent> <leader>cr <Plug>(coc-references)
 
 " Use K to show documentation in preview window.
-nnoremap <silent> K :call <SID>show_documentation()<CR>
+nnoremap <silent> H :call ShowDocumentation()<CR>
+
+" Format whole doc
+nnoremap <silent> <leader>f :call CocAction('format')<CR>
 
 " Formatting selected code.
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+xmap <leader>fs  <Plug>(coc-format-selected)
+nmap <leader>fs  <Plug>(coc-format-selected)
 " }
 " coc-snippets {
 imap <C-l> <Plug>(coc-snippets-expand)
@@ -467,6 +486,9 @@ let g:ctrlp_cmd = 'CtrlP'
 " 0 or '' (empty string) - disable this feature.
 let g:ctrlp_working_path_mode = 'ra'
 " }
+" UltiSnips {
+let g:UltiSnipsExpandTrigger="<Nul>"
+" }
 " ansible-vim {
 let g:ansible_unindent_after_newline = 1
 let g:ansible_extra_syntaxes = "sh.vim python.vim"
@@ -478,21 +500,9 @@ let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'puppet']
 let g:markdown_minlines = 100
 let g:markdown_syntax_conceal = 0
 " }
-" ale {
-let g:ale_sign_error = '💩'
-let g:ale_sign_warning = '⚡'
-let g:ale_completion_enabled = 0
-let g:ale_linters = {
- \ 'ansible': '',
- \ 'ansible-lint': '',
- \ }
-
-" Enable integration with airline.
-let g:airline#extensions#ale#enabled = 1
-" }
 " coc {
 " Manage these extensions automatically
-let g:coc_global_extensions = [ 'coc-solargraph', 'coc-go', 'coc-diagnostic', 'coc-pyright', 'coc-json', 'coc-html', 'coc-highlight', 'coc-snippets', 'coc-vimlsp', 'coc-texlab', 'coc-xml', 'coc-git', 'coc-marketplace', 'coc-emoji', 'coc-tag', 'coc-yank', 'coc-sh', 'coc-markdownlint', 'coc-explorer', 'coc-emoji', '@yaegassy/coc-ansible', 'coc-yaml', 'coc-rust-analyzer']
+let g:coc_global_extensions = [ 'coc-solargraph', 'coc-go', 'coc-diagnostic', 'coc-json', 'coc-html', 'coc-highlight', 'coc-snippets', 'coc-vimlsp', 'coc-texlab', 'coc-xml', 'coc-git', 'coc-marketplace', 'coc-emoji', 'coc-tag', 'coc-yank', 'coc-sh', 'coc-markdownlint', 'coc-explorer', 'coc-emoji', '@yaegassy/coc-ansible', '@yaegassy/coc-ruff', 'coc-yaml', 'coc-rust-analyzer', 'coc-pyright']
 let g:coc_filetype_map = {
  \ 'yaml.ansible': 'ansible',
  \ }
@@ -511,11 +521,16 @@ set shortmess+=c
 " diagnostics appear/become resolved.
 set signcolumn=yes
 
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
+function! ShowDocumentation()
+  if CocAction('hasProvider', 'hover')
+    if coc#float#has_float()
+      call coc#float#jump()
+      nnoremap <buffer> q <Cmd>close<CR>
+    else
+      call CocActionAsync('doHover')
+    endif
   else
-    call CocAction('doHover')
+    call feedkeys('K', 'in')
   endif
 endfunction
 
