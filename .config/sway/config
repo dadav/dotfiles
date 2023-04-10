@@ -105,6 +105,9 @@ bindsym $mod+Return exec $term
 # kill focused window
 bindsym $mod+q kill
 
+# open drawer
+bindsym $mod+d exec nwg-drawer -nocats -term kitty -spacing 10 -is 32
+
 # start launcher
 bindsym $mod+space exec	$exec-menu
 # bindsym $mod+Shift+space exec ~/.local/bin/sway-online-search

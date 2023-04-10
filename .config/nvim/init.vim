@@ -530,7 +530,7 @@ function! ShowDocumentation()
       call CocActionAsync('doHover')
     endif
   else
-    call feedkeys('K', 'in')
+    call feedkeys('H', 'in')
   endif
 endfunction
 
