@@ -1,0 +1,5 @@
+sleep_command = 'systemctl suspend'
+interval_secs = 30
+sleep_pct = 15
+low_pct = 40
+warn_on_mons_with_no_ac = 2
