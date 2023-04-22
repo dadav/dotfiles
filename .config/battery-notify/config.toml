@@ -1,4 +1,4 @@
-sleep_command = 'systemctl suspend'
+sleep_command = 'systemctl hibernate'
 interval_secs = 30
 sleep_pct = 15
 low_pct = 40

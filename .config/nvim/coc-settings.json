@@ -26,5 +26,13 @@
   },
   "ansible.validation.lint.enabled": false,
   "rust-analyzer.server.path": "/usr/bin/rust-analyzer",
-  "suggest.noselect": true
+  "suggest.noselect": true,
+  "yaml.schemas": {
+    "kubernetes": "*.yaml",
+    "http://json.schemastore.org/github-workflow": ".github/workflows/*",
+    "http://json.schemastore.org/ansible-stable-2.9": "roles/tasks/*.{yml,yaml}",
+    "http://json.schemastore.org/kustomization": "kustomization.{yml,yaml}",
+    "http://json.schemastore.org/ansible-playbook": "*play*.{yml,yaml}",
+    "http://json.schemastore.org/chart": "Chart.{yml,yaml}",
+  }
 }
