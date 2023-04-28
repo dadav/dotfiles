@@ -56,6 +56,9 @@ Plug 'ntpeters/vim-better-whitespace'
 " fuzz all the things
 Plug 'junegunn/fzf.vim'
 
+" puppet
+Plug 'rodjek/vim-puppet'
+
 " tpope FTW
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
