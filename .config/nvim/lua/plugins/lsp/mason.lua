@@ -9,7 +9,7 @@ if not status_ok_1 then
 	return
 end
 
-local servers = {
+local default_servers = {
 	"tsserver",
 	"cssmodules_ls",
 	"emmet_ls",
@@ -29,9 +29,9 @@ local settings = {
 	ui = {
 		border = "rounded",
 		icons = {
-			package_installed = "◍",
-			package_pending = "◍",
-			package_uninstalled = "◍",
+			package_installed = "(+)",
+			package_pending = "(~)",
+			package_uninstalled = "(-)",
 		},
 	},
 	log_level = vim.log.levels.INFO,
@@ -39,10 +39,10 @@ local settings = {
 }
 
 mason.setup(settings)
-mason_lspconfig.setup {
-	ensure_installed = servers,
+mason_lspconfig.setup({
+	ensure_installed = default_servers,
 	automatic_installation = true,
-}
+})
 
 -- we'll need to call lspconfig to pass our server to the native neovim lspconfig.
 local lspconfig_status_ok, lspconfig = pcall(require, "lspconfig")
@@ -50,19 +50,14 @@ if not lspconfig_status_ok then
 	return
 end
 
-local opts = {}
-
--- loop through the servers
-for _, server in pairs(servers) do
-	opts = {
-		-- getting "on_attach" and capabilities from handlers
+for _, server in pairs(mason_lspconfig.get_installed_servers()) do
+	local opts = {
 		on_attach = require("plugins.lsp.handlers").on_attach,
 		capabilities = require("plugins.lsp.handlers").capabilities,
 	}
-
-	-- get the server name
-	server = vim.split(server, "@")[1]
-
-	-- pass them to lspconfig
+	local has_custom_opts, server_custom_opts = pcall(require, "plugins.lsp.settings." .. server)
+	if has_custom_opts then
+		opts = vim.tbl_deep_extend("force", opts, server_custom_opts)
+	end
 	lspconfig[server].setup(opts)
 end

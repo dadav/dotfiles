@@ -98,6 +98,13 @@ return packer.startup(function(use)
 	use("hrsh7th/cmp-nvim-lsp")
 
 	-- Snippets
+	use({
+		"L3MON4D3/LuaSnip",
+		-- follow latest release.
+		tag = "v<CurrentMajor>.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+		-- install jsregexp (optional!:).
+		run = "make install_jsregexp",
+	})
 	use("saadparwaiz1/cmp_luasnip")
 
 	-- Search & Replace
@@ -110,6 +117,9 @@ return packer.startup(function(use)
 
 	-- Formatting and linting
 	use("jose-elias-alvarez/null-ls.nvim")
+	use("folke/trouble.nvim") -- Nice overview of errors/warnings coming from e.g. LSP
+	use("folke/lsp-colors.nvim") -- add LSP colors for colorschemes that don't yet support them
+	use("b0o/schemastore.nvim")
 
 	-- Tpope plugins
 	use("tpope/vim-surround")
