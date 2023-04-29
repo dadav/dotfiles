@@ -1,12 +1,12 @@
 local ensure_packer = function()
-  local fn = vim.fn
-  local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
-  if fn.empty(fn.glob(install_path)) > 0 then
-    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
-    vim.cmd [[packadd packer.nvim]]
-    return true
-  end
-  return false
+	local fn = vim.fn
+	local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
+	if fn.empty(fn.glob(install_path)) > 0 then
+		fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
+		vim.cmd([[packadd packer.nvim]])
+		return true
+	end
+	return false
 end
 
 -- Bootstrap packet itself
@@ -21,154 +21,149 @@ vim.cmd([[
 ]])
 
 -- Use a protected call
-local status_ok, packer = pcall(require, 'packer')
+local status_ok, packer = pcall(require, "packer")
 if not status_ok then
-  return
+	return
 end
 
 -- Have packer use a popup window
 packer.init({
-  display = {
-    open_fn = function()
-      return require('packer.util').float({ border = 'rounded' })
-    end,
-  },
+	display = {
+		open_fn = function()
+			return require("packer.util").float({ border = "rounded" })
+		end,
+	},
 })
 
 return packer.startup(function(use)
-  -- Plugin-Manager
-  use 'wbthomason/packer.nvim'
+	-- Plugin-Manager
+	use("wbthomason/packer.nvim")
 
-  -- Cache all the things
-  -- Should be on top
-  use {
-    'lewis6991/impatient.nvim',
-      config = function()
-	require('impatient').enable_profile()
-      end
-  }
-
-  -- Looks & Feels
-  -- Best colorscheme
-  use 'josuegaleas/jay'
-
-  -- Statusline
-  use {
-    'nvim-lualine/lualine.nvim',
-      requires = { 'nvim-tree/nvim-web-devicons', opt = true },
-      config = function()
-        require('lualine').setup()
-      end
-  }
-
-  -- Syntax highlighting
-  use {
-    'nvim-treesitter/nvim-treesitter',
-      run = ':TSUpdate',
-  }
-
-  use {
-    'nvim-treesitter/nvim-treesitter-context',
-      after = 'nvim-treesitter',
-  }
-
-  use {
-    'nvim-treesitter/nvim-treesitter-textobjects',
-      after = 'nvim-treesitter',
-  }
-
-  -- Show indention
-  use {
-    'lukas-reineke/indent-blankline.nvim',
-      config = function()
-        require('indent_blankline').setup({
-		show_current_context = true,
-		show_current_context_start = true,
+	-- Cache all the things
+	-- Should be on top
+	-- and enabled as soon as possible (here)
+	use({
+		"lewis6991/impatient.nvim",
+		config = function()
+			require("impatient").enable_profile()
+		end,
 	})
-      end
-  }
-  -- Show whitespaces
-  use 'ntpeters/vim-better-whitespace'
 
-  -- Autocompletion
-  use {
-    'hrsh7th/nvim-cmp',
-      config = function()
-	require('cmp').setup()
-      end
-  }
-  use 'hrsh7th/cmp-buffer'
-  use 'hrsh7th/cmp-path'
-  use 'hrsh7th/cmp-cmdline'
-  use 'hrsh7th/cmp-nvim-lsp'
+	-- Looks & Feels
+	-- Best colorscheme
+	use("josuegaleas/jay")
+	use("ggandor/leap.nvim")
 
-  -- LSP
-  use {
-    'williamboman/mason.nvim',
-    config = function()
-      require('mason').setup()
-    end
-  }
+	-- Statusline
+	use({
+		"nvim-lualine/lualine.nvim",
+		requires = { "nvim-tree/nvim-web-devicons", opt = true },
+		config = function()
+			require("lualine").setup()
+		end,
+	})
 
-  use {
-    'williamboman/mason-lspconfig.nvim',
-    config = function()
-      require('mason-lspconfig').setup()
-    end
-  }
+	-- Syntax highlighting
+	use({
+		"nvim-treesitter/nvim-treesitter",
+		run = ":TSUpdate",
+	})
 
-  use {
-    'neovim/nvim-lspconfig',
-    config = function()
-      require('lspconfig').ruff_lsp.setup{}
-    end
-  }
+	use({
+		"nvim-treesitter/nvim-treesitter-context",
+		after = "nvim-treesitter",
+	})
 
-  -- Tpope plugins
-  use 'tpope/vim-surround'
-  use 'tpope/vim-repeat'
-  use 'tpope/vim-endwise'
-  use 'tpope/vim-speeddating'
-  use 'tpope/vim-eunuch'
+	use({
+		"nvim-treesitter/nvim-treesitter-textobjects",
+		after = "nvim-treesitter",
+	})
 
-  -- Automatically create pairwise brackets
-  use {
-    'windwp/nvim-autopairs',
-      config = function()
-        require('nvim-autopairs').setup()
-      end
-  }
+	-- Show indention
+	use("lukas-reineke/indent-blankline.nvim")
 
-  -- Easily create comments
-  use {
-    'numToStr/Comment.nvim',
-      config = function()
-        require('Comment').setup()
-      end
-  }
+	-- Show whitespaces
+	use("ntpeters/vim-better-whitespace")
 
-  -- Fuzzy finder for lists
-  use {
-    'nvim-telescope/telescope.nvim',
-       tag = '0.1.x',
-       requires = { {'nvim-lua/plenary.nvim'} }
-  }
+	-- Autocompletion
+	use({
+		"hrsh7th/nvim-cmp",
+		config = function()
+			require("cmp").setup()
+		end,
+	})
+	use("hrsh7th/cmp-buffer")
+	use("hrsh7th/cmp-path")
+	use("hrsh7th/cmp-cmdline")
+	use("hrsh7th/cmp-nvim-lsp")
 
-  -- Fileexplorer written in lua
-  use {
-    'kyazdani42/nvim-tree.lua',
-       requires = { { 'kyazdani42/nvim-web-devicons' } },
-       config = function()
-         require('nvim-tree').setup()
-       end
-  }
+	-- Snippets
+	use("saadparwaiz1/cmp_luasnip")
 
-  -- Beautiful notification messages
-  use 'rcarriga/nvim-notify'
+	-- Search & Replace
+	use("wincent/scalpel")
 
-  -- Automatically set up your configuration after cloning packer.nvim
-  -- Put this at the end after all plugins
-  if packer_bootstrap then
-    require('packer').sync()
-  end
+	-- LSP
+	use("williamboman/mason.nvim")
+	use("williamboman/mason-lspconfig.nvim")
+	use("neovim/nvim-lspconfig")
+
+	-- Formatting and linting
+	use("jose-elias-alvarez/null-ls.nvim")
+
+	-- Tpope plugins
+	use("tpope/vim-surround")
+	use("tpope/vim-repeat")
+	use("tpope/vim-endwise")
+	use("tpope/vim-speeddating")
+	use("tpope/vim-eunuch")
+
+	-- Automatically create pairwise brackets
+	use({
+		"windwp/nvim-autopairs",
+		config = function()
+			require("nvim-autopairs").setup()
+		end,
+	})
+
+	-- Easily create comments
+	use({
+		"numToStr/Comment.nvim",
+		config = function()
+			require("Comment").setup()
+		end,
+	})
+
+	-- Fuzzy finder for lists
+	use({
+		"nvim-telescope/telescope.nvim",
+		tag = "0.1.x",
+		requires = { { "nvim-lua/plenary.nvim" } },
+	})
+
+	-- Fileexplorer written in lua
+	use({
+		"kyazdani42/nvim-tree.lua",
+		requires = { { "kyazdani42/nvim-web-devicons" } },
+		config = function()
+			require("nvim-tree").setup()
+		end,
+	})
+
+	-- Beautiful notification messages
+	use("rcarriga/nvim-notify")
+
+	-- Git
+	use({
+		"lewis6991/gitsigns.nvim",
+		config = function()
+			require("gitsigns").setup()
+		end,
+	})
+
+	-- Automatically set up your configuration after cloning packer.nvim
+	-- Put this at the end after all plugins
+	if packer_bootstrap then
+		require("packer").sync()
+	end
 end)

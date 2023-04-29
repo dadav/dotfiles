@@ -1,3 +1,5 @@
-require 'plugins.notify'
-require 'plugins.vim-better-whitespace'
-
+require("plugins.notify")
+require("plugins.vim-better-whitespace")
+require("plugins.lsp")
+require("plugins.treesitter")
+require("plugins.cmp")
