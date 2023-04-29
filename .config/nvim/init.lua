@@ -2,10 +2,10 @@
 -- you won't see much here...
 
 -- Install the plugins
-require 'init_plugins'
+require("init_plugins")
 
 -- Configure the plugins
-require 'plugins'
+require("plugins")
 
 -- Customize nvim
-require 'user'
+require("user")

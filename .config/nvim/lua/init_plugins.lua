@@ -53,6 +53,8 @@ return packer.startup(function(use)
 	-- Best colorscheme
 	use("josuegaleas/jay")
 	use("ggandor/leap.nvim")
+	use("yuttie/comfortable-motion.vim")
+	use("mg979/vim-visual-multi")
 
 	-- Statusline
 	use({
