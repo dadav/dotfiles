@@ -17,9 +17,9 @@ M.setup = function()
 	local signs = {
 		-- change the "?" to an icon that you like
 		{ name = "DiagnosticSignError", text = "" },
-		{ name = "DiagnosticSignWarn",  text = "" },
-		{ name = "DiagnosticSignHint",  text = "" },
-		{ name = "DiagnosticSignInfo",  text = "" },
+		{ name = "DiagnosticSignWarn", text = "" },
+		{ name = "DiagnosticSignHint", text = "" },
+		{ name = "DiagnosticSignInfo", text = "" },
 	}
 
 	for _, sign in ipairs(signs) do
@@ -43,13 +43,15 @@ end
 -- Here we set up keymaps. You can change them if you already have specifics for these functions, or just want to try another keymap.
 local function lsp_keymaps(bufnr)
 	local opts = { noremap = true, silent = true }
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
+	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
 
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
+	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>gh", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
 
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
+	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>gr", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
 
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
+	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>gi", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
+
+	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>gf", "<cmd>lua vim.lsp.buf.format()<CR>", opts)
 
 	vim.cmd([[ command! Format execute 'lua vim.lsp.buf.format()' ]])
 end
@@ -82,27 +84,26 @@ M.on_attach = function(client, bufnr)
 	end
 end
 
-
 -- And finally, here we create a way to toggle format on save with the command "LspToggleAutoFormat" and after everything, we return the M object to use it in other files.
 function M.enable_format_on_save(first)
-	vim.cmd [[
+	vim.cmd([[
     augroup format_on_save
         autocmd!
         autocmd BufWritePre * lua vim.lsp.buf.format({ async = false })
     augroup end
-    ]]
+    ]])
 	if not first then
-		vim.notify "Enabled format on save"
+		vim.notify("Enabled format on save")
 	end
 end
 
 function M.disable_format_on_save()
-	M.remove_augroup "format_on_save"
-	vim.notify "Disabled format on save"
+	M.remove_augroup("format_on_save")
+	vim.notify("Disabled format on save")
 end
 
 function M.toggle_format_on_save(first)
-	if vim.fn.exists "#format_on_save#BufWritePre" == 0 then
+	if vim.fn.exists("#format_on_save#BufWritePre") == 0 then
 		M.enable_format_on_save(first)
 	else
 		M.disable_format_on_save()
@@ -115,7 +116,7 @@ function M.remove_augroup(name)
 	end
 end
 
-vim.cmd [[ command! LspToggleAutoFormat execute 'lua require("plugins.lsp.handlers").toggle_format_on_save()' ]]
+vim.cmd([[ command! LspToggleAutoFormat execute 'lua require("plugins.lsp.handlers").toggle_format_on_save()' ]])
 
 -- Toggle "format on save" once, to start with the format on.
 M.toggle_format_on_save(true)

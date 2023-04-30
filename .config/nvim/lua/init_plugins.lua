@@ -59,7 +59,7 @@ return packer.startup(function(use)
 	-- Statusline
 	use({
 		"nvim-lualine/lualine.nvim",
-		requires = { "nvim-tree/nvim-web-devicons", opt = true },
+		requires = { "nvim-tree/nvim-web-devicons" },
 		config = function()
 			require("lualine").setup()
 		end,
@@ -116,6 +116,12 @@ return packer.startup(function(use)
 	use("williamboman/mason.nvim")
 	use("williamboman/mason-lspconfig.nvim")
 	use("neovim/nvim-lspconfig")
+	use({
+		"j-hui/fidget.nvim",
+		config = function()
+			require("fidget").setup({})
+		end,
+	})
 
 	-- Formatting and linting
 	use("jose-elias-alvarez/null-ls.nvim")
@@ -130,6 +136,19 @@ return packer.startup(function(use)
 	use("tpope/vim-speeddating")
 	use("tpope/vim-eunuch")
 
+	-- Show me mappings
+	use({
+		"folke/which-key.nvim",
+		config = function()
+			vim.o.timeout = true
+			vim.o.timeoutlen = 300
+			require("which-key").setup({
+				-- your configuration comes here
+				-- or leave it empty to use the default settings
+				-- refer to the configuration section below
+			})
+		end,
+	})
 	-- Automatically create pairwise brackets
 	use({
 		"windwp/nvim-autopairs",
@@ -157,9 +176,6 @@ return packer.startup(function(use)
 	use({
 		"kyazdani42/nvim-tree.lua",
 		requires = { { "kyazdani42/nvim-web-devicons" } },
-		config = function()
-			require("nvim-tree").setup()
-		end,
 	})
 
 	-- Beautiful notification messages

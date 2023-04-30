@@ -4,8 +4,8 @@
 -- Install the plugins
 require("init_plugins")
 
--- Configure the plugins
-require("plugins")
-
 -- Customize nvim
 require("user")
+
+-- Configure the plugins
+require("plugins")
