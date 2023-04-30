@@ -10,6 +10,11 @@ end
 
 require("luasnip/loaders/from_vscode").lazy_load()
 
+local check_backspace = function()
+	local col = vim.fn.col(".") - 1
+	return col == 0 or vim.fn.getline("."):sub(col, col):match("%s")
+end
+
 --   פּ ﯟ   some other good icons
 local kind_icons = {
 	Text = "",
@@ -67,6 +72,8 @@ cmp.setup({
 				luasnip.expand()
 			elseif luasnip.expand_or_jumpable() then
 				luasnip.expand_or_jump()
+			elseif check_backspace() then
+				fallback()
 			else
 				fallback()
 			end

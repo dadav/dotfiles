@@ -95,6 +95,8 @@ return packer.startup(function(use)
 		-- install jsregexp (optional!:).
 		run = "make install_jsregexp",
 	})
+	use("rafamadriz/friendly-snippets")
+	use("honza/vim-snippets")
 
 	-- Autocompletion
 	use("hrsh7th/nvim-cmp")
@@ -124,6 +126,12 @@ return packer.startup(function(use)
 	use("folke/lsp-colors.nvim") -- add LSP colors for colorschemes that don't yet support them
 	use("b0o/schemastore.nvim")
 
+	-- DAP
+	-- use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } })
+	-- use({ "theHamsta/nvim-dap-virtual-text", requires = { "mfussenegger/nvim-dap" } })
+	-- use("leoluz/nvim-dap-go") -- requires delve
+	-- use("mfussenegger/nvim-dap-python") -- requires debugpy https://github.com/microsoft/debugpy
+
 	-- Tpope plugins
 	use("tpope/vim-surround")
 	use("tpope/vim-repeat")
@@ -137,11 +145,7 @@ return packer.startup(function(use)
 		config = function()
 			vim.o.timeout = true
 			vim.o.timeoutlen = 300
-			require("which-key").setup({
-				-- your configuration comes here
-				-- or leave it empty to use the default settings
-				-- refer to the configuration section below
-			})
+			require("which-key").setup()
 		end,
 	})
 	-- Automatically create pairwise brackets
@@ -165,6 +169,11 @@ return packer.startup(function(use)
 		"nvim-telescope/telescope.nvim",
 		tag = "0.1.x",
 		requires = { { "nvim-lua/plenary.nvim" } },
+	})
+	use("nvim-telescope/telescope-dap.nvim")
+	use({
+		"nvim-telescope/telescope-fzf-native.nvim",
+		run = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
 	})
 
 	-- Fileexplorer written in lua

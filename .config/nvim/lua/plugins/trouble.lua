@@ -1,3 +1,8 @@
+local ok, _ = pcall(require, "trouble")
+if not ok then
+	return
+end
+
 require("trouble").setup({
 	position = "bottom", -- position of the list can be: bottom, top, left, right
 	height = 10, -- height of the trouble list when position is top or bottom
@@ -47,11 +52,12 @@ require("trouble").setup({
 	use_diagnostic_signs = false, -- enabling this will use the signs defined in your lsp client
 })
 
-vim.cmd([[
-  nnoremap <leader>xx <cmd>TroubleToggle<cr>
-  nnoremap <leader>xw <cmd>TroubleToggle workspace_diagnostics<cr>
-  nnoremap <leader>xd <cmd>TroubleToggle document_diagnostics<cr>
-  nnoremap <leader>xq <cmd>TroubleToggle quickfix<cr>
-  nnoremap <leader>xl <cmd>TroubleToggle loclist<cr>
-  nnoremap gR <cmd>TroubleToggle lsp_references<cr>
-]])
+local keymap = vim.api.nvim_set_keymap
+local opts = { noremap = true }
+
+keymap("n", "<leader>xx", ":TroubleToggle<cr>", opts)
+keymap("n", "<leader>xw", ":TroubleToggle workspace_diagnostics<cr>", opts)
+keymap("n", "<leader>xd", ":TroubleToggle document_diagnostics<cr>", opts)
+keymap("n", "<leader>xq", ":TroubleToggle quickfix<cr>", opts)
+keymap("n", "<leader>xl", ":TroubleToggle loclist<cr>", opts)
+keymap("n", "<leader>gl", ":TroubleToggle lsp_references<cr>", opts)
