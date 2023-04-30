@@ -87,18 +87,6 @@ return packer.startup(function(use)
 	-- Show whitespaces
 	use("ntpeters/vim-better-whitespace")
 
-	-- Autocompletion
-	use({
-		"hrsh7th/nvim-cmp",
-		config = function()
-			require("cmp").setup()
-		end,
-	})
-	use("hrsh7th/cmp-buffer")
-	use("hrsh7th/cmp-path")
-	use("hrsh7th/cmp-cmdline")
-	use("hrsh7th/cmp-nvim-lsp")
-
 	-- Snippets
 	use({
 		"L3MON4D3/LuaSnip",
@@ -107,6 +95,13 @@ return packer.startup(function(use)
 		-- install jsregexp (optional!:).
 		run = "make install_jsregexp",
 	})
+
+	-- Autocompletion
+	use("hrsh7th/nvim-cmp")
+	use("hrsh7th/cmp-buffer")
+	use("hrsh7th/cmp-path")
+	use("hrsh7th/cmp-cmdline")
+	use("hrsh7th/cmp-nvim-lsp")
 	use("saadparwaiz1/cmp_luasnip")
 
 	-- Search & Replace

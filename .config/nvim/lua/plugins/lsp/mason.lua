@@ -22,6 +22,7 @@ local default_servers = {
 	"gopls",
 	"ruff_lsp",
 	"rust_analyzer",
+	"yamlls",
 }
 
 -- Here we declare which settings to pass to the mason, and also ensure servers are installed. If not, they will be installed automatically.
