@@ -24,6 +24,12 @@ keymap("", "k", "gk", opts)
 -- Remove highlight
 keymap("n", "<BS>", ":nohlsearch<CR>", opts)
 
+-- Buffer Navigation
+keymap("n", "<A-n>", ":bnext<CR>", opts)
+keymap("n", "<A-p>", ":bprevious<CR>", opts)
+keymap("n", "<A-j>", ":bnext<CR>", opts)
+keymap("n", "<A-k>", ":bprevious<CR>", opts)
+
 -- Show hidden characters (toggle)
 keymap("n", "<leader>lt", ":set list!<CR>", opts)
 
