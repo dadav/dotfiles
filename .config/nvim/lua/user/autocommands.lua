@@ -2,7 +2,7 @@ vim.cmd([[
   augroup _general_settings
     au!
     au FileType qf,help,man,lspinfo nnoremap <silent> <buffer> q :close<CR>
-    au TextYankPost * silent!lua require('vim.highlight').on_yank({higroup = 'Visual', timeout = 200})
+    au TextYankPost * silent!lua require('vim.highlight').on_yank({higroup = 'Visual', timeout = 500})
     au BufWinEnter * :set formatoptions-=cro
   augroup end
 
@@ -26,7 +26,8 @@ vim.cmd([[
 
   augroup _ansible
     au!
-    au BufRead,BufNewFile */playbooks/*.yml set filetype=yaml.ansible
-    au BufRead,BufNewFile */ansible/*.yml set filetype=yaml.ansible
+    au BufRead,BufNewFile */playbooks/*.y*ml set filetype=yaml.ansible
+    au BufRead,BufNewFile */tasks/*.y*ml set filetype=yaml.ansible
+    au BufRead,BufNewFile main.y*ml set filetype=yaml.ansible
   augroup end
 ]])

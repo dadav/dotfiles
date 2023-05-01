@@ -53,7 +53,7 @@ local options = {
 	foldmethod = "syntax", -- enable folding on syntax level
 	foldlevelstart = 1, -- start folding early
 	foldnestmax = 10, -- only 10 levels
-	foldenable = true, -- enable folding globally
+	foldenable = false, -- enable folding globally
 	foldlevel = 1,
 	listchars = "eol:$,tab:>-,trail:~,extends:>,precedes:<,space:␣",
 	winbar = "%=%m %f",

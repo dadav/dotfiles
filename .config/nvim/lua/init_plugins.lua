@@ -109,6 +109,9 @@ return packer.startup(function(use)
 	-- Search & Replace
 	use("wincent/scalpel")
 
+	-- Alignment
+	use("junegunn/vim-easy-align")
+
 	-- LSP
 	use("williamboman/mason.nvim")
 	use("williamboman/mason-lspconfig.nvim")
