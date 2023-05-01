@@ -12,6 +12,8 @@ null_ls.setup({
 		-- Formating
 		formatting.stylua,
 		formatting.black.with({ extra_args = { "--fast" } }),
+		formatting.rustfmt,
+		formatting.yamlfmt.with({ extra_args = { "-formatter", "indent=2,include_document_start=true" } }),
 
 		-- Diagnostics
 		diagnostics.shellcheck,
