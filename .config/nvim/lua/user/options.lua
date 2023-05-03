@@ -73,6 +73,7 @@ let g:netrw_list_hide.=",\(^\|\s\s\)\zs\.\S\+"
 o.formatoptions:append("j") -- delete comment leader on J
 o.formatoptions:append("n") -- delete leading number on J (useful with numbered list)"
 o.shortmess:append("c") -- don't pass messages to |ins-completion-menu|.
+o.shortmess:append("I") -- don't show :intro on startup
 
 for k, v in pairs(options) do
 	vim.opt[k] = v
