@@ -81,15 +81,9 @@ return packer.startup(function(use)
 		run = ":TSUpdate",
 	})
 
-	use({
-		"nvim-treesitter/nvim-treesitter-context",
-		after = "nvim-treesitter",
-	})
+	use("nvim-treesitter/nvim-treesitter-context")
 
-	use({
-		"nvim-treesitter/nvim-treesitter-textobjects",
-		after = "nvim-treesitter",
-	})
+	use("nvim-treesitter/nvim-treesitter-textobjects")
 
 	-- Show indention
 	use("lukas-reineke/indent-blankline.nvim")

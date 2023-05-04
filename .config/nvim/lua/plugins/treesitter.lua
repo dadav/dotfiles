@@ -21,3 +21,12 @@ configs.setup({
 		enable_autocmd = false,
 	},
 })
+
+local status_context_ok, context = pcall(require, "treesitter-context")
+if not status_context_ok then
+	return
+end
+
+context.setup({
+	separator = "━",
+})
