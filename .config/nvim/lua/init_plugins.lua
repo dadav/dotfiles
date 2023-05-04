@@ -85,6 +85,9 @@ return packer.startup(function(use)
 
 	use("nvim-treesitter/nvim-treesitter-textobjects")
 
+	-- Highlight word under cursor
+	use("RRethy/vim-illuminate")
+
 	-- Show indention
 	use("lukas-reineke/indent-blankline.nvim")
 
