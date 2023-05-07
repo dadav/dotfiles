@@ -14,9 +14,11 @@ null_ls.setup({
 		formatting.black.with({ extra_args = { "--fast", "--line-length=120" } }),
 		formatting.rustfmt,
 		formatting.yamlfmt.with({ extra_args = { "-formatter", "indent=2,include_document_start=true" } }),
+		formatting.puppet_lint,
 
 		-- Diagnostics
 		diagnostics.shellcheck,
 		diagnostics.ansiblelint,
+		diagnostics.puppet_lint,
 	},
 })
