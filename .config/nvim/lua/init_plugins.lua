@@ -200,6 +200,9 @@ return packer.startup(function(use)
 		"lewis6991/gitsigns.nvim",
 	})
 
+	-- Terminal
+	use({ "akinsho/toggleterm.nvim", tag = "*" })
+
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 	if packer_bootstrap then
