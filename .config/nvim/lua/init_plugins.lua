@@ -42,6 +42,7 @@ return packer.startup(function(use)
 	-- Looks & Feels
 	-- Best colorscheme
 	use("josuegaleas/jay")
+	use({ "catppuccin/nvim", as = "catppuccin" })
 	use("easymotion/vim-easymotion")
 	use("yuttie/comfortable-motion.vim")
 	use("mg979/vim-visual-multi")
