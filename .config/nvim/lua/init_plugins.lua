@@ -39,20 +39,9 @@ return packer.startup(function(use)
 	-- Plugin-Manager
 	use("wbthomason/packer.nvim")
 
-	-- Cache all the things
-	-- Should be on top
-	-- and enabled as soon as possible (here)
-	use({
-		"lewis6991/impatient.nvim",
-		config = function()
-			require("impatient").enable_profile()
-		end,
-	})
-
 	-- Looks & Feels
 	-- Best colorscheme
 	use("josuegaleas/jay")
-	-- use("ggandor/leap.nvim")
 	use("easymotion/vim-easymotion")
 	use("yuttie/comfortable-motion.vim")
 	use("mg979/vim-visual-multi")

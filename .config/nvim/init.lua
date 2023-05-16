@@ -1,5 +1,5 @@
--- This nvim configuration is highly modular,
--- you won't see much here...
+-- Enable native caching
+vim.loader.enable = true
 
 -- Install the plugins
 require("init_plugins")
