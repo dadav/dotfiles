@@ -17,9 +17,9 @@ gitsigns.setup({
 		end
 
 		-- Navigation
-		map("n", "<leader>gn", function()
+		map("n", "<leader>ggn", function()
 			if vim.wo.diff then
-				return "<leader>gn"
+				return "<leader>ggn"
 			end
 			vim.schedule(function()
 				gs.next_hunk()
@@ -27,9 +27,9 @@ gitsigns.setup({
 			return "<Ignore>"
 		end, { expr = true })
 
-		map("n", "<leader>gn", function()
+		map("n", "<leader>ggn", function()
 			if vim.wo.diff then
-				return "<leader>gn"
+				return "<leader>ggn"
 			end
 			vim.schedule(function()
 				gs.prev_hunk()
@@ -38,27 +38,27 @@ gitsigns.setup({
 		end, { expr = true })
 
 		-- Actions
-		map("n", "<leader>gs", gs.stage_hunk, { desc = "[s]tage hunk" })
-		map("n", "<leader>gr", gs.reset_hunk, { desc = "[r]eset hunk" })
-		map("v", "<leader>gs", function()
+		map("n", "<leader>ggs", gs.stage_hunk, { desc = "[s]tage hunk" })
+		map("n", "<leader>ggr", gs.reset_hunk, { desc = "[r]eset hunk" })
+		map("v", "<leader>ggs", function()
 			gs.stage_hunk({ vim.fn.line("."), vim.fn.line("v") })
 		end, { desc = "[s]tage hunk" })
-		map("v", "<leader>gr", function()
+		map("v", "<leader>ggr", function()
 			gs.reset_hunk({ vim.fn.line("."), vim.fn.line("v") })
 		end, { desc = "[r]eset hunk" })
 
-		map("n", "<leader>gS", gs.stage_buffer, { desc = "[S]tage buffer" })
-		map("n", "<leader>gu", gs.undo_stage_hunk, { desc = "[u]ndo stage hunk" })
-		map("n", "<leader>gR", gs.reset_buffer, { desc = "[R]eset buffer" })
-		map("n", "<leader>gp", gs.preview_hunk, { desc = "[p]review hunk" })
-		map("n", "<leader>gb", function()
+		map("n", "<leader>ggS", gs.stage_buffer, { desc = "[S]tage buffer" })
+		map("n", "<leader>ggu", gs.undo_stage_hunk, { desc = "[u]ndo stage hunk" })
+		map("n", "<leader>ggR", gs.reset_buffer, { desc = "[R]eset buffer" })
+		map("n", "<leader>ggp", gs.preview_hunk, { desc = "[p]review hunk" })
+		map("n", "<leader>ggb", function()
 			gs.blame_line({ full = true })
 		end, { desc = "[b]lame line" })
-		map("n", "<leader>gtb", gs.toggle_current_line_blame, { desc = "[t]oggle [b]lame" })
-		map("n", "<leader>gd", gs.diffthis, { desc = "[d]iff" })
-		map("n", "<leader>gD", function()
+		map("n", "<leader>ggtb", gs.toggle_current_line_blame, { desc = "[t]oggle [b]lame" })
+		map("n", "<leader>ggd", gs.diffthis, { desc = "[d]iff" })
+		map("n", "<leader>ggD", function()
 			gs.diffthis("~")
 		end, { desc = "[D]iff" })
-		map("n", "<leader>gtd", gs.toggle_deleted, { desc = "[t]oggle [d]eleted" })
+		map("n", "<leader>ggtd", gs.toggle_deleted, { desc = "[t]oggle [d]eleted" })
 	end,
 })

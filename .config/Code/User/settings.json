@@ -30,5 +30,6 @@
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "workbench.startupEditor": "none"
+  "workbench.startupEditor": "none",
+  "liveServer.settings.donotShowInfoMsg": true
 }
