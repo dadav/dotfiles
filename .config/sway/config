@@ -56,7 +56,7 @@ exec --no-startup-id volume-to-wob $WOBSOCK
 exec --no-startup-id udiskie -t --appindicator
 exec --no-startup-id nm-applet --indicator
 exec --no-startup-id gammastep
-exec --no-startup-id mullvad-vpn
+#exec --no-startup-id mullvad-vpn
 # exec swayidle -w \
 # 	timeout 600 'swaylock -f' \
 # 	timeout 1800 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
