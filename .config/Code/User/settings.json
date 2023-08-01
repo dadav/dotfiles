@@ -3,11 +3,12 @@
   "editor.guides.bracketPairs": true,
   "http.systemCertificates": false,
   "workbench.colorCustomizations": {},
-  "dart.lineLength": 150,
   "[dart]": {
     "editor.formatOnSave": true,
     "editor.formatOnType": true,
-    "editor.rulers": [150],
+    "editor.rulers": [
+      150
+    ],
     "editor.selectionHighlight": false,
     "editor.suggest.snippetsPreventQuickSuggestions": false,
     "editor.suggestSelection": "first",
@@ -25,11 +26,10 @@
   },
   "editor.stickyScroll.enabled": true,
   "editor.fontFamily": "Hack",
-  "vsicons.dontShowNewVersionMessage": true,
   "redhat.telemetry.enabled": false,
-  "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
   "workbench.startupEditor": "none",
-  "liveServer.settings.donotShowInfoMsg": true
+  "liveServer.settings.donotShowInfoMsg": true,
+  "yaml.schemas": {
+    "./values.schema.json": "values.yaml"
+  }
 }

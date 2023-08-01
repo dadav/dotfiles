@@ -16,6 +16,10 @@ null_ls.setup({
     formatting.yamlfmt.with({
       extra_args = { "-formatter", "indent=2,include_document_start=true,retain_line_breaks=true" } }),
     formatting.puppet_lint,
+    formatting.goimports,
+    formatting.goimports_reviser,
+    formatting.golines,
+    formatting.isort,
 
     -- Diagnostics
     diagnostics.shellcheck,

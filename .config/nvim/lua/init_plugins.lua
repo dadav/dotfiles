@@ -1,12 +1,12 @@
 local ensure_packer = function()
-	local fn = vim.fn
-	local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-	if fn.empty(fn.glob(install_path)) > 0 then
-		fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
-		vim.cmd([[packadd packer.nvim]])
-		return true
-	end
-	return false
+  local fn = vim.fn
+  local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
+  if fn.empty(fn.glob(install_path)) > 0 then
+    fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
+    vim.cmd([[packadd packer.nvim]])
+    return true
+  end
+  return false
 end
 
 -- Bootstrap packet itself
@@ -23,181 +23,185 @@ vim.cmd([[
 -- Use a protected call
 local status_ok, packer = pcall(require, "packer")
 if not status_ok then
-	return
+  return
 end
 
 -- Have packer use a popup window
 packer.init({
-	display = {
-		open_fn = function()
-			return require("packer.util").float({ border = "rounded" })
-		end,
-	},
+  display = {
+    open_fn = function()
+      return require("packer.util").float({ border = "rounded" })
+    end,
+  },
 })
 
 return packer.startup(function(use)
-	-- Plugin-Manager
-	use("wbthomason/packer.nvim")
+  -- Plugin-Manager
+  use("wbthomason/packer.nvim")
 
-	-- Looks & Feels
-	-- Best colorscheme
-	use("josuegaleas/jay")
-	use({ "catppuccin/nvim", as = "catppuccin" })
-	use("easymotion/vim-easymotion")
-	use("yuttie/comfortable-motion.vim")
-	use("mg979/vim-visual-multi")
+  -- Looks & Feels
+  -- Best colorscheme
+  use("josuegaleas/jay")
+  use({ "catppuccin/nvim", as = "catppuccin" })
+  use("easymotion/vim-easymotion")
+  use("yuttie/comfortable-motion.vim")
+  use("mg979/vim-visual-multi")
 
-	-- Statusline
-	use({
-		"nvim-lualine/lualine.nvim",
-		requires = { "nvim-tree/nvim-web-devicons" },
-		config = function()
-			require("lualine").setup()
-		end,
-	})
+  -- Statusline
+  use({
+    "nvim-lualine/lualine.nvim",
+    requires = { "nvim-tree/nvim-web-devicons" },
+    config = function()
+      require("lualine").setup()
+    end,
+  })
 
-	vim.g.barbar_auto_setup = false
-	use({
-		"romgrk/barbar.nvim",
-		requires = {
-			"lewis6991/gitsigns.nvim", -- OPTIONAL: for git status
-			"nvim-tree/nvim-web-devicons", -- OPTIONAL: for file icons
-		},
-	})
+  vim.g.barbar_auto_setup = false
+  use({
+    "romgrk/barbar.nvim",
+    requires = {
+      "lewis6991/gitsigns.nvim",     -- OPTIONAL: for git status
+      "nvim-tree/nvim-web-devicons", -- OPTIONAL: for file icons
+    },
+  })
 
-	-- Syntax highlighting
-	use({
-		"nvim-treesitter/nvim-treesitter",
-		run = ":TSUpdate",
-	})
 
-	use("nvim-treesitter/nvim-treesitter-context")
+  -- Syntax highlighting
+  use({
+    "nvim-treesitter/nvim-treesitter",
+    run = ":TSUpdate",
+  })
 
-	use("nvim-treesitter/nvim-treesitter-textobjects")
+  use("nvim-treesitter/nvim-treesitter-context")
 
-	-- Highlight word under cursor
-	use("RRethy/vim-illuminate")
+  use("nvim-treesitter/nvim-treesitter-textobjects")
 
-	-- Show indention
-	use("lukas-reineke/indent-blankline.nvim")
+  -- Highlight word under cursor
+  use("RRethy/vim-illuminate")
 
-	-- Show whitespaces
-	use("ntpeters/vim-better-whitespace")
+  -- Show indention
+  use("lukas-reineke/indent-blankline.nvim")
 
-	-- Snippets
-	use({
-		"L3MON4D3/LuaSnip",
-		-- follow latest release.
-		tag = "v1.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
-		-- install jsregexp (optional!:).
-		run = "make install_jsregexp",
-	})
-	use("rafamadriz/friendly-snippets")
-	use("honza/vim-snippets")
+  -- Show whitespaces
+  use("ntpeters/vim-better-whitespace")
 
-	-- Autocompletion
-	use("hrsh7th/nvim-cmp")
-	use("hrsh7th/cmp-buffer")
-	use("FelipeLema/cmp-async-path")
-	use("hrsh7th/cmp-cmdline")
-	use("hrsh7th/cmp-nvim-lsp")
-	use("hrsh7th/cmp-nvim-lsp-signature-help")
-	use("saadparwaiz1/cmp_luasnip")
+  -- Snippets
+  use({
+    "L3MON4D3/LuaSnip",
+    -- follow latest release.
+    tag = "v1.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+    -- install jsregexp (optional!:).
+    run = "make install_jsregexp",
+  })
+  use("rafamadriz/friendly-snippets")
+  use("honza/vim-snippets")
 
-	-- Search & Replace
-	use("wincent/scalpel")
+  -- Autocompletion
+  use("hrsh7th/nvim-cmp")
+  use("hrsh7th/cmp-buffer")
+  use("FelipeLema/cmp-async-path")
+  use("hrsh7th/cmp-cmdline")
+  use("hrsh7th/cmp-nvim-lsp")
+  use("hrsh7th/cmp-nvim-lsp-signature-help")
+  use("saadparwaiz1/cmp_luasnip")
 
-	-- Alignment
-	use("junegunn/vim-easy-align")
+  -- Search & Replace
+  use("wincent/scalpel")
 
-	-- LSP
-	use("williamboman/mason.nvim")
-	use("williamboman/mason-lspconfig.nvim")
-	use("neovim/nvim-lspconfig")
-	use({
-		"j-hui/fidget.nvim",
-		tag = "legacy",
-		config = function()
-			require("fidget").setup({})
-		end,
-	})
+  -- Alignment
+  use("junegunn/vim-easy-align")
 
-	-- Formatting and linting
-	use("jose-elias-alvarez/null-ls.nvim")
-	use("folke/trouble.nvim") -- Nice overview of errors/warnings coming from e.g. LSP
-	use("folke/lsp-colors.nvim") -- add LSP colors for colorschemes that don't yet support them
-	use("b0o/schemastore.nvim")
+  -- LSP
+  use("williamboman/mason.nvim")
+  use("williamboman/mason-lspconfig.nvim")
+  use("WhoIsSethDaniel/mason-tool-installer.nvim")
+  use("neovim/nvim-lspconfig")
+  use({
+    "j-hui/fidget.nvim",
+    tag = "legacy",
+    config = function()
+      require("fidget").setup({})
+    end,
+  })
 
-	-- DAP
-	-- use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } })
-	-- use({ "theHamsta/nvim-dap-virtual-text", requires = { "mfussenegger/nvim-dap" } })
-	-- use("leoluz/nvim-dap-go") -- requires delve
-	-- use("mfussenegger/nvim-dap-python") -- requires debugpy https://github.com/microsoft/debugpy
+  -- Formatting and linting
+  use("jose-elias-alvarez/null-ls.nvim")
+  use("folke/trouble.nvim")    -- Nice overview of errors/warnings coming from e.g. LSP
+  use("folke/lsp-colors.nvim") -- add LSP colors for colorschemes that don't yet support them
+  use("b0o/schemastore.nvim")
 
-	-- Tpope plugins
-	use("tpope/vim-surround")
-	use("tpope/vim-repeat")
-	use("tpope/vim-endwise")
-	use("tpope/vim-speeddating")
-	use("tpope/vim-eunuch")
+  -- DAP
+  -- use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } })
+  -- use({ "theHamsta/nvim-dap-virtual-text", requires = { "mfussenegger/nvim-dap" } })
+  -- use("leoluz/nvim-dap-go") -- requires delve
+  -- use("mfussenegger/nvim-dap-python") -- requires debugpy https://github.com/microsoft/debugpy
 
-	-- Show me mappings
-	use({
-		"folke/which-key.nvim",
-		config = function()
-			vim.o.timeout = true
-			vim.o.timeoutlen = 300
-			require("which-key").setup()
-		end,
-	})
-	-- Automatically create pairwise brackets
-	use({
-		"windwp/nvim-autopairs",
-		config = function()
-			require("nvim-autopairs").setup()
-		end,
-	})
+  -- Tpope plugins
+  use("tpope/vim-surround")
+  use("tpope/vim-repeat")
+  use("tpope/vim-endwise")
+  use("tpope/vim-speeddating")
+  use("tpope/vim-eunuch")
 
-	-- Easily create comments
-	use({
-		"numToStr/Comment.nvim",
-		config = function()
-			require("Comment").setup()
-		end,
-	})
+  -- Show me mappings
+  use({
+    "folke/which-key.nvim",
+    config = function()
+      vim.o.timeout = true
+      vim.o.timeoutlen = 300
+      require("which-key").setup()
+    end,
+  })
+  -- Automatically create pairwise brackets
+  use({
+    "windwp/nvim-autopairs",
+    config = function()
+      require("nvim-autopairs").setup()
+    end,
+  })
 
-	-- Fuzzy finder for lists
-	use({
-		"nvim-telescope/telescope.nvim",
-		tag = "0.1.x",
-		requires = { { "nvim-lua/plenary.nvim" } },
-	})
-	use("nvim-telescope/telescope-dap.nvim")
-	use({
-		"nvim-telescope/telescope-fzf-native.nvim",
-		run = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
-	})
+  -- Easily create comments
+  use({
+    "numToStr/Comment.nvim",
+    config = function()
+      require("Comment").setup()
+    end,
+  })
 
-	-- Fileexplorer written in lua
-	use({
-		"kyazdani42/nvim-tree.lua",
-		requires = { { "kyazdani42/nvim-web-devicons" } },
-	})
+  -- Fuzzy finder for lists
+  use({
+    "nvim-telescope/telescope.nvim",
+    tag = "0.1.x",
+    requires = { { "nvim-lua/plenary.nvim" } },
+  })
+  use("nvim-telescope/telescope-dap.nvim")
+  use({
+    "nvim-telescope/telescope-fzf-native.nvim",
+    run =
+    "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
+  })
 
-	-- Beautiful notification messages
-	use("rcarriga/nvim-notify")
+  -- Fileexplorer written in lua
+  use({
+    "kyazdani42/nvim-tree.lua",
+    requires = { { "kyazdani42/nvim-web-devicons" } },
+  })
 
-	-- Git
-	use({
-		"lewis6991/gitsigns.nvim",
-	})
+  -- Beautiful notification messages
+  use("rcarriga/nvim-notify")
 
-	-- Terminal
-	use({ "akinsho/toggleterm.nvim", tag = "*" })
+  -- Git
+  use({
+    "lewis6991/gitsigns.nvim",
+  })
+  use({ "sindrets/diffview.nvim" })
 
-	-- Automatically set up your configuration after cloning packer.nvim
-	-- Put this at the end after all plugins
-	if packer_bootstrap then
-		require("packer").sync()
-	end
+  -- Terminal
+  use({ "akinsho/toggleterm.nvim", tag = "*" })
+
+  -- Automatically set up your configuration after cloning packer.nvim
+  -- Put this at the end after all plugins
+  if packer_bootstrap then
+    require("packer").sync()
+  end
 end)
