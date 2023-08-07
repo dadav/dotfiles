@@ -2,7 +2,7 @@ local opts = {
   settings = {
     yaml = {
       schemas = {
-        ["kubernetes"] = "/k8s-*.yaml"
+        ["values.schema.json"] = "/values.yaml"
       },
     },
   },
