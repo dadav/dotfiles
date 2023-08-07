@@ -24,6 +24,7 @@ null_ls.setup({
     -- Diagnostics
     diagnostics.shellcheck,
     diagnostics.ansiblelint,
+    diagnostics.jsonlint,
     -- diagnostics.puppet_lint,
   },
 })
