@@ -76,6 +76,9 @@ return packer.startup(function(use)
 
   use("nvim-treesitter/nvim-treesitter-textobjects")
 
+  -- Textobject selector
+  use("gcmt/wildfire.vim")
+
   -- Highlight word under cursor
   use("RRethy/vim-illuminate")
 
