@@ -1,9 +1,18 @@
 local opts = {
   settings = {
     yaml = {
-      schemas = {
-        ["values.schema.json"] = "/values.yaml"
+      hover = true,
+      completion = true,
+      schemaStore = {
+        -- Use schemastore plugin
+        enable = false,
+        url = "",
       },
+      schemas = require('schemastore').yaml.schemas() {
+        extra = {
+          ["values.schema.json"] = "values.yaml"
+        }
+      }
     },
   },
 }
