@@ -14,7 +14,9 @@ null_ls.setup({
     -- formatting.black.with({ extra_args = { "--fast", "--line-length=120" } }),
     formatting.rustfmt,
     formatting.yamlfmt.with({
-      extra_args = { "-formatter", "indent=2,include_document_start=true,retain_line_breaks=true" } }),
+      extra_args = { "-formatter",
+        "indent=2,include_document_start=true,retain_line_breaks=true,scan_folded_as_literal=true" }
+    }),
     formatting.puppet_lint,
     formatting.goimports,
     formatting.goimports_reviser,
