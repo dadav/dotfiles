@@ -1,4 +1,7 @@
 {
+  "files.associations": {
+    "**/products/*.md": "yaml"
+  },
   "editor.bracketPairColorization.enabled": true,
   "editor.guides.bracketPairs": true,
   "http.systemCertificates": false,
@@ -30,6 +33,7 @@
   "workbench.startupEditor": "none",
   "liveServer.settings.donotShowInfoMsg": true,
   "yaml.schemas": {
-    "./values.schema.json": "values.yaml"
+    "./values.schema.json": "values.yaml",
+    "schema.json": "products/*.md"
   }
 }
