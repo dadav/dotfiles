@@ -3,7 +3,7 @@ vim.cmd([[
     au!
     au FileType qf,help,man,lspinfo nnoremap <silent> <buffer> q :close<CR>
     au TextYankPost * silent!lua require('vim.highlight').on_yank({higroup = 'Visual', timeout = 500})
-    au BufWinEnter * :set formatoptions-=cro
+    au BufWinEnter * :set formatoptions-=co
   augroup end
 
   augroup _git

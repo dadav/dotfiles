@@ -28,7 +28,8 @@ mason.setup({
     'yamlfmt',
     'yaml-language-server',
     'goimports-reviser',
-    'golines'
+    'golines',
+    'terraform-ls'
   },
 
   -- if set to true this will check each tool for updates. If updates

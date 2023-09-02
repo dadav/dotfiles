@@ -126,6 +126,13 @@ return packer.startup(function(use)
       require("fidget").setup({})
     end,
   })
+  use({
+    "gfanto/fzf-lsp.nvim",
+    requires = { { "nvim-lua/plenary.nvim" } },
+    config = function()
+      require("fzf_lsp").setup()
+    end,
+  })
 
   -- Formatting and linting
   use("jose-elias-alvarez/null-ls.nvim")
