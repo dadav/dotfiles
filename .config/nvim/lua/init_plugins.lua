@@ -126,25 +126,11 @@ return packer.startup(function(use)
       require("fidget").setup({})
     end,
   })
-  use({
-    "gfanto/fzf-lsp.nvim",
-    requires = { { "nvim-lua/plenary.nvim" } },
-    config = function()
-      require("fzf_lsp").setup()
-    end,
-  })
 
   -- Formatting and linting
   use("jose-elias-alvarez/null-ls.nvim")
-  use("folke/trouble.nvim")    -- Nice overview of errors/warnings coming from e.g. LSP
   use("folke/lsp-colors.nvim") -- add LSP colors for colorschemes that don't yet support them
   use("b0o/schemastore.nvim")
-
-  -- DAP
-  -- use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } })
-  -- use({ "theHamsta/nvim-dap-virtual-text", requires = { "mfussenegger/nvim-dap" } })
-  -- use("leoluz/nvim-dap-go") -- requires delve
-  -- use("mfussenegger/nvim-dap-python") -- requires debugpy https://github.com/microsoft/debugpy
 
   -- Tpope plugins
   use("tpope/vim-surround")

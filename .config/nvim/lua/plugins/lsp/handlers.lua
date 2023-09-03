@@ -43,12 +43,20 @@ end
 -- Here we set up keymaps. You can change them if you already have specifics for these functions, or just want to try another keymap.
 local function lsp_keymaps(bufnr)
   local opts = { noremap = true, silent = true }
-  vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>cd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
-  vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>ch", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-  vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>cz", "<cmd>:Diagnostics<CR>", opts)
-  vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>cr", "<cmd>:References<CR>", opts)
-  vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>ci", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
-  vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>cf", "<cmd>lua vim.lsp.buf.format()<CR>", opts)
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>cd", "<cmd>lua vim.lsp.buf.definition()<CR>",
+    { desc = "[d]efinition", noremap = true, silent = true })
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>ch", "<cmd>lua vim.lsp.buf.hover()<CR>",
+    { desc = "[h]over", noremap = true, silent = true })
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>cr", "<cmd>lua vim.lsp.buf.rename()<CR>",
+    { desc = "[r]ename", noremap = true, silent = true })
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>co", "<cmd>lua vim.diagnostic.open_float()<CR>",
+    { desc = "diagn[o]stics", noremap = true, silent = true })
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>cf", "<cmd>lua vim.lsp.buf.format()<CR>",
+    { desc = "[f]ormat", noremap = true, silent = true })
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>cn", "<cmd>lua vim.diagnostic.goto_next()<CR>",
+    { desc = "[n]ext", noremap = true, silent = true })
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>cp", "<cmd>lua vim.diagnostic.goto_prev()<CR>",
+    { desc = "[p]revious", noremap = true, silent = true })
   vim.cmd([[ command! Format execute 'lua vim.lsp.buf.format()' ]])
 end
 

@@ -31,7 +31,7 @@ keymap("n", "<A-j>", ":bnext<CR>", opts)
 keymap("n", "<A-k>", ":bprevious<CR>", opts)
 
 -- Show hidden characters (toggle)
-keymap("n", "<leader>lt", ":set list!<CR>", opts)
+keymap("n", "<leader>l", ":set list!<CR>", { desc = "[l]ist hidden", noremap = true, silent = true })
 
 -- Visual --
 -- Stay in indent mode

@@ -1,15 +1,15 @@
 local ok, _ = pcall(require, "barbar")
 if not ok then
-	return
+  return
 end
 
 require("barbar").setup({
-	-- Mouse is for noobs
-	clickable = false,
-	-- Dont need tabs on single files
-	auto_hide = true,
-	-- Title for buffers
-	no_name_title = "UNSAVED",
+  -- Mouse is for noobs
+  clickable = false,
+  -- Dont need tabs on single files
+  auto_hide = true,
+  -- Title for buffers
+  no_name_title = "UNSAVED",
 })
 
 local keymap = vim.api.nvim_set_keymap

@@ -1,10 +1,10 @@
 local ok, _ = pcall(require, "scalpel")
 if not ok then
-	return
+  return
 end
 
 -- Disable default mappings
 vim.g.ScalpelMap = 0
 
 -- Bind to <leader>r
-vim.api.nvim_set_keymap("n", "<leader>r", "<Plug>(Scalpel)", {})
+vim.api.nvim_set_keymap("n", "<leader>s", "<Plug>(Scalpel)", { desc = "[s]calpel", noremap = true, silent = false })
