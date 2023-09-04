@@ -25,17 +25,17 @@ gitsigns.setup({
         gs.next_hunk()
       end)
       return "<Ignore>"
-    end, { expr = true })
+    end, { desc = "[n]ext hunk", noremap = true, expr = true })
 
-    map("n", "<leader>gn", function()
+    map("n", "<leader>gp", function()
       if vim.wo.diff then
-        return "<leader>gn"
+        return "<leader>gp"
       end
       vim.schedule(function()
         gs.prev_hunk()
       end)
       return "<Ignore>"
-    end, { expr = true })
+    end, { desc = "[p]rev hunk", noremap = true, expr = true })
 
     -- Actions
     map("n", "<leader>gs", gs.stage_hunk, { desc = "[s]tage hunk" })
@@ -50,7 +50,7 @@ gitsigns.setup({
     map("n", "<leader>gS", gs.stage_buffer, { desc = "[S]tage buffer" })
     map("n", "<leader>gu", gs.undo_stage_hunk, { desc = "[u]ndo stage hunk" })
     map("n", "<leader>gR", gs.reset_buffer, { desc = "[R]eset buffer" })
-    map("n", "<leader>gp", gs.preview_hunk, { desc = "[p]review hunk" })
+    map("n", "<leader>gP", gs.preview_hunk, { desc = "[P]review hunk" })
     map("n", "<leader>gb", function()
       gs.blame_line({ full = true })
     end, { desc = "[b]lame line" })
