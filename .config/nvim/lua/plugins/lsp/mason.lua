@@ -57,6 +57,13 @@ for _, server in pairs(mason_lspconfig.get_installed_servers()) do
   }
   local has_custom_opts, server_custom_opts = pcall(require, "plugins.lsp.settings." .. server)
   if has_custom_opts then
+    if server_custom_opts.on_attach ~= nil then
+      local old_on_attach = server_custom_opts.on_attach
+      server_custom_opts.on_attach = function(client, bufnr)
+        old_on_attach(client, bufnr)
+        require("plugins.lsp.handlers").on_attach(client, bufnr)
+      end
+    end
     opts = vim.tbl_deep_extend("force", opts, server_custom_opts)
   end
   lspconfig[server].setup(opts)

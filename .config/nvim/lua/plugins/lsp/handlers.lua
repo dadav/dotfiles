@@ -42,7 +42,6 @@ end
 
 -- Here we set up keymaps. You can change them if you already have specifics for these functions, or just want to try another keymap.
 local function lsp_keymaps(bufnr)
-  local opts = { noremap = true, silent = true }
   vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>cd", "<cmd>lua vim.lsp.buf.definition()<CR>",
     { desc = "[d]efinition", noremap = true, silent = true })
   vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>ch", "<cmd>lua vim.lsp.buf.hover()<CR>",

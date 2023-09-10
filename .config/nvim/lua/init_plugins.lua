@@ -65,7 +65,6 @@ return packer.startup(function(use)
     },
   })
 
-
   -- Syntax highlighting
   use({
     "nvim-treesitter/nvim-treesitter",
@@ -170,12 +169,23 @@ return packer.startup(function(use)
     tag = "0.1.x",
     requires = { { "nvim-lua/plenary.nvim" } },
   })
-  use("nvim-telescope/telescope-dap.nvim")
   use({
     "nvim-telescope/telescope-fzf-native.nvim",
     run =
     "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
   })
+
+  use {
+    "someone-stole-my-name/yaml-companion.nvim",
+    requires = {
+      { "neovim/nvim-lspconfig" },
+      { "nvim-lua/plenary.nvim" },
+      { "nvim-telescope/telescope.nvim" },
+    },
+    config = function()
+      require("telescope").load_extension("yaml_schema")
+    end,
+  }
 
   -- Fileexplorer written in lua
   use({
