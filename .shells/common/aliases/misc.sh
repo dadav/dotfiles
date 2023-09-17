@@ -9,3 +9,6 @@ alias nohup='>/dev/null 2>&1 nohup'
 
 # use bat
 alias cat='bat -pp'
+
+# best compression
+alias tarc='tar -cI"zstd -19 -T0" -f'
