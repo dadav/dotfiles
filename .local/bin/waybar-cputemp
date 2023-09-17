@@ -6,10 +6,10 @@ crit_temp=90
 
 case $host in
   darch)
-    cpu_temp="$(sensors -j acpitz-acpi-0 | jq '.["acpitz-acpi-0"]["temp1"]["temp1_input"]')"
+    cpu_temp="$(sensors -j acpitz-acpi-0 | jq '.["acpitz-acpi-0"]["temp1"]["temp1_input"]' | cut -d. -f1)"
     ;;
   lapt430)
-    cpu_temp="$(sensors -j thinkpad-isa-0000 2>/dev/null | jq '.["thinkpad-isa-0000"]["CPU"]["temp1_input"]')"
+    cpu_temp="$(sensors -j thinkpad-isa-0000 2>/dev/null | jq '.["thinkpad-isa-0000"]["CPU"]["temp1_input"]' | cut -d. -f1)"
     ;;
   default)
     exit 0
