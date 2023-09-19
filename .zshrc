@@ -17,7 +17,14 @@ SAVEHIST=10000
 setopt appendhistory
 setopt incappendhistory
 setopt sharehistory
+# cd = pushd
 setopt autopushd
+# dont print stack
+setopt pushdsilent
+# dont swap top entries
+setopt pushdtohome
+# swap + / -
+setopt pushdminus
 # }
 # autoload {
 autoload -Uz compinit && compinit
