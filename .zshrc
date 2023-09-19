@@ -17,6 +17,7 @@ SAVEHIST=10000
 setopt appendhistory
 setopt incappendhistory
 setopt sharehistory
+setopt autopushd
 # }
 # autoload {
 autoload -Uz compinit && compinit
