@@ -33,6 +33,7 @@ autoload -U colors && colors
 autoload -U zmv
 autoload -U zargs
 autoload -U history-search-end
+autoload -U select-word-style
 autoload -Uz edit-command-line
 unalias run-help && autoload -U run-help
 # }
@@ -51,7 +52,10 @@ bindkey '^[[6~' history-substring-search-down
 bindkey -M emacs '^P' history-substring-search-up
 bindkey -M emacs '^N' history-substring-search-down
 # }
-
+# select-word-style {
+# ctrl-w removes just one part of a path, not the whole path
+select-word-style bash
+# }
 # autosuggestion {
 bindkey '^[ ' autosuggest-accept
 # }
