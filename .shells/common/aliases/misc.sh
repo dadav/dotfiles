@@ -12,3 +12,6 @@ alias cat='bat -pp'
 
 # best compression
 alias tarc='tar -cI"zstd -19 -T0" -f'
+
+# be more verbose
+alias dirs="dirs -v"
