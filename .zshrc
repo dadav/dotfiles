@@ -144,6 +144,7 @@ plugins_dir="$HOME/.zsh/plugins"
 
 additional_plugins=(
   'https://github.com/reegnz/jq-zsh-plugin'
+  'https://github.com/hlissner/zsh-autopair'
 )
 
 for plugin in $additional_plugins; do
