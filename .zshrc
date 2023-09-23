@@ -108,10 +108,16 @@ zstyle ':completion:*:warnings' format ' %F{red}-- no matches found --%f'
 
 # use q to exist this pager
 bindkey -M listscroll q send-break
+
+# use vi bindings for the menu
+bindkey -M menuselect '^[' undo
 bindkey -M menuselect 'h' vi-backward-char
 bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
+bindkey -M menuselect '^n' vi-down-line-or-history
+bindkey -M menuselect '^p' vi-up-line-or-history
+
 bindkey '^[#' pound-insert
 bindkey '^[+' push-line
 compinit
