@@ -3,20 +3,33 @@
 fpath=(${ASDF_DIR}/completions $fpath)
 # }
 # options {
+# see: man zshoptions
+# underscores and case are ignored, so AUTO_LIST is the same as autolist
 setopt interactivecomments
 # setopt complete_aliases
 setopt extendedglob
+# report status of bg process
 setopt notify
-setopt ignore_eof
-setopt AUTO_LIST
-# }
+# do not exit on ctrl-d
+setopt ignoreeof
+# automatically list choices if multiple options match
+setopt autolist
 # history {
 HISTFILE=$HOME/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
+# append the history, dont overwrite
 setopt appendhistory
+# write the history directly after command
 setopt incappendhistory
+# share history between instances
 setopt sharehistory
+# also record starttime
+setopt extendedhistory
+# dont record dups
+setopt histignoredups
+# }
+# movement {
 # cd = pushd
 setopt autopushd
 # dont print stack
@@ -26,7 +39,9 @@ setopt pushdtohome
 # swap + / -
 setopt pushdminus
 # }
+# }
 # autoload {
+# (look for function in $fpath)
 autoload -Uz compinit && compinit
 autoload -U bashcompinit && bashcompinit
 autoload -U colors && colors
