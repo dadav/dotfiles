@@ -1,0 +1,9 @@
+snippet geto
+  while getopts ${1:option}: opt; do
+    case "\${opt}" in
+      $1)
+        ${2:value}=\${OPTARG}
+        ${0:${VISUAL}}
+        ;;
+    esac
+  done

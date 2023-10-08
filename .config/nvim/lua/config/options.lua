@@ -15,3 +15,5 @@ opt.virtualedit = "block"
 
 -- german,english
 opt.spelllang = "de,en"
+
+opt.conceallevel = 0
