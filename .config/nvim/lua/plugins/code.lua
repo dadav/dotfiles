@@ -5,11 +5,11 @@ return {
     opts = {
       formatters_by_ft = {
         -- Harden, then check
-        sh = { "shellharden", "shellcheck" },
+        sh = { "shfmt", "shellharden", "shellcheck" },
         -- Ruff is the best
         python = { "ruff_fix", "ruff_format" },
         -- Run on every file
-        ["*"] = { "trim_whitespaces", "trim_newlines" },
+        ["*"] = { "trim_whitespace", "trim_newlines" },
       },
       format_on_save = {
         timeout_ms = 500,
@@ -24,35 +24,24 @@ return {
       current_line_blame = true,
     },
   },
-  -- {
-  --   "someone-stole-my-name/yaml-companion.nvim",
-  --   opts = {
-  --     builtin_matchers = {
-  --       kubernetes = { enabled = true },
-  --     },
-  --     lspconfig = {
-  --       flags = {
-  --         debounce_text_changes = 150,
-  --       },
-  --       settings = {
-  --         redhat = { telemetry = { enabled = false } },
-  --         yaml = {
-  --           validate = true,
-  --           format = { enable = false },
-  --           hover = true,
-  --           schemaStore = {
-  --             enable = true,
-  --             url = "https://www.schemastore.org/api/json/catalog.json",
-  --           },
-  --           schemaDownload = { enable = true },
-  --           schemas = {},
-  --           trace = { server = "debug" },
-  --         },
-  --       },
-  --     },
-  --   },
-  --   config = function()
-  --     require("telescope").load_extension("yaml_schema")
-  --   end,
-  -- },
+  -- Autocompletion for kubernetes
+  {
+    "someone-stole-my-name/yaml-companion.nvim",
+    ft = { "yaml" },
+    opts = {
+      builtin_matchers = {
+        kubernetes = { enabled = true },
+      },
+    },
+    dependencies = {
+      { "neovim/nvim-lspconfig" },
+      { "nvim-lua/plenary.nvim" },
+      { "nvim-telescope/telescope.nvim" },
+    },
+    config = function(_, opts)
+      local cfg = require("yaml-companion").setup(opts)
+      require("lspconfig")["yamlls"].setup(cfg)
+      require("telescope").load_extension("yaml_schema")
+    end,
+  },
 }

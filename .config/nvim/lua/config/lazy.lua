@@ -21,7 +21,7 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.lang.ruby" },
     -- daps
     { import = "lazyvim.plugins.extras.dap.core" },
-    { import = "lazyvim.plugins.extras.dap.nlua" },
+    -- { import = "lazyvim.plugins.extras.dap.nlua" },
     -- format
     { import = "lazyvim.plugins.extras.formatting.conform" },
     -- misc
