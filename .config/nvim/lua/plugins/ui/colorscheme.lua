@@ -1,4 +1,4 @@
 return {
-  { "ellisonleao/gruvbox.nvim" },
-  { "josuegaleas/jay" },
+  { "ellisonleao/gruvbox.nvim", lazy = true },
+  { "josuegaleas/jay", lazy = true },
 }
