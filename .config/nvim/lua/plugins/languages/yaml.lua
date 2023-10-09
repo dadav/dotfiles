@@ -22,6 +22,7 @@ return {
   -- Diagnostics
   {
     "nvimtools/none-ls.nvim",
+    dependencies = { { "williamboman/mason.nvim" } },
     opts = function(_, opts)
       if type(opts.sources) == "table" then
         local nls = require("null-ls")

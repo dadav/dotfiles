@@ -4,20 +4,21 @@ return {
     "stevearc/conform.nvim",
     opts = {
       formatters_by_ft = {
-        -- Harden, then check
-        sh = { "shfmt", "shellharden", "shellcheck" },
+        markdown = { "prettierd" },
       },
     },
   },
-  -- Shell diagnostics
+  -- Diagnostics
   {
     "nvimtools/none-ls.nvim",
-    dependencies = { { "williamboman/mason.nvim" } },
+    dependencies = {
+      { "williamboman/mason.nvim" },
+    },
     opts = function(_, opts)
       if type(opts.sources) == "table" then
         local nls = require("null-ls")
         vim.list_extend(opts.sources, {
-          nls.builtins.diagnostics.shellcheck,
+          nls.builtins.diagnostics.markdownlint,
         })
       end
     end,
@@ -27,18 +28,8 @@ return {
     "williamboman/mason.nvim",
     opts = {
       ensure_installed = {
-        -- shell
-        "shfmt",
-        "shellcheck",
-        "shellharden",
+        "markdownlint",
       },
-    },
-  },
-  {
-    "jay-babu/mason-nvim-dap.nvim",
-    opts = {
-      -- delve is for go
-      ensure_installed = { "bash" },
     },
   },
 }

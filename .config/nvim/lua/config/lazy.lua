@@ -24,6 +24,7 @@ require("lazy").setup({
     -- { import = "lazyvim.plugins.extras.dap.nlua" },
     -- format
     { import = "lazyvim.plugins.extras.formatting.conform" },
+    { import = "lazyvim.plugins.extras.formatting.prettier" },
     -- misc
     { import = "lazyvim.plugins.extras.ui.mini-animate" },
     { import = "lazyvim.plugins.extras.coding.yanky" },
