@@ -21,13 +21,12 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.lang.ruby" },
     -- daps
     { import = "lazyvim.plugins.extras.dap.core" },
-    -- { import = "lazyvim.plugins.extras.dap.nlua" },
     -- format
-    { import = "lazyvim.plugins.extras.formatting.conform" },
     { import = "lazyvim.plugins.extras.formatting.prettier" },
     -- misc
     { import = "lazyvim.plugins.extras.ui.mini-animate" },
     { import = "lazyvim.plugins.extras.coding.yanky" },
+    { import = "lazyvim.plugins.extras.editor.aerial" },
 
     -- import/override with your plugins
     { import = "plugins" },

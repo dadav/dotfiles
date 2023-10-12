@@ -21,26 +21,22 @@ return {
   },
   -- Diagnostics
   {
-    "nvimtools/none-ls.nvim",
-    dependencies = { { "williamboman/mason.nvim" } },
-    opts = function(_, opts)
-      if type(opts.sources) == "table" then
-        local nls = require("null-ls")
-        vim.list_extend(opts.sources, {
-          nls.builtins.diagnostics.yamllint,
-        })
-      end
-    end,
+    "mfussenegger/nvim-lint",
+    opts = {
+      linters_by_ft = {
+        yaml = { "yamllint" },
+      },
+    },
   },
   -- Install additional tools
   {
     "williamboman/mason.nvim",
-    opts = {
-      ensure_installed = {
+    opts = function(_, opts)
+      vim.list_extend(opts.ensure_installed, {
         "yamllint",
         "yamlfix",
-      },
-    },
+      })
+    end,
   },
   -- Formatting
   {

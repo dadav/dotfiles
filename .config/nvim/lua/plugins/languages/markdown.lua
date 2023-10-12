@@ -10,26 +10,20 @@ return {
   },
   -- Diagnostics
   {
-    "nvimtools/none-ls.nvim",
-    dependencies = {
-      { "williamboman/mason.nvim" },
+    "mfussenegger/nvim-lint",
+    opts = {
+      linters_by_ft = {
+        markdown = { "markdownlint" },
+      },
     },
-    opts = function(_, opts)
-      if type(opts.sources) == "table" then
-        local nls = require("null-ls")
-        vim.list_extend(opts.sources, {
-          nls.builtins.diagnostics.markdownlint,
-        })
-      end
-    end,
   },
   -- Install additional tools
   {
     "williamboman/mason.nvim",
-    opts = {
-      ensure_installed = {
+    opts = function(_, opts)
+      vim.list_extend(opts.ensure_installed, {
         "markdownlint",
-      },
-    },
+      })
+    end,
   },
 }
