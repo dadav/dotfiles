@@ -13,6 +13,7 @@ return {
       },
     },
   },
+  -- only works with ruby 2.7, not 3+
   {
     "neovim/nvim-lspconfig",
     opts = {
