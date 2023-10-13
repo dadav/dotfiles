@@ -21,8 +21,10 @@ return {
   -- DAP
   {
     "jay-babu/mason-nvim-dap.nvim",
-    opts = {
-      ensure_installed = { "python" },
-    },
+    opts = function(_, opts)
+      vim.list_extend(opts.ensure_installed, {
+        "python",
+      })
+    end,
   },
 }
