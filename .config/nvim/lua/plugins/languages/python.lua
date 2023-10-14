@@ -4,19 +4,22 @@ return {
     "stevearc/conform.nvim",
     opts = {
       formatters_by_ft = {
-        -- Ruff is the best
         python = { "ruff_fix", "ruff_format" },
       },
     },
   },
-  -- Install additional tools
+  -- pyright -> ruff
   {
-    "williamboman/mason.nvim",
-    opts = function(_, opts)
-      vim.list_extend(opts.ensure_installed, {
-        "ruff",
-      })
-    end,
+    "neovim/nvim-lspconfig",
+    opts = {
+      servers = {
+        ruff_lsp = {},
+        pyright = {
+          mason = false,
+          autostart = false,
+        },
+      },
+    },
   },
   -- DAP
   {
