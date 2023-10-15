@@ -4,4 +4,5 @@ return {
   { import = "plugins.utils" },
   { import = "plugins.lsp" },
   { import = "plugins.cmp" },
+  { "local/schreibmaschine", dev = true, config = true },
 }
