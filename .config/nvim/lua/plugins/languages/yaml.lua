@@ -41,27 +41,18 @@ return {
   -- Formatting
   {
     "stevearc/conform.nvim",
-    -- config = function(_, opts)
-    --   require("conform").setup(opts)
-    --   require("conform.formatters.yamlfix").env = {
-    --     -- see https://lyz-code.github.io/yamlfix/#configuration
-    --     YAMLFIX_SEQUENCE_STYLE = "block_style",
-    --     YAMLFIX_WHITELINES = "1",
-    --     YAMLFIX_LINE_LENGTH = "120",
-    --   }
-    -- end,
     opts = {
       formatters_by_ft = {
         yaml = { "yamlfix" },
       },
       formatters = {
-        yaml = vim.tbl_deep_extend("force", require("conform.formatters.yamlfix"), {
+        yamlfix = {
           env = {
             YAMLFIX_SEQUENCE_STYLE = "block_style",
             YAMLFIX_WHITELINES = "1",
             YAMLFIX_LINE_LENGTH = "120",
           },
-        }),
+        },
       },
     },
   },
