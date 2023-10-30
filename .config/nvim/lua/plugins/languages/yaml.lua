@@ -17,6 +17,7 @@ return {
       local cfg = require("yaml-companion").setup(opts)
       require("lspconfig")["yamlls"].setup(cfg)
       require("telescope").load_extension("yaml_schema")
+      vim.keymap.set("n", "<leader>cy", require("yaml-companion").open_ui_select, { desc = "Select schema" })
     end,
   },
   -- Diagnostics
