@@ -28,7 +28,7 @@ require("lazy").setup({
     path = "~/git/nvim-plugins",
   },
   install = { colorscheme = { "tokyonight", "jay" } },
-  checker = { enabled = true, frequency = 86400 }, -- automatically check for plugin updates, once a day
+  checker = { enabled = true, frequency = 86400, notify = false }, -- automatically check for plugin updates, once a day
   performance = {
     rtp = {
       -- disable some rtp plugins
