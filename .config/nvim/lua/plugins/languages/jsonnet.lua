@@ -4,7 +4,13 @@ return {
     "neovim/nvim-lspconfig",
     opts = {
       servers = {
-        jsonnet_ls = {},
+        jsonnet_ls = {
+          single_file_support = true,
+          -- root_dir = function(fname)
+          --   local util = require("lspconfig.util")
+          --   return util.root_pattern("jsonnetfile.json")(fname) or util.find_git_ancestor(fname) or "."
+          -- end,
+        },
       },
     },
   },
@@ -14,8 +20,7 @@ return {
     opts = function(_, opts)
       vim.list_extend(opts.ensure_installed, {
         "jsonnet-language-server",
-        -- https://github.com/mason-org/mason-registry/pull/3652
-        -- "jsonnetfmt"
+        "jsonnetfmt",
       })
     end,
   },
