@@ -14,6 +14,8 @@ return {
     opts = function(_, opts)
       vim.list_extend(opts.ensure_installed, {
         "jsonnet-language-server",
+        -- https://github.com/mason-org/mason-registry/pull/3652
+        -- "jsonnetfmt"
       })
     end,
   },
@@ -25,5 +27,14 @@ return {
         vim.list_extend(opts.ensure_installed, { "jsonnet" })
       end
     end,
+  },
+  -- Formatting
+  {
+    "stevearc/conform.nvim",
+    opts = {
+      formatters_by_ft = {
+        jsonnet = { "jsonnetfmt" },
+      },
+    },
   },
 }
