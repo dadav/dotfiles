@@ -32,6 +32,12 @@ return {
   {
     "stevearc/conform.nvim",
     opts = {
+      formatters = {
+        jsonnetfmt = {
+          command = "jsonnetfmt",
+          args = { "$FILENAME" },
+        },
+      },
       formatters_by_ft = {
         jsonnet = { "jsonnetfmt" },
       },
