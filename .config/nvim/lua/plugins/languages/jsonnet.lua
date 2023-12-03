@@ -40,7 +40,8 @@ return {
       formatters = {
         jsonnetfmt = {
           command = "jsonnetfmt",
-          args = { "$FILENAME" },
+          args = { "-" },
+          stdin = true,
         },
       },
       formatters_by_ft = {
