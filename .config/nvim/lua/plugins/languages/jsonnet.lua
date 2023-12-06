@@ -5,11 +5,7 @@ return {
     opts = {
       servers = {
         jsonnet_ls = {
-          single_file_support = true,
-          -- root_dir = function(fname)
-          --   local util = require("lspconfig.util")
-          --   return util.root_pattern("jsonnetfile.json")(fname) or util.find_git_ancestor(fname) or "."
-          -- end,
+          command = { "jsonnet-language-server", "--tanka", "--eval-diags", "--lint" },
         },
       },
     },
