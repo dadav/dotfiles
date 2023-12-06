@@ -5,7 +5,7 @@ return {
     opts = {
       servers = {
         jsonnet_ls = {
-          command = { "jsonnet-language-server", "--tanka", "--eval-diags", "--lint" },
+          cmd = { "jsonnet-language-server", "--tanka", "--eval-diags", "--lint", "-l", "debug" },
         },
       },
     },
