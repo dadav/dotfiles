@@ -7,18 +7,15 @@ umask 022
 ## Its interactive, load aliases
 # source all settings
 for category in aliases settings functions completions; do
-  for setting in $HOME/.shells/common/$category/*.sh;do
-    . "$setting"
-  done
-  for setting in $HOME/.shells/bash/$category/*.sh;do
-    . "$setting"
-  done
+	for setting in "$HOME/.shells/common/$category"/*.sh; do
+		. "$setting"
+	done
+	for setting in "$HOME/.shells/bash/$category"/*.sh; do
+		. "$setting"
+	done
 done
 
 ### OTHER FILES
 for stuff in ~/{.profile,.alias,.bash_secrets}; do
-  [[ -f $stuff ]] && . $stuff
+	[[ -f $stuff ]] && . "$stuff"
 done
-
-# starship
-command starship &>/dev/null && eval "$(starship init bash)"
