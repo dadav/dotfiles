@@ -1,4 +1,13 @@
 return {
+  -- Install additional tools
+  {
+    "williamboman/mason.nvim",
+    opts = function(_, opts)
+      vim.list_extend(opts.ensure_installed, {
+        "ruff",
+      })
+    end,
+  },
   -- Lightweight yet powerful formatter plugin for Neovim
   {
     "stevearc/conform.nvim",
@@ -8,19 +17,6 @@ return {
       },
     },
   },
-  -- pyright -> ruff
-  -- {
-  --   "neovim/nvim-lspconfig",
-  --   opts = {
-  --     servers = {
-  --       ruff_lsp = {},
-  --       pyright = {
-  --         mason = true,
-  --         autostart = true,
-  --       },
-  --     },
-  --   },
-  -- },
   -- DAP
   {
     "jay-babu/mason-nvim-dap.nvim",
