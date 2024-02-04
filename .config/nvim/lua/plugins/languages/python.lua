@@ -9,18 +9,18 @@ return {
     },
   },
   -- pyright -> ruff
-  {
-    "neovim/nvim-lspconfig",
-    opts = {
-      servers = {
-        ruff_lsp = {},
-        pyright = {
-          mason = false,
-          autostart = false,
-        },
-      },
-    },
-  },
+  -- {
+  --   "neovim/nvim-lspconfig",
+  --   opts = {
+  --     servers = {
+  --       ruff_lsp = {},
+  --       pyright = {
+  --         mason = true,
+  --         autostart = true,
+  --       },
+  --     },
+  --   },
+  -- },
   -- DAP
   {
     "jay-babu/mason-nvim-dap.nvim",
