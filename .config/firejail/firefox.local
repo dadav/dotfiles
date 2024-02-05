@@ -3,4 +3,5 @@ ignore private-tmp
 
 dbus-user filter
 dbus-user.talk org.freedesktop.portal.Fcitx
+dbus-user.talk org.freedesktop.Notifications
 ignore dbus-user none
