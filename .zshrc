@@ -178,7 +178,8 @@ done
 
 custom_plugins=(
   '/usr/share/z/z.sh'
-  '/usr/share/fzf/key-bindings.zsh'
+  # use atuin instead
+  # '/usr/share/fzf/key-bindings.zsh'
   '/usr/share/fzf/completion.zsh'
   '/usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh'
   '/usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh'
