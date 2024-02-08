@@ -11,6 +11,17 @@ return {
   },
   {
     "neovim/nvim-lspconfig",
+    init = function()
+      vim.filetype.add({
+        filename = {
+          ["main.yml"] = "yaml.ansible",
+          ["main.yaml"] = "yaml.ansible",
+        },
+        pattern = {
+          [".*/roles/.*.ya?ml$"] = "yaml.ansible",
+        },
+      })
+    end,
     opts = {
       servers = {
         ansiblels = {},
