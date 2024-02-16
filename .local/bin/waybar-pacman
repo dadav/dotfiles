@@ -1,13 +1,13 @@
 #!/bin/bash
 
-packages=$(checkupdates)
+packages=$(checkupdates --nocolor)
 update_num=$(echo -n "$packages" | wc -l)
 text=""
 tooltip=""
 
 if [[ $update_num -gt 0 ]]; then
-  text="$update_num \uf187"
-  tooltip="$(sed -zn 's/\n/\\n/gp' <<<"$packages")"
+	text="$update_num \uf187"
+	tooltip="$(sed -zn 's/\n/\\n/gp' <<<"$packages")"
 fi
 
 cat <<EOF
