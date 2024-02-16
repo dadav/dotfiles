@@ -49,3 +49,7 @@
 	defaultBranch = main
 [safe]
 	directory = /opt/flutter
+[column]
+	ui = auto
+[branch]
+	sort = -committerdate
