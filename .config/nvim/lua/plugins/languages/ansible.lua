@@ -1,3 +1,10 @@
+vim.filetype.add({
+  pattern = {
+    [".*/tasks/.*%.ya?ml"] = "yaml.ansible",
+    [".*/handlers/.*%.ya?ml"] = "yaml.ansible",
+    [".*/roles/.*%.ya?ml"] = "yaml.ansible",
+  },
+})
 return {
   -- Install additional tools
   {
@@ -11,14 +18,6 @@ return {
   },
   {
     "neovim/nvim-lspconfig",
-    init = function()
-      vim.filetype.add({
-        pattern = {
-          [".*/roles/.*/tasks/.ya?ml$"] = "yaml.ansible",
-          [".*/roles/.*/handlers/.ya?ml$"] = "yaml.ansible",
-        },
-      })
-    end,
     opts = {
       servers = {
         ansiblels = {},
