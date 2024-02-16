@@ -12,6 +12,7 @@
 [diff]
   tool      = vimdiff
 	noprefix = true
+	algorithm = histogram
 
 [difftool]
   prompt    = false
@@ -53,3 +54,10 @@
 	ui = auto
 [branch]
 	sort = -committerdate
+[merge]
+	conflictstyle = zdiff3
+[push]
+	default = current
+	followtags = true
+[tag]
+	sort = taggerdate
