@@ -5,12 +5,12 @@ return {
     config = true,
     opts = {
       default_mappings = {
-        ours = "<leader>gco",
-        theirs = "<leader>gct",
-        none = "<leader>gc0",
-        both = "<leader>gcb",
-        next = "<leader>gcn",
-        prev = "<leader>gcp",
+        ours = "<leader>gxo",
+        theirs = "<leader>gxt",
+        none = "<leader>gx0",
+        both = "<leader>gxb",
+        next = "<leader>gxn",
+        prev = "<leader>gxp",
       },
     },
   },
