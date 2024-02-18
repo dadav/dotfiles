@@ -1,3 +1,8 @@
+local wk = require("which-key")
+wk.register({
+  y = { name = "Yaml" },
+}, { prefix = "<leader>" })
+
 return {
   -- Autocompletion for kubernetes
   {
@@ -17,7 +22,7 @@ return {
       local cfg = require("yaml-companion").setup(opts)
       require("lspconfig")["yamlls"].setup(cfg)
       require("telescope").load_extension("yaml_schema")
-      vim.keymap.set("n", "<leader>cy", require("yaml-companion").open_ui_select, { desc = "Select schema" })
+      vim.keymap.set("n", "<leader>ys", require("yaml-companion").open_ui_select, { desc = "Select schema" })
     end,
   },
   -- Diagnostics
