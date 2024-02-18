@@ -1,6 +1,7 @@
 [user]
   name      = dadav
   email     = 33197631+dadav@users.noreply.github.com
+	signingkey = ~/.ssh/id_rsa.pub
 
 [color]
 	ui = true
@@ -61,3 +62,7 @@
 	followtags = true
 [tag]
 	sort = taggerdate
+[gpg]
+	format = ssh
+[commit]
+	gpgsign = true
