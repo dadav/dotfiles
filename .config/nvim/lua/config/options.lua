@@ -18,3 +18,7 @@ opt.spelllang = "de,en"
 
 -- show everything
 opt.conceallevel = 0
+
+if vim.g.neovide then
+  vim.g.neovide_cursor_vfx_mode = "sonicboom"
+end

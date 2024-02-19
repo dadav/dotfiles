@@ -309,6 +309,7 @@ for_window [window_type="dialog"] floating enable, move position center
 for_window [window_type="menu"] floating enable, move position center
 for_window [app_id="virt-manager"] floating enable, move position center
 for_window [app_id="com.github.wwmm.easyeffects"] floating enable, resize set 1200px 900px, move position center
+for_window [app_id="neovide"] fullscreen enable
 
 # Sticky
 for_window [app_id="mpv"] sticky enable, floating enable
