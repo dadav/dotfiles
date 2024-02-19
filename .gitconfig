@@ -40,29 +40,37 @@
 	old = red bold
 	new = green bold
 	whitespace = red reverse
+
 [filter "lfs"]
 	process = git-lfs filter-process
 	required = true
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
+
 [pull]
 	rebase = true
+
 [init]
 	defaultBranch = main
+
 [safe]
 	directory = /opt/flutter
-[column]
-	ui = auto
+
 [branch]
 	sort = -committerdate
+
 [merge]
 	conflictstyle = zdiff3
+
 [push]
 	default = current
 	followtags = true
+
 [tag]
 	sort = taggerdate
+
 [gpg]
 	format = ssh
+
 [commit]
 	gpgsign = true
