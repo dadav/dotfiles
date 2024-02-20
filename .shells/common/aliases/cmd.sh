@@ -1,11 +1,15 @@
 # ls
-command -v lsd &>/dev/null \
-  && alias ls="lsd --group-dirs first"
+command -v lsd &>/dev/null &&
+	alias ls="lsd --group-dirs first"
 alias ll="ls -lh"
 
 # nvim
 alias vi="vim"
-command -v nvim &>/dev/null && alias vim"=nvim"
+if command -v nvim &>/dev/null; then
+	alias vim="nvim"
+	alias n="nvim"
+fi
+command -v neovide &>/dev/null && alias nv="neovide"
 
 # grep
 alias grep="grep --colour"
