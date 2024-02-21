@@ -177,7 +177,8 @@ for plugin in $additional_plugins; do
 done
 
 custom_plugins=(
-  '/usr/share/z/z.sh'
+  # try zoxide instead
+  # '/usr/share/z/z.sh'
   # use atuin instead
   # '/usr/share/fzf/key-bindings.zsh'
   '/usr/share/fzf/completion.zsh'
