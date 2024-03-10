@@ -19,10 +19,9 @@
   prompt    = false
 
 [alias]
-  lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-  cf = diff --name-only --diff-filter=U
 	C = commit -m \"Obvious fix I didnt bother commenting\"
-  smu = submodule update --recursive --remote
+  B = blame -w -C -C -C
+  L = log --oneline --decorate --graph --color --all
 
 [rerere]
 	enabled = true
