@@ -20,6 +20,10 @@ set -o notify
 bind '"\e[A": history-search-backward'
 bind '"\e[B": history-search-forward'
 
+# bind c-w to backward-kill-word (respect special chars when kill words)
+stty werase undef
+bind '"\C-w": backward-kill-word'
+
 [[ $PS1 && -f /usr/share/bash-completion/bash_completion ]] && source /usr/share/bash-completion/bash_completion >/dev/null 2>&1
 
 export GIT_PROMPT_ONLY_IN_REPO=1
