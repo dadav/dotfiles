@@ -164,8 +164,9 @@ plugins_dir="$HOME/.zsh/plugins"
 [[ -d "$plugins_dir" ]] || mkdir -p "$plugins_dir"
 
 additional_plugins=(
-  'https://github.com/reegnz/jq-zsh-plugin'
+  # 'https://github.com/reegnz/jq-zsh-plugin'
   'https://github.com/hlissner/zsh-autopair'
+  'https://github.com/dadav/zsh-jump-target'
 )
 
 for plugin in $additional_plugins; do
