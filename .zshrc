@@ -171,7 +171,14 @@ additional_plugins=(
 
 for plugin in $additional_plugins; do
   plugin_path="$plugins_dir/${plugin##*/}"
-  [[ -d "$plugin_path" ]] || git clone "$plugin" "$plugin_path"
+  if [[ -d "$plugin_path" ]]; then
+    if (( $(date +%s) > $(stat --format="%Y" "$plugin_path") + 86400 )); then
+      touch "$plugin_path"
+      git -C "$plugin_path" pull
+    fi
+  else
+    git clone "$plugin" "$plugin_path"
+  fi
   for p in "$plugin_path"/*.plugin.zsh; do
     source "$p"
   done
