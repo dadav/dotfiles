@@ -16,7 +16,7 @@
     "editor.suggest.snippetsPreventQuickSuggestions": false,
     "editor.suggestSelection": "first",
     "editor.tabCompletion": "onlySnippets",
-    "editor.wordBasedSuggestions": false
+    "editor.wordBasedSuggestions": "off"
   },
   "editor.linkedEditing": true,
   "window.zoomLevel": 1,
@@ -35,5 +35,6 @@
   "yaml.schemas": {
     "./values.schema.json": "values.yaml",
     "schema.json": "products/*.md"
-  }
+  },
+  "svelte.enable-ts-plugin": true
 }
