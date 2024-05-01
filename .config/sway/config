@@ -65,13 +65,14 @@ exec --no-startup-id mako
 exec --no-startup-id unclutter -idle 5
 exec --no-startup-id easyeffects --gapplication-service
 # also execute when sway restarts
-exec_always --no-startup-id fcitx5 -d --replace
+
+#: https://github.com/kovidgoyal/kitty/issues/7396
+# exec_always --no-startup-id fcitx5 -d --replace
 
 # font
 font pango:monospace 16px
 default_border pixel 1
 default_floating_border pixel 2
-titlebar_border_thickness 2
 
 # gaps
 gaps top 2
@@ -107,13 +108,13 @@ bindsym $mod+Return exec $term
 bindsym $mod+q kill
 
 # open drawer
-bindsym $mod+d exec nwg-drawer -nocats -term kitty -spacing 10 -is 32
+# bindsym $mod+d exec nwg-drawer -nocats -term kitty -spacing 10 -is 32
 
 # start launcher
-bindsym $mod+space exec	$exec-menu
+# bindsym $mod+space exec	$exec-menu
 # bindsym $mod+Shift+space exec ~/.local/bin/sway-online-search
 
-bindsym $mod+y exec ~/.local/bin/sway-slurp-clicker
+# bindsym $mod+y exec ~/.local/bin/sway-slurp-clicker
 
 # dismiss notification
 bindsym	Control+Backspace	exec makoctl dismiss
@@ -177,12 +178,12 @@ bindsym XF86MonBrightnessDown exec light -U 10 && light -G | cut -d'.' -f1 > $WO
 bindsym $mod+XF86Display arandr
 
 # show and hide scratchpad windows
-bindsym $mod+Shift+minus move scratchpad
-bindsym $mod+minus scratchpad show
+# bindsym $mod+Shift+minus move scratchpad
+# bindsym $mod+minus scratchpad show
 
 # prev next workspaces
-bindsym $mod+$alt+j workspace prev
-bindsym $mod+$alt+k workspace next
+# bindsym $mod+$alt+j workspace prev
+# bindsym $mod+$alt+k workspace next
 
 # Screenshot
 bindsym --release Print exec grim -g "$(slurp)" - | swappy -f -
