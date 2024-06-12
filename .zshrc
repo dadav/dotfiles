@@ -177,7 +177,7 @@ for plugin in $additional_plugins; do
       git -C "$plugin_path" pull
     fi
   else
-    git clone "$plugin" "$plugin_path"
+    git clone "$plugin" "$plugin_path" &>/dev/null
   fi
   for p in "$plugin_path"/*.plugin.zsh; do
     source "$p"

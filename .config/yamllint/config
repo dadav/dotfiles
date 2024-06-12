@@ -1,3 +1,6 @@
 ---
+extends: relaxed
 rules:
   line-length: disable
+  trailing-spaces: false
+  empty-lines: false
