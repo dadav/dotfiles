@@ -1,7 +1,6 @@
 local wk = require("which-key")
-wk.register({
-  y = { name = "Yaml" },
-}, { prefix = "<leader>" })
+
+wk.add({ "<leader>y", group = "Yaml" })
 
 return {
   -- Autocompletion for kubernetes
