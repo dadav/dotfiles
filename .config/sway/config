@@ -34,7 +34,7 @@ output "*" bg ~/.wallpapers/town.jpeg fill
 # keyboard
 input * {
     xkb_layout  "de,us"
-    xkb_variant "de_nodeadkeys"
+    xkb_variant "nodeadkeys"
     xkb_options "caps:hyper"
 		xkb_model   "pc105"
 }
