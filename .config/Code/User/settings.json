@@ -33,8 +33,11 @@
   "workbench.startupEditor": "none",
   "liveServer.settings.donotShowInfoMsg": true,
   "yaml.schemas": {
-    "./values.schema.json": "values.yaml",
-    "schema.json": "products/*.md"
+    "file:///home/ddavid/.vscode/extensions/continue.continue-1.2.10-linux-x64/config-yaml-schema.json": [
+      ".continue/**/*.yaml"
+    ]
   },
-  "svelte.enable-ts-plugin": true
+  "svelte.enable-ts-plugin": true,
+  "continue.telemetryEnabled": false,
+  "continue.enableConsole": true
 }

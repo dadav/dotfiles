@@ -24,3 +24,5 @@ if vim.g.neovide then
   vim.o.guifont = "Hack Nerd Font,Noto_Color_Emoji:h14"
   vim.g.neovide_hide_mouse_when_typing = true
 end
+
+vim.g.ai_cmp = false
