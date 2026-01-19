@@ -1,0 +1,8 @@
+{
+  "enabledPlugins": {
+    "gopls-lsp@claude-plugins-official": true
+  },
+  "env": {
+    "DISABLE_ZOXIDE": "1"
+  }
+}
