@@ -10,10 +10,9 @@ set $left-alt Left
 set $down-alt Down
 set $up-alt Up
 set $right-alt Right
-set $browser-list "firejail firefox -P default\n" \
-                  "firejail qutebrowser\n" \
-                  "firejail tor-browser\n" \
-                  "firejail chromium\n"
+set $browser-list "bubblejail run firefox\n" \
+                  "bubblejail run chromium\n" \
+                  "firejail qutebrowser\n"
 
 # Define some menus for bemenu
 set	$exec-menu j4-dmenu-desktop --no-generic --dmenu="bemenu -C -T -l10 -n -i -W 0.25 --center --prompt 'search' --fn 'Hack 12'" \
